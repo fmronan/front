@@ -1,0 +1,50 @@
+.brand {
+    display: block;
+    padding-left: 44px;
+    @media (min-width: $screen-xs-min) {
+        padding-left: 0px;
+    }
+    @media (min-width: 220px) {
+        padding-left: 0px;
+    }
+
+
+    > .logo {
+        width: 240px;
+        margin: 0 auto;
+        @media (min-width: $screen-sm-min) {
+            width: 300px;
+            margin: 0;
+        }
+        height: auto;
+    }
+    > h1.title {
+        display: block;
+        font-size: 36px;
+        font-family: "Arial Black", Gadget, sans-serif;
+        font-weight: 900;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        letter-spacing: 0.1em;
+        > .em {
+            font-style: normal;
+            color: $text-color-secondary;
+        }
+    }
+    > h2.subtitle {
+        display: block;
+        margin-bottom: 5px;
+        letter-spacing: 0.01em;
+        @extend .text-secondary;
+    }
+}
+
+.logo_home {
+  margin-left: auto;
+  margin-right: auto;
+  width: 22em;
+  @media (max-width: $screen-xs-min) {
+       width: 14em;
+       margin-left: 0;
+       }
+}

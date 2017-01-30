@@ -1,0 +1,21 @@
+{
+  "name": "hinclude",
+  "version": "1.0.1",
+  "main": "hinclude.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test"
+  ],
+  "homepage": "https://github.com/mnot/hinclude",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "c77f528fbc0a3a2ae179cde09ec75e53cd59d5a4"
+  },
+  "_source": "https://github.com/mnot/hinclude.git",
+  "_target": "*",
+  "_originalSource": "hinclude"
+}

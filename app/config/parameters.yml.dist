@@ -1,0 +1,67 @@
+# This file is a "template" of what your parameters.yml file should look like
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    domain : .viteloge.com
+    media_domain : media.viteloge.com
+    file_domain: media.viteloge.com
+
+    router.request_context.host: www.viteloge.local
+    router.request_context.scheme: ~
+    router.request_context.base_url: ~
+
+    elastic_host : localhost
+    elastic_port : 9200
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_port:       587
+    mailer_encryption: ~
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    old_secret:        PLEAtEmk6ee8QQI3Ma3IGNii33W1EkGfqaw3ZEGH
+
+    # google analytics
+    ga_tracking:        UA-xxxxx-x
+
+    # google maps
+    google_maps_api_key: AIzaSyCOHYCl4_I5iOrgjMA55yLWiKgU0FW0X7I
+
+    # google adsense
+    adsense_publisher_id: null
+    adsense_slots:
+        - ''
+        - ''
+        - ''
+    adsense_slot_spec: ''
+
+    # google
+    google_client_id: id
+    google_client_secret: secret
+
+    # facebook
+    facebook_account:   viteloge
+    facebook_client_id: id
+    facebook_client_secret: secret
+    facebook_app_version: v2.5
+
+    # twitter
+    twitter_account:    viteloge
+    twitter_client_id: id
+    twitter_client_secret: secret
+
+    # github
+    github_client_id: id
+    github_client_secret: secret

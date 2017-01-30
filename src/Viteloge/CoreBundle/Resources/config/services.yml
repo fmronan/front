@@ -1,0 +1,21 @@
+parameters:
+    twig.extension.intl.class: Twig_Extensions_Extension_Intl
+    twig.extension.date.class: Twig_Extensions_Extension_Date
+    viteloge_core.form.type.adsearch.class: Viteloge\CoreBundle\Form\Type\AdSearchType
+services:
+    twig.extension.intl:
+        class: "%twig.extension.intl.class%"
+        tags:
+            - { name: twig.extension }
+    twig.extension.date:
+        class: "%twig.extension.date.class%"
+        arguments: ["@translator"]
+        tags:
+            - { name: twig.extension }
+    viteloge_core.form.type.adsearch:
+        class: "%viteloge_core.form.type.adsearch.class%"
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type, alias: viteloge_core_adsearch }
+
+

@@ -1,0 +1,15 @@
+viteloge_user:
+    resource: "@VitelogeUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+viteloge_frontend:
+    resource: "@VitelogeFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+_bazinga_jstranslation:
+    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
+
+viteloge_o_auth:
+    resource: "@VitelogeOAuthBundle/Resources/config/routing.yml"
+    prefix:   /
+

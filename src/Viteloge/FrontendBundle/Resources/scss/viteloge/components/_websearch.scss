@@ -1,0 +1,43 @@
+.searches {
+    + aside {
+        margin-top: 18px;
+    }
+    ul {
+        > li {
+            margin-top: 10px;
+            display: inline-block;
+            .btn {
+                font-size: $font-size-xsmall;
+                padding: 2px;
+            }
+        }
+    }
+    .usersearch {
+        a {
+            text-decoration: underline;
+        }
+    }
+}
+
+#websearch-panel {
+    .thumbnail {
+        a {
+            display: block;
+            > img {
+                background-image: url('http://'+$aws-s3-domain+'/bundles/vitelogecore/images/logo-small-viteloge.svg.gz');
+                background-repeat: no-repeat;
+                background-position: center center;
+                min-height: $websearch-img-min-size;
+                height: auto;
+                max-height: 190px;
+                min-width: 100px;
+                width: auto;
+                max-width: 100%;
+                &[src=""] {
+                    display: block !important;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

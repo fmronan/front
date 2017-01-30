@@ -1,0 +1,10 @@
+<div class="hide_info col-md-3 col-sm-6 col-xs-12">
+    <ul>
+    	<li class="footlihead">
+         <b>Immobilier en France</b>
+        </li>
+        {% for item in glossary %}
+            {{ include('VitelogeFrontendBundle:Glossary:Render/li.html.twig', { 'glossary': item }) }}
+        {% endfor %}
+    </ul>
+</div>

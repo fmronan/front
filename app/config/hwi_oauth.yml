@@ -1,0 +1,38 @@
+hwi_oauth:
+    connect:
+        account_connector: viteloge_o_auth.user.provider.fosub_bridge
+    firewall_names: [main]
+    resource_owners:
+        facebook:
+            type: facebook
+            client_id: "%facebook_client_id%"
+            client_secret: "%facebook_client_secret%"
+            scope: "email"
+            options:
+                display: popup
+        twitter:
+            type: twitter
+            client_id: "%twitter_client_id%"
+            client_secret: "%twitter_client_secret%"
+        google:
+            type: google
+            client_id: "%google_client_id%"
+            client_secret: "%google_client_secret%"
+            scope: "email profile"
+        github:
+            type: github
+            client_id: "%github_client_id%"
+            client_secret: "%github_client_secret%"
+            scope: "user:email"
+    fosub:
+        username_iterations: 10
+        properties:
+            github: githubId
+            google: googleId
+            facebook: facebookId
+            twitter: twitterId
+    http_client:
+        timeout: 5
+        verify_peer: false
+        ignore_errors: true
+        max_redirects: 5

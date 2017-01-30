@@ -1,0 +1,22 @@
+footer {
+    .round-icon {
+        &.facebook, &.twitter, &.github, &.google {
+            vertical-align: bottom;
+        }
+    }
+}
+
+.footlihead {
+  display: block;
+  color: #000000 !important;
+  margin-top: 10px;
+  transition-duration: 0.5s;
+  transition-property: all;
+}
+
+.footli {
+    display: block;
+    color: #337ab7 !important;
+    transition-duration: 0.5s;
+    transition-property: all;
+}

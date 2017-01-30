@@ -1,0 +1,7 @@
+{% extends 'VitelogeFrontendBundle::base.html.twig' %}
+
+{%- block main -%}
+    {%- for key, department in departments -%}
+        {{ department.name }}
+    {%- endfor -%}
+{%- endblock -%}

@@ -1,0 +1,21 @@
+<figure class="program">
+    <div class="program-images center-block">
+        {%- block estate_images -%}
+            {{ include('VitelogeFrontendBundle:Ad:fragment/image.html.twig', { 'ad': ad, 'imgClass': 'owl-lazy' }) }}
+        {%- endblock estate_images -%}
+    </div>
+    <figcaption class="program-legend">
+        <h5 class="title">
+            {%- block estate_title  -%}
+                {{ ad.cityName }} - {{ ad.program }}
+            {%- endblock estate_title -%}
+        </h5>
+        <p class="description text-center" data-role="description">
+            {%- block program_description -%}
+                {%- transchoice ad.programCount with { '%count%': ad.programCount } -%}
+                    ad.program.count
+                {%- endtranschoice -%}
+            {%- endblock program_description -%}
+        </p>
+    </figcaption>
+</figure>

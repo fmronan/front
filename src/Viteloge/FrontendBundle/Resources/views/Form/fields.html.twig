@@ -1,0 +1,259 @@
+{% extends 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{%- block form_debug -%}
+    <ol>
+        {% for key, value in _context %}
+        <li>{{ key }}</li>
+        {% endfor %}
+    </ol>
+{%- endblock -%}
+
+{%- block form_widget_success -%}
+    <span class="fa fa-check-circle form-control-feedback" aria-hidden="true"></span>
+    <span class="sr-only">(error)</span>
+{%- endblock -%}
+
+{%- block form_widget_warning -%}
+    <span class="fa fa-warning form-control-feedback" aria-hidden="true"></span>
+    <span class="sr-only">(error)</span>
+{%- endblock -%}
+
+{%- block form_widget_error -%}
+    <span class="fa fa-exclamation-circle form-control-feedback" aria-hidden="true"></span>
+    <span class="sr-only">(error)</span>
+{%- endblock -%}
+
+{%- block form_widget_simple -%}
+    {% set input_group = input_group|default(false) %}
+    {%- if (not input_group or not input_group.type) -%}
+        {{- parent() -}}
+    {%- else -%}
+        {{- block(input_group.type ~ '_inputgroup_widget') -}}
+    {%- endif -%}
+    {% if (not compound or force_error|default(false)) and not valid %}
+        {{- block('form_widget_error') -}}
+    {% endif %}
+{%- endblock form_widget_simple -%}
+
+{%- block inputgroup_attributes -%}
+    {%- for attrname, attrvalue in inputgroup_attr -%}
+        {{- " " -}}
+        {%- if attrvalue is same as(true) -%}
+            {{- attrname }}="{{ attrname }}"
+        {%- elseif attrvalue is not same as(false) -%}
+            {{- attrname }}="{{ attrvalue }}"
+        {%- endif -%}
+    {%- endfor -%}
+{%- endblock -%}
+
+{%- block delete_inputgroup_widget -%}
+    {{- block('remove_inputgroup_widget') -}}
+{%- endblock -%}
+
+{%- block remove_inputgroup_widget -%}
+    {%- set inputgroup_attr = input_group.attr|default({'class':''})|merge({'class': (input_group.attr.class|default('') ~ ' btn btn-default field remove-field')|trim}) -%}
+    <div class="input-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {% set input_group = false %}
+        {{- block('form_widget_simple') -}}
+        <span class="input-group-btn">
+            <button {{- block('inputgroup_attributes') -}} type="button">
+                <span class="fa fa-minus-circle"></span>
+            </button>
+        </span>
+    </div>
+{%- endblock remove_inputgroup_widget -%}
+
+{% block email_inputgroup_widget -%}
+    {% set prepend = prepend|default(false) %}
+    <div class="input-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {% if not prepend %}
+            <span class="input-group-addon">@</span>
+        {% endif %}
+        {{- block('form_widget_simple') -}}
+        {% if prepend %}
+            <span class="input-group-addon">@</span>
+        {% endif %}
+    </div>
+{%- endblock email_inputgroup_widget %}
+
+{% block password_inputgroup_widget -%}
+    {% set prepend = prepend|default(false) %}
+    <div class="input-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {% if not prepend %}
+            <span class="input-group-addon">&nbsp;#</span>
+        {% endif %}
+        {{- block('form_widget_simple') -}}
+        {% if prepend %}
+            <span class="input-group-addon">&nbsp;#</span>
+        {% endif %}
+    </div>
+{%- endblock password_inputgroup_widget %}
+
+{%- block checkbox_inputgroup_widget -%}
+    {%- set inputgroup_attr = input_group.attr|default({'class':''}) -%}
+    <div class="input-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {% set input_group = false %}
+        {{- block('form_widget_simple') -}}
+        <span class="input-group-addon">
+            <input type="checkbox" aria-label="{% trans %}viteloge.select{% endtrans %}" {{- block('inputgroup_attributes') -}}>
+        </span>
+    </div>
+{%- endblock checkbox_inputgroup_widget -%}
+
+{%- block radio_inputgroup_widget -%}
+    {%- set inputgroup_attr = input_group.attr|default({'class':''}) -%}
+    <div class="input-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {% set input_group = false %}
+        {{- block('form_widget_simple') -}}
+        <span class="input-group-addon">
+            <input type="checkbox" aria-label="{% trans %}viteloge.select{% endtrans %}" {{- block('inputgroup_attributes') -}}>
+        </span>
+    </div>
+{%- endblock radio_inputgroup_widget -%}
+
+{%- block money_widget -%}
+    <div class="input-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {% set prepend = '{{' == money_pattern[0:2] %}
+        {% if not prepend %}
+            <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
+        {% endif %}
+        {{- block('form_widget_simple') -}}
+        {% if prepend %}
+            <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
+        {% endif %}
+    </div>
+{%- endblock money_widget -%}
+
+{% block percent_widget -%}
+    <div class="input-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {{- block('form_widget_simple') -}}
+        <span class="input-group-addon">%</span>
+    </div>
+{%- endblock percent_widget %}
+
+{%- block form_label -%}
+    {%- set label_attr_class = block('form_label_class') -%}
+    {%- if label is same as(false) -%}
+        <div class="{{- label_attr_class -}}"></div>
+    {%- else -%}
+        {{- parent() -}}
+    {%- endif -%}
+{%- endblock form_label -%}
+
+{%- block form_row -%}
+    {% set original_translation_domain = translation_domain %}
+    {% set label_translation_domain = label_translation_domain|default(translation_domain) %}
+    {% set widget_translation_domain = widget_translation_domain|default(translation_domain) %}
+    {% set errors_translation_domain = errors_translation_domain|default(translation_domain) %}
+    <div class="form-group{% if (not compound or force_error|default(false)) and not valid %} has-error has-feedback{% endif %}">
+        {{- form_label(form, null, { translation_domain: label_translation_domain }) -}}
+        <div class="{{- block('form_group_class') -}}">
+            {{- form_widget(form, { translation_domain: widget_translation_domain }) -}}
+            {{- form_errors(form, { translation_domain: errors_translation_domain }) -}}
+        </div>
+    </div>
+{%- endblock form_row -%}
+
+{%- block submit_row -%}
+    <div class="form-group">
+        <div class="{{ block('form_label_class') }}"></div>
+        <div class="{{ block('form_group_class') }}">
+            {{ form_widget(form) }}
+        </div>
+    </div>
+{%- endblock submit_row %}
+
+{%- block choice_widget_expanded -%}
+    <div {% if '-inline' in label_attr.class|default('') %}class="control-group"{% else %}{{ block('widget_container_attributes') }}{% endif %}>
+        {%- for child in form -%}
+            {{- form_widget(child, {
+                parent_label_class: label_attr.class|default(''),
+                translation_domain: translation_domain
+            }) -}}
+        {%- endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
+
+{%- block checkbox_radio_row -%}
+    <div class="form-group{% if not valid %} has-error{% endif %}">
+        <div class="{{ block('form_label_class') }}"></div>
+        <div class="{{ block('form_group_class') }}">
+            {{- form_widget(form) -}}
+            {{- form_errors(form) -}}
+        </div>
+    </div>
+{%- endblock checkbox_radio_row -%}
+
+{%- block form_label_class -%}
+    {%- if row_attr is defined and row_attr.label_class is defined -%}
+        {{- row_attr.label_class -}}
+    {%- else -%}
+        {%- if label_attr.class is not defined or label_attr.class is empty or not 'sr-only' in label_attr.class -%}
+            col-sm-2
+        {%- else -%}
+            col-sm-0
+        {%- endif -%}
+    {%- endif -%}
+{%- endblock form_label_class -%}
+
+{%- block form_group_class -%}
+    {%- if row_attr is defined and row_attr.group_class is defined -%}
+        {{- row_attr.group_class -}}
+    {%- else -%}
+        {%- if label_attr.class is not defined or label_attr.class is empty or not 'sr-only' in label_attr.class -%}
+            col-sm-10
+        {%- else -%}
+            col-sm-12
+        {%- endif -%}
+    {%- endif -%}
+{%- endblock form_group_class -%}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        {%- if form.parent -%}
+            <span class="help-block">
+                <ul class="list-unstyled">
+                    {%- for error in errors -%}
+                        {% if error.cause.constraint.payload.severity is defined %}
+                            {% set severity = error.cause.constraint.payload.severity %}
+                        {% endif %}
+                        <li><span class="fa fa-exclamation-circle"></span>&nbsp;{{ error.message }}</li>
+                    {%- endfor -%}
+                </ul>
+            </span>
+        {%- else -%}
+            {%- embed 'VitelogeCoreBundle:Global:alert.html.twig' with { alerts: errors, valid: valid, type: 'danger', dismissible: true } -%}
+                {%- block alert_title -%}
+                    {% trans %}Error{% endtrans %}&nbsp;:
+                {%- endblock -%}
+            {%- endembed -%}
+        {%- endif -%}
+    {%- endif -%}
+{%- endblock -%}
+
+{%- block collection_widget -%}
+    {% if prototype is defined %}
+        {%- set attr = attr|merge({'data-prototype': form_row(prototype) }) -%}
+    {% endif %}
+    {{- block('form_widget') -}}
+{%- endblock collection_widget -%}
+
+{%- block button_widget -%}
+    {% set attr = attr|merge({class: (attr.class|default('btn-default') ~ ' btn')|trim}) %}
+    {% if label is empty %}
+        {% if label_format is not empty %}
+            {% set label = label_format|replace({
+                '%name%': name,
+                '%id%': id,
+            }) %}
+        {% else %}
+            {% set label = name|humanize %}
+        {% endif %}
+    {% endif %}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}{% if span_class is defined %} aria-label="{{ label|trans({}, translation_domain) }}"{% endif %}>
+        {%- if span_class is defined -%}
+            <span class="{{ span_class }}" aria-hidden="true">&nbsp;</span>
+        {%- endif -%}
+        <span>{{ label|trans({}, translation_domain) }}</span>
+    </button>
+{%- endblock button_widget -%}

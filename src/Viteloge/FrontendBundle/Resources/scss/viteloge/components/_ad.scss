@@ -1,0 +1,7 @@
+.ajax-pager-container {
+    nav:first-child {
+        > .pagination {
+            margin-top: 0;
+        }
+    }
+}

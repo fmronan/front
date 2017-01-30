@@ -1,0 +1,41 @@
+{
+  "name": "Viteloge",
+  "version": "3.0.0",
+  "homepage": "http://www.viteloge.com",
+  "authors": [
+    "Adrien Loyant <loyant@acreat.com>"
+  ],
+  "description": "Housing search engine",
+  "keywords": [
+    "viteloge"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.4",
+    "jquery.cookie": "latest",
+    "jquery.lazyload": "latest",
+    "jquery-smooth-scroll": "latest",
+    "normalize.css": "latest",
+    "requirejs": "latest",
+    "requirejs-domready": "latest",
+    "hinclude": "latest",
+    "html5-history-api": "latest",
+    "fontawesome": "latest",
+    "bootstrap-sass": "~3.3.4",
+    "OwlCarousel2": "~2.0.0",
+    "background-check": "latest",
+    "hover": "~2.0.2",
+    "select2": "~4.0.1",
+    "placeholders": "latest",
+    "d3": "latest",
+    "zeroclipboard": "latest"
+  }
+}

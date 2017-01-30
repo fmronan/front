@@ -1,0 +1,151 @@
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    z-index: 2;
+    top:0;
+    /*background-image: url('http://'+$aws-s3-domain+'/bundles/vitelogecore/images/pixels/white.png');*//* use with background check */
+    .vr {
+        margin: 16px 10px;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+        &:active {
+            color: inherit;
+        }
+        &:hover, &:focus {
+            color: #00bdec !important;
+       }
+
+    }
+    .subheader {
+        margin-top: 0px;
+    }
+    .navbar {
+        .navbar-header {
+            button.pull-right + .brand {
+                padding-right: 40px;
+                @media (min-width: $screen-sm-min) {
+                    padding-right: 0px;
+                }
+            }
+        }
+    }
+    #identification {
+        > li {
+            > a {
+
+            }
+        }
+        .vr {
+            margin: 5px 10px;
+        }
+    }
+    #navigation {
+        @media (min-width: $screen-sm-min) {
+            position: absolute;
+            right: 15px;
+            bottom: 0;
+        }
+    }
+    > .next-link {
+        position: absolute;
+        bottom: 5%;
+        width: 100%;
+        z-index: 1;
+        > a {
+            opacity: .6;
+            margin-bottom: -30px;
+            background-color: $text-color;
+            @include transition(all .6s);
+            &:hover, &:focus {
+                margin-bottom: 0px;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.navbar-button {
+    @include navbar-vertical-align(28px);
+}
+
+.subheader {
+    background-color: #fff;
+    color: #fff;
+}
+
+.banner {
+    height: auto;
+    min-height: 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    > .container, .container-fluid  {
+        min-height: 500px;
+    }
+    .forward {
+        margin-top: 20px;
+        @media (min-width: $screen-sm-min) {
+            margin-top: 80px;
+        }
+        @media (min-width: $screen-md-min) {
+            margin-top: 150px;
+        }
+        @media (min-width: $screen-lg-min) {
+            margin-top: 150px;
+        }
+        > h1, .h1 {
+            color: #fff;
+            text-shadow: 0 0 10px #000;
+        }
+        > h2, .h2 {
+            color: #333;
+        }
+        > hr {
+            border: 2px solid #eee;
+            width: 50px;
+        }
+    }
+}
+
+.forward {
+    color: #fff;
+    h1 {
+        font-size: 35px;
+        font-weight: 800;
+    }
+    h2 {
+        font-size: 24px;
+        font-weight: 400;
+    }
+}
+
+.header-top{
+    margin-top: 13px;
+}
+
+.header-height{
+    height: 40px;
+    line-height: 40px !important;
+}
+
+.small_header{
+    margin:0.5em 0 ;
+    font-size: 1.2em;
+    color:#00a1c6;
+    @media (max-width: $screen-md-min) {
+        display:none;
+       }
+}
+
+.subheader-paginate{
+    display: inline-block;
+     width: 100%;
+    border-bottom: 3px solid rgb(0, 161, 198);
+}
+
+.small-title{
+    font-size: 15px;
+}

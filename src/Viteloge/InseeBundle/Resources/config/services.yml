@@ -1,0 +1,4 @@
+services:
+#    viteloge_insee.example:
+#        class: Viteloge\InseeBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

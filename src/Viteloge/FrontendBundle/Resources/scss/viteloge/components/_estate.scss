@@ -1,0 +1,262 @@
+.estate {
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+    &:focus,
+    &:hover {
+        .description {
+            > a {
+                color: $brand-primary;
+            }
+        }
+        .preview {
+            &:before {
+                @include estate_hover($text-color);
+            }
+        }
+    }
+    &:first-child {
+        margin-top: 10px;
+    }
+    + .estate {
+        margin-top: 20px;
+    }
+    .preview {
+        padding: 5px;
+        display: block;
+        overflow: hidden;
+        text-align: center;
+        text-decoration: none;
+        height: 200px;
+        line-height: 185px;
+        > img {
+            display: inline-block !important;
+            margin: auto;
+            background-image: url('http://'+$aws-s3-domain+'/bundles/vitelogecore/images/fr/logo-viteloge-moteur-recherche-immobilier.svg.gz');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: #ddd;
+            background-size: 230px;
+            min-width: 100px;
+            width: auto;
+            max-width: 300px;
+            min-height: 100px;
+            max-height: 190px;
+            &[src=""] {
+                display: block !important;
+                height: 190px;
+            }
+        }
+        &:focus,
+        &:hover {
+            &:before {
+                @include estate_hover($text-color);
+            }
+        }
+    }
+    .agency-logo {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        max-width: 100%;
+        max-height: 50px;
+    }
+    .title {
+        margin-top: 9px;
+        margin-bottom: 0px;
+        padding-left: 5px;
+        font-weight: 700;
+    }
+    .subtitle {
+        padding-left: 5px;
+        color: $brand-primary;
+        font-size: 13px;
+        font-weight: 700;
+    }
+    .description {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        a {
+            text-decoration: underline;
+        }
+        > a {
+            padding-left: 5px;
+            color: $gray-light;
+            &:hover,
+            &:focus {
+                color: $brand-primary;
+            }
+        }
+        > p {
+            padding-left: 5px;
+            padding-right: 8px;
+            @include block_ellipsis(3, 1.4em, #fff);
+            a {
+                color: $brand-primary;
+                &:hover,
+                &:focus {
+                    color: $text-color;
+                }
+            }
+        }
+        [rel="quartier"], [rel="area"] {
+            & {
+                color: $brand-primary;
+                text-decoration: underline;
+                cursor: pointer;
+                &:hover {
+                    color: $brand-primary;
+                }
+            }
+            &:before {
+                padding-left: 2px;
+                padding-right: 2px;
+                @extend .fa;
+                @extend .fa-map-marker !optional;
+            }
+        }
+    }
+    .price {
+        color: $brand-primary;
+        font-size: $font-size-xlarge;
+        margin-top: -30px;
+        margin-right: 10px;
+    }
+    .footer {
+        background-color: #2d2f33;
+        color: #fff;
+        > .nav {
+            &:hover, &:focus {
+                > .expand-hover:not(:hover) {
+                    .expand-hover-text, .expand-hover-icon {
+                        @media (max-width: $screen-xs-max) {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+            > li {
+                &.active,
+                &:hover,
+                &:focus {
+                    background-color: $brand-primary;
+                    border-color: $brand-primary;
+                    color: #fff;
+                }
+                > a, > span {
+                    padding: 4px 20px;
+                    &:hover,
+                    &:focus {
+                        background-color: $brand-primary;
+                        border-color: $brand-primary;
+                        color: #fff;
+                        padding: 4px 20px;
+                    }
+                }
+            }
+            li+li {
+                margin-left: 0px;
+            }
+        }
+    }
+}
+
+
+.carousel, .owl-carousel {
+    .estate {
+        padding: 5px;
+        color: #000;
+        background-color: #fff;
+        margin-top: 0px;
+        + .estate {
+            margin-left: 30px;
+            margin-right: 0px;
+            margin-top: 0px;
+        }
+        .estate-legend {
+            text-align: left;
+        }
+        .preview {
+            padding: 0px;
+        }
+        .title {
+            margin: 5px 0px;
+            padding: 0;
+        }
+        .subtitle  {
+            font-weight: normal;
+            padding: 0px;
+            margin: 0px;
+        }
+        .estate-images {
+            position: static;
+            min-width: 250px;
+            min-height: 190px;
+        }
+        .estate-image, .estate-preview {
+            width: 250px;
+            height: 190px;
+        }
+        .agency-logo {
+            display: block;
+            position: absolute;
+            margin-top: -60px;
+            margin-left: 5px;
+            max-width: 100%;
+            width: auto;
+            max-height: 50px;
+        }
+    }
+}
+
+.program {
+    .program-images {
+        .program-preview, .preview > img {
+            background-image: url('http://'+$aws-s3-domain+'/bundles/vitelogecore/images/logo-small-viteloge.svg.gz');
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-color: #ddd;
+            background-size: 60px;
+            min-width: 100px;
+            width: auto;
+            max-width: 270px;
+            min-height: 60px;
+            max-height: 175px;
+            margin: 0px auto;
+            &[src=""] {
+                display: block !important;
+                height: 60px;
+            }
+        }
+    }
+}
+
+/** * */
+.item .estate {
+    min-width: 260px;
+    width: 260px;
+    min-height: 290px;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    @media (max-width: $screen-sm-max) {
+        width: 90%;
+    }
+    @media (min-width: $screen-md-min) {
+        margin-left: 25px;
+        margin-right: 0px;
+        float: left;
+        &:first-child {
+            margin-left: 50px;
+        }
+    }
+}
+
+.estate .preview:focus:before, .estate .preview:hover:before {
+    z-index: 0 !important;
+}
+
+.owl-carousel {
+    z-index: 0 !important;
+}

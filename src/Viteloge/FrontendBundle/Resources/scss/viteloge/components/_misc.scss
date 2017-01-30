@@ -1,0 +1,90 @@
+.arrow {
+    &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 12px solid #27303d;
+        position: absolute;
+        left: 50%;
+    }
+}
+
+.margin-t10 {
+    margin-top: 10px;
+}
+
+.margin-t20 {
+    margin-top: 20px;
+}
+
+.margin-b10 {
+    margin-bottom: 10px;
+}
+
+.margin-b20 {
+    margin-bottom: 20px;
+}
+
+.content-title {
+    margin-top: 0px;
+}
+
+.lazy {
+    display: none;
+}
+
+span.list-group-item {
+    &:focus, &:hover {
+        text-decoration: none;
+        color: #555;
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+}
+
+.label-height {
+    line-height: 26px;
+}
+
+.vr {
+    display: inline;
+    border-style: solid;
+    border-width: 0px;
+    border-left: 1px solid;
+    margin: .5em 10px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.inline {
+    display: inline;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    .inner-absolute {
+        position: absolute;
+        top: 0;
+        &.inner-absolute-center {
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin: auto;
+            & > * {
+                position: relative;
+            }
+        }
+    }
+}
+
+.panel > .panel-heading > .pos-absolute, .panel > .panel-heading .position-absolute {
+    width: 100%;
+    left: 0;
+}

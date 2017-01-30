@@ -1,0 +1,26 @@
+{%- set imgClass = imgClass|default('lazy') -%}
+{%- set description = description|default(ad|vl_slugify_ad) -%}
+{%- set key = key|default(0) -%}
+
+{%- if ad.privilege.isExclu -%}
+    {{ include('VitelogeCoreBundle:Global:sticker.html.twig', { title: 'ad.sticker.exlusivity'|trans }) }}
+{%- endif -%}
+{%- if ad.privilege.hasBgColor and not ad.privilege.isExclu -%}
+    {{ include('VitelogeCoreBundle:Global:sticker.html.twig', { title: 'ad.sticker.heart'|trans }) }}
+{%- endif -%}
+{%- if ad.transaction == 'V' -%}
+    {%- set redirect_path = path('viteloge_frontend_agency_view', { 'id': key~'-'~ad.id, 'description': description, 'transaction': 'V' }) -%}
+{%- else -%}
+    {%- set redirect_path = path('viteloge_frontend_agency_view', { 'id': key~'-'~ad.id, 'description': description }) -%}
+{%- endif -%}
+
+<a href="{{ redirect_path }}" class="preview setkey" data-value="{{ key }}">
+    <img itemprop="image" data-original="{{ aws_s3_domain(ad.photo, false) }}" data-src="{{ aws_s3_domain(ad.photo, false) }}" class="{{ imgClass }}" alt="{{ ad.type~' à '~ad.cityName }}" onerror="this.src = ''">
+    <noscript><img itemprop="image" src="{{ aws_s3_domain(ad.photo, false) }}" class="{{ imgClass }}" alt="" onerror="this.src = ''"></noscript>
+</a>
+
+{%- if ad.privilege.hasLogo -%}
+    <div class="pos-relative">
+        <img itemprop="logo" src="{{ aws_s3_domain('logos/agence.'~ad.agencyId~'.gif', false) }}" class="agency-logo img-responsive" alt="logo">
+    </div>
+{%- endif -%}

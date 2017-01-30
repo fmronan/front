@@ -1,0 +1,46 @@
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body a {
+    color: inherit;
+}
+
+body figure {
+    margin: 0;
+}
+
+body > footer {
+    padding-top: 25px;
+    @media (max-width: $screen-sm-min) {
+        padding-top: 0;
+       }
+    @media (max-width: $screen-xs-min) {
+        padding-top: 0;
+       }
+}
+
+.copyright {
+    padding-top: 5px;
+}
+
+.text-secondary {
+    color: $text-color-secondary;
+    font-weight: 400;
+    font-size: $font-size-small;
+    display: inline;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,265 @@
+.home {
+    .banner {
+        background-image: url('http://'+$aws-s3-domain+'/bundles/vitelogefrontend/images/home/img_fd.jpg');
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center bottom;
+        position:relative;
+        .alert {
+            margin-top: 2px;
+            margin-bottom: 0;
+            + .forward {
+                margin-top: 10px;
+                @media (min-width: $screen-sm-min) {
+                    margin-top: 30px;
+                }
+                @media (min-width: $screen-md-min) {
+                    margin-top: 100px;
+                }
+                @media (min-width: $screen-lg-min) {
+                    margin-top: 100px;
+                }
+            }
+        }
+    }
+    .container {
+        @include container-fixed;
+
+    }
+}
+
+.NbBiensAccueil {
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+
+.first-input .select2-selection--multiple{
+    border-right: none !important;
+    border-radius: 6px 0 0 6px;
+    @media (max-width: $screen-md-min) {
+            border-radius: 6px !important;
+            border :1px solid #00a1c6 !important;
+        }
+
+}
+
+.second-input .select2-selection--multiple{
+    border-right: none !important;
+    border-left: none !important;
+     @media (max-width: $screen-md-min) {
+            border-radius: 6px !important;
+            border :1px solid #00a1c6 !important;
+        }
+
+}
+
+.third-input .select2-selection--multiple{
+            border-left: none !important;
+            border-radius: 0 6px 6px 0;
+    @media (max-width: $screen-md-min) {
+            border-radius: 6px !important;
+            border :1px solid #00a1c6 !important;
+        }
+
+
+}
+
+.un-input .select2-selection--multiple{
+    border-right: none !important;
+    border-radius: 6px 0 0 6px;
+    @media (max-width: $screen-sm-min) {
+            border-radius: 6px !important;
+            border :1px solid #00a1c6 !important;
+        }
+
+}
+
+.deux-input .select2-selection--multiple{
+    border-right: none !important;
+    border-left: none !important;
+    -moz-appearance:none;
+     @media (max-width: $screen-sm-min) {
+            border-radius: 6px !important;
+            border :1px solid #00a1c6 !important;
+        }
+
+}
+
+.trois-input .select2-selection--multiple{
+            border-left: none !important;
+            border-radius: 0 6px 6px 0;
+    @media (max-width: $screen-sm-min) {
+            border-radius: 6px !important;
+            border :1px solid #00a1c6 !important;
+        }
+
+
+}
+
+.third-input .col-sm-12{
+    padding:0;
+}
+
+.trois-input .col-sm-12{
+    padding:0;
+}
+
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1;
+    color: #333;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 4px;
+
+
+}
+
+.cinq-input > .form-group > .col-sm-12 > .input-group > .input-group-addon{
+        border-color: #00a1c6 transparent !important;
+        border-radius: 0;
+    }
+
+.sixe-input > .form-group > .col-sm-12 > .input-group > .input-group-addon{
+        border-color: #00a1c6 #00a1c6 #00a1c6 transparent !important;
+        border-radius:  0 6px 6px 0;
+    }
+
+.five-input > .form-group > .col-sm-12 > .input-group > .input-group-addon{
+        border-color: #00a1c6 transparent !important;
+        border-radius: 0;
+    }
+
+.six-input > .form-group > .col-sm-12 > .input-group > .input-group-addon{
+        border-color: #00a1c6 #00a1c6 #00a1c6 transparent !important;
+        border-radius:  0 6px 6px 0;
+    }
+
+ .four-input .select2-selection--multiple{
+    border-right: none !important;
+    border-radius: 6px 0 0 6px;
+    @media (max-width: $screen-md-min) {
+          border-radius: 6px !important;
+          border :1px solid #00a1c6 !important;
+          margin-top:15px;
+        }
+
+ }
+
+  .five-input .form-control{
+    border-right: none !important;
+    border-left: none !important;
+    @media (max-width: $screen-md-min) {
+        border-radius: 6px 0 0 6px !important;
+        border :1px solid #00a1c6 !important;
+       }
+
+ }
+
+   .six-input .form-control{
+    border-left: none !important;
+    border-right: none !important;
+    @media (max-width: $screen-md-min) {
+        border-radius: 6px 0 0 6px!important;
+        border :1px solid #00a1c6 !important;
+       }
+
+ }
+
+  .quatre-input .select2-selection--multiple{
+    border-right: none !important;
+    border-radius: 6px 0 0 6px;
+    @media (max-width: $screen-sm-min) {
+          border-radius: 6px !important;
+          border :1px solid #00a1c6 !important;
+          margin-top:15px;
+        }
+
+ }
+
+  .cinq-input .form-control{
+    border-right: none !important;
+    border-left: none !important;
+    @media (max-width: $screen-sm-min) {
+        border-radius: 6px 0 0 6px!important;
+        border :1px solid #00a1c6 !important;
+       }
+
+ }
+
+   .sixe-input .form-control{
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0 !important;
+    @media (max-width: $screen-sm-min) {
+        border-radius: 6px 0 0 6px !important;
+        border :1px solid #00a1c6 !important;
+       }
+
+ }
+
+.searchbtnplus{
+    float: right;
+    right: 1px;
+    z-index: 1;
+    padding: 0;
+    position: absolute;
+}
+
+.searchplus{
+    @media (max-width: $screen-md-min) {
+        width:40px;
+        right:21px;
+       }
+       @media (max-width: $screen-sm-min) {
+        right:1px;
+       }
+}
+.last-input{
+    padding-right: 0;
+    @media (max-width: $screen-md-min) {
+       padding-left: 0;
+       }
+
+}
+
+.select2-container .select2-selection--multiple {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    min-height: 0 !important;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.hide_info{
+    @media (max-width: $screen-xs-min) {
+        display: none;
+       }
+}
+
+.btnlist{
+    margin-right: 15px;
+    @media (max-width: $screen-xs-min) {
+        margin-right: 1px;
+       }
+}
+
+.subrow{
+    display: inline-flex;
+    width: 100%;
+}
+
+.fa-lg {
+    font-size: 1.4em !important;
+}

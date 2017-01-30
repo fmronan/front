@@ -1,0 +1,141 @@
+.main {
+    background-color: #ddd;
+
+    > section {
+        padding-bottom: 25px;
+        &:first-child {
+            padding-top: 0;
+        }
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+    .main-section {
+        background-color: #fff;
+    }
+    > .container, .inner > .container, .inner > .container-fluid {
+        padding-top: 18px;
+    }
+    > .inner {
+        > .inner-absolute {
+            top: 2px;
+            padding-top: 0px;
+            @media (min-width: $screen-xs-min) {
+                top: 15px;
+            }
+            @media (min-width: $screen-sm-min) {
+                top: 20px;
+            }
+        }
+        .container-fluid {
+            h1.title, h2.subtitle {
+                display: inline-block;
+            }
+        }
+        .container {
+            h1.title, h2.subtitle {
+                display: block;
+            }
+        }
+    }
+    h1.title, h2.subtitle {
+        background-color: #fff;
+        margin: 0;
+        padding: 5px 10px;
+        font-weight: 900;
+        strong, .strong {
+            color: $sale-color;
+        }
+    }
+    h1.title {
+        color: $text-color;
+        font-size: 20px;
+        @media (min-width: $screen-sm-min) {
+            font-size: 22px;
+        }
+        @media (min-width: $screen-md-min) {
+            font-size: 25px;
+        }
+        @media (min-width: $screen-lg-min) {
+            font-size: 25px;
+        }
+    }
+    h2.subtitle {
+        color: $text-color;
+        font-size: 16px;
+        @media (min-width: $screen-sm-min) {
+            font-size: 18px;
+        }
+        @media (min-width: $screen-md-min) {
+            font-size: 20px;
+        }
+        @media (min-width: $screen-lg-min) {
+            font-size: 20px;
+        }
+    }
+}
+
+.main-top{
+    padding-top: 133px;
+     @media (max-width: $screen-lg-min) {
+            padding-top: 133px;
+        }
+    @media (max-width: $screen-md-min) {
+            padding-top: 129px;
+        }
+    @media (max-width: $screen-sm-min) {
+            padding-top: 219px;
+        }
+    @media (max-width: $screen-xs-min) {
+            padding-top: 219px;
+        }
+}
+
+.main-site{
+    margin-top: 7%;
+}
+
+.main-small{
+    margin-top: 118px;
+    @media (max-width: $screen-md-min) {
+            margin-top: 82px;
+        }
+    @media (max-width: $screen-sm-min) {
+            margin-top: 179px;
+        }
+}
+
+.main-search{
+    margin-top: -12px;
+    @media (max-width: $screen-lg-min) {
+            margin-top: 18px;
+        }
+    @media (max-width: $screen-md-min) {
+            margin-top: -21px;
+        }
+    @media (max-width: $screen-sm-min) {
+            margin-top: 70px;
+        }
+
+}
+
+#myModal{
+    margin-top:13%;
+    @media (max-width: $screen-lg-min) {
+            margin-top: 15%;
+        }
+    @media (max-width: $screen-md-min) {
+            margin-top: 10%;
+        }
+    @media (max-width: $screen-sm-min) {
+            margin-top: 40%;
+        }
+    @media (max-width: $screen-xs-min) {
+            margin-top: 45%;
+        }
+}
+
+#hiddeninput{
+    width: 100%;
+    float: left;
+}

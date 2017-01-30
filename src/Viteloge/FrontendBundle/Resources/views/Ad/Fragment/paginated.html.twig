@@ -1,0 +1,62 @@
+<div id="viteloge-frontend-ad-paginated{%- if pagination is defined -%}-{{ pagination.currentPage }}{%- endif -%}" class="ajax-pager-container">
+    <div class="container-unfluid">
+
+       {# {%- if pagination is defined -%}
+        {%- block pagination -%}
+
+            {%- if pagination is not null and pagination.haveToPaginate -%}
+                {{- pagerfanta(pagination, 'pager_viteloge', {
+                    'routeParams': app.request.query.all
+                }) -}}
+            {%- endif -%}
+        {%- endblock pagination -%}
+        {%- endif -%}#}
+        <div class="clearfix">
+            <a href="{{ path('viteloge_frontend_websearch_new', { 'session': true }) }}" role="button" class="btn btn-primary pull-left" onclick="ga('send', 'event', 'page-listing-de-bien', 'clic-creation-alerte-mail', 'alerte-mail')">
+                <span class="fa fa-bell"></span>&nbsp;
+                {% trans %}usersearch.create.mail.alert{% endtrans %}
+            </a>
+            <div class="pull-right">
+                {%- if pagination is defined -%}
+                {%- block sortable -%}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or app.user %}
+                      <select name="sort" class="sortable">
+                            <option value="default" data-url="{{ path('viteloge_frontend_ad_search', app.request.query.all|merge(app.request.attributes.get('_route_params'))|merge({'sort': 'default'})) }}" {% if app.request.query.get('sort') == 'default' %} selected="selected"{% endif %}>{% trans %}ad.sort.default{% endtrans %}</option>
+                            <option value="createdAt" data-url="{{ path('viteloge_frontend_ad_search', app.request.query.all|merge(app.request.attributes.get('_route_params'))|merge({'sort': 'createdAt'})) }}" {% if app.request.query.get('sort') == 'createdAt' %} selected="selected"{% endif %}>{% trans %}ad.sort.createdat{% endtrans %}</option>
+                            <option value="price" data-url="{{ path('viteloge_frontend_ad_search', app.request.query.all|merge(app.request.attributes.get('_route_params'))|merge({'sort': 'price'})) }}" {% if app.request.query.get('sort') == 'price' %} selected="selected"{% endif %}>{% trans %}ad.sort.price{% endtrans %}</option>
+                        </select>
+                        <a href="{{ path('viteloge_frontend_ad_search', app.request.query.all|merge(app.request.attributes.get('_route_params'))|merge({'direction': (app.request.query.get('direction') == 'asc') ? 'desc' : 'asc'})) }}" data-url="{{ path('viteloge_frontend_ad_search', app.request.query.all|merge(app.request.attributes.get('_route_params'))|merge({'direction': (app.request.query.get('direction') == 'asc') ? 'desc' : 'asc'})) }}">
+                            <span>{% trans %}ad.order{% endtrans %}</span>
+                            <span class="fa {% if app.request.query.get('direction') == 'asc' %}fa-angle-up{% else %}fa-angle-down{% endif %}"></span>
+                        </a>
+                    {%- endif -%}
+                {%- endblock sortable -%}
+                {%- endif -%}
+            </div>
+        </div>
+        <div class="clearfix">
+        {%- for key,ad in ads -%}
+            <div class="theme-{%- if ad.privilege.hasBgColor -%}rent{% endif %}{#ad.transaction#}">
+                {{- include('VitelogeFrontendBundle:Ad:Render/list.html.twig', { 'ad': ad,'key':key }) -}}
+            </div>
+        {%- else -%}
+            <section class="margin-t10 clearfix">
+                <div class="clearfix">
+                    {{- include('VitelogeCoreBundle:Global:alert.html.twig', { type: 'info', alerts: { 0: 'ad.noresult'|trans }, dismissible: false }) -}}
+                </div>
+                <div class="clearfix">
+                    {{ render(path('viteloge_frontend_ad_latest', { limit: 5, 'where': app.request.query.get('where'), 'cityName': 'ad.your.research'|trans })) }}
+                </div>
+            </section>
+        {%- endfor -%}
+        {%- if pagination is defined -%}
+            {%- if pagination is not null and not pagination.haveToPaginate -%}
+                <div class="clearfix hidden-xs hidden-sm visible-md-block visible-lg-block margin-b10"></div>
+            {%- endif -%}
+        {%- endif -%}
+        </div>
+        {#{%- if pagination is defined -%}
+            {{- block('pagination') -}}
+        {%- endif -%}#}
+    </div>
+</div>
