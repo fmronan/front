@@ -1,0 +1,42 @@
+{% extends 'VitelogeFrontendBundle::base.html.twig' %}
+
+{%- block schema -%}
+    itemscope itemtype="http://schema.org/WebPage"
+{%- endblock schema -%}
+
+{%- block breadcrumb -%}
+    {%- set breadcrumbs = [
+        { url : path('viteloge_frontend_homepage'), text: 'Home'},
+        { url : '', text: block('main_title')|striptags},
+    ] -%}
+    {{ include('VitelogeFrontendBundle:Base:breadcrumb.html.twig', { listClass: 'breadcrumb', breadcrumbs: breadcrumbs }) }}
+{%- endblock breadcrumb -%}
+{%- block header -%}
+  {{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
+  {{ include('VitelogeFrontendBundle:Menu:static.html.twig', {}) }}
+{%- endblock header -%}
+
+
+{%- block teaser -%}
+    one
+{%- endblock teaser -%}
+
+{%- block main -%}
+<div class="teaser {{ block('teaser') }}">
+    <article class="over container text-justify clearfix">
+        <h1 class="h3 text-uppercase text-center over-content">{{- block('main_title') -}}</h1>
+        <div class="clearfix over-content">{{- block('main_content') -}}</div>
+    </article>
+</div>
+{%- endblock -%}
+
+{%- block main_title -%}
+    {{- block('title')|striptags -}}
+{%- endblock -%}
+
+{%- block main_content -%}
+
+{%- endblock main_content -%}
+{%- block javascripts -%}
+    {{- parent() -}}
+{%- endblock javascripts -%}

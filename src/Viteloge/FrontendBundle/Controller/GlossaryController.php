@@ -10,12 +10,13 @@ namespace Viteloge\FrontendBundle\Controller {
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
-    use Acreat\InseeBundle\Entity\InseeState;
-    use Acreat\InseeBundle\Entity\InseeDepartment;
-    use Acreat\InseeBundle\Entity\InseeCity;
-    use Acreat\InseeBundle\Entity\InseeArea;
+    use Viteloge\InseeBundle\Entity\InseeState;
+    use Viteloge\InseeBundle\Entity\InseeDepartment;
+    use Viteloge\InseeBundle\Entity\InseeCity;
+    use Viteloge\InseeBundle\Entity\InseeArea;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\FrontendBundle\Entity\CityData;
+    use Viteloge\CoreBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/glossary")
@@ -32,7 +33,7 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         protected function initForm() {
             $adSearch = new AdSearch();
-            $this->form = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $this->form = $this->createForm(AdSearchType::class, $adSearch);
             return $this;
         }
 
@@ -467,7 +468,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $requestSearch = $session->get('request');
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
-            $headerform = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $headerform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'city' => $inseeCity,
                 'cityData' => $cityData,
@@ -570,13 +571,13 @@ namespace Viteloge\FrontendBundle\Controller {
          *      name="viteloge_frontend_glossary_areas"
          * )
          * @Method({"GET"})
-         * @ParamConverter("inseeCity", class="AcreatInseeBundle:InseeCity", options={"id" = "id"})
+         * @ParamConverter("inseeCity", class="VitelogeInseeBundle:InseeCity", options={"id" = "id"})
          * @Cache(expires="tomorrow", public=true)
          * @Template("VitelogeFrontendBundle:Glossary:areas.html.twig")
          */
         public function areasAction(Request $request, inseeCity $inseeCity) {
             $repository = $this->getDoctrine()
-                ->getRepository('AcreatInseeBundle:InseeArea');
+                ->getRepository('VitelogeInseeBundle:InseeArea');
             $areas = $repository->findByInseeCity($inseeCity);
             return array(
                 'areas' => $areas

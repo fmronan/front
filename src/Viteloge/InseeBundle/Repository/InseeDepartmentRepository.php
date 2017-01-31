@@ -20,7 +20,7 @@ namespace Viteloge\InseeBundle\Repository {
             $query = $this->getEntityManager()
                 ->createQuery(
                     'SELECT i '.
-                    'FROM AcreatInseeBundle:InseeDepartment i '.
+                    'FROM VitelogeInseeBundle:InseeDepartment i '.
                     'WHERE SOUNDEX(i.name) = SOUNDEX(:soundex) '
                 )
                 ->setParameter(':soundex', $soundex)

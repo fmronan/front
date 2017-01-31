@@ -291,7 +291,7 @@ namespace Viteloge\FrontendBundle\Controller {
                         $inseeCity = null;
                         $cityId = (is_array($adSearch->getWhere())) ? current($adSearch->getWhere()) : null;
                         if (!empty($cityId)) {
-                            $cityRepository = $this->getDoctrine()->getRepository('AcreatInseeBundle:InseeCity');
+                            $cityRepository = $this->getDoctrine()->getRepository('VitelogeInseeBundle:InseeCity');
                             $inseeCity = $cityRepository->find((int)$cityId);
                         }
                         $now = new \DateTime('now');

@@ -1,0 +1,8 @@
+<li>
+    <span class="fa fa-caret-right"></span>
+    {%- block query_stats_name %}
+        <a href="{{ path( 'viteloge_frontend_querystats_ad', { slug: queryStats.urlrewrite }) }}" class="text-capitalize">
+            {{ queryStats.keywords }}
+        </a>
+    {% endblock -%}
+</li>

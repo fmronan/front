@@ -18,6 +18,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\CoreBundle\Component\Enum\TransactionEnum;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\FrontendBundle\Component\Sitemap\Element;
+    use Viteloge\CoreBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/")
@@ -90,7 +91,7 @@ namespace Viteloge\FrontendBundle\Controller {
              // Form
             $adSearch = new AdSearch();
             $adSearch->handleRequest($request);
-            $form = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $form = $this->createForm(AdSearchType::class, $adSearch);
 
             return array(
                 'urls' => $this->elements,
@@ -124,7 +125,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *          "i18n" = true
          *      }
          * )
-         * @ParamConverter("inseeState", class="AcreatInseeBundle:InseeState", options={"id" = "id"})
+         * @ParamConverter("inseeState", class="VitelogeInseeBundle:InseeState", options={"id" = "id"})
          * @Cache(smaxage="604800", maxage="604800", public=true)
          * @Method({"GET"})
          * @Template()
@@ -182,7 +183,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *          "i18n" = true
          *      }
          * )
-         * @ParamConverter("inseeDepartment", class="AcreatInseeBundle:InseeDepartment", options={"id" = "id"})
+         * @ParamConverter("inseeDepartment", class="VitelogeInseeBundle:InseeDepartment", options={"id" = "id"})
          * @Cache(smaxage="604800", maxage="604800", public=true)
          * @Method({"GET"})
          * @Template()
@@ -220,7 +221,8 @@ namespace Viteloge\FrontendBundle\Controller {
         public function build() {
             $translated = $this->get('translator');
 
-            $collection = $this->get('router')->getOriginalRouteCollection();
+            //$collection = $this->get('router')->getOriginalRouteCollection();
+            $collection = $this->get('router')->getRouteCollection();
             foreach ($collection->all() as $name => $route) {
                 $option = $route->getOption('vl_sitemap');
                 if (is_array($option)) {
@@ -247,7 +249,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $translated = $this->get('translator');
 
             $repository = $this->getDoctrine()
-                ->getRepository('AcreatInseeBundle:InseeState');
+                ->getRepository('VitelogeInseeBundle:InseeState');
             $states = $repository->findBy(array(), array('name' => 'ASC'));
             $this->appendStates($states);
 
@@ -261,7 +263,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $translated = $this->get('translator');
 
             $repository = $this->getDoctrine()
-                ->getRepository('AcreatInseeBundle:InseeDepartment');
+                ->getRepository('VitelogeInseeBundle:InseeDepartment');
             $departments = $repository->findBy(array(), array('name' => 'ASC'));
             $this->appendDepartments();
 
@@ -383,7 +385,7 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function buildSection($section) {
             $repository = $this->getDoctrine()
-                ->getRepository('AcreatInseeBundle:InseeState');
+                ->getRepository('VitelogeInseeBundle:InseeState');
         }
 
     }

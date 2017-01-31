@@ -101,7 +101,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Method({"GET", "POST"})
          * @ParamConverter(
          *     "inseeCity",
-         *     class="AcreatInseeBundle:InseeCity",
+         *     class="VitelogeInseeBundle:InseeCity",
          *     options={
          *         "id" = "id",
          *         "name" = "name",
@@ -156,7 +156,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $search = \Elastica\Util::escapeTerm($search);
 
             $repository = $this->getDoctrine()
-                ->getRepository('AcreatInseeBundle:InseeState');
+                ->getRepository('VitelogeInseeBundle:InseeState');
             $result = $repository->findAll();
 
             return array(
@@ -190,7 +190,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $search = \Elastica\Util::escapeTerm($search);
 
             $repository = $this->getDoctrine()
-                ->getRepository('AcreatInseeBundle:InseeDepartment');
+                ->getRepository('VitelogeInseeBundle:InseeDepartment');
             $result = $repository->findAll();
 
             return array(

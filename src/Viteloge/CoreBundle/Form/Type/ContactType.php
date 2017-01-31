@@ -1,0 +1,53 @@
+<?php
+
+namespace Viteloge\CoreBundle\Form\Type {
+
+    use Symfony\Component\Form\AbstractType;
+    use Symfony\Component\Form\FormBuilderInterface;
+    use Symfony\Component\OptionsResolver\OptionsResolver;
+    use Viteloge\CoreBundle\Component\Enum\SubjectEnum;
+    use Symfony\Component\Form\Extension\Core\Type\TextType;
+    use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+    use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+    use Symfony\Component\Form\Extension\Core\Type\EmailType;
+    use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+    class ContactType extends AbstractType {
+
+        public function buildForm(FormBuilderInterface $builder, array $options) {
+            $subjectEnum = new SubjectEnum();
+            $builder
+                ->add('firstname',TextType::class)
+                ->add('lastname',TextType::class)
+                ->add('company',TextType::class)
+                ->add('phone',TextType::class)
+                ->add('email',EmailType::class)
+                ->add('message', TextareaType::class)
+                ->add('subject', ChoiceType::class, array(
+                    'choices' => $subjectEnum->choices(),
+                    'expanded' => false,
+                    'multiple' => false,
+                    'required' => true,
+                    //'empty_value' => 'contact.empty_value',
+                    'preferred_choices' => array()
+                ))
+                ->add('address', TextareaType::class)
+                ->add('postalCode',TextType::class)
+                ->add('city',TextType::class)
+                ->add('send', SubmitType::class);
+        }
+
+        public function setDefaultOptions(OptionsResolver $resolver){
+            $resolver->setDefaults(array(
+                'data_class' => 'Viteloge\FrontendBundle\Entity\Contact',
+                'csrf_token_id' => 'task_form',
+            ));
+        }
+
+        public function getBlockPrefix() {
+            return 'viteloge_frontend_contact';
+        }
+
+    }
+
+}

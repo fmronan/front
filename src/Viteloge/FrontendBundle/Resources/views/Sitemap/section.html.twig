@@ -1,0 +1,11 @@
+{%- embed "VitelogeFrontendBundle:Sitemap:Render/element.html.twig" with { 'url': section, 'class': 'list-group-item active', 'data': { 'ajax-click': path('viteloge_frontend_sitemap_index'), 'ajax-parent': '#list-sitemap', 'ajax-back': 'true', 'ajax-animate': 'leftToRight' } } -%}
+    {%- block column_right -%}
+        <span class="fa fa-chevron-left"></span>
+    {%- endblock column_right -%}
+{%- endembed -%}
+
+{%- for url in urls -%}
+    {{- include('VitelogeFrontendBundle:Sitemap:Render/element.html.twig', { url: url } ) -}}
+{%- else -%}
+    {%- trans -%}viteloge.noresult{%- endtrans -%}
+{%- endfor -%}

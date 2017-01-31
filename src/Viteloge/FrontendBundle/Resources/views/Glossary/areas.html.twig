@@ -1,0 +1,23 @@
+{%- if areas -%}
+    {% set inseeCity = inseeCity|default(areas[0].inseeCity) %}
+    <div class="panel-group" id="glossary-areas" role="tablist" aria-multiselectable="true">
+        {% embed 'VitelogeFrontendBundle:Global:panel.html.twig' with { id: 'glossary-area-' ~ inseeCity.id, parent: 'glossary-areas' } %}
+            {%- block panel_buttons_before -%}
+                <div class="pull-right">
+                    <a class="collapsed rounded-icon small text-center" data-toggle="collapse" data-parent="#{{ parent }}" href="#{{ id }}" aria-expanded="false" aria-controls="{{ id }}" aria-label="{% trans %}viteloge.expand{% endtrans %}">
+                        <span class="fa fa-plus" aria-hidden="true"></span>
+                    </a>
+                </div>
+            {%- endblock panel_buttons_before -%}
+            {%- block panel_title -%}
+                {% trans with { '%name%': inseeCity.name } %}glossary.area.from.name{% endtrans %}
+            {%- endblock panel_title -%}
+            {%- block panel_content -%}
+                <div class="list-group">
+                    {%- for area in areas -%}
+                        {{ include('VitelogeFrontendBundle:Glossary:Render/li-area.html.twig') }}
+                    {%- endfor -%}
+                </div>
+            {%- endblock panel_content -%}
+        {% endembed %}
+{%- endif -%}

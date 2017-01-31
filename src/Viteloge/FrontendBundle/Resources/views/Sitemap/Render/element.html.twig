@@ -1,0 +1,24 @@
+{%- set header1 = header1|default('h3') -%}
+{%- set header2 = header2|default('p')-%}
+{%- set class = class|default('list-group-item') -%}
+{%- set data = data|default({}) -%}
+{%- if url.hasChild and data is empty -%}
+    {%- set data = { 'ajax-click': url.childrenLoc, 'ajax-parent': '#list-sitemap', 'ajax-animate': 'rightToLeft' } -%}
+{%- endif -%}
+<a href="{{ url.loc }}" class="{{ class }} clearfix"{% if data is not empty %} {%- for key, value in data -%}data-{{ key }}="{{ value }}"{%- endfor -%}{% endif %}>
+    <div class="row">
+        <div class="col-xs-10">
+            {%- block column_left -%}
+                {{ ('<' ~ header1 ~ ' class="h4 list-group-item-heading">')|raw }}{{ url.name }}{{ ('</' ~ header1 ~ '>')|raw }}
+                {{ ('<' ~ header2 ~ ' class="h5">')|raw }}{{ url.description }}{{ ('</' ~ header2 ~ '>')|raw }}
+            {%- endblock column_left -%}
+        </div>
+        <div class="col-xs-2 text-right">
+            {%- block column_right -%}
+                {%- if url.hasChild -%}
+                    <span class="fa fa-chevron-right"></span>
+                {%- endif -%}
+            {%- endblock column_right -%}
+        </div>
+    </div>
+</a>

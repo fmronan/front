@@ -30,6 +30,7 @@ class DefaultController extends Controller
          */
     public function indexAction(Request $request)
     {
+
     	$translated = $this->get('translator');
     	$canonicalLink = $this->get('router')->generate($request->get('_route'), array());
     	$seoPage = $this->container->get('sonata.seo.page');
@@ -57,4 +58,22 @@ class DefaultController extends Controller
                 'csrf_token' => $csrfToken,
             );
     }
+
+    public function headerFormAction( Request $request ) {
+            $session = $request->getSession();
+            $requestSearch = $session->get('request');
+            // Form
+            $adSearch = new AdSearch();
+          if(!is_null($requestSearch)){
+
+           $adSearch->handleRequest($requestSearch);
+          }
+           $form = $this->createForm(AdSearchType::class, $adSearch);
+           $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+           return $this->render('VitelogeFrontendBundle:Base:headerSearch.html.twig',array(
+                'form' => $form->createView(),
+                'csrf_token' => $csrfToken,
+            ));
+         }
+
 }

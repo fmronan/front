@@ -1,0 +1,33 @@
+{% extends 'VitelogeFrontendBundle:Static:base.html.twig' %}
+
+{%- block title -%}
+    <title>{%- trans -%}viteloge.frontend.static.ad.title{%- endtrans -%}</title>
+{%- endblock title -%}
+
+{%- block main_title -%}
+    {%- trans -%}viteloge.frontend.static.ad.maintitle{%- endtrans -%}
+{%- endblock main_title -%}
+
+{%- block teaser -%}
+    two teaser-fixed
+{%- endblock teaser -%}
+
+{%- block main_content -%}
+    <p>ViteLogé propose plusieurs supports de publicité suivant vos besoins et votre budget&nbsp;:</p>
+    <ul>
+      <li><b>Publicité pour les agences immobilières&nbsp;:</b><br>
+      Les agences dont les biens sont présents sur ViteLogé peuvent choisir moyennant une prestation payante de «&nbsp;Mettre en valeur&nbsp;» leurs annonces. Ceci consiste à adjoindre à chacune de vos annonces une photo de plus grande taille, une couleur plus voyante ainsi que votre logo afin d’augmenter le nombre de visites sur votre site.
+      <p align="center"><img src="{{ aws_s3_domain('bundles/vitelogefrontend/images/static/exemple-privilege.jpg') }}" width="500" height="367"></p></li>
+    </ul>
+    <ul>
+      <li><b>Publicité nationale :</b><br>
+      Profitez de notre trafic pour annoncer au niveau national sur notre portail. Consultez nous pour connaître les différentes possibilités.</li>
+    </ul>
+    <ul>
+      <li><b>Publicité liens sponsorisés :</b><br>
+      Système de liens sponsorisés sur chacune des pages de résultat du site.</li>
+    </ul>
+    <p>
+        Pour plus de renseignements, <b><a href="{{ path('viteloge_frontend_contact_new') }}">n'hésitez pas à nous contacter</a> !</b>
+    </p>
+{%- endblock main_content -%}

@@ -1,0 +1,8 @@
+{% block services %}
+    <div class="services text-center" role="listbox">
+        {% for service in services %}
+            {{ include('VitelogeFrontendBundle:Service:Render/figure.html.twig', { 'service': service }) }}
+            <div class="divider visible-xs-block visible-sm-block visible-md-inline visible-lg-inline"></div>
+        {% endfor %}
+    </div>
+{% endblock %}

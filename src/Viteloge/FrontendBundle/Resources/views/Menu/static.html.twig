@@ -1,0 +1,19 @@
+{% set menus = [
+    { title: 'viteloge.frontend.static.about.maintitle', route: 'viteloge_frontend_static_about' },
+    { title: 'viteloge.frontend.static.why.maintitle', route: 'viteloge_frontend_static_why' },
+    { title: 'viteloge.frontend.static.ad.maintitle', route: 'viteloge_frontend_static_ad' },
+    { title: 'viteloge.frontend.static.contactus.maintitle', route: 'viteloge_frontend_static_contactus' },
+    { title: 'viteloge.frontend.static.privacy.maintitle', route: 'viteloge_frontend_static_privacy' },
+    { title: 'viteloge.frontend.static.recommand.maintitle', route: 'viteloge_frontend_static_recommand' },
+    { title: 'viteloge.frontend.static.subscribe.maintitle', route: 'viteloge_frontend_static_subscribe' },
+    { title: 'viteloge.frontend.static.register.maintitle', route: 'viteloge_frontend_static_register' },
+    { title: 'viteloge.frontend.static.apiform.maintitle', route: 'viteloge_frontend_static_apiform' },
+    { title: 'viteloge.frontend.static.gtc.maintitle', route: 'viteloge_frontend_static_gtc' }
+]%}
+<ul class="dropdown-menu dropdown-menu-right">
+    {%- for menu in menus -%}
+        <li class="{% if app.request.get('_route') == menu.route %}active{% endif %}">
+            <a href="{{ path(menu.route) }}">{{ menu.title|trans }}</a>
+        </li>
+    {%- endfor -%}
+</ul>

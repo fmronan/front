@@ -262,7 +262,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 $info_cookies_title = explode('#$#', $cookies->get('viteloge_title')) ;
                     $i = count($info_cookies_title);
                     if($i <= 5){
-                        // si moins de 6 photo on ajoute
+                        // si moins de 6 photos on ajoute
                        $cookie_title = $cookies->get('viteloge_title').'#$#'.$title;
                     }else{
                         //ici on supprime le premier element du tableau et reconstruit
