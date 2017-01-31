@@ -157,9 +157,6 @@ namespace Viteloge\CoreBundle\Form\Type {
             );
         }
 
-        public function getName() {
-            return $this->getBlockPrefix();
-        }
 
         public function getBlockPrefix()
        {

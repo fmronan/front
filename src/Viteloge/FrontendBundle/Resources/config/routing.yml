@@ -38,6 +38,10 @@ viteloge_frontend_query_stats:
     resource: "@VitelogeFrontendBundle/Controller/QueryStatsController.php"
     type: annotation
 
+viteloge_frontend_user:
+    resource: "@VitelogeFrontendBundle/Controller/UserController.php"
+    type: annotation
+
 viteloge_frontend_static_google:
     path: /googlea19a01de7ca41823.{_format}
     defaults:

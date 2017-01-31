@@ -7,7 +7,8 @@ fos_user:
             enabled: false
             template: VitelogeUserBundle:Registration:email.html.twig
         form:
-            type: viteloge_user_registration
+            type: Viteloge\UserBundle\Form\Type\RegistrationFormType
+            name: viteloge_user_registration
     profile:
         form:
             type: viteloge_user_profile

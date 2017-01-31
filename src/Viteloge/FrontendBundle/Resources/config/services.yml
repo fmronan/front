@@ -25,3 +25,4 @@ services:
         tags: [{ name: pagerfanta.view, alias: pager_viteloge_translated }]
 
 
+

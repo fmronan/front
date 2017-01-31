@@ -1,0 +1,29 @@
+{% extends 'VitelogeFrontendBundle::base.html.twig' %}
+{%- block header -%}
+  {{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
+{%- endblock header -%}
+{%- block main -%}
+    <div class="teaser one teaser-fixed">
+        <article class="over container text-justify clearfix">
+            <h1 class="h3 text-uppercase text-center over-content">{%- trans from 'messages' -%}user.profile.login{%- endtrans -%}</h1>
+            <div class="row clearfix">
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{%- trans -%}user.register.informations{%- endtrans -%}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="content">
+                                {{- include('FOSUserBundle:Registration:Fragment/form.html.twig') -}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="services row clearfix" role="listbox">
+                {{- render_hinclude(path('viteloge_frontend_service_list', { })) -}}
+            </div>
+        </article>
+    </div>
+{%- endblock main -%}
+
