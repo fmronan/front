@@ -16,9 +16,9 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
         public function choices() {
             return array(
-                self::WEB => 'usersearch.web',
-                self::CONFIGURE => 'usersearch.configure',
-                self::LANDING => 'usersearch.landing'
+                 'usersearch.web'=> self::WEB,
+                 'usersearch.configure'=> self::CONFIGURE,
+                 'usersearch.landing'=> self::LANDING
             );
         }
 

@@ -14,9 +14,9 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
         public function choices() {
             return array(
-                self::MISTER => 'user.civility.mister',
-                self::MISTRESS => 'user.civility.mistress',
-                self::MISS => 'user.civility.miss'
+                 'user.civility.mister'=> self::MISTER,
+                 'user.civility.mistress'=> self::MISTRESS,
+                 'user.civility.miss'=> self::MISS
             );
         }
 

@@ -18,6 +18,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use FOS\UserBundle\Event\FilterUserResponseEvent;
     use Viteloge\CoreBundle\Entity\User;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
+    use Viteloge\CoreBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/user")
@@ -58,7 +59,7 @@ namespace Viteloge\FrontendBundle\Controller {
             // --
             $adSearch = new AdSearch();
             $adSearch->handleRequest($request);
-            $form = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $form = $this->createForm(AdSearchType::class, $adSearch);
 
             return array(
                 'form' => $form->createView(),

@@ -486,6 +486,10 @@
         <source>user.websearch.title</source>
         <target>Vos recherches immobilières</target>
       </trans-unit>
+      <trans-unit id="profile.civility" resname="profile.civility">
+        <source>profile.civility</source>
+        <target>Civilité</target>
+      </trans-unit>
       <trans-unit id="user.civility.mister" resname="user.civility.mister">
         <source>user.civility.mister</source>
         <target>Monsieur</target>

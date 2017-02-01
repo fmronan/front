@@ -416,6 +416,14 @@
         <source>usersearch.new.search</source>
         <target>New search</target>
       </trans-unit>
+      <trans-unit id="usersearch.help" resname="usersearch.help">
+        <source>usersearch.help</source>
+        <target>Yes, I would like a real estate agency partner of ViteLogé to help me in my real estate search</target>
+      </trans-unit>
+      <trans-unit id="usersearch.mailenabled" resname="usersearch.mailenabled">
+        <source>usersearch.mailenabled</source>
+        <target>Yes, I want to receive by email the last ads corresponding to my search</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

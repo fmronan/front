@@ -21,6 +21,8 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\CoreBundle\Entity\WebSearch;
     use Viteloge\CoreBundle\Entity\UserSearch;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
+    use Viteloge\CoreBundle\Form\Type\AdSearchType;
+    use Viteloge\FrontendBundle\Form\Type\WebSearchType;
 
     /**
      * @Route("/user/websearch")
@@ -106,7 +108,7 @@ namespace Viteloge\FrontendBundle\Controller {
             // --
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
-            $form = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $form = $this->createForm(AdSearchType::class, $adSearch);
             $webSearches = $this->getUser()->getWebSearches();
             return array(
                 'webSearches' => $webSearches,
@@ -152,7 +154,7 @@ namespace Viteloge\FrontendBundle\Controller {
             // --
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $headform = $this->createForm(AdSearchType::class, $adSearch);
             $webSearches = $this->getUser()->getWebSearches();
             return array(
                 'webSearches' => $webSearches,
@@ -238,7 +240,7 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         private function createCreateForm(WebSearch $webSearch) {
             return $this->createForm(
-                'viteloge_frontend_websearch',
+                WebSearchType::class,
                 $webSearch,
                 array(
                     'action' => $this->generateUrl('viteloge_frontend_websearch_create'),
@@ -314,7 +316,7 @@ namespace Viteloge\FrontendBundle\Controller {
             }
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $headform = $this->createForm(AdSearchType::class, $adSearch);
             // by default check mail enabled
             $webSearch->getUserSearch()->setMailEnabled(true);
 
@@ -380,7 +382,7 @@ namespace Viteloge\FrontendBundle\Controller {
             }
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $headform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'websearch' => $webSearch,
                 'form' => $form->createView(),
@@ -453,7 +455,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $editForm->handleRequest($request);
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $headform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'websearch' => $webSearch,
                 'form' => $editForm->createView(),
@@ -513,7 +515,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $editForm->handleRequest($request);
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $headform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'websearch' => $webSearch,
                 'form' => $editForm->createView(),

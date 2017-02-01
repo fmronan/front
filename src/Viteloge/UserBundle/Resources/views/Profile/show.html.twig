@@ -1,0 +1,15 @@
+{% extends 'VitelogeFrontendBundle::base.html.twig' %}
+{%- block header -%}
+  {{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
+{%- endblock header -%}
+{% block main %}
+    {% embed "VitelogeFrontendBundle:Grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3 } %}
+        {% block left %}
+            {{ include('VitelogeUserBundle:Profile:Fragment/view.html.twig') }}
+        {% endblock %}
+        {% block right %}
+            {{ include('VitelogeFrontendBundle:Block:aside_right.html.twig', {}) }}
+        {% endblock %}
+    {% endembed %}
+{% endblock main %}
+

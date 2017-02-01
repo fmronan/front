@@ -1,0 +1,27 @@
+{% set percent = calculate_ratio_profile(app.user) %}
+<div class="panel panel-default alert alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-label="{% trans %}viteloge.close{% endtrans %}"><span aria-hidden="true">&times;</span></button>
+    <div class="panel-body">
+        <p>
+            <div class="user-icon pull-left">
+                <a href="{{ path('fos_user_profile_show') }}" class="rounded-icon large text-center">
+                    <span class="fa fa-user"></span>
+                </a>
+            </div>
+            <span>{% trans with { '%name%' : app.user.fullname } %}viteloge.welcome.name{% endtrans %}</span><br>
+            <span>{% trans with { '%date%' : app.user.createdAt|localizeddate('short', 'none', null) } %}user.account.createdat.date{% endtrans %}</span><br>
+            <span>{% trans with { '%date%' : app.user.lastLogin|localizeddate('short', 'none', null) } %}user.account.lastlogin.date{% endtrans %}</span><br>
+            <span>{% transchoice webSearches|length with { '%count%' : webSearches|length } %}user.account.websearches.count{% endtranschoice %}</span><br>
+        </p>
+        {%- if percent != 100 -%}
+            <p>
+                <span>{% trans %}user.account.profile.completedat{% endtrans %}</span><br>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}%">
+                        <span class="">{% trans with { '%percent%' : percent } %}user.account.percent.completed{% endtrans %}</span>
+                  </div>
+                </div>
+            </p>
+        {%- endif -%}
+    </div>
+</div>

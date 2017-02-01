@@ -19,6 +19,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Entity\QueryStats;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
+    use Viteloge\CoreBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/query")
@@ -243,7 +244,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 $adSearch->setLocation($inseeCity->getLocation());
             }
 
-            $form = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $form = $this->createForm(AdSearchType::class, $adSearch);
 
             // Save session
             $session = $request->getSession();

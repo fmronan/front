@@ -116,11 +116,11 @@
 
             {% endblock -%}
             {%- block header -%}
-                {{ include('VitelogeUserBundle:base:header.html.twig') }}
+                {{ include('VitelogeFrontendBundle:Base:header.html.twig') }}
             {%- endblock header -%}
             <div class="subheader {% if app.request.attributes.get('_route') != 'viteloge_frontend_agency_view' and app.request.attributes.get('_route') != 'viteloge_frontend_favourite_view'  %}subheader-paginate{% endif %}">
                 {%- block breadcrumb %}
-
+                  {{ wo_render_breadcrumbs() }}
                 {% endblock breadcrumb -%}
                 {%- block header_end %}
 

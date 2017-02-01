@@ -15,13 +15,9 @@ namespace Viteloge\UserBundle\Form\Type {
             return 'FOS\UserBundle\Form\Type\RegistrationFormType';
         }
 
-        public function getName() {
-            return $this->getBlockPrefix();
-        }
-
         public function getBlockPrefix(){
 
-       return 'viteloge_user_registration';
+           return 'viteloge_user_registration';
         }
     }
 

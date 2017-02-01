@@ -18,11 +18,11 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
         public function choices() {
             return array(
-                self::NONE => 'ad.distance.none',
-                self::FIVE => 'ad.distance.five',
-                self::TEN => 'ad.distance.ten',
-                self::TWENTY => 'ad.distance.twenty',
-                self::THIRTY => 'ad.distance.thirty'
+                 'ad.distance.none' => self::NONE,
+                 'ad.distance.five'=> self::FIVE,
+                 'ad.distance.ten'=> self::TEN,
+                 'ad.distance.twenty'=> self::TWENTY,
+                 'ad.distance.thirty'=> self::THIRTY
             );
         }
 

@@ -1,0 +1,27 @@
+{% extends 'VitelogeFrontendBundle::base.html.twig' %}
+{%- block header -%}
+    {%- embed "VitelogeFrontendBundle:Base:headerSearch.html.twig" with {form:headform} -%}
+        {%- block header_navbarheader -%}
+
+        {%- endblock -%}
+
+    {%- endembed -%}
+{%- endblock -%}
+{% block main %}
+    {% embed "VitelogeFrontendBundle:Grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3 } %}
+        {% block left %}
+            <div class="clearfix">
+                {{ include('VitelogeFrontendBundle:WebSearch:Form/edit.html.twig', { form: form }) }}
+            </div>
+            <div class="clearfix">
+                <br>{{ include('VitelogeFrontendBundle:WebSearch:Form/delete.html.twig', { form: form_delete }) }}
+            </div>
+        {% endblock %}
+        {% block right %}
+            {{ include('VitelogeFrontendBundle:Block:aside_right.html.twig', {}) }}
+        {% endblock %}
+    {% endembed %}
+{% endblock main %}
+{%- block javascripts -%}
+    {{- parent() -}}
+{%- endblock javascripts -%}

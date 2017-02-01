@@ -54,6 +54,10 @@
                 <source>registration.password.check</source>
                 <target>Vérification</target>
             </trans-unit>
+            <trans-unit id="user.actions" resname="user.actions">
+                <source>user.actions</source>
+                <target>Editer</target>
+            </trans-unit>
             <trans-unit id="profile.action.edit" resname="profile.action.edit">
                 <source>profile.action.edit</source>
                 <target>Modifier</target>
@@ -77,6 +81,18 @@
             <trans-unit id="profile.civility" resname="profile.civility">
                 <source>profile.civility</source>
                 <target>Civilité</target>
+            </trans-unit>
+            <trans-unit id="user.civility.mister" resname="user.civility.mister">
+                <source>user.civility.mister</source>
+                <target>Monsieur</target>
+            </trans-unit>
+            <trans-unit id="user.civility.mistress" resname="user.civility.mistress">
+                <source>user.civility.mistress</source>
+                <target>Madame</target>
+            </trans-unit>
+            <trans-unit id="user.civility.miss" resname="user.civility.miss">
+                <source>user.civility.miss</source>
+                <target>Mademoiselle</target>
             </trans-unit>
             <trans-unit id="profile.firstname" resname="profile.firstname">
                 <source>profile.firstname</source>

@@ -31,6 +31,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\CoreBundle\Component\DBAL\EnumTransactionType;
     use Viteloge\CoreBundle\Component\Enum\DistanceEnum;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
+    use Viteloge\CoreBundle\Form\Type\AdSearchType;
 
     /**
      * Note: this controller to have a short route name
@@ -133,7 +134,7 @@ namespace Viteloge\FrontendBundle\Controller {
                               ));
 
             }
-            $form = $this->createForm('viteloge_core_adsearch', $adSearch);
+            $form = $this->createForm(AdSearchType::class, $adSearch);
 
             $translated = $this->get('translator');
             // SEO

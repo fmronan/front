@@ -8,10 +8,9 @@ fos_user:
             template: VitelogeUserBundle:Registration:email.html.twig
         form:
             type: Viteloge\UserBundle\Form\Type\RegistrationFormType
-            name: viteloge_user_registration
     profile:
         form:
-            type: viteloge_user_profile
+            type: Viteloge\UserBundle\Form\Type\ProfileFormType
     resetting:
         email:
             template: VitelogeUserBundle:Resetting:email.html.twig

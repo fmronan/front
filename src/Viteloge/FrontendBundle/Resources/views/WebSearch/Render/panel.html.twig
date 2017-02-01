@@ -1,0 +1,52 @@
+{% extends 'VitelogeFrontendBundle:Global:panel.html.twig' %}
+
+{%- block panel_title -%}
+    {%- if websearch.deletedAt -%}
+        <span class="fa fa-asterisk">&nbsp;</span>
+    {%- endif -%}
+    <span class="text-capitalize">{%- if websearch.title -%}{{ websearch.title }}{%- else -%}{%- trans with { '%date%': websearch.updatedAt|localizeddate('short', 'none', null) }-%}websearch.title.date{%- endtrans -%}{%- endif -%}</span>
+    <span class="badge pull-right hidden-xs">{% transchoice websearch.newMatches with { '%count%': websearch.newMatches } %}websearch.newmatches.count{% endtranschoice %} {% trans %}websearch.on{% endtrans %} {% transchoice websearch.totalMatches with { '%count%': websearch.totalMatches } %}websearch.totalmatches.count{% endtranschoice %}</span>
+{%- endblock panel_title -%}
+
+{%- block panel_buttons_before -%}
+    <div class="col-md-1 btn-group btn-group-xs pull-right" role="group" aria-label="{{ websearch.title }} {% trans %}websearch.actions{% endtrans %}">
+        <a href="{{ path('viteloge_frontend_ad_searchfromusersearch', { id: websearch.userSearch.id }) }}" class="btn btn-default" role="button" data-toggle="tooltip" data-placement="top" title="{% trans %}websearch.action.show{% endtrans %}" aria-label="{% trans %}websearch.action.show{% endtrans %}">
+            <span class="fa fa-search" aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="col-md-1 btn-group btn-group-xs pull-right">
+        {% if websearch.deletedAt %}
+            <a href="{{ path('viteloge_frontend_websearch_history_edit', { id: websearch.id }) }}" class="btn btn-default" role="button" data-toggle="tooltip" data-placement="top" title="{% trans %}websearch.action.edit{% endtrans %}" aria-label="{% trans %}websearch.action.edit{% endtrans %}">
+                <span class="fa fa-edit" aria-hidden="true"></span>
+            </a>
+        {% else %}
+            <a href="{{ path('viteloge_frontend_websearch_edit', { id: websearch.id }) }}" class="btn btn-default" role="button" data-toggle="tooltip" data-placement="top" title="{% trans %}websearch.action.edit{% endtrans %}" aria-label="{% trans %}websearch.action.edit{% endtrans %}">
+                <span class="fa fa-edit" aria-hidden="true"></span>
+            </a>
+        {% endif %}
+        {#
+        <a href="{{ path('viteloge_frontend_websearch_remove', { id: websearch.id }) }}" class="btn btn-default" role="button" data-toggle="tooltip" data-placement="top" title="{% trans %}websearch.action.delete{% endtrans %}" aria-label="{% trans %}websearch.action.delete{% endtrans %}">
+            <span class="fa fa-trash" aria-hidden="true"></span>
+        </a>
+        #}
+    </div>
+{%- endblock panel_buttons_before -%}
+
+{%- block panel_buttons_after -%}
+    <div class="position-absolute text-center visible-xs">
+        <span class="badge">{{ websearch.newMatches }}/{{ websearch.totalMatches }}</span>
+    </div>
+{%- endblock panel_buttons_after -%}
+
+{%- block panel_body -%}
+    {%- for ad in websearch.cachedProperties -%}
+        {{ include('VitelogeFrontendBundle:WebSearch:cachedProperties/ad.html.twig', { 'ad': ad }) }}
+        {%- if loop.index is divisible by(4) -%}<div class="clearfix"></div>{%- endif -%}
+    {%- else -%}
+        <span>{% trans %}websearch.cachedproperties.noresult{% endtrans %}</span><br>
+        <a href="{{ path('viteloge_frontend_ad_searchfromusersearch', { id: websearch.userSearch.id }) }}" class="" aria-label="{% trans %}websearch.action.show{% endtrans %}">
+            <span class="fa fa-search" aria-hidden="true"></span>
+            <span>{% trans %}websearch.see.search.result{% endtrans %}</span>
+        </a>
+    {%- endfor -%}
+{%- endblock panel_body -%}

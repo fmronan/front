@@ -74,6 +74,10 @@
                 <source>viteloge.user.resetting.request.title</source>
                 <target>Vitelogé - Réinitialiser son mot de passe sur le moteur de recherche</target>
             </trans-unit>
+            <trans-unit id="viteloge.user.resetting.ask.title" resname="viteloge.user.resetting.ask.title">
+                <source>viteloge.user.resetting.ask.title</source>
+                <target>Vitelogé - Demande de mot de passe</target>
+            </trans-unit>
             <trans-unit id="viteloge.user.resetting.request.description" resname="viteloge.user.resetting.request.description">
                 <source>viteloge.user.resetting.request.description</source>
                 <target>Immobilier - Vitelogé - Le moteur de recherche de l'immobilier. Acheter une maison, louer un appartement? Vitelogé est le site immobilier d'annonces immobilières de ventes et locations de logement en France. Plus de 900 000 annonces de professionnels pour les particuliers.</target>

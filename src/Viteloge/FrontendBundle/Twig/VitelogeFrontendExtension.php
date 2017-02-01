@@ -29,6 +29,7 @@ namespace Viteloge\FrontendBundle\Twig {
                 new \Twig_SimpleFunction('vl_theme', array($this, 'vlTheme')),
                 new \Twig_SimpleFunction('aws_s3_domain', array($this, 'awsS3MediaDomain')),
                 new \Twig_SimpleFunction('aws_s3_file', array($this, 'awsS3FileDomain')),
+                new \Twig_SimpleFunction('calculate_ratio_profile', array($this, 'calculateRatioProfile')),
             );
         }
 
@@ -46,6 +47,7 @@ namespace Viteloge\FrontendBundle\Twig {
                 new \Twig_SimpleFilter('fix_utf8', array($this, 'fixUTF8')),
                 new \Twig_SimpleFilter('normalize_utf8', array($this, 'normalizeUTF8')),
                 new \Twig_SimpleFilter('slugify', array($this, 'slugify')),
+
             );
         }
 
@@ -193,6 +195,14 @@ namespace Viteloge\FrontendBundle\Twig {
             $search = array('â??', 'Â?','ã©', 'ã¨', 'â²', 'ã', 'ã»','à®');
             $replace = array('\'', '€', 'é', 'è', '²', 'à', 'û','î');
             return trim(str_replace($search, $replace, $this->fixUTF8($value)));
+        }
+
+        public function calculateRatioProfile($user) {
+            $percent = 100;
+            if ($user instanceof User) {
+                $percent = $user->calculateRatioProfile();
+            }
+            return $percent;
         }
 
         /**

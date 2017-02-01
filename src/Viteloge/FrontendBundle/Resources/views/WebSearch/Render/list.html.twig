@@ -1,0 +1,12 @@
+<li class="clearfix" data-role="item">
+    <div class="row">
+        <div class="col-xs-9 col-sm-10 col-md-10">
+            {{ include('VitelogeFrontendBundle:UserSearch:Render/element.html.twig', { 'userSearch': webSearch.userSearch }) }}
+        </div>
+        <div class="col-xs-3 col-sm-2 padding-5">
+            <a href="{{ path('viteloge_frontend_ad_searchfromusersearch', { id: webSearch.userSearch.id }) }}" class="btn btn-default btn-block ellipsis">
+                <span class="fa fa-clock-o"></span><span>&nbsp;{{ webSearch.updatedAt|time_diff|default('viteloge.now'|trans) }}</span>
+            </a>
+        </div>
+    </div>
+</li>

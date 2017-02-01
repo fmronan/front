@@ -37,7 +37,7 @@ namespace Viteloge\CoreBundle\Form\Type {
                 ->add('send', SubmitType::class);
         }
 
-        public function setDefaultOptions(OptionsResolver $resolver){
+        public function configureOptions(OptionsResolver $resolver){
             $resolver->setDefaults(array(
                 'data_class' => 'Viteloge\FrontendBundle\Entity\Contact',
                 'csrf_token_id' => 'task_form',

@@ -1,0 +1,32 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="" itemscope itemtype="http://schema.org/Person">
+    <h3 itemprop="name">{{ user.fullname }}</h3>
+    <p>{% trans %}profile.civility{% endtrans %}: {{ user.civility }}</p>
+    <p>{% trans %}profile.firstname{% endtrans %}: {{ user.firstname }}</p>
+    <p>{% trans %}profile.lastname{% endtrans %}: {{ user.lastname }}</p>
+    <p>{% trans %}profile.email{% endtrans %}: {{ user.email }}</p>
+    <abbr title="Phone">{{ 'profile.phone'|trans }}: <a href="callto:{{ user.phone }}">{{ user.phone }}</a></p>
+    <address>
+
+    </address>
+</div>
+
+<div class="clearfix btn-group" role="group" aria-label="{% trans %}user.actions{% endtrans %}">
+    <a class="btn btn-default" href="{{ path('viteloge_frontend_user_index') }}" role="button">
+        <span class="fa fa-rotate-left">&nbsp;</span>
+        <span class="hidden-xs">{% trans %}profile.action.back{% endtrans %}</span>
+    </a>
+    <a class="btn btn-default" href="{{ path('fos_user_change_password') }}" role="button">
+        <span class="fa fa-lock">&nbsp;</span>
+        <span>{% trans %}profile.action.changepassword{% endtrans %}</span>
+    </a>
+    <a class="btn btn-default" href="{{ path('fos_user_profile_edit') }}" role="button">
+        <span class="fa fa-pencil" aria-hidden="true">&nbsp;</span>
+        <span class="hidden-xs">{% trans %}profile.action.edit{% endtrans %}</span>
+    </a>
+</div>
+
+
+
+
