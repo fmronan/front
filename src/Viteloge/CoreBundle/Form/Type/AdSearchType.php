@@ -12,7 +12,7 @@ namespace Viteloge\CoreBundle\Form\Type {
     use Symfony\Component\Form\FormEvents;
     use Doctrine\ORM\EntityRepository;
     use Doctrine\ORM\EntityManager;
-    use Acreat\InseeBundle\Entity\InseeCity;
+    use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\SearchEntity\AdSearch;
     use Viteloge\CoreBundle\Component\Enum\TransactionEnum;
     use Viteloge\CoreBundle\Component\Enum\TypeEnum;

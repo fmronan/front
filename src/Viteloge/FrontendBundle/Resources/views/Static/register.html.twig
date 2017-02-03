@@ -1,0 +1,28 @@
+{% extends 'VitelogeFrontendBundle:Static:base.html.twig' %}
+
+{%- block title -%}
+    <title>{%- trans -%}viteloge.frontend.static.register.title{%- endtrans -%}</title>
+{%- endblock title -%}
+
+{%- block main_title -%}
+    {%- trans -%}viteloge.frontend.static.register.maintitle{%- endtrans -%}
+{%- endblock main_title -%}
+
+{%- block teaser -%}
+    eight teaser-fixed
+{%- endblock teaser -%}
+
+{%- block main_content -%}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="theme-rent">
+                {{- include('VitelogeFrontendBundle:Static:Fragment/register-perso.html.twig') -}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="theme-sale">
+                {{- include('VitelogeFrontendBundle:Static:Fragment/register-pro.html.twig') -}}
+            </div>
+        </div>
+    </div>
+{%- endblock main_content -%}

@@ -26,6 +26,10 @@ viteloge_frontend_websearch:
     resource: "@VitelogeFrontendBundle/Controller/WebSearchController.php"
     type: annotation
 
+viteloge_frontend_usersearch:
+    resource: "@VitelogeFrontendBundle/Controller/UserSearchController.php"
+    type: annotation
+
 viteloge_frontend_service:
     resource: "@VitelogeFrontendBundle/Controller/ServiceController.php"
     type: annotation
@@ -40,6 +44,14 @@ viteloge_frontend_query_stats:
 
 viteloge_frontend_user:
     resource: "@VitelogeFrontendBundle/Controller/UserController.php"
+    type: annotation
+
+viteloge_frontend_message:
+    resource: "@VitelogeFrontendBundle/Controller/MessageController.php"
+    type: annotation
+
+viteloge_frontend_recommand:
+    resource: "@VitelogeFrontendBundle/Controller/RecommandController.php"
     type: annotation
 
 viteloge_frontend_static_google:

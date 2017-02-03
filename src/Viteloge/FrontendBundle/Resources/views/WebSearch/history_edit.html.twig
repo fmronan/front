@@ -1,6 +1,6 @@
 {% extends 'VitelogeFrontendBundle::base.html.twig' %}
 {%- block header -%}
-    {%- embed "VitelogeUserBundle:base:headerSearch.html.twig" with {form:headform} -%}
+    {%- embed "VitelogeFrontendBundle:Base:headerSearch.html.twig" with {form:headform} -%}
         {%- block header_navbarheader -%}
 
         {%- endblock -%}
@@ -8,12 +8,12 @@
     {%- endembed -%}
 {%- endblock -%}
 {% block main %}
-    {% embed "VitelogeUserBundle:grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3 } %}
+    {% embed "VitelogeFrontendBundle:Grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3 } %}
         {% block left %}
             <div class="clearfix">
-                {% embed "VitelogeFrontendBundle:WebSearch:form/edit.html.twig" with { form: form } %}
+                {% embed "VitelogeFrontendBundle:WebSearch:Form/edit.html.twig" with { form: form } %}
                     {%- block form_button -%}
-                        {%- embed 'VitelogeCoreBundle:Form:submit.html.twig' -%}
+                        {%- embed 'VitelogeFrontendBundle:Form:submit.html.twig' -%}
                             {%- block form_button_back -%}
                                 <a href="{{ path('viteloge_frontend_websearch_history') }}" class="btn btn-default btn-block" role="button" aria-label="{% trans %}usersearch.action.back{% endtrans %}">
                                     <span class="fa fa-undo" aria-hidden="true">&nbsp;</span>
@@ -36,7 +36,7 @@
             </div>
             <div class="clearfix text-right">
                 <br>
-                {%- embed "VitelogeFrontendBundle:WebSearch:form/delete.html.twig" with { form: form_delete } -%}
+                {%- embed "VitelogeFrontendBundle:WebSearch:Form/delete.html.twig" with { form: form_delete } -%}
                     {%- block form_fields -%}
                         {{- form_row(form.submit, {
                             'label_attr': {

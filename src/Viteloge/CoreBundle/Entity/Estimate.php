@@ -376,10 +376,10 @@ namespace Viteloge\CoreBundle\Entity {
         /**
          * Set inseeCity
          *
-         * @param \Acreat\InseeBundle\Entity\InseeCity $inseeCity
+         * @param \Viteloge\InseeBundle\Entity\InseeCity $inseeCity
          * @return Estimate
          */
-        public function setInseeCity(\Acreat\InseeBundle\Entity\InseeCity $inseeCity = null)
+        public function setInseeCity(\Viteloge\InseeBundle\Entity\InseeCity $inseeCity = null)
         {
             $this->inseeCity = $inseeCity;
 
@@ -389,7 +389,7 @@ namespace Viteloge\CoreBundle\Entity {
         /**
          * Get inseeCity
          *
-         * @return \Acreat\InseeBundle\Entity\InseeCity
+         * @return \Viteloge\InseeBundle\Entity\InseeCity
          */
         public function getInseeCity()
         {

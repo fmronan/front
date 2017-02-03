@@ -25,6 +25,7 @@ namespace Viteloge\CoreBundle\Repository {
         public function findHistory($id, $lockMode = LockMode::NONE, $lockVersion = null) {
             $filters = $this->_em->getFilters();
             $filters->disable('softdeleteable');
+            $this->_em->getConnection()->beginTransaction();
             return $this->_em->find($this->_entityName, $id, $lockMode, $lockVersion);
         }
 

@@ -1,0 +1,95 @@
+{% form_theme form with ['VitelogeFrontendBundle:Form:fields.html.twig'] %}
+
+{%- block form_start -%}
+{{ form_start(form, {'attr': {'enctype': 'application/x-www-form-urlencoded','class': 'contact', 'data-role': 'message', 'novalidate': 'novalidate'}}) }}
+{%- endblock form_start -%}
+    {%- block form_errors -%}
+        {{ form_errors(form) }}
+    {%- endblock form_errors -%}
+    {%- block form_fields -%}
+        <div class="hidden">
+            {%- if form._token is defined -%}
+                {{ form_row(form._token) }}
+            {%- endif -%}
+        </div>
+        {{ form_row(form.firstname, {
+            'label_attr': {
+                'class': 'sr-only'
+            },
+            'attr': {
+                'class': '',
+                'placeholder': 'message.firstname',
+                'data-placeholder' : 'message.firstname'|trans(),
+                'autocomplete': 'on',
+                'spellcheck': 'off',
+                'maxlength': 64
+            }
+        }) }}
+        {{ form_row(form.lastname, {
+            'label_attr': {
+                'class': 'sr-only'
+            },
+            'attr': {
+                'class': '',
+                'placeholder': 'message.lastname',
+                'data-placeholder' : 'message.lastname'|trans(),
+                'autocomplete': 'on',
+                'spellcheck': 'off',
+                'maxlength': 64
+            }
+        }) }}
+        {{ form_row(form.email, {
+            'label_attr': {
+                'class': 'sr-only'
+            },
+            'attr': {
+                'class': '',
+                'placeholder': 'message.email',
+                'data-placeholder' : 'message.email'|trans(),
+                'autocomplete': 'on',
+                'spellcheck': 'off',
+                'maxlength': 128
+            }
+        }) }}
+        {{ form_row(form.phone, {
+            'label_attr': {
+                'class': 'sr-only'
+            },
+            'attr': {
+                'class': '',
+                'placeholder': 'message.phone',
+                'data-placeholder' : 'message.phone'|trans(),
+                'autocomplete': 'on',
+                'spellcheck': 'off',
+                'maxlength': 16
+            }
+        }) }}
+        {{ form_row(form.message, {
+            'label_attr': {
+                'class': 'sr-only'
+            },
+            'attr': {
+                'class': '',
+                'placeholder': 'message.message',
+                'data-placeholder' : 'message.message'|trans(),
+                'autocomplete': 'off',
+                'spellcheck': 'off',
+                'maxlength': 250
+            }
+        }) }}
+    {%- endblock form_fields -%}
+    {%- block form_button -%}
+        {{- form_row(form.send, {
+            'label': 'message.action.send',
+            'label_attr': {
+                'class': 'sr-only'
+            },
+            'attr': {
+                'class': 'btn btn-primary text-uppercase',
+            },
+            'span_class': 'fa fa-send',
+        }) -}}
+    {%- endblock form_button -%}
+{%- block form_end -%}
+{{ form_end(form) }}
+{%- endblock form_end -%}

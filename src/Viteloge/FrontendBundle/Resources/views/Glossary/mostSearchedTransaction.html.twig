@@ -5,6 +5,6 @@
         </li>
         {% for glossarie in glossary %}
             <li class="footli">
-			    <a href="{{ path('viteloge_frontend_ad_search', { 'transaction': transaction, 'where': glossarie.inseeCity,'what': type }) }}">{{ type }} à {{ ('footer.transaction.article.'~transaction)|trans }} {{ glossarie.name }}</a>
+			    <a href="{{ path('viteloge_frontend_ad_search_default', { 'transaction': transaction, 'where': glossarie.inseeCity,'what': type }) }}">{{ type }} à {{ ('footer.transaction.article.'~transaction)|trans }} {{ glossarie.name }}</a>
 			</li>
         {% endfor %}

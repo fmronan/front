@@ -357,6 +357,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * )
          * @Method({"POST"})
          * @ParamConverter("ad", class="VitelogeCoreBundle:Ad", options={"id" = "id"})
+         * @Route(options={"expose"=true})
          * @Template("VitelogeFrontendBundle:Ad:fragment/btn_phone.html.twig")
          */
         function getNumSurtaxeAction(Request $request,Ad $ad)
@@ -447,6 +448,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     name="viteloge_frontend_agency_call"
          * )
          * @Method({"POST"})
+         * @Route(options={"expose"=true})
          * @ParamConverter("ad", class="VitelogeCoreBundle:Ad", options={"id" = "id"})
          */
         function callPhoneAction(Request $request,Ad $ad)
@@ -525,6 +527,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     name="viteloge_frontend_agency_last_view"
          * )
          * @Method({"POST"})
+         * @Route(options={"expose"=true})
          * @Template("VitelogeFrontendBundle:Agency:Render/ajax_latest.html.twig")
          */
         function lastSearchAction(Request $request)

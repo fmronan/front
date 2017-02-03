@@ -49,9 +49,6 @@ namespace Viteloge\FrontendBundle\Controller {
          *          "_format"="txt"
          *      },
          *      name="viteloge_frontend_ad_count_format",
-         *      options = {
-         *          "i18n" = true
-         *      }
          * )
          * @Route(
          *      "/count.{_format}",
@@ -62,9 +59,6 @@ namespace Viteloge\FrontendBundle\Controller {
          *          "_format"="txt"
          *      },
          *      name="viteloge_frontend_ad_count_format",
-         *      options = {
-         *          "i18n" = true
-         *      }
          * )
          * @Cache(expires="tomorrow", public=true)
          * @Method({"GET"})
@@ -104,9 +98,6 @@ namespace Viteloge\FrontendBundle\Controller {
          *     defaults={
          *         "page"=1,
          *         "limit"="25"
-         *     },
-         *     options = {
-         *          "i18n" = true
          *     },
          *     name="viteloge_frontend_ad_search_default"
          * )
@@ -377,9 +368,6 @@ namespace Viteloge\FrontendBundle\Controller {
          *          "id"="\d+",
          *      },
          *      name="viteloge_frontend_ad_count",
-         *      options = {
-         *          "i18n" = true
-         *      }
          * )
          * @Cache(lastModified="ad.getUpdatedAt()", ETag="'Ad' ~ ad.getId() ~ ad.getUpdatedAt().getTimestamp()")
          * @Method({"GET"})
@@ -587,6 +575,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * )
          * @Cache(expires="tomorrow", public=true)
          * @Method({"GET"})
+         * @Route(options={"expose"=true})
          * @Template("VitelogeFrontendBundle:Ad:carousel.html.twig")
          */
         public function carouselAction(Request $request, $limit) {
@@ -616,8 +605,8 @@ namespace Viteloge\FrontendBundle\Controller {
          *     },
          *     name="viteloge_frontend_ad_favourite"
          * )
+         * @Route(options={"expose"=true})
          * @Method({"GET"})
-         * @Template("VitelogeFrontendBundle:Ad:cookie.html.twig")
          */
         public function favorieAction(Request $request, Ad $ad) {
             if($request->isXmlHttpRequest()){
@@ -630,7 +619,7 @@ namespace Viteloge\FrontendBundle\Controller {
             }
             $response = new Response();
             $response->headers->setCookie(new Cookie('viteloge_favorie', $cookie_favorie,$time));
-                return $this->render('VitelogeFrontendBundle:Ad:cookie.html.twig',array(), $response);
+                return  $response;
 
             }else{
              throw new \Exception("Erreur");

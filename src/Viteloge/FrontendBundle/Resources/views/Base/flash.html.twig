@@ -4,7 +4,7 @@
     {%- if not hideContainer is same as(true) -%}<div class="container">{%- endif -%}
         {%- for type, messages in flashes -%}
             {%- for message in messages -%}
-                {%- embed 'VitelogeCoreBundle:Global:alert.html.twig' with { alerts: messages, type: type, dismissible: true } -%}
+                {%- embed 'VitelogeFrontendBundle:Global:alert.html.twig' with { alerts: messages, type: type, dismissible: true } -%}
                     {%- block alert_title -%}
 
                     {%- endblock -%}

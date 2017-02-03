@@ -1,0 +1,6 @@
+<section id="message-container-{{ message.ad.id }}">
+    <h4>{% trans %}message.send.message.to.group.for.ad{% endtrans %}</h4>
+    <div>
+        {{ include('VitelogeFrontendBundle:Message:Form/create.html.twig', { form: form, message: message }) }}
+    </div>
+</section>

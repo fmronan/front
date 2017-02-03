@@ -10,6 +10,9 @@ imports:
     - { resource: white_october_breadcrumbs.yml }
     - { resource: white_october_pagerfanta.yml }
     - { resource: jms_i18n_routing.yml }
+    - { resource: doctrine_migrations.yml }
+    - { resource: fos_js_routing.yml }
+    - { resource: ewz_recaptcha.yml }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -42,12 +45,15 @@ framework:
     assets: ~
     php_errors:
         log: true
+        #remove debug bar
+    #profiler:
+        #collect: false
 
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes: ['VitelogeFrontendBundle:Form:fields.html.twig']
-    #exception_controller:  viteloge_twig.controller.exception:showAction
+    exception_controller:  viteloge_twig.controller.exception:showAction
     globals:
         domain: "%domain%"
         media_domain: "%media_domain%"
@@ -88,6 +94,16 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        dql:
+            numeric_functions:
+                round: Viteloge\CoreBundle\Component\ORM\Query\Functions\Round
+            string_functions:
+                soundex: Viteloge\CoreBundle\Component\ORM\Query\Functions\Soundex
+                md5: Viteloge\CoreBundle\Component\ORM\Query\Functions\Md5
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
 
 # Swiftmailer Configuration
 swiftmailer:

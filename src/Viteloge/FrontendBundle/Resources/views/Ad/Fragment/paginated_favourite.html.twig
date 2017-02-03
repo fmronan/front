@@ -1,0 +1,33 @@
+<div id="viteloge-frontend-ad-paginated{%- if pagination is defined -%}-{{ pagination.currentPage }}{%- endif -%}" class="ajax-pager-container">
+    <div class="container-unfluid">
+
+        <div class="clearfix">
+            <a href="{{ path('viteloge_frontend_websearch_new', { 'session': true }) }}" role="button" class="btn btn-primary pull-left">
+                <span class="fa fa-bell"></span>&nbsp;
+                {% trans %}usersearch.create.mail.alert{% endtrans %}
+            </a>
+
+        </div>
+        <div class="clearfix">
+        {%- for key,ad in ads -%}
+            <div class="theme-{#ad.transaction#}">
+                {{- include('VitelogeFrontendBundle:Ad:Render/list_fav.html.twig', { 'ad': ad,'key':key }) -}}
+            </div>
+        {%- else -%}
+            <section class="margin-t10 clearfix">
+                <div class="clearfix">
+                    {{- include('VitelogeFrontendBundle:Global:alert.html.twig', { type: 'info', alerts: { 0: 'ad.noresult'|trans }, dismissible: false }) -}}
+                </div>
+                <div class="clearfix">
+                    {{ render(path('viteloge_frontend_ad_latest', { limit: 5, 'where': app.request.query.get('where'), 'cityName': 'ad.your.research'|trans })) }}
+                </div>
+            </section>
+        {%- endfor -%}
+        {%- if pagination is defined -%}
+            {%- if pagination is not null and not pagination.haveToPaginate -%}
+                <div class="clearfix hidden-xs hidden-sm visible-md-block visible-lg-block margin-b10"></div>
+            {%- endif -%}
+        {%- endif -%}
+        </div>
+    </div>
+</div>

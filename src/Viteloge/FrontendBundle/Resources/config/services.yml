@@ -1,4 +1,5 @@
 parameters:
+    viteloge_twig.controller.exception.class: Viteloge\FrontendBundle\Controller\ExceptionController
     viteloge_frontend.form.type.usersearch.class: Viteloge\FrontendBundle\Form\Type\UserSearchType
     viteloge_frontend.form.type.websearch.class: Viteloge\FrontendBundle\Form\Type\WebSearchType
     viteloge_frontend.component.helper.ad.class: Viteloge\FrontendBundle\Component\Helper\AdHelper
@@ -6,6 +7,9 @@ parameters:
     viteloge_frontend.pagerfanta.view.viteloge.class: Viteloge\FrontendBundle\Pagerfanta\View\VitelogeView
     viteloge_frontend.pagerfanta.view.viteloge_translated.class: Viteloge\FrontendBundle\Pagerfanta\View\VitelogeViewTranslated
 services:
+    viteloge_twig.controller.exception:
+        class: "%viteloge_twig.controller.exception.class%"
+        arguments: ["@service_container", "%kernel.debug%"]
     viteloge_frontend.form.type.usersearch:
         class: "%viteloge_frontend.form.type.usersearch.class%"
         arguments: ["@security.token_storage", "@doctrine.orm.entity_manager"]

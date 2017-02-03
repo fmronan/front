@@ -199,14 +199,11 @@ namespace Viteloge\FrontendBundle\Controller {
             $repository = $this->getDoctrine()
                 ->getRepository('VitelogeCoreBundle:UserSearch');
             $glossary = $repository->findAllInseeCityTransactionOrderedByCount($transaction, $type, $limit);
-            return $this->render(
-                'VitelogeFrontendBundle:Glossary:mostSearchedTransaction.html.twig',
-                array(
+            return array(
                     'glossary' => $glossary,
                     'transaction' => $transaction,
-                    'type' => $type,
-                )
-            );
+                    'type' => $type,);
+
         }
 
 
@@ -469,6 +466,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
             $headerform = $this->createForm(AdSearchType::class, $adSearch);
+            $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
             return array(
                 'city' => $inseeCity,
                 'cityData' => $cityData,
@@ -476,6 +474,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 'mapOptions' => $mapOptions,
                 'form' => $this->initForm()->form->createView(),
                 'headerform' => $headerform->createView(),
+                'csrf_token' => $csrfToken,
 
             );
         }

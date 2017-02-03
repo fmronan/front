@@ -23,6 +23,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\CoreBundle\Form\Type\AdSearchType;
     use Viteloge\FrontendBundle\Form\Type\WebSearchType;
+    use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
     /**
      * @Route("/user/websearch")
@@ -399,7 +400,7 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         private function createEditForm(WebSearch $webSearch) {
             return $this->createForm(
-                'viteloge_frontend_websearch',
+                WebSearchType::class,
                 $webSearch,
                 array(
                     'action' => $this->generateUrl('viteloge_frontend_websearch_update', array('id' => $webSearch->getId())),
@@ -539,7 +540,8 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function updateAction(Request $request, WebSearch $webSearch) {
             $translated = $this->get('translator');
-
+            $session = $request->getSession();
+            $requestSearch = $session->get('request');
             // Breadcrumbs
             $this->initBreadcrumbs();
             $this->breadcrumbs->addItem(
@@ -576,11 +578,14 @@ namespace Viteloge\FrontendBundle\Controller {
                 );
                 return $this->redirectToRoute('viteloge_frontend_websearch_list');
             }
-
+            $adSearch = new AdSearch();
+            $adSearch->handleRequest($requestSearch);
+            $headform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'websearch' => $webSearch,
                 'form' => $editForm->createView(),
-                'form_delete' => $deleteForm->createView()
+                'form_delete' => $deleteForm->createView(),
+                'headform' => $headform
             );
         }
 
@@ -627,7 +632,7 @@ namespace Viteloge\FrontendBundle\Controller {
             return $this->createFormBuilder()
                 ->setAction($this->generateUrl($action, array('id' => $id)))
                 ->setMethod($method)
-                ->add('submit', 'submit', array('label' => 'websearch.action.delete'))
+                ->add('submit', SubmitType::class, array('label' => 'websearch.action.delete'))
                 ->getForm()
             ;
         }
@@ -647,7 +652,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function removeAction(Request $request, WebSearch $webSearch) {
             $translated = $this->get('translator');
-
             // Breadcrumbs
             $this->initBreadcrumbs();
             $this->breadcrumbs->addItem(
@@ -674,13 +678,12 @@ namespace Viteloge\FrontendBundle\Controller {
             $userSearchForm = $this->createFormBuilder()
                 ->setAction($this->generateUrl('viteloge_frontend_usersearch_delete', array('id' => $userSearch->getId())))
                 ->setMethod('DELETE')
-                ->add('submit', 'submit', array('label' => 'usersearch.action.delete'))
+                ->add('submit', SubmitType::class, array('label' => 'usersearch.action.delete'))
                 ->getForm()
             ;
-
             return array(
                 'form_usersearch_delete' => $userSearchForm->createView(),
-                'form_websearch_delete' => $form->createView()
+                'form_websearch_delete' => $form->createView(),
             );
         }
 
@@ -730,7 +733,7 @@ namespace Viteloge\FrontendBundle\Controller {
             return $this->createFormBuilder()
                 ->setAction($this->generateUrl($action, array('id' => $id)))
                 ->setMethod($method)
-                ->add('submit', 'submit', array('label' => 'websearch.action.activate'))
+                ->add('submit', SubmitType::class, array('label' => 'websearch.action.activate'))
                 ->getForm()
             ;
         }
@@ -759,9 +762,10 @@ namespace Viteloge\FrontendBundle\Controller {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
                 $webSearch->setDeletedAt(null);
                 $webSearch->getUserSearch()->setDeletedAt(null);
-                $em = $this->getDoctrine()->getManager();
+
                 $em->persist($webSearch);
                 $em->flush();
                 $this->addFlash(
@@ -769,7 +773,6 @@ namespace Viteloge\FrontendBundle\Controller {
                     $translated->trans('websearch.flash.activated', array('%title%' => $webSearch->getTitle()))
                 );
             }
-
             return $this->redirectToRoute('viteloge_frontend_websearch_list');
         }
 

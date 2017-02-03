@@ -2,83 +2,83 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="fr-FR" target-language="fr" datatype="plaintext" original="file.ext">
     <body>
-      <trans-unit id="e6dc44f597cb6840a4f0a2d72c9c5b7b" resname="fos_user_change_password">
+      <trans-unit id="fos_user_change_password" resname="fos_user_change_password">
         <source>fos_user_change_password</source>
         <target>/utilisateur/profil/changement-du-mot-de-passe</target>
       </trans-unit>
-      <trans-unit id="0cb30a592a4b65ebe8e7784cfcc93393" resname="fos_user_profile_edit">
+      <trans-unit id="fos_user_profile_edit" resname="fos_user_profile_edit">
         <source>fos_user_profile_edit</source>
         <target>/utilisateur/profil/edition</target>
       </trans-unit>
-      <trans-unit id="7e461acb2aa955d0f1b4b826b1bf4da8" resname="fos_user_profile_show">
+      <trans-unit id="fos_user_profile_show" resname="fos_user_profile_show">
         <source>fos_user_profile_show</source>
         <target>/utilisateur/profil/</target>
       </trans-unit>
-      <trans-unit id="8f8a45208224f02035b8fbb1f9f8cccf" resname="fos_user_registration_check_email">
+      <trans-unit id="fos_user_registration_check_email" resname="fos_user_registration_check_email">
         <source>fos_user_registration_check_email</source>
         <target>/utilisateur/enregistrer/verification-courriel</target>
       </trans-unit>
-      <trans-unit id="8b01e452c0659f7e4c1a8c08b474a360" resname="fos_user_registration_confirm">
+      <trans-unit id="fos_user_registration_confirm" resname="fos_user_registration_confirm">
         <source>fos_user_registration_confirm</source>
         <target>/utilisateur/enregistrer/confirmation/{token}</target>
       </trans-unit>
-      <trans-unit id="7e7c7abb985a6bcd77c36d37ca158813" resname="fos_user_registration_confirmed">
+      <trans-unit id="fos_user_registration_confirmed" resname="fos_user_registration_confirmed">
         <source>fos_user_registration_confirmed</source>
         <target>/utilisateur/enregistrer/confirme</target>
       </trans-unit>
-      <trans-unit id="f12c0235b5259e65efbf82c067d0ac07" resname="fos_user_registration_register">
+      <trans-unit id="fos_user_registration_register" resname="fos_user_registration_register">
         <source>fos_user_registration_register</source>
         <target>/utilisateur/enregistrer/</target>
       </trans-unit>
-      <trans-unit id="85b0ffb30e53e086f29d20a3a619be6d" resname="fos_user_resetting_check_email">
+      <trans-unit id="fos_user_resetting_check_email" resname="fos_user_resetting_check_email">
         <source>fos_user_resetting_check_email</source>
         <target>/utilisateur/reinitialisation/verification-courriel</target>
       </trans-unit>
-      <trans-unit id="04c0d749d14f6a38876b0b3144c8fc9a" resname="fos_user_resetting_request">
+      <trans-unit id="fos_user_resetting_request" resname="fos_user_resetting_request">
         <source>fos_user_resetting_request</source>
         <target>/utilisateur/reinitialisation/demande</target>
       </trans-unit>
-      <trans-unit id="8213277017b4ebc45beb1877a8b5c4c8" resname="fos_user_resetting_reset">
+      <trans-unit id="fos_user_resetting_reset" resname="fos_user_resetting_reset">
         <source>fos_user_resetting_reset</source>
         <target>/utilisateur/reinitialisation/remise-a-zero/{token}</target>
       </trans-unit>
-      <trans-unit id="739f06a9c1d724320d9ea035572e2537" resname="fos_user_resetting_send_email">
+      <trans-unit id="fos_user_resetting_send_email" resname="fos_user_resetting_send_email">
         <source>fos_user_resetting_send_email</source>
         <target>/utilisateur/reinitialisation/envoie-courriel</target>
       </trans-unit>
-      <trans-unit id="cd2c4abbc4e250614d72f2e7e928c5b7" resname="fos_user_security_check">
+      <trans-unit id="fos_user_security_check" resname="fos_user_security_check">
         <source>fos_user_security_check</source>
         <target>/utilisateur/verification_identifiant</target>
       </trans-unit>
-      <trans-unit id="f35b96ae8498bfea6e4f916b40f3ef3e" resname="fos_user_security_login">
+      <trans-unit id="fos_user_security_login" resname="fos_user_security_login">
         <source>fos_user_security_login</source>
         <target>/utilisateur/connexion</target>
       </trans-unit>
-      <trans-unit id="267c312d8f9065349208190843a42a06" resname="fos_user_security_logout">
+      <trans-unit id="fos_user_security_logout" resname="fos_user_security_logout">
         <source>fos_user_security_logout</source>
         <target>/utilisateur/deconnexion</target>
       </trans-unit>
-      <trans-unit id="d0c379abcde6f7e97f29b46d8c1d789e" resname="viteloge_estimation_statistic_city">
+      <trans-unit id="viteloge_estimation_statistic_city" resname="viteloge_estimation_statistic_city">
         <source>viteloge_estimation_statistic_city</source>
         <target>/prix-immobilier/{name}/{id}</target>
       </trans-unit>
-      <trans-unit id="ceab495dcabca14582824822d8846d6b" resname="viteloge_estimation_default_contact">
+      <trans-unit id="viteloge_estimation_default_contact" resname="viteloge_estimation_default_contact">
         <source>viteloge_estimation_default_contact</source>
         <target>/prix-immobilier/votre-estimation/contact</target>
       </trans-unit>
-      <trans-unit id="e90cf81a008f9ca73239ed5d21d96a89" resname="viteloge_estimation_default_index">
+      <trans-unit id="viteloge_estimation_default_index" resname="viteloge_estimation_default_index">
         <source>viteloge_estimation_default_index</source>
         <target>/prix-immobilier/votre-estimation/</target>
       </trans-unit>
-      <trans-unit id="a518cf438cc8c7c3a99e24d127904601" resname="viteloge_estimation_default_indexpost">
+      <trans-unit id="viteloge_estimation_default_indexpost" resname="viteloge_estimation_default_indexpost">
         <source>viteloge_estimation_default_indexpost</source>
         <target>/prix-immobilier/votre-estimation/</target>
       </trans-unit>
-      <trans-unit id="d06aafeda44edd90fb91c7fcdc6c0728" resname="viteloge_estimation_default_resultat">
+      <trans-unit id="viteloge_estimation_default_resultat" resname="viteloge_estimation_default_resultat">
         <source>viteloge_estimation_default_resultat</source>
         <target>/prix-immobilier/votre-estimation/resultat/{id}</target>
       </trans-unit>
-      <trans-unit id="e4dd6f27b984fc6f589c867204a9416f" resname="viteloge_estimation_default_resultatcontact">
+      <trans-unit id="viteloge_estimation_default_resultatcontact" resname="viteloge_estimation_default_resultatcontact">
         <source>viteloge_estimation_default_resultatcontact</source>
         <target>/prix-immobilier/votre-estimation/resultat/{id}</target>
       </trans-unit>
@@ -106,11 +106,11 @@
         <source>viteloge_frontend_favourite_remove</source>
         <target>/annonce/supprime/favoris/{id}</target>
       </trans-unit>
-      <trans-unit id="74b85a3c66592173c1c3218aab00d7d2" resname="viteloge_frontend_ad_latest">
+      <trans-unit id="viteloge_frontend_ad_latest" resname="viteloge_frontend_ad_latest">
         <source>viteloge_frontend_ad_latest</source>
         <target>/annonce/derniere/{limit}</target>
       </trans-unit>
-      <trans-unit id="077162a103b9c7484f2d03dae2ce14ab" resname="viteloge_frontend_ad_redirect">
+      <trans-unit id="viteloge_frontend_ad_redirect" resname="viteloge_frontend_ad_redirect">
         <source>viteloge_frontend_ad_redirect</source>
         <target>/annonce/redirection/{id}</target>
       </trans-unit>
@@ -126,15 +126,15 @@
         <source>viteloge_frontend_agency_home</source>
         <target>/annonce/acceuil/{id}/{description}</target>
       </trans-unit>
-      <trans-unit id="a9d5ddab093d91f2edbba752a1dccdcb" resname="viteloge_frontend_ad_search">
+      <trans-unit id="viteloge_frontend_ad_search" resname="viteloge_frontend_ad_search">
         <source>viteloge_frontend_ad_search</source>
         <target>/annonce/recherche/{page}/{limit}</target>
       </trans-unit>
-      <trans-unit id="ca446031dcb25e4e6dd0377d1cd2cd45" resname="viteloge_frontend_ad_search_default">
+      <trans-unit id="viteloge_frontend_ad_search_default" resname="viteloge_frontend_ad_search_default">
         <source>viteloge_frontend_ad_search_default</source>
         <target>/annonce/recherche/</target>
       </trans-unit>
-      <trans-unit id="62499259418ff68c784ef5b41f65fd98" resname="viteloge_frontend_ad_searchfromform">
+      <trans-unit id="viteloge_frontend_ad_searchfromform" resname="viteloge_frontend_ad_searchfromform">
         <source>viteloge_frontend_ad_searchfromform</source>
         <target>/annonce/recherche/a-partir-de/formulaire/</target>
       </trans-unit>
@@ -170,19 +170,19 @@
         <source>viteloge_frontend_glossary_areas</source>
         <target>/immobilier/quartiers/{id}/</target>
       </trans-unit>
-      <trans-unit id="2dc276eaa0591b2d0e8b07c610a49df2" resname="viteloge_frontend_glossary_cities">
+      <trans-unit id="viteloge_frontend_glossary_cities" resname="viteloge_frontend_glossary_cities">
         <source>viteloge_frontend_glossary_cities</source>
         <target>/immobilier/villes/{id}/</target>
       </trans-unit>
-      <trans-unit id="6629d63a186cda548c6ae0021fe49d32" resname="viteloge_frontend_glossary_departments">
+      <trans-unit id="viteloge_frontend_glossary_departments" resname="viteloge_frontend_glossary_departments">
         <source>viteloge_frontend_glossary_departments</source>
         <target>/immobilier/departements/{id}/</target>
       </trans-unit>
-      <trans-unit id="2e3ab861307f3dad16ea66501fa69df0" resname="viteloge_frontend_glossary_mostsearched_limited">
+      <trans-unit id="viteloge_frontend_glossary_mostsearched_limited" resname="viteloge_frontend_glossary_mostsearched_limited">
         <source>viteloge_frontend_glossary_mostsearched_limited</source>
         <target>/immobilier/les-plus-recherches/{limit}</target>
       </trans-unit>
-      <trans-unit id="c9a193a141cfc9a3c8ae2b00101a189d" resname="viteloge_frontend_glossary_mostsearched">
+      <trans-unit id="viteloge_frontend_glossary_mostsearched" resname="viteloge_frontend_glossary_mostsearched">
         <source>viteloge_frontend_glossary_mostsearched</source>
         <target>/immobilier/les-plus-recherches/</target>
       </trans-unit>
@@ -222,27 +222,27 @@
         <source>viteloge_frontend_querystats_latest_limited</source>
         <target>/recherche/derniere/{limit}</target>
       </trans-unit>
-      <trans-unit id="983849431bd7496b0dcaa922c9599185" resname="viteloge_frontend_querystats_latest">
+      <trans-unit id="viteloge_frontend_querystats_latest" resname="viteloge_frontend_querystats_latest">
         <source>viteloge_frontend_querystats_latest</source>
         <target>/recherche/derniere/</target>
       </trans-unit>
-      <trans-unit id="d8bcd97dc378c966c16f7f2dad85603f" resname="viteloge_frontend_static_about">
+      <trans-unit id="viteloge_frontend_static_about" resname="viteloge_frontend_static_about">
         <source>viteloge_frontend_static_about</source>
         <target>/a-propos</target>
       </trans-unit>
-      <trans-unit id="744abfba20fb0fa180b85fb07a4eaaea" resname="viteloge_frontend_static_ad">
+      <trans-unit id="viteloge_frontend_static_ad" resname="viteloge_frontend_static_ad">
         <source>viteloge_frontend_static_ad</source>
         <target>/publicite</target>
       </trans-unit>
-      <trans-unit id="cfe5e96f7762f1d607e98b5d1c7cc997" resname="viteloge_frontend_static_apiform">
+      <trans-unit id="viteloge_frontend_static_apiform" resname="viteloge_frontend_static_apiform">
         <source>viteloge_frontend_static_apiform</source>
         <target>/api-formulaire</target>
       </trans-unit>
-      <trans-unit id="6d998f9d73b76d67ea6755582731640d" resname="viteloge_frontend_static_contactus">
+      <trans-unit id="viteloge_frontend_static_contactus" resname="viteloge_frontend_static_contactus">
         <source>viteloge_frontend_static_contactus</source>
         <target>/contactez-nous</target>
       </trans-unit>
-      <trans-unit id="614b11f3c75f2f323ed1e9876db26f3e" resname="viteloge_frontend_static_gtc">
+      <trans-unit id="viteloge_frontend_static_gtc" resname="viteloge_frontend_static_gtc">
         <source>viteloge_frontend_static_gtc</source>
         <target>/condition-generale-d-utilisation</target>
       </trans-unit>
@@ -250,23 +250,23 @@
       <source>viteloge_frontend_static_mention</source>
       <target>/mention</target>
       </trans-unit>
-      <trans-unit id="271000011cce809c1b50361cbd379b00" resname="viteloge_frontend_static_privacy">
+      <trans-unit id="viteloge_frontend_static_privacy" resname="viteloge_frontend_static_privacy">
         <source>viteloge_frontend_static_privacy</source>
         <target>/respect-de-la-vie-privee</target>
       </trans-unit>
-      <trans-unit id="b320205a74ebf6b01be61bf8891ec073" resname="viteloge_frontend_static_recommand">
+      <trans-unit id="viteloge_frontend_static_recommand" resname="viteloge_frontend_static_recommand">
         <source>viteloge_frontend_static_recommand</source>
         <target>/recommandation</target>
       </trans-unit>
-      <trans-unit id="cef61351965d532941a67f183c80aa84" resname="viteloge_frontend_static_register">
+      <trans-unit id="viteloge_frontend_static_register" resname="viteloge_frontend_static_register">
         <source>viteloge_frontend_static_register</source>
         <target>/enregistrement</target>
       </trans-unit>
-      <trans-unit id="461281821790fac839a9e44067a8d1ac" resname="viteloge_frontend_static_subscribe">
+      <trans-unit id="viteloge_frontend_static_subscribe" resname="viteloge_frontend_static_subscribe">
         <source>viteloge_frontend_static_subscribe</source>
         <target>/inscription</target>
       </trans-unit>
-      <trans-unit id="866d1931c396db5bb31c966213ddb3b0" resname="viteloge_frontend_static_why">
+      <trans-unit id="viteloge_frontend_static_why" resname="viteloge_frontend_static_why">
         <source>viteloge_frontend_static_why</source>
         <target>/pourquoi-viteloge</target>
       </trans-unit>
