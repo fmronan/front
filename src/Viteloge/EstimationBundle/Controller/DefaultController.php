@@ -8,6 +8,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Viteloge\CoreBundle\Entity\Estimate;
+use Viteloge\EstimationBundle\Form\Type\EstimationType;
+use Viteloge\EstimationBundle\Form\Type\IntroEstimationType;
+use Viteloge\EstimationBundle\Form\Type\ContactEstimationType;
+
 
 /**
  * @Route("prix-immobilier/")
@@ -66,7 +70,7 @@ class DefaultController extends Controller {
         // --
 
         $estimate = new Estimate();
-        $form = $this->createForm( 'estimation', $estimate );
+        $form = $this->createForm( EstimationType::class, $estimate );
 
         return array(
             'form' => $form->createView()
@@ -108,17 +112,17 @@ class DefaultController extends Controller {
         // --
 
         $estimate = new Estimate();
-        $form = $this->createForm( 'estimation', $estimate );
+        $form = $this->createForm(EstimationType::class, $estimate );
 
         $post_is_intro = false;
         if ( $request->query->get( 'intro', false ) ) {
             $post_is_intro = true;
 
-            $form_intro = $this->createForm( 'intro_estimation', $estimate );
+            $form_intro = $this->createForm( IntroEstimationType::class, $estimate );
             $form_intro->handleRequest( $request );
         }
 
-        $form = $this->createForm( 'estimation', $estimate, array(
+        $form = $this->createForm( EstimationType::class, $estimate, array(
             "action" => $this->generateUrl( 'viteloge_estimation_default_indexpost')
         ) );
 
@@ -185,7 +189,7 @@ class DefaultController extends Controller {
 
         $form = null;
         if ( ! $estimate->hasAgencyRequest() ) {
-            $form = $this->createForm( 'contact_estimation', $estimate );
+            $form = $this->createForm( ContactEstimationType::class, $estimate );
         }
 
         $result = $computer->estimate( $estimate );
@@ -240,7 +244,7 @@ class DefaultController extends Controller {
         ;
         // --
 
-        $form = $this->createForm( 'contact_estimation', $estimate );
+        $form = $this->createForm( ContactEstimationType::class, $estimate );
 
         $form->handleRequest( $request );
 

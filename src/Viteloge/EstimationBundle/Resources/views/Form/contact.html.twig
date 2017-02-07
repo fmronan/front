@@ -1,0 +1,46 @@
+{% form_theme form with [_self, 'VitelogeFrontendBundle:Form:fields.html.twig'] %}
+
+{%- block form_start -%}
+{{ form_start(form) }}
+{%- endblock form_start -%}
+    {%- block form_errors -%}
+        {{ form_errors(form) }}
+    {%- endblock form_errors -%}
+    {%- block form_fields -%}
+        <div class="hidden">
+            {{ form_row(form._token) }}
+        </div>
+        {%- block form_profil -%}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {{ form_row(form.agencyRequest, {
+                        'label_attr': {
+                            'class': 'radio-inline'
+                        },
+                        'row_attr': {
+                            'label_class': 'col-md-6',
+                            'group_class': 'col-md-6'
+                        }
+                    }) }}
+                </div>
+            </div>
+        {%- endblock form_profil -%}
+        {%- block form_contact -%}
+            {%- embed 'VitelogeEstimationBundle:Form:Fragment/form_contact.html.twig' with { id: 'estimate-contact', parent: 'estimate-form', class: 'hidden', show: true, footer: true } -%}
+                {%- block panel_footer -%}
+                    <div class="text-center">
+                        {{ form_widget( form.save, {
+                            span_class: 'icon-icon-calculator',
+                            attr: {
+                                class: "btn btn-primary submit text-uppercase",
+                                role: "button"
+                            }
+                        }) }}
+                    </div>
+                {%- endblock panel_footer -%}
+            {%- endembed -%}
+        {%- endblock form_contact -%}
+    {%- endblock form_fields -%}
+{%- block form_end -%}
+{{ form_end(form) }}
+{%- endblock form_end -%}

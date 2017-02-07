@@ -28,6 +28,8 @@ class AppKernel extends Kernel
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
+            new Presta\SitemapBundle\PrestaSitemapBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(), // used in Estimation
             //new AppBundle\AppBundle(),
             new Viteloge\FrontendBundle\VitelogeFrontendBundle(),
             new Viteloge\CoreBundle\VitelogeCoreBundle(),

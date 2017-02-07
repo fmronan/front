@@ -297,9 +297,13 @@ namespace Viteloge\FrontendBundle\Controller {
                             $cityRepository = $this->getDoctrine()->getRepository('VitelogeInseeBundle:InseeCity');
                             $inseeCity = $cityRepository->find((int)$cityId);
                         }
+
                         $now = new \DateTime('now');
                         $webSearch->setTitle($translated->trans('websearch.title.date', array('%date%' => $now->format('d/m/Y')), null));
-                        $webSearch->getUserSearch()->setTransaction($adSearch->getTransaction());
+                        // pour eviter soucis array to string conversion
+                        $transaction = $adSearch->getTransaction();
+                        $webSearch->getUserSearch()->setTransaction($transaction[0]);
+
                         $webSearch->getUserSearch()->setType($adSearch->getWhat());
                         $webSearch->getUserSearch()->setInseeCity($inseeCity);
                         $webSearch->getUserSearch()->setRadius($adSearch->getRadius());
@@ -307,7 +311,6 @@ namespace Viteloge\FrontendBundle\Controller {
                         $webSearch->getUserSearch()->setBudgetMin($adSearch->getMinPrice());
                         $webSearch->getUserSearch()->setBudgetMax($adSearch->getMaxPrice());
                         $webSearch->getUserSearch()->setKeywords($adSearch->getKeywords());
-
                         $this->addFlash(
                             'warning',
                             $translated->trans('websearch.flash.creating')
@@ -315,9 +318,9 @@ namespace Viteloge\FrontendBundle\Controller {
                     }
                 }
             }
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm(AdSearchType::class, $adSearch);
+            $mySearch = new AdSearch();
+            $mySearch->handleRequest($requestSearch);
+            $headform = $this->createForm(AdSearchType::class, $mySearch);
             // by default check mail enabled
             $webSearch->getUserSearch()->setMailEnabled(true);
 

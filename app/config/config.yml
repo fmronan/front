@@ -13,6 +13,8 @@ imports:
     - { resource: doctrine_migrations.yml }
     - { resource: fos_js_routing.yml }
     - { resource: ewz_recaptcha.yml }
+    - { resource: presta_sitemap.yml }
+    - { resource: genemu_form.yml }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed

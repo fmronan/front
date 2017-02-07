@@ -35,7 +35,9 @@
         "neitanod/forceutf8": "^2.0",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "jms/i18n-routing-bundle": "^2.0",
-        "excelwebzone/recaptcha-bundle": "^1.4"
+        "excelwebzone/recaptcha-bundle": "^1.4",
+        "presta/sitemap-bundle": "^1.5",
+        "genemu/form-bundle": "^3.0@dev"
 
     },
     "require-dev": {

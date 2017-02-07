@@ -107,8 +107,6 @@ namespace Viteloge\UserBundle\EventListener {
             $this->breadcrumbs->addItem(
                 $this->translated->trans('breadcrumb.profile.changepassword', array(), 'breadcrumbs')
             );
-            var_dump($this->breadcrumbs);
-            die();
         }
 
         /**
