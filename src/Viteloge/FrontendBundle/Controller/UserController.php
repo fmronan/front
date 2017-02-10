@@ -18,7 +18,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use FOS\UserBundle\Event\FilterUserResponseEvent;
     use Viteloge\CoreBundle\Entity\User;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
-    use Viteloge\CoreBundle\Form\Type\AdSearchType;
+    use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/user")

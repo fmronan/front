@@ -54,6 +54,10 @@ viteloge_frontend_recommand:
     resource: "@VitelogeFrontendBundle/Controller/RecommandController.php"
     type: annotation
 
+viteloge_frontend_api:
+    resource: "@VitelogeFrontendBundle/Controller/ApiController.php"
+    type: annotation
+
 viteloge_frontend_static_google:
     path: /googlea19a01de7ca41823.{_format}
     defaults:

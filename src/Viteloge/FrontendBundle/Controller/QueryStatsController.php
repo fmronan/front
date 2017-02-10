@@ -19,7 +19,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Entity\QueryStats;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
-    use Viteloge\CoreBundle\Form\Type\AdSearchType;
+    use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/query")

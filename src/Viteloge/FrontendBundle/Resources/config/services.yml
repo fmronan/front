@@ -11,6 +11,8 @@ parameters:
     viteloge_frontend.eventlistener.message.class: Viteloge\FrontendBundle\EventListener\MessageListener
     viteloge_frontend.services.class: Viteloge\FrontendBundle\Services\manageUser
     viteloge_frontend.services.cookies: Viteloge\FrontendBundle\Services\cookiesFactory
+    viteloge_frontend.form.type.api.class: Viteloge\FrontendBundle\Form\Type\ApiType
+    viteloge_core.form.type.adsearch.class: Viteloge\FrontendBundle\Form\Type\AdSearchType
 services:
     viteloge_twig.controller.exception:
         class: "%viteloge_twig.controller.exception.class%"
@@ -57,8 +59,20 @@ services:
             - { name: doctrine.event_listener, event: prePersist }
     viteloge_frontend.messagelistener:
         class: "%viteloge_frontend.eventlistener.message.class%"
+        arguments: ["@service_container","@security.token_storage","@doctrine.orm.entity_manager"]
         tags:
             - { name: doctrine.event_listener, event: prePersist }
+    viteloge_frontend.form.type.api:
+        class: "%viteloge_frontend.form.type.api.class%"
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type, alias: viteloge_frontend_api }
+    viteloge_core.form.type.adsearch:
+        class: "%viteloge_core.form.type.adsearch.class%"
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type, alias: viteloge_core_adsearch }
+
 
 
 

@@ -22,6 +22,7 @@ namespace Viteloge\CoreBundle\Entity {
          * @ORM\GeneratedValue(strategy="AUTO")
          */
         protected $id;
+
         /**
          * @var \DateTime
          *
@@ -134,7 +135,7 @@ namespace Viteloge\CoreBundle\Entity {
         /**
          * @Assert\NotBlank()
          * @Assert\Choice(
-         *      callback = {"Viteloge\FrontendBundle\Component\Enum\SubjectEnum", "getValues"},
+         *      callback = {"Viteloge\CoreBundle\Component\Enum\SubjectEnum", "getValues"},
          *      multiple = false,
          * )
          * @ORM\Column(name="subject",type="string",length=255)
@@ -184,16 +185,6 @@ namespace Viteloge\CoreBundle\Entity {
         public function __construct() {
             $this->setDate(new \DateTime('now'));
 
-        }
-
-        /**
-         * Get id
-         *
-         * @return integer
-         */
-        public function getId()
-        {
-            return $this->id;
         }
 
         /**
@@ -355,12 +346,12 @@ namespace Viteloge\CoreBundle\Entity {
          *
          */
         public function setUser(CoreUser $user = null) {
-            $this->user = $user;
+            //$this->user = $user;
             if ($user instanceof CoreUser) {
-                $this->email = $this->user->getEmail();
-                $this->lastname = $this->user->getLastname();
-                $this->firstname = $this->user->getFirstname();
-                $this->phone = $this->user->getPhone();
+                $this->email = $user->getEmail();
+                $this->lastname = $user->getLastname();
+                $this->firstname = $user->getFirstname();
+                $this->phone = $user->getPhone();
             }
             return $this;
         }

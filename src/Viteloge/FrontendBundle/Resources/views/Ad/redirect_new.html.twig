@@ -1,5 +1,10 @@
 {% extends 'VitelogeFrontendBundle::base.html.twig' %}
-
+{% if app.request.attributes.get('_route') == 'viteloge_frontend_agency_home' %}
+    {% set better = true %}
+{% endif %}
+{%- block overbody -%}
+<body class="body theme-default {% if app.request.attributes.get('_route') == 'viteloge_frontend_homepage' %}home{% endif %}" {% block schema %}itemscope itemtype="http://schema.org/WebPage"{% endblock schema %}style="overflow-y: hidden;">
+{%- endblock overbody -%}
 {%- block head_javascripts_requirejs -%}
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>

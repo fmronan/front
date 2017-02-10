@@ -318,7 +318,7 @@ module.exports = function(grunt) {
                     environment: 'production'
                 }
             },
-           /* estimation: {
+            estimation: {
                 options: {
                     sassDir: 'src/Viteloge/EstimationBundle/Resources/scss',
                     cssDir: '<%= cfg["compass-tmp-dir"] %>/css',
@@ -327,7 +327,7 @@ module.exports = function(grunt) {
                     noLineComments: true,
                     environment: 'production'
                 }
-            }*/
+            }
         },
         cssmin: {
             combine: {

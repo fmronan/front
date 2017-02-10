@@ -16,7 +16,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\InseeBundle\Entity\InseeArea;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\FrontendBundle\Entity\CityData;
-    use Viteloge\CoreBundle\Form\Type\AdSearchType;
+    use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/glossary")

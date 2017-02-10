@@ -31,7 +31,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\CoreBundle\Component\DBAL\EnumTransactionType;
     use Viteloge\CoreBundle\Component\Enum\DistanceEnum;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
-    use Viteloge\CoreBundle\Form\Type\AdSearchType;
+    use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 
     /**
      * Note: This should be the search ad controller

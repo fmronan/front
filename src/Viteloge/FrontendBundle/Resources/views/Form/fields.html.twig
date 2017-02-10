@@ -222,7 +222,7 @@
                 </ul>
             </span>
         {%- else -%}
-            {%- embed 'VitelogeCoreBundle:Global:alert.html.twig' with { alerts: errors, valid: valid, type: 'danger', dismissible: true } -%}
+            {%- embed 'VitelogeFrontendBundle:Global:alert.html.twig' with { alerts: errors, valid: valid, type: 'danger', dismissible: true } -%}
                 {%- block alert_title -%}
                     {% trans %}Error{% endtrans %}&nbsp;:
                 {%- endblock -%}

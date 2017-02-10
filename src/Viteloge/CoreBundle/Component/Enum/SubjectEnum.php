@@ -28,8 +28,8 @@ namespace Viteloge\CoreBundle\Component\Enum {
                  'contact.subject.localad'=> self::LOCAL_AD,
                  'contact.subject.highlightad'=> self::HIGHLIGHT_AD,
                  'contact.subject.partner'=> self::PARTNER,
-                'contact.subject.bug'=> self::BUG ,
-                'contact.subject.technicalassist' => self::TECHNICAL_ASSIST,
+                 'contact.subject.bug'=> self::BUG ,
+                 'contact.subject.technicalassist' => self::TECHNICAL_ASSIST,
                  'contact.subject.miscquestion'=> self::MISC_QUESTION,
             );
         }

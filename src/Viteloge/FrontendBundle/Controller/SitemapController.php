@@ -18,7 +18,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\CoreBundle\Component\Enum\TransactionEnum;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\FrontendBundle\Component\Sitemap\Element;
-    use Viteloge\CoreBundle\Form\Type\AdSearchType;
+    use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/")

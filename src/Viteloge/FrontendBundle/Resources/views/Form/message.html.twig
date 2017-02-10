@@ -1,7 +1,7 @@
 {% form_theme form with ['VitelogeFrontendBundle:Form:fields.html.twig'] %}
 
 {%- block form_start -%}
-{{ form_start(form, {'attr': {'enctype': 'application/x-www-form-urlencoded','class': 'contact', 'data-role': 'message', 'novalidate': 'novalidate'}}) }}
+{{ form_start(form, {'attr': {'enctype': 'application/x-www-form-urlencoded','class': 'message', 'data-role': 'message', 'novalidate': 'novalidate'}}) }}
 {%- endblock form_start -%}
     {%- block form_errors -%}
         {{ form_errors(form) }}

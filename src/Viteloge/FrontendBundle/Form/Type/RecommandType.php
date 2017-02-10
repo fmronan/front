@@ -7,6 +7,7 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Symfony\Component\Form\FormEvent;
     use Symfony\Component\Form\FormEvents;
     use Symfony\Component\OptionsResolver\OptionsResolver;
+    use Viteloge\CoreBundle\Entity\Recommand;
     use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue;
     use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
     use Viteloge\CoreBundle\Component\Enum\SubjectEnum;
@@ -66,8 +67,10 @@ namespace Viteloge\FrontendBundle\Form\Type {
 
         public function configureOptions(OptionsResolver $resolver){
             $resolver->setDefaults(array(
-                'data_class' => 'Viteloge\CoreBundle\Entity\Recommand',
-                'csrf_token_id' => 'task_form',
+                'data_class' => Recommand::class,
+                'csrf_protection' => true,
+                'csrf_field_name' => '_token',
+                'csrf_token_id'   => 'task_item'
             ));
         }
 
