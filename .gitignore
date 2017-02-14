@@ -99,3 +99,4 @@ local.properties
 .vagrant/
 /test
 /tests
+/tmp
