@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-sm-3">
                             {{ form_row( form.type_voie, {
-                                translation_domain : 'enums',
+                                translation_domain : 'messages',
                                 'label_attr': {
                                     'class': 'sr-only'
                                 },
@@ -307,13 +307,13 @@
         {%- block form_situation -%}
             {%- embed 'VitelogeFrontendBundle:Global:panel.html.twig' with { id: 'estimate-situation', parent: 'estimate-form', show: false, footer: true } -%}
                 {%- block panel_title -%}
-                    {% trans %}Situation du logement{% endtrans %}
+                    {% trans %}estimation.label.usage{% endtrans %}
                 {%- endblock panel_title -%}
                 {%- block panel_body -%}
                     <div class="row">
                         <div class="col-md-12">
                             {{ form_row( form.etat, {
-                                widget_translation_domain: 'enums',
+                                widget_translation_domain: 'messages',
                                 'attr': {
                                     'class': 'select-tag-input',
                                     'placeholder': 'estimate.label.condition',
@@ -326,7 +326,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             {{ form_row( form.usage, {
-                                widget_translation_domain: 'enums',
+                                widget_translation_domain: 'messages',
                                 'attr': {
                                     'class': 'select-tag-input',
                                     'placeholder': 'estimation.label.usage',

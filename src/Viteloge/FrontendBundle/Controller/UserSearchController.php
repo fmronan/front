@@ -19,6 +19,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Entity\WebSearch;
     use Viteloge\CoreBundle\Entity\UserSearch;
+    use Symfony\Component\Form\Extension\Core\Type\SubmitType;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
 
     /**
@@ -39,7 +40,7 @@ namespace Viteloge\FrontendBundle\Controller {
             return $this->createFormBuilder()
                 ->setAction($this->generateUrl($action, array('id' => $id)))
                 ->setMethod($method)
-                ->add('submit', 'submit', array('label' => 'usersearch.delete'))
+                ->add('submit', SubmitType::class, array('label' => 'usersearch.delete'))
                 ->getForm()
             ;
         }

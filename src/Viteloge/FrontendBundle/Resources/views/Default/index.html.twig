@@ -31,7 +31,7 @@
 
         {%- block header_navbarmenu -%}
             {%- block header_navigation -%}
-                {{- block_flash | raw -}}
+               {{-  block_flash | raw -}}
                 <div id="search-container" class="forward text-center">
                    <h1 alt="Vitelogé: le moteur de recherche de l'immobilier"><a class="navbar-branded brand clearfix logo_home" href="{{ path('viteloge_frontend_homepage') }}" itemscope itemtype="http://schema.org/Brand">
                         <img src="{{ aws_s3_domain('bundles/vitelogecore/images/fr/logo-viteloge-moteur-recherche-immobilier.svg') }}"  alt="{% trans %}viteloge.brand{% endtrans %}" title="{% trans %}viteloge.brand{% endtrans %} - {% trans %}viteloge.slogan{% endtrans %}" itemprop="logo" data-role="logo"></h1>

@@ -1086,6 +1086,46 @@
         <source>contact.firstname</source>
         <target>Votre prénom</target>
       </trans-unit>
+      <trans-unit id="Firstname" resname="Firstname">
+        <source>Firstname</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="Lastname" resname="Lastname">
+        <source>Lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="Company" resname="Company">
+        <source>Company</source>
+        <target>Société</target>
+      </trans-unit>
+      <trans-unit id="Phone" resname="Phone">
+        <source>Phone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="Email" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="Message" resname="Message">
+        <source>Message</source>
+        <target>Message</target>
+      </trans-unit>
+      <trans-unit id="Subject" resname="Subject">
+        <source>Subject</source>
+        <target>Objet</target>
+      </trans-unit>
+      <trans-unit id="Address" resname="Address">
+        <source>Address</source>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="Postal code" resname="Postal code">
+        <source>Postal code</source>
+        <target>Code postal</target>
+      </trans-unit>
+      <trans-unit id="City" resname="City">
+        <source>City</source>
+        <target>Ville</target>
+      </trans-unit>
       <trans-unit id="contact.lastname" resname="contact.lastname">
         <source>contact.lastname</source>
         <target>Votre nom</target>
@@ -1505,6 +1545,22 @@
       <trans-unit id="viteloge.frontend.no.ad" resname="viteloge.frontend.no.ad">
         <source>viteloge.frontend.no.ad</source>
         <target>Ce bien n'est plus référencé</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.websearch.remove.title" resname="viteloge.frontend.websearch.remove.title">
+        <source>viteloge.frontend.websearch.remove.title</source>
+        <target>Supprimer une alerte</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.websearch.remove.description" resname="viteloge.frontend.websearch.remove.description">
+        <source>viteloge.frontend.websearch.remove.description</source>
+        <target>Vitelogé, le moteur de recherche de l'immobilier, Supprimer une alerte</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.static.register.perso" resname="viteloge.frontend.static.register.perso">
+        <source>viteloge.frontend.static.register.perso</source>
+        <target>Immobilier entre particuliers</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.static.register.pro" resname="viteloge.frontend.static.register.pro">
+        <source>viteloge.frontend.static.register.pro</source>
+        <target>Professionnels de l’immobilier</target>
       </trans-unit>
     </body>
   </file>

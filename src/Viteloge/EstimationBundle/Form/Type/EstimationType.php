@@ -257,7 +257,7 @@ class EstimationType extends MyTypeWithBoolean {
                 )
             )*/
             ->add('proprietaire', ChoiceType::class, array(
-                    'label' => 'estimation.label.proprietaire',
+                    'label' => 'estimation.label.proprio',
                     'choices' => $applicantEnum->choices(),
                     'expanded' => false,
                     'multiple' => true,

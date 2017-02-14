@@ -28,6 +28,7 @@ estimation:
     usage: "Situation du logement"
     delai: "Vous souhaitez"
 
+
     nom: "Nom"
     prenom: "Prénom"
     mail: "Adresse e-mail"
@@ -88,8 +89,14 @@ estimation:
     pris: "Merci de votre confiance. Nous allons transmettre vos coordonnées à un professionnel de l'immobilier afin que celui-ci vous aide à estimer votre bien."
 
 
+Suivant: "Suivant"
+Précédent: "Précédent"
 Caractéristiques: "Caractéristiques du logement"
 Coordonnées: "Vos coordonnées détaillées"
+Localisation: "Localisation"
+Codepostal: "Code postal"
+Numero: "Numéro"
+Voie: "Voie"
 
 votre_bien: "Votre bien immobilier"
 votre_profil: "Votre profil"

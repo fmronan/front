@@ -428,6 +428,102 @@
         <source>usersearch.mailenabled</source>
         <target>Yes, I want to receive by email the last ads corresponding to my search</target>
       </trans-unit>
+      <trans-unit id="viteloge.frontend.websearch.remove.title" resname="viteloge.frontend.websearch.remove.title">
+        <source>viteloge.frontend.websearch.remove.title</source>
+        <target>Remove an alert</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.websearch.remove.description" resname="viteloge.frontend.websearch.remove.description">
+        <source>viteloge.frontend.websearch.remove.description</source>
+        <target>Vitelogé, Remove an alert</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.static.register.perso" resname="viteloge.frontend.static.register.perso">
+        <source>viteloge.frontend.static.register.perso</source>
+        <target>Real estate</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.static.register.pro" resname="viteloge.frontend.static.register.pro">
+        <source>viteloge.frontend.static.register.pro</source>
+        <target>Real estate professionals</target>
+      </trans-unit>
+      <trans-unit id="contact.firstname" resname="contact.firstname">
+        <source>contact.firstname</source>
+        <target>First name</target>
+      </trans-unit>
+      <trans-unit id="contact.lastname" resname="contact.lastname">
+        <source>contact.lastname</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="contact.company" resname="contact.company">
+        <source>contact.company</source>
+        <target>Society</target>
+      </trans-unit>
+      <trans-unit id="contact.email" resname="contact.email">
+        <source>contact.email</source>
+        <target>E_mail adress</target>
+      </trans-unit>
+      <trans-unit id="contact.phone" resname="contact.phone">
+        <source>contact.phone</source>
+        <target>Phone number</target>
+      </trans-unit>
+      <trans-unit id="contact.message" resname="contact.message">
+        <source>contact.message</source>
+        <target>Your message</target>
+      </trans-unit>
+      <trans-unit id="contact.subject" resname="contact.subject">
+        <source>contact.subject</source>
+        <target>Subject</target>
+      </trans-unit>
+      <trans-unit id="contact.address" resname="contact.address">
+        <source>contact.address</source>
+        <target>Your adress</target>
+      </trans-unit>
+      <trans-unit id="contact.postalcode" resname="contact.postalcode">
+        <source>contact.postalcode</source>
+        <target>Postal code</target>
+      </trans-unit>
+      <trans-unit id="contact.city" resname="contact.city">
+        <source>contact.city</source>
+        <target>Your city</target>
+      </trans-unit>
+      <trans-unit id="Firstname" resname="Firstname">
+        <source>Firstname</source>
+        <target>First Name</target>
+      </trans-unit>
+      <trans-unit id="Lastname" resname="Lastname">
+        <source>Lastname</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="Company" resname="Company">
+        <source>Company</source>
+        <target>Company</target>
+      </trans-unit>
+      <trans-unit id="Phone" resname="Phone">
+        <source>Phone</source>
+        <target>Phone number</target>
+      </trans-unit>
+      <trans-unit id="Email" resname="Email">
+        <source>Email</source>
+        <target>E-mail</target>
+      </trans-unit>
+      <trans-unit id="Message" resname="Message">
+        <source>Message</source>
+        <target>Message</target>
+      </trans-unit>
+      <trans-unit id="Subject" resname="Subject">
+        <source>Subject</source>
+        <target>Subject</target>
+      </trans-unit>
+      <trans-unit id="Address" resname="Address">
+        <source>Address</source>
+        <target>Address</target>
+      </trans-unit>
+      <trans-unit id="Postal code" resname="Postal code">
+        <source>Postal code</source>
+        <target>Postal code</target>
+      </trans-unit>
+      <trans-unit id="City" resname="City">
+        <source>City</source>
+        <target>City</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

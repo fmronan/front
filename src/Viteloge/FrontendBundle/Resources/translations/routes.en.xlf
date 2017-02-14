@@ -146,6 +146,18 @@
         <source>viteloge_frontend_ad_suggestnew</source>
         <target>/ad/suggest/new/</target>
       </trans-unit>
+      <trans-unit id="viteloge_frontend_glossary" resname="viteloge_frontend_glossary">
+        <source>viteloge_frontend_glossary</source>
+        <target>/properties/</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_glossary_legacy" resname="viteloge_frontend_glossary_legacy">
+        <source>viteloge_frontend_glossary_legacy</source>
+        <target>/properties/{slug}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_glossary_showarea" resname="viteloge_frontend_glossary_showarea">
+        <source>viteloge_frontend_glossary_showarea</source>
+        <target>/properties/areas/{name}/{id}</target>
+      </trans-unit>
       <trans-unit id="viteloge_frontend_glossary_areas" resname="viteloge_frontend_glossary_areas">
         <source>viteloge_frontend_glossary_areas</source>
         <target>/glossary/areas/{id}/</target>
@@ -182,7 +194,7 @@
         <source>viteloge_frontend_homepage</source>
         <target>/</target>
       </trans-unit>
-      <trans-unit id="viteloge_frontend_querystats_latest_limited" resname="viteloge_frontend_querystats_latest_limitedd">
+      <trans-unit id="viteloge_frontend_querystats_latest_limited" resname="viteloge_frontend_querystats_latest_limited">
         <source>viteloge_frontend_querystats_latest_limited</source>
         <target>/query/latest/{limit}</target>
       </trans-unit>
@@ -293,6 +305,90 @@
       <trans-unit id="viteloge_frontend_agency_call" resname="viteloge_frontend_agency_call">
         <source>viteloge_frontend_agency_call</source>
         <target>/announcement/phone/call/{id}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_ad_searchfromwebsearch" resname="viteloge_frontend_ad_searchfromwebsearch">
+        <source>viteloge_frontend_ad_searchfromwebsearch</source>
+        <target>/ad/search/from/web-search/{id}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_ad_searchfromquerystats" resname="viteloge_frontend_ad_searchfromquerystats">
+        <source>viteloge_frontend_ad_searchfromquerystats</source>
+        <target>/add/search/from/search-keywords/{id}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_ad_carousel_limited" resname="viteloge_frontend_ad_carousel_limited">
+        <source>viteloge_frontend_ad_carousel_limited</source>
+        <target>/add/carousel/{limited}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_suggest_cities" resname="viteloge_frontend_suggest_cities">
+        <source>viteloge_frontend_suggest_cities</source>
+        <target>/suggest/cities/{_format}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_suggest_near" resname="viteloge_frontend_suggest_near">
+        <source>viteloge_frontend_suggest_near</source>
+        <target>/suggest/near/{name}/{id}/{radius}/{limit}/{_format}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_sitemap_index" resname="viteloge_frontend_sitemap_index">
+        <source>viteloge_frontend_sitemap_index</source>
+        <target>/sitemap</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_sitemap_index_format" resname="viteloge_frontend_sitemap_index_format">
+        <source>viteloge_frontend_sitemap_index_format</source>
+        <target>/sitemap.{_format}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_sitemap_state" resname="viteloge_frontend_sitemap_state">
+        <source>viteloge_frontend_sitemap_state</source>
+        <target>/sitemap/state/{id}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_sitemap_state_format" resname="viteloge_frontend_sitemap_state_format">
+        <source>viteloge_frontend_sitemap_state_format</source>
+        <target>/sitemap/state/{id}.{_format}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_sitemap_department" resname="viteloge_frontend_sitemap_department">
+        <source>viteloge_frontend_sitemap_department</source>
+        <target>/sitemap/department/{id}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_sitemap_department_format" resname="viteloge_frontend_sitemap_department_format">
+        <source>viteloge_frontend_sitemap_department_format</source>
+        <target>/sitemap/department/{id}.{_format}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_websearch_latest" resname="viteloge_frontend_websearch_latest">
+        <source>viteloge_frontend_websearch_latest</source>
+        <target>/user/alert/latest</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_websearch_latest_limited" resname="viteloge_frontend_websearch_latest_limited">
+        <source>viteloge_frontend_websearch_latest_limited</source>
+        <target>/user/alert/latest/{limit}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_websearch_new" resname="viteloge_frontend_websearch_new">
+        <source>viteloge_frontend_websearch_new</source>
+        <target>/user/alert/adding/</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_usersearch_city" resname="viteloge_frontend_usersearch_city">
+        <source>viteloge_frontend_usersearch_city</source>
+        <target>/user/search/town/{name}/{id}/{page}/{limit}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_usersearch_ad" resname="viteloge_frontend_usersearch_ad">
+        <source>viteloge_frontend_usersearch_ad</source>
+        <target>/user/search/add/{id}/{page}/{limit}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_querystats_city" resname="viteloge_frontend_querystats_city">
+        <source>viteloge_frontend_querystats_city</source>
+        <target>/search/town/{name}/{id}/{page}/{limit}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_querystats_legacy" resname="viteloge_frontend_querystats_legacy">
+        <source>viteloge_frontend_querystats_legacy</source>
+        <target>/search/legacy/{slug}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_querystats_ad" resname="viteloge_frontend_querystats_ad">
+        <source>viteloge_frontend_querystats_ad</source>
+        <target>/search/add/{slug}/{page}/{limit}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_user_disablemail" resname="viteloge_frontend_user_disablemail">
+        <source>viteloge_frontend_user_disablemail</source>
+        <target>/user/disabledmail/{token}/{info}</target>
+      </trans-unit>
+      <trans-unit id="viteloge_frontend_user_disablepartnercontact" resname="viteloge_frontend_user_disablepartnercontact">
+        <source>viteloge_frontend_user_disablemail</source>
+        <target>/user/disabledpartnercontact/{token}/{info}</target>
       </trans-unit>
     </body>
   </file>

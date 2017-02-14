@@ -24,6 +24,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\InseeBundle\Entity\InseeState;
     use Viteloge\CoreBundle\Entity\Ad;
     use Viteloge\CoreBundle\Entity\Agence;
+    use Viteloge\CoreBundle\Entity\Infos;
     use Viteloge\CoreBundle\Entity\QueryStats;
     use Viteloge\CoreBundle\Entity\Statistics;
     use Viteloge\CoreBundle\Entity\WebSearch;
@@ -201,7 +202,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $verifurl= $this->verifurl($ad->getUrl());
 
-            $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+          //  $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
             return $this->render('VitelogeFrontendBundle:Ad:redirect_new.html.twig',array(
                 'form' => $form->createView(),
                 'ad' => $ad,
@@ -210,7 +211,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 'right' => $right,
                 'clef' => $id[0],
                 'favorie' => $favorie,
-                'csrf_token' => $csrfToken,
+              //  'csrf_token' => $csrfToken,
                 'redirect' => $verifurl,
                 'total' => $total
             ), $response);

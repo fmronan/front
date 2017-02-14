@@ -323,13 +323,13 @@ namespace Viteloge\FrontendBundle\Controller {
             // --
               $session->set('totalResult',$pagination->getNbResults());
               $session->set('resultAd',$pagination->getCurrentPageResults());
-              $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+          //    $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
             return array(
                 'form' => $form->createView(),
                 'queryStats' => $queryStats,
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
-                'csrf_token' => $csrfToken,
+            //    'csrf_token' => $csrfToken,
             );
         }
 

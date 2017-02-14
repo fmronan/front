@@ -57,6 +57,7 @@ twig:
     form_themes: ['VitelogeFrontendBundle:Form:fields.html.twig']
     exception_controller:  viteloge_twig.controller.exception:showAction
     globals:
+        fos_csrf_provider: "@security.csrf.token_manager"
         domain: "%domain%"
         media_domain: "%media_domain%"
         ga_tracking: "%ga_tracking%"
@@ -69,6 +70,7 @@ twig:
         facebook_client_secret: "%facebook_client_secret%"
         facebook_app_version: "%facebook_app_version%"
         twitter_account: "%twitter_account%"
+        #fos_csrf_provider: "@security.csrf.token_manager"
 
 # Doctrine Configuration
 doctrine:

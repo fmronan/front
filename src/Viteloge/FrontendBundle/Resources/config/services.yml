@@ -1,5 +1,6 @@
 parameters:
     viteloge_twig.controller.exception.class: Viteloge\FrontendBundle\Controller\ExceptionController
+    viteloge_frontend.component.factory.token_manager.class: Viteloge\FrontendBundle\Component\Token\ManagerFactory
     viteloge_frontend.form.type.usersearch.class: Viteloge\FrontendBundle\Form\Type\UserSearchType
     viteloge_frontend.form.type.websearch.class: Viteloge\FrontendBundle\Form\Type\WebSearchType
     viteloge_frontend.component.helper.ad.class: Viteloge\FrontendBundle\Component\Helper\AdHelper
@@ -72,6 +73,20 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: form.type, alias: viteloge_core_adsearch }
+    viteloge_frontend.sitemaplistener:
+        class: "%viteloge_frontend.eventlistener.sitemap.class%"
+        arguments: ["@router", "@doctrine.orm.entity_manager", "@viteloge_frontend.ad_helper"]
+        tags:
+            - { name: "presta.sitemap.listener"}
+    viteloge_frontend.mail_token_manager:
+        class: MailTokenManager
+        factory: ["%viteloge_frontend.component.factory.token_manager.class%", getManager]
+        arguments: ["@security.token_storage", "%kernel.secret%"]
+    viteloge_frontend.old_token_manager:
+        class: OldTokenManager
+        factory: ["%viteloge_frontend.component.factory.token_manager.class%", getManager]
+        arguments: ["@security.token_storage", "%old_secret%"]
+
 
 
 

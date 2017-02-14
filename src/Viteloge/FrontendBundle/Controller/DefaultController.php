@@ -48,18 +48,18 @@ class DefaultController extends Controller
             $count = $repository->countByFiltered();
             $repository = $this->getDoctrine()
                 ->getRepository('VitelogeCoreBundle:Ad');
-            $newad = $repository->findNewAd();
+            $newad = $repository->findNewAdLimit();
 
          // Form
             $entity = new AdSearch();
             $form = $this->createForm(AdSearchType::class, $entity);
 
-            $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+         //   $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
             return array(
                 'count' => $count,
                 'newad'=> $newad,
                 'form' => $form->createView(),
-                'csrf_token' => $csrfToken,
+             //   'csrf_token' => $csrfToken,
             );
     }
 
@@ -73,10 +73,10 @@ class DefaultController extends Controller
            $adSearch->handleRequest($requestSearch);
           }
            $form = $this->createForm(AdSearchType::class, $adSearch);
-           $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+          // $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
            return $this->render('VitelogeFrontendBundle:Base:headerSearch.html.twig',array(
                 'form' => $form->createView(),
-                'csrf_token' => $csrfToken,
+               // 'csrf_token' => $csrfToken,
             ));
          }
 

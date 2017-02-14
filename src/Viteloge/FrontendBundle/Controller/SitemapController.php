@@ -221,8 +221,8 @@ namespace Viteloge\FrontendBundle\Controller {
         public function build() {
             $translated = $this->get('translator');
 
-            //$collection = $this->get('router')->getOriginalRouteCollection();
-            $collection = $this->get('router')->getRouteCollection();
+            $collection = $this->get('router')->getOriginalRouteCollection();
+          //  $collection = $this->get('router')->getRouteCollection();
             foreach ($collection->all() as $name => $route) {
                 $option = $route->getOption('vl_sitemap');
                 if (is_array($option)) {

@@ -14,10 +14,13 @@ module.exports = function(grunt) {
                 src: ['.tmp']
             },
             cache: {
-                src: ['app/cache/*', '!app/cache/.gitkeep']
+                src: ['var/cache/*', '!var/cache/.gitkeep']
             },
             logs: {
-                src: ['app/logs/*', '!app/logs/.gitkeep']
+                src: ['var/logs/*', '!var/logs/.gitkeep']
+            },
+            sessions: {
+                src: ['var/sessions/*', '!var/sessions/.gitkeep']
             },
             built: {
                 src: ['<%= cmp.extra["symfony-web-dir"] %>/built']
@@ -178,31 +181,31 @@ module.exports = function(grunt) {
                 options: {
                     stdout: true
                 },
-                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --gzip --env=<%= cfg.environment %>'
+                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --env=<%= cfg.environment %>'
             },
             sitemapDumpDefault: {
                 options: {
                     stdout: true
                 },
-                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --gzip --section=default --env=<%= cfg.environment %>'
+                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --section=default --env=<%= cfg.environment %>'
             },
             sitemapDumpCities: {
                 options: {
                     stdout: true
                 },
-                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --gzip --section=cities --env=<%= cfg.environment %>'
+                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --section=cities --env=<%= cfg.environment %>'
             },
             sitemapDumpAds: {
                 options: {
                     stdout: true
                 },
-                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --gzip --section=ads --env=<%= cfg.environment %>'
+                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --section=ads --env=<%= cfg.environment %>'
             },
             sitemapDumpQueries: {
                 options: {
                     stdout: true
                 },
-                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --gzip --section=queries --env=<%= cfg.environment %>'
+                command: 'php -d memory_limit=4000M bin/console presta:sitemap:dump --section=queries --env=<%= cfg.environment %>'
             },
             copyZeroclipboard: {
                 options: {
@@ -796,6 +799,7 @@ module.exports = function(grunt) {
         'uglify',
         'shell:copyZeroclipboard',
         'compress',
+        'aws',
         'rightsApplication',
         'disconnectDeploymentUser',
         'shell:startService',
@@ -803,8 +807,7 @@ module.exports = function(grunt) {
         'shell:sitemapDump',
         'shell:sitemapDumpCities',
         'shell:sitemapDumpAds',
-        'shell:sitemapDumpQueries',
-        'gruntForceTaskRestore',
-        'rightsApplication'
+        'shell:sitemapDumpQueries'
+
     ]);
 };

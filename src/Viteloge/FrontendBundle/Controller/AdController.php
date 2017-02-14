@@ -344,7 +344,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $session->set('totalResult',$pagination->getNbResults());
             $session->remove('totalResultVente');
             $session->set('resultAd',$pagination->getCurrentPageResults());
-            $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+          //  $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
 
             if(!empty($pagination->getCurrentPageResults())){
             $em = $this->getDoctrine()->getManager();
@@ -354,7 +354,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
-                'csrf_token' => $csrfToken,
+              //  'csrf_token' => $csrfToken,
             );
         }
 
@@ -778,7 +778,7 @@ namespace Viteloge\FrontendBundle\Controller {
             ;
             // --
 
-            $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+          //  $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
             // Save session
             $session = $request->getSession();
             $session->set('totalResult',$pagination->getNbResults());
@@ -789,7 +789,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
-                'csrf_token' => $csrfToken,
+             //   'csrf_token' => $csrfToken,
 
             );
         }

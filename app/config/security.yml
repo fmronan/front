@@ -27,7 +27,7 @@ security:
                 use_referer: true
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-                csrf_token_id: form_item
+                #csrf_token_id: form_item
             logout:
                 invalidate_session: true
                 delete_cookies: ~

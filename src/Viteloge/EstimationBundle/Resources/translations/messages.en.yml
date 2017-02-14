@@ -1,0 +1,125 @@
+
+estimation:
+  label:
+    numero: "Number"
+    type_voie: "Type of street"
+    voie: "Street name"
+    codepostal: "Postal code"
+    ville: "City"
+    type: "Type of property"
+    nb_pieces: "Rooms number"
+    nb_sdb: "Bathrooms number"
+    surface_habitable: "Living area"
+    surface_terrain: "Ground  area"
+    exposition: "Main exhibition"
+    etage: "Floor"
+    nb_etages: "on"
+    nb_niveaux: "Levels number"
+    annee_construction: "Year of construction"
+    ascenseur: "Elevator"
+    balcon: "Balcony"
+    terrasse: "Terrace"
+    parking: "Parking space"
+    garage: "Parking places"
+    vue: "Exceptional view"
+    vue_detail: "Détail of the exceptionnal view"
+    proprio: "You are"
+    etat: "Condition"
+    usage: "Housing situation"
+    delai: "You wish"
+
+
+    nom: "Name"
+    prenom: "First name"
+    mail: "E-mail Adress"
+    tel: "Phone number"
+    demande_agence: "Want to improve this estimate by a professional (free)"
+
+    save: "Estimate my property"
+    contact_save: "Validate"
+
+  type:
+    M: "House"
+    A: "Apartment"
+  exposition:
+    N: "North"
+    O: "West"
+    S: "South"
+    E: "East"
+  etat:
+    N: "New"
+    B: 'Good'
+    T: "Work needed"
+    R: "To be redone"
+  usage:
+    H: "Inhabited"
+    L: "Rented"
+    V: "Empty"
+  type_proprio:
+    P: "Owner"
+    L: "Tenant"
+    A: "Purchaser"
+    I: "Real estatte agent"
+  delai:
+    _0: "Sell this property as quickly as possible"
+    _1: "Put this property for sale in 1 month"
+    _2: "Put this property for sale in 2 months"
+    _6: "Put this property for sale in 6 months"
+    _pv: "I'm not a seller"
+
+  value:
+    proprio: "Select your status"
+  bool:
+    oui: "Yes"
+    non: "No"
+
+  result:
+    title: "Our estimate of your property"
+    range: "Between <b>low</b> and <b>high</b> €"
+    demande_call: "Have your accommodation evaluated by a professional partner of Vitelogé"
+    failed: "We do not have sufficient data to carry out the estimation of your property."
+
+  form_page:
+    title: "Real estate estimate"
+    bold_call: "This evaluatedation is based on 12 million real estate ads"
+    call: "that Vitelogé has indexed since 2006"
+  home: "Real estate estimate"
+  contact:
+    title: "Your contact details for your estimate"
+    pris: "Thanks for your confidence.We will send details to a real estate professional so that this one helps you to estimate your property."
+
+
+Suivant: "Back"
+Précédent: "Preview"
+Caractéristiques: "Characteristics of the accomodation"
+Coordonnées: "Your details"
+Localisation: "Location"
+Codepostal: "Postal code"
+Numero: "Number"
+Voie: "Way"
+
+votre_bien: "Your property"
+votre_profil: "Your profil"
+
+required_field: "Required fields"
+
+city_eval:
+  main_title: "Property price %charniere%%name% (%cp%)"
+  title: "Property price %charniere%%name% (%cp%) by ViteLogé"
+  map:
+    title: Price of m² %charniere%%name% (%cp%)
+    price_info: "Average price of m² at %formatted_date%"
+  description:
+    intro: Find each month the average price per m² for appartements and houses %charniere%%name%.
+    houses_and_flats: It is currently %flats_price% Euros by m² for appartments %charniere%%name% and %houses_price% Euros for houses.
+    houses: It is currently %houses_price% Euros by m² for houses %charniere%%name%.
+    flats: It is currently %flats_price% Euros by m² for appartments %charniere%%name%.
+    source: This calculation is based on %count% properties currently on sale in %name% and referenced on Vitelogé
+  form:
+    title: Would you like to know the value of your property ?
+  graph:
+    title: "Price evolution of m² %charniere%%name% (%cp%)"
+    nodata: "Unfortunately, we do not have enough data to give your a indication of the evolution of the m² %charniere%%name% at this moment."
+  links:
+    title: "Price per square meter of cities near %name% (%cp%)"
+    txt: "Property price %charniere%%name%"

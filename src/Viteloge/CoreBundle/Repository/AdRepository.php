@@ -69,6 +69,18 @@ namespace Viteloge\CoreBundle\Repository {
         /**
          *
          */
+        public function findNewAdLimit() {
+            $query = $this->createQueryBuilder('a')
+                     ->select('count(a.id)')
+                     ->where('a.createdAt = a.updatedAt')
+                     ->andWhere('a.createdAt >= :fin' )
+                     ->setParameter('fin', new \DateTime('-2 days'));
+           return $query->getQuery()->getSingleScalarResult();
+        }
+
+        /**
+         *
+         */
         public function findByExportable() {
             $qb = $this->_em->createQueryBuilder();
             $qb
