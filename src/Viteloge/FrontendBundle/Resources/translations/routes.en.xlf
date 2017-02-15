@@ -390,6 +390,10 @@
         <source>viteloge_frontend_user_disablemail</source>
         <target>/user/disabledpartnercontact/{token}/{info}</target>
       </trans-unit>
+      <trans-unit id="viteloge_frontend_message_ajax" resname="viteloge_frontend_message_ajax">
+        <source>viteloge_frontend_message_ajax</source>
+        <target>/ajax/new/{ad}</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

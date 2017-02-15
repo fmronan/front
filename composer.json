@@ -26,7 +26,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "sonata-project/seo-bundle": "^2.0",
         "friendsofsymfony/elastica-bundle": "^3.2",
-        "friendsofsymfony/user-bundle": "dev-master",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
         "hwi/oauth-bundle": "0.5@dev",
         "stof/doctrine-extensions-bundle": "^1.2",
         "willdurand/js-translation-bundle": "^2.6",

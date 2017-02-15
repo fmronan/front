@@ -26,6 +26,7 @@ _def_assets.scss
 !var/sessions/.gitkeep
 
 # Parameters
+/app/config/config.yml
 /app/config/parameters.yml
 /app/config/parameters.ini
 

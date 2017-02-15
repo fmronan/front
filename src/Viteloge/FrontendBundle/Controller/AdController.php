@@ -250,8 +250,6 @@ namespace Viteloge\FrontendBundle\Controller {
                 $breadcrumbs->addItem($breadcrumbTitle);
             }
             // --
-
-
             // QueryStats SEO optimisation
             if (!empty($qsId)) {
                 $qsRepository = $this->getDoctrine()->getRepository('VitelogeCoreBundle:QueryStats');
@@ -260,23 +258,6 @@ namespace Viteloge\FrontendBundle\Controller {
                 $description .= $breadcrumbTitle;
                 $breadcrumbs->addItem($breadcrumbTitle);
             }
-            // --
-       /*     $description = 'Toutes les annonces immobilières de ';
-            $description .=(!empty($transaction)) ? strtolower($translated->trans('ad.transaction.'.strtoupper($transaction))).' ' : strtolower($translated->trans('ad.research')).': ';
-            if(isset($breadcrumbTitleSuffix)){
-               $description .= $breadcrumbTitleSuffix;
-            }
-            $description .= '.Retrouvez ';
-            var_dump($what);
-            die();
-
-
-            $description .= (!empty($transaction)) ? strtolower($translated->trans('ad.transaction.'.strtoupper($transaction))).' ' : strtolower($translated->trans('ad.research')).': ';
-            if(isset($breadcrumbTitleSuffix)){
-               $description .= $breadcrumbTitleSuffix;
-            }
-           var_dump($description);*/
-
             // elastica
             $elasticaManager = $this->container->get('fos_elastica.manager');
             $repository = $elasticaManager->getRepository('VitelogeCoreBundle:Ad');
@@ -307,6 +288,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 ->addMeta('property', 'og:description', $breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.description'))
                 ->setLinkCanonical($canonicalLink)
             ;
+
             if($pagination->hasNextPage() || $pagination->hasPreviousPage()){
               $url = $this->generateUrl('viteloge_frontend_ad_search', array());
             }
@@ -408,7 +390,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Method({"POST"})
          * @Template("VitelogeFrontendBundle:Ad:search_from_form.html.twig")
          */
-        public function searchFromFormAction(Request $request) {
+        public function searchFromForm(Request $request) {
             $adSearch = new AdSearch();
             $form = $this->createForm(AdSearchType::class, $adSearch);
             $form->handleRequest($request);
@@ -522,7 +504,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * @ParamConverter("queryStats", class="VitelogeCoreBundle:QueryStats", options={"id" = "id"})
          * @Method({"GET"})
          */
-        public function searchFromQueryStats(Request $request, QueryStats $queryStats) {
+        public function searchFromQueryStatsAction(Request $request, QueryStats $queryStats) {
             $em = $this->getDoctrine()->getManager();
             $queryStats->setCount($queryStats->getCount()+1);
             $em->persist($queryStats);
@@ -667,9 +649,6 @@ namespace Viteloge\FrontendBundle\Controller {
             }else{
               $session->set('totalResult',count($ads));
              }
-
-
-
             return array(
                 'transaction' => $adSearch->getTransaction(),
                 'cityName' => $request->query->get('cityName'),
@@ -943,7 +922,7 @@ namespace Viteloge\FrontendBundle\Controller {
         }
 
         /**
-         * view the favourite list.
+         * remove the favourite list.
          *
          *
          * @Route(

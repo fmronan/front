@@ -95,7 +95,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
             if($request->query->get('transaction') == 'V' && !is_null($veriftotal)){
               $total = $session->get('totalResultVente');
-
             }else{
               $total = $session->get('totalResult');
               $a = ($session->get('currentPage')-1) * 25;
@@ -105,7 +104,6 @@ namespace Viteloge\FrontendBundle\Controller {
               }else{
                 $total = $b;
               }
-
             }
 
             $search = $session->get('request');
@@ -149,16 +147,12 @@ namespace Viteloge\FrontendBundle\Controller {
                 true
             );
 
-
             $seoPage = $this->container->get('sonata.seo.page');
             $helper = $this->container->get('viteloge_frontend.ad_helper');
-
             $title = $helper->titlify($ad,true);
-
             $filters = $this->get('twig')->getFilters();
             $callable = $filters['truncate']->getCallable();
             $description = strtolower($callable($this->get('twig'), $ad->getDescription(), self::DESCRIPTION_LENGHT));
-
             $seoPage
                 ->setTitle($title)
                 ->addMeta('name', 'description', $description)
@@ -187,7 +181,6 @@ namespace Viteloge\FrontendBundle\Controller {
                 $statistics->setIp($ip);
                 $statistics->setUa($ua);
                 $statistics->initFromAd($ad);
-
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($statistics);
                 $em->flush();
@@ -198,11 +191,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $left = $id[0]-1;
             $right = $id[0]+1;
-
-
-            $verifurl= $this->verifurl($ad->getUrl());
-
-          //  $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+            $verifurl= $this->verifurlAction($ad->getUrl());
             return $this->render('VitelogeFrontendBundle:Ad:redirect_new.html.twig',array(
                 'form' => $form->createView(),
                 'ad' => $ad,
@@ -211,13 +200,12 @@ namespace Viteloge\FrontendBundle\Controller {
                 'right' => $right,
                 'clef' => $id[0],
                 'favorie' => $favorie,
-              //  'csrf_token' => $csrfToken,
                 'redirect' => $verifurl,
                 'total' => $total
             ), $response);
         }
 
-        private function verifUrl($url){
+        private function verifUrlAction($url){
             $error=false;
             $urlhere = $url;
             $ch = curl_init();
@@ -284,32 +272,15 @@ namespace Viteloge\FrontendBundle\Controller {
             //on cherche le numero de l'agence avec son $id
             $em = $this->getDoctrine()->getManager();
             $agence = $em->getRepository('VitelogeCoreBundle:Agence')->find($ad->getAgencyId());
-
-
-
-
             if(!empty($agence)) $tel = $agence->getTel();
             $num ='Pas de Numéro';
-            $forbiddenUA = array(
-                        'yakaz_bot' => 'YakazBot/1.0',
-                        'mitula_bot' => 'java/1.6.0_26'
-                    );
-                    $forbiddenIP = array(
-
-                    );
                     $ua = $request->headers->get('User-Agent');
                     $ip = $request->getClientIp();
-
-                    // log redirect
-                    if (!in_array($ua, $forbiddenUA) && !in_array($ip, $forbiddenIP)) {
                         $now = new \DateTime('now');
                         $contact = new Infos();
                         $contact->setIp($ip);
                         $contact->setUa($ua);
-
                         $contact->initFromAd($ad);
-
-
             if(isset($tel) && !empty($tel)){
               $contact->setGenre('dempandephone');
                 $tel = preg_replace("([^0-9]+)","",$tel);
@@ -326,22 +297,19 @@ namespace Viteloge\FrontendBundle\Controller {
                 //recupération du numéro et du code
                 if (preg_match("{<numero>(.*)</numero>.*<code>(.*)</code>}", $res, $regs))
                 {
-
                     $tel = ((strlen($regs[1]) == "10") ? wordwrap($regs[1], 2, '.', 1) : $regs[1]);
                     $array[] = $tel ;
                     $array[] = $regs[2] ;
                 }
                 $num = implode('¤',$array);
                 $num = rtrim($num,'¤');
-
             }else{
               $contact->setGenre('phoneempty');
             }
-
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($contact);
                 $em->flush();
-            }
+
             $cout = '1,34€/appel.0,34€/mn';
             $response = new JsonResponse();
             return $response->setData(array('phone' => $num, 'cout' => $cout, 'id' => $ad->getId()));

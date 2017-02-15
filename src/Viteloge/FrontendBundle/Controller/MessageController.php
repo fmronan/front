@@ -70,6 +70,38 @@ namespace Viteloge\FrontendBundle\Controller {
         }
 
         /**
+         * Displays a form to create a new Message entity.
+         *
+         *
+         * @Route(
+         *      "/ajax/new/{ad}",
+         *      requirements={
+         *          "ad"="\d+"
+         *      },
+         *      name="viteloge_frontend_message_ajax"
+         * )
+
+         * @Method("POST")
+         * @ParamConverter("ad", class="VitelogeCoreBundle:Ad", options={"ad" = "ad"})
+         * @Template("VitelogeFrontendBundle:Message:new.html.twig")
+         * @Route(options={"expose"=true})
+         */
+        public function newAjaxAction(Request $request, Ad $ad) {
+            if($request->isXmlHttpRequest()){
+            $message = new Message($ad);
+            $message->setUser($this->getUser());
+            $form   = $this->createCreateForm($message);
+
+            return array(
+                'message' => $message,
+                'form' => $form->createView(),
+            );
+            }else{
+             throw new \Exception("Erreur");
+            }
+        }
+
+        /**
          * Creates a new Message entity.
          *
          * @Route(
@@ -79,7 +111,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *      },
          *      name="viteloge_frontend_message_create"
          * )
-         * @Method({"GET", "POST"})
+         * @Method("POST")
          * @ParamConverter("ad", class="VitelogeCoreBundle:Ad", options={"ad" = "ad"})
          * @Template("VitelogeFrontendBundle:Message:new.html.twig")
          */
@@ -91,16 +123,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $form = $this->createCreateForm($message);
             $form->handleRequest($request);
             if ($form->isValid()) {
-                // TODO : use a doctrine listener instead!
-                //if user is not connect, verif with service
-           /*     if(is_null($this->getUser())){
-                  $user = $this->get('viteloge_frontend_generate.user')->generate($message);
-                  $message->setUser($user);
-                  if(!empty($user)){
-                    $inscription = $this->inscriptionMessage($user);
-                  }
-
-                }*/
                // afin de savoir si il faut envoyer un message pour inscription
                   $verifuser = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$message->getEmail()));
 

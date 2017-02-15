@@ -235,7 +235,7 @@ namespace Viteloge\CoreBundle\Entity {
          * @param \DateTime $date
          * @return Infos
          */
-        public function setDate($date) {
+        public function setDate(\DateTime $date) {
             try {
                 $this->date = clone $date;
                 $this->setYear((int)$date->format('Y'));

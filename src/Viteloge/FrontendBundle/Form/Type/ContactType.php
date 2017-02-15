@@ -14,22 +14,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
     class ContactType extends AbstractType {
-        const __default = null;
-
-        const NATIONAL_AD = 1;
-
-        const LOCAL_AD = 2;
-
-        const HIGHLIGHT_AD = 3;
-
-        const PARTNER = 4;
-
-        const BUG = 5;
-
-        const TECHNICAL_ASSIST = 6;
-
-        const MISC_QUESTION = 7;
-
         public function buildForm(FormBuilderInterface $builder, array $options) {
             $subjectEnum = new SubjectEnum();
             $builder

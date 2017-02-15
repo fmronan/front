@@ -3,10 +3,12 @@
 namespace Viteloge\FrontendBundle\Services {
 
     use Doctrine\ORM\EntityManager;
+    use Viteloge\CoreBundle\Entity\Ad;
     use Symfony\Component\DependencyInjection\ContainerInterface;
     use Symfony\Component\HttpFoundation\RequestStack;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\HttpFoundation\Cookie;
+
 
     class cookiesFactory {
 
@@ -22,7 +24,7 @@ namespace Viteloge\FrontendBundle\Services {
 
          }
 
-        public function searchFav($ad){
+        public function searchFav(Ad $ad){
             $cookies = $this->request->cookies;
             $favorie = false;
             if ($cookies->has('viteloge_favorie')){
@@ -31,7 +33,7 @@ namespace Viteloge\FrontendBundle\Services {
             }
         }
 
-        public function generateView($ad){
+        public function generateView(AD $ad){
              $time =time() + (3600 * 24 * 365);
              $cookies = $this->request->cookies;
                        if(!empty($ad->getPhoto())){

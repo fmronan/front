@@ -599,7 +599,7 @@ namespace Viteloge\CoreBundle\Entity {
         /**
          *
          */
-        protected function keywordify($text) {
+/*        protected function keywordify($text) {
             // MOTS CLES
             if(!empty($_GET["keywords"])) {
                 $keywords   = trim( preg_replace( array( "#/#", "/(\S)(\s+)(\S)/" ),array( "", "$1|$3" ), $_GET["keywords"] ) );
@@ -630,7 +630,7 @@ namespace Viteloge\CoreBundle\Entity {
             }
             return $new_descriptif;
         }
-
+*/
         /**
          * Set description
          *
