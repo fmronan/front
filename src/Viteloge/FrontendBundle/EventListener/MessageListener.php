@@ -27,7 +27,6 @@ namespace Viteloge\FrontendBundle\EventListener {
          */
         public function __construct(EntityManager $em) {
             $this->em = $em;
-           // $this->container = $container;
             $this->date = new \DateTime();
         }
 
@@ -42,7 +41,6 @@ namespace Viteloge\FrontendBundle\EventListener {
             if ($contact instanceof Message || $contact instanceof Contact) {
               $userManager = $this->container->get('fos_user.user_manager');
              // le findUserByEmail de fosuser ne fonctionne pas
-             //$finduser = $userManager->findUserByEmail($contact->getUser());
                $user = $this->em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$contact->getEmail()));
 
               if (null === $user) {
@@ -59,7 +57,6 @@ namespace Viteloge\FrontendBundle\EventListener {
 
                 //on met à false il sera activé au clic sur lien d'un mail
                 $user->setEnabled(false);
-                //$user->setLocked(false);
                 $tokenGenerator = $this->container->get('fos_user.util.token_generator');
                 $user->setConfirmationToken($tokenGenerator->generateToken());
                 //pour conserver

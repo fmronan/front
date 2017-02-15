@@ -36,12 +36,10 @@ namespace Viteloge\InseeBundle\Controller {
          * @Route(options={"expose"=true})
          */
         public function showAction(Request $request, $_format, InseeArea $inseeArea) {
-            //if ($request->isXmlHttpRequest()) {
+
                 $inseeArea->getInseeCity()->setInseeState(null); // we do not need insee city
                 $inseeArea->getInseeCity()->setInseeDepartment(null); // we do not need insee city
-                //$serializer = $this->get('jms_serializer');
-                //$inseeArea = $serializer->serialize($inseeArea, $_format);
-            //}
+
             return $this->render(
                 'VitelogeInseeBundle:Area:show.'.$_format.'.twig',
                 array(

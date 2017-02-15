@@ -68,17 +68,14 @@ namespace Viteloge\FrontendBundle\Twig {
             $transaction = $this->vlTransactionAlias(strtoupper($this->request->get('transaction')));
             switch ($transaction) {
                 case TransactionEnum::SALE:
-                   // $theme = 'sale';
                       $theme = 'default';
                     break;
 
                 case TransactionEnum::NEWER;
-                  //  $theme = 'new';
                       $theme = 'default';
                     break;
 
                 case TransactionEnum::RENT:
-                   // $theme = 'rent';
                       $theme = 'default';
                     break;
 
@@ -101,10 +98,6 @@ namespace Viteloge\FrontendBundle\Twig {
          *
          */
         public function awsS3MediaDomain($path, $compress=true) {
-           /* $mediaDomain = $this->container->getParameter('media_domain');
-            if(empty($mediaDomain)){
-                return '/'.$path;
-            }*/
             $protocol = 'http';
             $suffix = $compress ? '.gz' : '';
             return $protocol.'://'.$this->container->getParameter('media_domain').'/'.$path.$suffix;
@@ -211,7 +204,7 @@ namespace Viteloge\FrontendBundle\Twig {
         /**
          *
          */
-        public function getName() {
+        public function getBlockPrefix() {
             return 'viteloge_frontend_extension';
         }
 

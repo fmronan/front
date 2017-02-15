@@ -182,7 +182,7 @@ class InseeCity extends InseeEntity
      * @param integer $isCantonDivided
      * @return InseeCity
      */
-    public function setIsCantonDivided($isCantonDivided)
+    public function setCantonDivided($isCantonDivided)
     {
         $this->isCantonDivided = $isCantonDivided;
 
@@ -194,7 +194,7 @@ class InseeCity extends InseeEntity
      *
      * @return integer
      */
-    public function getIsCantonDivided()
+    public function getCantonDivided()
     {
         return $this->isCantonDivided;
     }
@@ -205,7 +205,7 @@ class InseeCity extends InseeEntity
      * @param integer $isCapital
      * @return InseeCity
      */
-    public function setIsCapital($isCapital)
+    public function setCapital($isCapital)
     {
         $this->isCapital = $isCapital;
 
@@ -217,7 +217,7 @@ class InseeCity extends InseeEntity
      *
      * @return integer
      */
-    public function getIsCapital()
+    public function getCapital()
     {
         return $this->isCapital;
     }
@@ -434,9 +434,6 @@ class InseeCity extends InseeEntity
      * @return string
      */
     public function getLocation() {
-        //$location = new \StdClass();
-        //$location->lat = $this->getLat();
-        //$location->lon = $this->getLon();
         $location = $this->getLat().','.$this->getLng();
         return $location;
     }

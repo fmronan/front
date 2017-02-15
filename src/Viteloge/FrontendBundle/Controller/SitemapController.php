@@ -135,7 +135,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $section = new Element();
             $section->setName($inseeState->getName());
-            //$section->setSection();
             $section->setDescription($translated->trans('sitemap.properties.for.name', array('%name%' => $inseeState->getFullName())));
             $section->setLoc(
                 $this->get('router')->generate(
@@ -193,7 +192,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $section = new Element();
             $section->setName($inseeDepartment->getName());
-            //$section->setSection();
             $section->setDescription($translated->trans('sitemap.properties.for.name', array('%name%' => $inseeDepartment->getFullName())));
             $section->setLoc(
                 $this->get('router')->generate(
@@ -222,7 +220,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $translated = $this->get('translator');
 
             $collection = $this->get('router')->getOriginalRouteCollection();
-          //  $collection = $this->get('router')->getRouteCollection();
             foreach ($collection->all() as $name => $route) {
                 $option = $route->getOption('vl_sitemap');
                 if (is_array($option)) {
@@ -246,7 +243,6 @@ namespace Viteloge\FrontendBundle\Controller {
          *
          */
         public function buildStatesAction() {
-            $translated = $this->get('translator');
 
             $repository = $this->getDoctrine()
                 ->getRepository('VitelogeInseeBundle:InseeState');
@@ -260,12 +256,11 @@ namespace Viteloge\FrontendBundle\Controller {
          *
          */
         public function buildDepartmentsAction() {
-            $translated = $this->get('translator');
 
             $repository = $this->getDoctrine()
                 ->getRepository('VitelogeInseeBundle:InseeDepartment');
             $departments = $repository->findBy(array(), array('name' => 'ASC'));
-            $this->appendDepartments();
+            $this->appendDepartmentsAction($departments);
 
             return $this->elements;
         }
@@ -361,31 +356,9 @@ namespace Viteloge\FrontendBundle\Controller {
                     )
                 );
 
-                // if city has child
-                /*$element->setChild(true);
-                $element->setChildrenLoc(
-                    $this->get('router')->generate(
-                        'viteloge_frontend_sitemap_city',
-                        array(
-                            'id' => $city->getId(),
-                            '_format' => 'html'
-                        ),
-                        true
-                    )
-                );*/
-                // endif
-
                 $this->elements->append($element);
             }
             return $this->elements;
-        }
-
-        /**
-         * note : unused at this moment
-         */
-        public function buildSection($section) {
-            $repository = $this->getDoctrine()
-                ->getRepository('VitelogeInseeBundle:InseeState');
         }
 
     }

@@ -135,7 +135,6 @@ namespace Viteloge\FrontendBundle\Controller {
             }
             $form = $this->createForm(AdSearchType::class, $adSearch);
 
-            $translated = $this->get('translator');
             // SEO
             $rewriteParam = $request->get('_route_params');
 
@@ -176,7 +175,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // log redirect
             if (!in_array($ua, $forbiddenUA) && !in_array($ip, $forbiddenIP)) {
-                $now = new \DateTime('now',new \DateTimeZone('Europe/Paris'));
                 $statistics = new Statistics();
                 $statistics->setIp($ip);
                 $statistics->setUa($ua);
@@ -276,7 +274,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $num ='Pas de Numéro';
                     $ua = $request->headers->get('User-Agent');
                     $ip = $request->getClientIp();
-                        $now = new \DateTime('now');
                         $contact = new Infos();
                         $contact->setIp($ip);
                         $contact->setUa($ua);
@@ -313,7 +310,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $cout = '1,34€/appel.0,34€/mn';
             $response = new JsonResponse();
             return $response->setData(array('phone' => $num, 'cout' => $cout, 'id' => $ad->getId()));
-            //return array('phone' => $num);
             }else{
              throw new \Exception("Erreur");
             }
@@ -349,7 +345,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
                     // log redirect
                     if (!in_array($ua, $forbiddenUA) && !in_array($ip, $forbiddenIP)) {
-                        $now = new \DateTime('now');
                         $contact = new Infos();
                         $contact->setIp($ip);
                         $contact->setUa($ua);

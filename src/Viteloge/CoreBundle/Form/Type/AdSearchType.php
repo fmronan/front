@@ -2,7 +2,6 @@
 
 namespace Viteloge\CoreBundle\Form\Type {
 
-    //use Symfony\Component\OptionsResolver\OptionsResolverInterface;
     use Symfony\Component\OptionsResolver\OptionsResolver;
     use Symfony\Component\Form\AbstractType;
     use Symfony\Component\Form\FormInterface;
@@ -134,11 +133,7 @@ namespace Viteloge\CoreBundle\Form\Type {
                         $cities = $em->getRepository('VitelogeInseeBundle:InseeCity')->findById($data['where']);
                         $formModifier(
                             $form,
-                            $cities/*array_flip(array_map(
-                                function($city){
-                                    return $city->getId();
-                                }, $cities
-                            ))*/
+                            $cities
                         );
                     }
                 }
@@ -146,11 +141,9 @@ namespace Viteloge\CoreBundle\Form\Type {
         }
           //voir ici pour protection csrf
         public function configureOptions(OptionsResolver $resolver) {
-           // parent::setDefaultOptions($resolver);
             $resolver->setDefaults(
                 array(
                     'csrf_protection' => false,
-                    //'csrf_protection' => true,
                     'data_class' => 'Viteloge\CoreBundle\SearchEntity\Ad',
                     'csrf_token_id' => 'task_form',
                 )

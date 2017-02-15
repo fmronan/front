@@ -12,13 +12,11 @@ namespace Viteloge\FrontendBundle\Services {
 
     class cookiesFactory {
 
-       private $em;
        private $requestStack;
        private $request;
 
-         public function __construct(RequestStack $requestStack,EntityManager $em){
+         public function __construct(RequestStack $requestStack){
 
-            $this->em = $em;
             $this->requestStack = $requestStack;
             $this->request = $this->requestStack->getCurrentRequest();
 
@@ -31,6 +29,7 @@ namespace Viteloge\FrontendBundle\Services {
               $info_cookies_favorie = explode('#$#', $cookies->get('viteloge_favorie')) ;
               $favorie = in_array($ad->getId(), $info_cookies_favorie);
             }
+            return $favorie;
         }
 
         public function generateView(AD $ad){

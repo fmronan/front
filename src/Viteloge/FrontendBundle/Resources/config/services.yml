@@ -52,7 +52,7 @@ services:
         tags: [{ name: pagerfanta.view, alias: pager_viteloge_translated }]
     viteloge_frontend_generate.cookies:
         class: "%viteloge_frontend.services.cookies%"
-        arguments: ["@request_stack","@doctrine.orm.entity_manager"]
+        arguments: ["@request_stack"]
     viteloge_frontend.websearchlistener:
         class: "%viteloge_frontend.eventlistener.websearch.class%"
         arguments: ["@fos_elastica.manager"]

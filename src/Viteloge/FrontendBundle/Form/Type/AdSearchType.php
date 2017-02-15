@@ -2,7 +2,6 @@
 
 namespace Viteloge\FrontendBundle\Form\Type {
 
-    //use Symfony\Component\OptionsResolver\OptionsResolverInterface;
     use Symfony\Component\OptionsResolver\OptionsResolver;
     use Symfony\Component\Form\AbstractType;
     use Symfony\Component\Form\FormInterface;
@@ -38,7 +37,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
             $transactionEnum = new TransactionEnum();
             $typeEnum = new TypeEnum();
             $roomEnum = new RoomEnum();
-            $distanceEnum = new DistanceEnum();
             $builder
                 ->add('transaction', ChoiceType::class, array(
                     'label' => 'ad.transaction',
@@ -68,10 +66,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
                     'multiple' => true,
                     'preferred_choices' => array(),
                 ))
-             /*   ->add('keywords', 'text', array(
-                    'label' => 'ad.keywords',
-                    'required' => false
-                ))*/
                 ->add('minPrice', MoneyType::class, array(
                     'label' => 'ad.price.min',
                     'required' => false,
@@ -82,12 +76,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
                     'required' => false,
                     'scale' => 0
                 ))
-             /*   ->add('radius', 'choice', array(
-                    'label' => 'ad.radius',
-                    'choices' => $distanceEnum->choices(),
-                    'required' => false,
-                    'empty_value' => false
-                ))*/
                 ->add('search', SubmitType::class)
             ;
 

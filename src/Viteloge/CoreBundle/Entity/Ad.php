@@ -597,41 +597,6 @@ namespace Viteloge\CoreBundle\Entity {
         }
 
         /**
-         *
-         */
-/*        protected function keywordify($text) {
-            // MOTS CLES
-            if(!empty($_GET["keywords"])) {
-                $keywords   = trim( preg_replace( array( "#/#", "/(\S)(\s+)(\S)/" ),array( "", "$1|$3" ), $_GET["keywords"] ) );
-                $keywords_array = explode("|", $keywords);
-                $kw_place = array();
-
-                // Rep?age des mots cl? en dehors de la coupe
-                foreach($keywords_array as $keyword)
-                {
-                    $pos = stripos($descriptif, $keyword);
-                    while($pos !== false)
-                    {
-                        if($pos > $new_strlen)
-                        {
-                            $kw_place[$pos] = substr($descriptif, $pos, strlen($keyword));
-                            break;
-                        }
-                        $pos = stripos($descriptif, $keyword, $pos+1);
-                    }
-                }
-
-                ksort ( $kw_place );
-                foreach( $kw_place as $keyword )
-                    $new_descriptif .= " ".$keyword." ...";
-
-                // Application du regex
-                $new_descriptif = preg_replace("/{".preg_quote($keywords)."}/i","<span class='keyword'>\\0</span>",$new_descriptif);
-            }
-            return $new_descriptif;
-        }
-*/
-        /**
          * Set description
          *
          * @param string $description
@@ -649,11 +614,6 @@ namespace Viteloge\CoreBundle\Entity {
          * @return string
          */
         public function getDescription() {
-            /*$test_utf8_regex = "^([\\x00-\\x7f]|[\\xc2-\\xdf][\\x80-\\xbf]|\\xe0[\\xa0-\\xbf][\\x80-\\xbf]|[\\xe1-\\xec][\\x80-\\xbf]{2}|\\xed[\\x80-\\x9f][\\x80-\\xbf]|\\xef[\\x80-\\xbf][\\x80-\\xbc]|\\xee[\\x80-\\xbf]{2}|\\xf0[\\x90-\\xbf][\\x80-\\xbf]{2}|[\\xf1-\\xf3][\\x80-\\xbf]{3}|\\xf4[\\x80-\\x8f][\\x80-\\xbf]{2})*$";
-            if(preg_match("/$test_utf8_regex/si", strtolower($this->description))) {
-                $this->description = utf8_decode($this->description);
-            }*/
-           // return trim(ucfirst(strtolower($this->description)));
              return trim($this->description);
         }
 
@@ -665,7 +625,6 @@ namespace Viteloge\CoreBundle\Entity {
         public function getAdvancedDescription() {
             $descriptionMku = $this->getDescriptionMku();
             return (!empty($descriptionMku)) ? $descriptionMku : $this->getDescription();
-         //   return  $this->getDescription();
         }
 
         /**

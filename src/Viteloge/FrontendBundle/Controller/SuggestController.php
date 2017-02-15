@@ -44,10 +44,6 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Template()
          */
         public function citiesAction( Request $request, $_format ) {
-            //if ($request->isXmlHttpRequest()) {
-                //$serializer = $this->get('jms_serializer');
-                //$inseeArea = $serializer->serialize($inseeArea, $_format);
-            //}
             $options = array(
                 'sort' => array(
                     'isCapital' => array( 'order' => 'desc' ),
@@ -68,8 +64,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $cities = $index->find($searchQuery, $options);
 
-            //$serializer = $this->get('jms_serializer');
-            //$cities = $serializer->serialize($result, $_format);
 
             return array(
                 'cities' => $cities
@@ -114,13 +108,6 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Template()
          */
         public function nearAction( Request $request, InseeCity $inseeCity, $radius, $limit, $_format ) {
-            $options = array(
-                'size' => $limit,
-                'sort' => array(
-                    'isCapital' => array( 'order' => 'desc' ),
-                    'population' => array( 'order' => 'desc' )
-                )
-            );
             $finder = $this->container->get('fos_elastica.finder.viteloge.inseeCity');
             $radiusDistanceQuery = new \Elastica\Filter\GeoDistance('location', $inseeCity->getLocation(), $radius.'km');
             $cities = $finder->find($radiusDistanceQuery, $limit);

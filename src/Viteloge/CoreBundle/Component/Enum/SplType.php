@@ -21,11 +21,10 @@ namespace Viteloge\CoreBundle\Component\Enum {
         /**
          * Creates a new value of some type
          * @param mixed $initial_value Type and default value depends on the extension class.
-         * @param bool $strict Whether to set the object's sctrictness.
          * @return void
          * @throws \UnexpectedValueException if incompatible type is given.
          */
-        public function __construct($initial_value=null, $strict=null) {
+        public function __construct($initial_value=null) {
             if ($initial_value === null) {
                 $initial_value = static::__default;
             }

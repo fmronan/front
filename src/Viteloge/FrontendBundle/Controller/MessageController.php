@@ -141,7 +141,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
                     // log redirect
                     if (!in_array($ua, $forbiddenUA) && !in_array($ip, $forbiddenIP)) {
-                        $now = new \DateTime('now');
                         $info = new Infos();
                         $info->setIp($ip);
                         $info->setUa($ua);
@@ -154,9 +153,9 @@ namespace Viteloge\FrontendBundle\Controller {
                         $em->flush();
                         $user = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$message->getEmail()));
                         if(empty($verifuser)){
-                        $inscription = $this->inscriptionMessage($user);
+                        $this->inscriptionMessage($user);
                     }
-                       $result = $this->sendMessage($message);
+                       $this->sendMessage($message);
                     return $this->redirect($this->generateUrl('viteloge_frontend_message_success', array()));
                 }
                 $form->addError(new FormError($trans->trans('message.send.error')));

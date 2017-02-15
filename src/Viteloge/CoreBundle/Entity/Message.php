@@ -320,7 +320,6 @@ namespace Viteloge\CoreBundle\Entity {
          *
          */
         public function setUser(CoreUser $user = null) {
-          //  $this->user = $user;
             if ($user instanceof CoreUser) {
                 $this->email = $user->getEmail();
                 $this->lastname = $user->getLastname();

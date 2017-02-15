@@ -236,16 +236,6 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Template("VitelogeFrontendBundle:Glossary:mostSearchedTownTransaction.html.twig")
          */
         public function mostSearchedTownTransactionAction(Request $request,InseeCity $inseeCity, $radius,$transaction,$type, $limit=5) {
-            $repository = $this->getDoctrine()
-                ->getRepository('VitelogeCoreBundle:UserSearch');
-         //   $glossary = $repository->findAllInseeCityTransactionOrderedByCount($transaction, $type, $limit);
-            $options = array(
-                'size' => $limit,
-                'sort' => array(
-                    'isCapital' => array( 'order' => 'desc' ),
-                    'population' => array( 'order' => 'desc' )
-                )
-            );
             $finder = $this->container->get('fos_elastica.finder.viteloge.inseeCity');
             $radiusDistanceQuery = new \Elastica\Filter\GeoDistance('location', $inseeCity->getLocation(), $radius.'km');
             $cities = $finder->find($radiusDistanceQuery, $limit);
@@ -287,12 +277,6 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Cache(expires="tomorrow", public=true)
          */
         public function showStateAction(Request $request, InseeState $inseeState) {
-            /*$repository = $this->getDoctrine()
-                ->getRepository('VitelogeInseeBundle:InseeCity');
-            $cities = $repository->findByInseeState($inseeState);
-            $ids = array_map(function($city) {
-                return $city->getId();
-            }, $cities);*/
 
             $queries = array_merge(
                 $request->query->all(),
@@ -334,12 +318,6 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Cache(expires="tomorrow", public=true)
          */
         public function showDepartmentAction(Request $request, InseeDepartment $inseeDepartment) {
-            /*$repository = $this->getDoctrine()
-                ->getRepository('VitelogeInseeBundle:InseeCity');
-            $cities = $repository->findByInseeDepartment($inseeDepartment);
-            $ids = array_map(function($city) {
-                return $city->getId();
-            }, $cities);*/
 
             $queries = array_merge(
                 $request->query->all(),
@@ -466,7 +444,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
             $headerform = $this->createForm(AdSearchType::class, $adSearch);
-         //   $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
             return array(
                 'city' => $inseeCity,
                 'cityData' => $cityData,
@@ -474,7 +451,6 @@ namespace Viteloge\FrontendBundle\Controller {
                 'mapOptions' => $mapOptions,
                 'form' => $this->initForm()->form->createView(),
                 'headerform' => $headerform->createView(),
-             //   'csrf_token' => $csrfToken,
 
             );
         }

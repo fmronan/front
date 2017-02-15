@@ -268,7 +268,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $pagination->setMaxPerPage($limit);
             $pagination->setCurrentPage($page);
             $session->set('currentPage',$pagination->getCurrentPage());
-            //$pagination->setEndPage();
             // --
 
             // SEO
@@ -326,17 +325,11 @@ namespace Viteloge\FrontendBundle\Controller {
             $session->set('totalResult',$pagination->getNbResults());
             $session->remove('totalResultVente');
             $session->set('resultAd',$pagination->getCurrentPageResults());
-          //  $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
 
-            if(!empty($pagination->getCurrentPageResults())){
-            $em = $this->getDoctrine()->getManager();
-            $ad =  $pagination->getCurrentPageResults()[0];
-              }
             return array(
                 'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
-              //  'csrf_token' => $csrfToken,
             );
         }
 
@@ -415,7 +408,6 @@ namespace Viteloge\FrontendBundle\Controller {
                 );
             }
 
-            $isTransactionLabelHidden = (bool)$request->query->has('hideTransaction');
             $options = array(
                 'adSearch' => $adSearch,
                 'form' => $form->createView()
@@ -715,7 +707,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $adSearch->handleRequest($request);
             $form = $this->createForm(AdSearchType::class, $adSearch);
             // Breadcrumbs
-            $transaction = $adSearch->getTransaction();
             $description = 'Les dernières annonces immobilières de viteloge';
             $breadcrumbs = $this->get('white_october_breadcrumbs');
             $breadcrumbs->addItem(
@@ -724,7 +715,6 @@ namespace Viteloge\FrontendBundle\Controller {
             );
             $elasticaManager = $this->container->get('fos_elastica.manager');
             $repository = $elasticaManager->getRepository('VitelogeCoreBundle:Ad');
-            $ads = $repository->search($adSearch,$limit);
             $pagination = $repository->searchPaginated($form->getData());
 
 
@@ -755,9 +745,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 ->addMeta('property', 'og:description', $breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.description'))
                 ->setLinkCanonical($canonicalLink)
             ;
-            // --
 
-          //  $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
             // Save session
             $session = $request->getSession();
             $session->set('totalResult',$pagination->getNbResults());
@@ -768,7 +756,6 @@ namespace Viteloge\FrontendBundle\Controller {
                 'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
-             //   'csrf_token' => $csrfToken,
 
             );
         }
@@ -856,31 +843,6 @@ namespace Viteloge\FrontendBundle\Controller {
                 ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.ad.redirect.description'))
                 ->setLinkCanonical($canonicalLink)
             ;
-            // -- les stats sont déja ajouté
-
-        /*    $forbiddenUA = array(
-                'yakaz_bot' => 'YakazBot/1.0',
-                'mitula_bot' => 'java/1.6.0_26'
-            );
-            $forbiddenIP = array(
-
-            );
-            $ua = $request->headers->get('User-Agent');
-            $ip = $request->getClientIp();
-
-            // log redirect
-            if (!in_array($ua, $forbiddenUA) && !in_array($ip, $forbiddenIP)) {
-                $now = new \DateTime('now');
-                $statistics = new Statistics();
-                $statistics->setIp($ip);
-                $statistics->setUa($ua);
-                $statistics->initFromAd($ad);
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($statistics);
-                $em->flush();
-            }
-*/
             return array(
                 'ad' => $ad
             );
@@ -937,7 +899,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function removeFavouriteAction(Request $request,$id ) {
            $translated = $this->get('translator');
-           $currentUrl = $request->getUri();
            $session = $request->getSession();
            $requestSearch = $session->get('request');
             // Form
@@ -946,7 +907,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $form = $this->createForm(AdSearchType::class, $adSearch);
 
             // Breadcrumbs
-            $transaction = $adSearch->getTransaction();
             $breadcrumbs = $this->get('white_october_breadcrumbs');
             $breadcrumbs->addItem(
                 $translated->trans('breadcrumb.home', array(), 'breadcrumbs'),
@@ -1035,7 +995,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function listFavouriteAction(Request $request, $page, $limit) {
            $translated = $this->get('translator');
-           $currentUrl = $request->getUri();
            $session = $request->getSession();
            $requestSearch = $session->get('request');
             // Form
@@ -1044,7 +1003,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $form = $this->createForm(AdSearchType::class, $adSearch);
 
             // Breadcrumbs
-            $transaction = $adSearch->getTransaction();
             $breadcrumbs = $this->get('white_october_breadcrumbs');
             $breadcrumbs->addItem(
                 $translated->trans('breadcrumb.home', array(), 'breadcrumbs'),
@@ -1081,7 +1039,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $adapter = new ArrayAdapter($ads);
             $pagination = new Pagerfanta($adapter);
-           // $pagination = $ads;
             // --
             // pager
             $pagination->setMaxPerPage($limit);
@@ -1093,7 +1050,6 @@ namespace Viteloge\FrontendBundle\Controller {
                 'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
-                //'csrf_token' => $csrfToken,
             );
 
             }else{
