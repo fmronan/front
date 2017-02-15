@@ -10,14 +10,15 @@ parameters:
     viteloge_frontend.eventlistener.sitemap.class: Viteloge\FrontendBundle\EventListener\SitemapListener
     viteloge_frontend.eventlistener.websearch.class: Viteloge\FrontendBundle\EventListener\WebSearchListener
     viteloge_frontend.eventlistener.message.class: Viteloge\FrontendBundle\EventListener\MessageListener
-    viteloge_frontend.services.class: Viteloge\FrontendBundle\Services\manageUser
     viteloge_frontend.services.cookies: Viteloge\FrontendBundle\Services\cookiesFactory
     viteloge_frontend.form.type.api.class: Viteloge\FrontendBundle\Form\Type\ApiType
     viteloge_core.form.type.adsearch.class: Viteloge\FrontendBundle\Form\Type\AdSearchType
 services:
     viteloge_twig.controller.exception:
         class: "%viteloge_twig.controller.exception.class%"
-        arguments: ["@service_container", "%kernel.debug%"]
+        calls:
+            - [setContainer, ['@service_container']]
+        arguments: ["%kernel.debug%"]
     viteloge_frontend.form.type.usersearch:
         class: "%viteloge_frontend.form.type.usersearch.class%"
         arguments: ["@security.token_storage", "@doctrine.orm.entity_manager"]
@@ -33,7 +34,9 @@ services:
         arguments: ["@translator"]
     viteloge_frontend.twig.extension:
         class: "%viteloge_frontend.twig.extension.class%"
-        arguments: ["@service_container","@request_stack"]
+        calls:
+            - [setContainer, ['@service_container']]
+        arguments: ["@request_stack"]
         tags:
             - { name: twig.extension, priority: 255 }
     pagerfanta.view.viteloge:
@@ -47,9 +50,6 @@ services:
             - "@translator"
         public: false
         tags: [{ name: pagerfanta.view, alias: pager_viteloge_translated }]
-    viteloge_frontend_generate.user:
-        class: "%viteloge_frontend.services.class%"
-        arguments: ["@service_container","@security.token_storage", "@doctrine.orm.entity_manager"]
     viteloge_frontend_generate.cookies:
         class: "%viteloge_frontend.services.cookies%"
         arguments: ["@request_stack","@doctrine.orm.entity_manager"]
@@ -60,7 +60,9 @@ services:
             - { name: doctrine.event_listener, event: prePersist }
     viteloge_frontend.messagelistener:
         class: "%viteloge_frontend.eventlistener.message.class%"
-        arguments: ["@service_container","@security.token_storage","@doctrine.orm.entity_manager"]
+        calls:
+            - [setContainer, ['@service_container']]
+        arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: doctrine.event_listener, event: prePersist }
     viteloge_frontend.form.type.api:

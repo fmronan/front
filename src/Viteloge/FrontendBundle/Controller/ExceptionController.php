@@ -3,19 +3,17 @@
 namespace Viteloge\FrontendBundle\Controller {
 
     use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
-    use Symfony\Component\DependencyInjection\ContainerInterface;
+    use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+    use Symfony\Component\DependencyInjection\ContainerAwareTrait;
     use Symfony\Component\HttpKernel\Exception\FlattenException;
     use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
 
-    class ExceptionController {
+    class ExceptionController implements ContainerAwareInterface{
 
-        /**
-         * @var Symfony\Component\DependencyInjection\ContainerInterface
-         */
-        protected $container;
 
+        use ContainerAwareTrait;
         /**
          * @var bool Show error (false) or exception (true) pages by default.
          */
@@ -24,8 +22,7 @@ namespace Viteloge\FrontendBundle\Controller {
         /**
          *
          */
-        public function __construct(ContainerInterface $container, $debug) {
-            $this->container = $container;
+        public function __construct($debug) {
             $this->debug = $debug;
 
         }

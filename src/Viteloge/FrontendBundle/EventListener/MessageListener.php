@@ -7,28 +7,27 @@ namespace Viteloge\FrontendBundle\EventListener {
     use Viteloge\CoreBundle\Entity\Message;
     use Viteloge\CoreBundle\Entity\Contact;
     use Viteloge\CoreBundle\Entity\User;
-    use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
     use Doctrine\ORM\EntityManager;
-    use Symfony\Component\DependencyInjection\ContainerInterface;
+    use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+    use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 
 
     /**
      * Listener called for create user with contact and message
      */
-    class MessageListener {
+    class MessageListener implements ContainerAwareInterface{
 
-       private $tokenStorage;
+       use ContainerAwareTrait;
        private $em;
-       private $container;
+
 
         /**
          *
          */
-        public function __construct(ContainerInterface $container,TokenStorageInterface $tokenStorage, EntityManager $em) {
-            $this->tokenStorage = $tokenStorage;
+        public function __construct(EntityManager $em) {
             $this->em = $em;
-            $this->container = $container;
+           // $this->container = $container;
             $this->date = new \DateTime();
         }
 

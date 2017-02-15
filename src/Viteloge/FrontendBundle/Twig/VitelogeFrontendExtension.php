@@ -6,16 +6,19 @@ namespace Viteloge\FrontendBundle\Twig {
     use Viteloge\CoreBundle\Component\Enum\TransactionEnum;
     use Viteloge\CoreBundle\Entity\Ad;
     use Symfony\Component\HttpFoundation\RequestStack;
+    use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+    use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-    class VitelogeFrontendExtension extends \Twig_Extension {
+    class VitelogeFrontendExtension extends \Twig_Extension implements ContainerAwareInterface{
 
-        protected $container;
+
+        use ContainerAwareTrait;
         protected $request;
         protected $requestStack;
 
 
-        public function __construct($container,RequestStack $requestStack) {
-            $this->container = $container;
+        public function __construct(RequestStack $requestStack) {
+
             $this->requestStack = $requestStack;
             $this->request = $this->requestStack->getCurrentRequest();
 

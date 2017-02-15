@@ -86,8 +86,8 @@ namespace Viteloge\FrontendBundle\Controller {
             // --
 
             $this->elements = new \ArrayObject();
-            $this->buildStates();
-            $this->build();
+            $this->buildStatesAction();
+            $this->buildAction();
              // Form
             $adSearch = new AdSearch();
             $adSearch->handleRequest($request);
@@ -149,7 +149,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $this->elements = new \ArrayObject();
             $departments = $inseeState->getInseeDepartments();
-            $this->appendDepartments($departments);
+            $this->appendDepartmentsAction($departments);
 
             return array(
                 'section' => $section,
@@ -218,7 +218,7 @@ namespace Viteloge\FrontendBundle\Controller {
         /**
          *
          */
-        public function build() {
+        public function buildAction() {
             $translated = $this->get('translator');
 
             $collection = $this->get('router')->getOriginalRouteCollection();
@@ -245,13 +245,13 @@ namespace Viteloge\FrontendBundle\Controller {
         /**
          *
          */
-        public function buildStates() {
+        public function buildStatesAction() {
             $translated = $this->get('translator');
 
             $repository = $this->getDoctrine()
                 ->getRepository('VitelogeInseeBundle:InseeState');
             $states = $repository->findBy(array(), array('name' => 'ASC'));
-            $this->appendStates($states);
+            $this->appendStatesAction($states);
 
             return $this->elements;
         }
@@ -259,7 +259,7 @@ namespace Viteloge\FrontendBundle\Controller {
         /**
          *
          */
-        public function buildDepartments() {
+        public function buildDepartmentsAction() {
             $translated = $this->get('translator');
 
             $repository = $this->getDoctrine()
@@ -273,7 +273,7 @@ namespace Viteloge\FrontendBundle\Controller {
         /**
          *
          */
-        protected function appendStates($states) {
+        protected function appendStatesAction($states) {
             $translated = $this->get('translator');
 
             foreach ($states as $key => $state) {
@@ -308,7 +308,7 @@ namespace Viteloge\FrontendBundle\Controller {
         /**
          *
          */
-        protected function appendDepartments($departments) {
+        protected function appendDepartmentsAction($departments) {
             $translated = $this->get('translator');
 
             foreach ($departments as $key => $department) {

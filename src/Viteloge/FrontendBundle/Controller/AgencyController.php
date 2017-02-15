@@ -278,7 +278,7 @@ namespace Viteloge\FrontendBundle\Controller {
         function getNumSurtaxeAction(Request $request,Ad $ad)
         {
 
-            if($request->isXmlHttpRequest()){
+           if($request->isXmlHttpRequest()){
             // Clef pour l’API :
             $clef = "b28b9b89b6aea1dc6287a6d446e001a8";
             //on cherche le numero de l'agence avec son $id
@@ -324,7 +324,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 curl_close ($ch);
                 $array = array();
                 //recupération du numéro et du code
-                if (ereg("<numero>(.*)</numero>.*<code>(.*)</code>", $res, $regs))
+                if (preg_match("{<numero>(.*)</numero>.*<code>(.*)</code>}", $res, $regs))
                 {
 
                     $tel = ((strlen($regs[1]) == "10") ? wordwrap($regs[1], 2, '.', 1) : $regs[1]);
