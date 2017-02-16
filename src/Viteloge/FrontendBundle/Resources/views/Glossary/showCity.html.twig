@@ -11,10 +11,7 @@
     {{- parent() -}}
 {%- endblock -%}
 {%- block header -%}
-    {%- embed "VitelogeFrontendBundle:Base:headerSearch.html.twig" with {form:headerform} -%}
-
-
-    {%- endembed -%}
+ {{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
 {%- endblock -%}
 {%- block main -%}
     {%- embed "VitelogeFrontendBundle:Grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3 } -%}

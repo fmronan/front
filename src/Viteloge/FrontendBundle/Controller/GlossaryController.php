@@ -21,43 +21,6 @@ namespace Viteloge\FrontendBundle\Controller {
      */
     class GlossaryController extends Controller {
 
-        /**
-         *
-         */
-        protected $form;
-
-        /**
-         *
-         */
-        protected function initForm() {
-            $adSearch = new AdSearch();
-            $this->form = $this->createForm(AdSearchType::class, $adSearch);
-            return $this;
-        }
-
-        /**
-         * @Route(
-         *      "/",
-         *      defaults={},
-         *      name="viteloge_frontend_glossary",
-         *      options = {
-         *          "i18n" = true,
-         *          "vl_nositemap" = {
-         *              "title" = "viteloge.frontend.glossary.index.title",
-         *              "description" = "viteloge.frontend.glossary.index.description",
-         *              "changefreq" = "hourly",
-         *              "priority" = "1.0"
-         *          }
-         *      }
-         * )
-         * @Method({"GET"})
-         * @Template()
-         */
-        public function indexAction(Request $request) {
-            return array(
-
-            );
-        }
 
         /**
          * Legacy function used because there is no slug saved in table
@@ -441,14 +404,14 @@ namespace Viteloge\FrontendBundle\Controller {
             $requestSearch = $session->get('request');
             $adSearch = new AdSearch();
             $adSearch->handleRequest($requestSearch);
-            $headerform = $this->createForm(AdSearchType::class, $adSearch);
+            $form = $this->createForm(AdSearchType::class, $adSearch);
+
             return array(
                 'city' => $inseeCity,
                 'cityData' => $cityData,
                 'count' => $count,
                 'mapOptions' => $mapOptions,
-                'form' => $this->initForm()->form->createView(),
-                'headerform' => $headerform->createView(),
+                'form' => $form->createView(),
 
             );
         }
