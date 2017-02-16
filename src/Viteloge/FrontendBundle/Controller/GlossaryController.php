@@ -7,7 +7,6 @@ namespace Viteloge\FrontendBundle\Controller {
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
     use Viteloge\InseeBundle\Entity\InseeState;
@@ -15,7 +14,6 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\InseeBundle\Entity\InseeArea;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
-    use Viteloge\FrontendBundle\Entity\CityData;
     use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 
     /**

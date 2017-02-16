@@ -10,7 +10,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Symfony\Component\Form\FormEvents;
     use Symfony\Component\Form\FormEvent;
     use Doctrine\ORM\EntityManager;
-    use Viteloge\CoreBundle\Entity\WebSearch;
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Component\Enum\UserSearchSourceEnum;
     use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,9 +19,11 @@ namespace Viteloge\FrontendBundle\Form\Type {
 
         private $tokenStorage;
 
+        private $em;
 
         public function __construct(TokenStorageInterface $tokenStorage, EntityManager $em) {
             $this->tokenStorage = $tokenStorage;
+            $this->em = $em;
         }
 
         public function buildForm(FormBuilderInterface $builder, array $options) {
@@ -50,10 +51,9 @@ namespace Viteloge\FrontendBundle\Form\Type {
 
         public function configureOptions(OptionsResolver $resolver){
             $resolver->setDefaults(array(
-                'data_class' => WebSearch::class,
-                'csrf_protection' => true,
-                'csrf_field_name' => '_token',
-                'csrf_token_id'   => 'task_item'
+                'data_class' => 'Viteloge\CoreBundle\Entity\WebSearch',
+                'cascade_validation' => true,
+                'csrf_token_id' => 'task_form',
             ));
         }
 

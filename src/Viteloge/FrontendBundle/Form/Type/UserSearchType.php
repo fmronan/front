@@ -11,8 +11,7 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Symfony\Component\Form\FormEvents;
     use Doctrine\ORM\EntityRepository;
     use Doctrine\ORM\EntityManager;
-    use Viteloge\CoreBundle\Entity\UserSearch;
-    use Viteloge\InseeBundle\Entity\InseeCity;
+    use Acreat\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Component\Enum\TransactionEnum;
     use Viteloge\CoreBundle\Component\Enum\TypeEnum;
     use Viteloge\CoreBundle\Component\Enum\RoomEnum;
@@ -178,10 +177,8 @@ namespace Viteloge\FrontendBundle\Form\Type {
 
         public function configureOptions(OptionsResolver $resolver){
             $resolver->setDefaults(array(
-                'data_class' => UserSearch::class,
-                'csrf_protection' => true,
-                'csrf_field_name' => '_token',
-                'csrf_token_id'   => 'task_item'
+                'data_class' => 'Viteloge\CoreBundle\Entity\UserSearch',
+                'intention' => 'task_form',
             ));
         }
 

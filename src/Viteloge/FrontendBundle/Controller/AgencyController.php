@@ -408,7 +408,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Route(options={"expose"=true})
          * @Template("VitelogeFrontendBundle:Agency:Render/ajax_latest.html.twig")
          */
-        function lastSearchAction(Request $request)
+        public function lastSearchAction(Request $request)
         {
           if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
