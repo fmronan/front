@@ -2,7 +2,6 @@
 
 namespace Viteloge\FrontendBundle\Pagerfanta\View {
 
-    use Pagerfanta\PagerfantaInterface;
     use Pagerfanta\View\ViewInterface;
     use Symfony\Component\Translation\TranslatorInterface;
 

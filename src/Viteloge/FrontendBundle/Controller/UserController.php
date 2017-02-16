@@ -2,20 +2,15 @@
 
 namespace Viteloge\FrontendBundle\Controller {
 
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\RedirectResponse;
     use Symfony\Component\Security\Core\Exception\AccessDeniedException;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use FOS\UserBundle\FOSUserEvents;
-    use FOS\UserBundle\Event\FormEvent;
     use FOS\UserBundle\Event\GetResponseUserEvent;
-    use FOS\UserBundle\Event\FilterUserResponseEvent;
     use Viteloge\CoreBundle\Entity\User;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\FrontendBundle\Form\Type\AdSearchType;

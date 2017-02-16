@@ -8,7 +8,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Symfony\Component\Form\FormBuilderInterface;
     use Symfony\Component\Form\FormEvent;
     use Symfony\Component\Form\FormEvents;
-    use Doctrine\ORM\EntityRepository;
     use Doctrine\ORM\EntityManager;
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Entity\Api;

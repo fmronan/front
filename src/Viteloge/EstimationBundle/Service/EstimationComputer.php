@@ -4,7 +4,6 @@ namespace Viteloge\EstimationBundle\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Viteloge\CoreBundle\Entity\Estimate;
-use Viteloge\EstimationBundle\Component\Enum\PathEnum;
 use Viteloge\EstimationBundle\Component\Enum\TypeEnum;
 use Viteloge\EstimationBundle\Component\Enum\ConditionEnum;
 use Viteloge\EstimationBundle\Component\Enum\ExpositionEnum;

@@ -3,7 +3,6 @@
 namespace Viteloge\UserBundle\EventListener {
 
     use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-    use Symfony\Component\HttpFoundation\RedirectResponse;
     use Symfony\Component\Routing\RouterInterface as Router;
     use Symfony\Component\Translation\TranslatorInterface;
     use FOS\UserBundle\FOSUserEvents;

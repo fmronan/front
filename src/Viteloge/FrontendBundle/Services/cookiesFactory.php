@@ -2,9 +2,7 @@
 
 namespace Viteloge\FrontendBundle\Services {
 
-    use Doctrine\ORM\EntityManager;
     use Viteloge\CoreBundle\Entity\Ad;
-    use Symfony\Component\DependencyInjection\ContainerInterface;
     use Symfony\Component\HttpFoundation\RequestStack;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\HttpFoundation\Cookie;

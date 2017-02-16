@@ -383,7 +383,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Method({"POST"})
          * @Template("VitelogeFrontendBundle:Ad:search_from_form.html.twig")
          */
-        public function searchFromForm(Request $request) {
+        public function searchFromFormAction(Request $request) {
             $adSearch = new AdSearch();
             $form = $this->createForm(AdSearchType::class, $adSearch);
             $form->handleRequest($request);

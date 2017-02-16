@@ -4,7 +4,6 @@ namespace Viteloge\InseeBundle\Repository {
 
     use Doctrine\ORM\EntityRepository;
     use Doctrine\ORM\NoResultException;
-    use Viteloge\InseeBundle\Entity\InseeCity;
 
     /**
      * InseeCityRepository

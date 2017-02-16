@@ -2,35 +2,16 @@
 
 namespace Viteloge\FrontendBundle\Controller {
 
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\Response;
-    use Symfony\Component\HttpFoundation\Cookie;
     use Symfony\Component\HttpFoundation\JsonResponse;
-    use Symfony\Component\Serializer\Serializer;
-    use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-    use Symfony\Component\Serializer\Encoder\JsonEncoder;
-    use Pagerfanta\Pagerfanta;
-    use Pagerfanta\Adapter\ArrayAdapter;
-    use Pagerfanta\Adapter\DoctrineORMAdapter;
-    use Viteloge\InseeBundle\Entity\InseeCity;
-    use Viteloge\InseeBundle\Entity\InseeDepartment;
-    use Viteloge\InseeBundle\Entity\InseeState;
     use Viteloge\CoreBundle\Entity\Ad;
-    use Viteloge\CoreBundle\Entity\Agence;
     use Viteloge\CoreBundle\Entity\Infos;
-    use Viteloge\CoreBundle\Entity\QueryStats;
     use Viteloge\CoreBundle\Entity\Statistics;
-    use Viteloge\CoreBundle\Entity\WebSearch;
-    use Viteloge\CoreBundle\Entity\UserSearch;
-    use Viteloge\CoreBundle\Component\DBAL\EnumTransactionType;
-    use Viteloge\CoreBundle\Component\Enum\DistanceEnum;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 

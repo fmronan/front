@@ -9,15 +9,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-    use Symfony\Component\EventDispatcher\EventDispatcher;
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
-    use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
-    use Symfony\Component\Security\Acl\Permission\MaskBuilder;
-    use Pagerfanta\Pagerfanta;
-    use Pagerfanta\Adapter\ArrayAdapter;
-    use Pagerfanta\Adapter\DoctrineORMAdapter;
-    use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Entity\WebSearch;
     use Viteloge\CoreBundle\Entity\UserSearch;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;

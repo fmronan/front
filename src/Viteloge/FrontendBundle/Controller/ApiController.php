@@ -7,10 +7,8 @@ namespace Viteloge\FrontendBundle\Controller {
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\Form\FormError;
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Entity\Api;
     use Viteloge\FrontendBundle\Form\Type\ApiType;

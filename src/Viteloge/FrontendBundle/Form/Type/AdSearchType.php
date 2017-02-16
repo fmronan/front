@@ -5,18 +5,14 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Symfony\Component\OptionsResolver\OptionsResolver;
     use Symfony\Component\Form\AbstractType;
     use Symfony\Component\Form\FormInterface;
-    use Symfony\Component\Form\FormTypeInterface;
     use Symfony\Component\Form\FormBuilderInterface;
     use Symfony\Component\Form\FormEvent;
     use Symfony\Component\Form\FormEvents;
-    use Doctrine\ORM\EntityRepository;
     use Doctrine\ORM\EntityManager;
-    use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\SearchEntity\Ad;
     use Viteloge\CoreBundle\Component\Enum\TransactionEnum;
     use Viteloge\CoreBundle\Component\Enum\TypeEnum;
     use Viteloge\CoreBundle\Component\Enum\RoomEnum;
-    use Viteloge\CoreBundle\Component\Enum\DistanceEnum;
     use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
     use Symfony\Component\Form\Extension\Core\Type\MoneyType;
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;

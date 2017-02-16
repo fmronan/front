@@ -2,7 +2,6 @@
 
 namespace Viteloge\UserBundle\Controller {
 
-    use Symfony\Component\HttpFoundation\RedirectResponse;
     use Symfony\Component\HttpFoundation\Request;
     use FOS\UserBundle\Controller\ProfileController as BaseController;
 

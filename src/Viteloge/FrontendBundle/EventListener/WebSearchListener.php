@@ -3,7 +3,6 @@
 namespace Viteloge\FrontendBundle\EventListener {
 
     use Doctrine\ORM\Event\LifecycleEventArgs;
-    use Symfony\Component\EventDispatcher\Event;
     use FOS\ElasticaBundle\Manager\RepositoryManagerInterface as RepositoryManager;
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Entity\WebSearch;

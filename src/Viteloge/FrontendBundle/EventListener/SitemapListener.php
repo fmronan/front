@@ -5,7 +5,6 @@ namespace Viteloge\FrontendBundle\EventListener {
     use Symfony\Component\Routing\Route;
     use Symfony\Component\Routing\RouterInterface;
     use Doctrine\ORM\EntityManager;
-    use Presta\SitemapBundle\Service\SitemapListenerInterface;
     use Presta\SitemapBundle\Event\SitemapPopulateEvent;
     use Presta\SitemapBundle\EventListener\RouteAnnotationEventListener;
     use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;

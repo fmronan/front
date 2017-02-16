@@ -2,13 +2,10 @@
 
 namespace Viteloge\EstimationBundle\Form\Type;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormError;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\EntityManager;
 use Viteloge\InseeBundle\Entity\InseeCity;

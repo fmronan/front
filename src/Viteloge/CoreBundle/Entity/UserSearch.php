@@ -4,7 +4,6 @@ namespace Viteloge\CoreBundle\Entity {
 
     use Doctrine\ORM\Mapping as ORM;
     use Symfony\Component\Validator\Constraints as Assert;
-    use Gedmo\Mapping\Annotation as Gedmo;
 
     /**
      * Search
@@ -24,7 +23,6 @@ namespace Viteloge\CoreBundle\Entity {
      *      )
      * })
      * @ORM\Entity(repositoryClass="Viteloge\CoreBundle\Repository\UserSearchRepository")
-     * Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
      */
     class UserSearch
     {
