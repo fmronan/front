@@ -814,7 +814,7 @@ var generateUUID = function generateUUID() {
         jQuery('#addfav').click(function() {
             var _id = jQuery(this).attr('data-value');
             jQuery.ajax({
-            url: Routing.generate('viteloge_frontend_ad_favourite', {id: _id}, true),
+            url: Routing.generate('viteloge_frontend_prefer_favourite', {id: _id}, true),
             context: jQuery(this),
             method: 'GET',
             beforeSend: function() {

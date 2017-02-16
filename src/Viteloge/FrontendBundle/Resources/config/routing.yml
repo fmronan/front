@@ -38,6 +38,10 @@ viteloge_frontend_contact:
     resource: "@VitelogeFrontendBundle/Controller/ContactController.php"
     type: annotation
 
+viteloge_frontend_prefer:
+    resource: "@VitelogeFrontendBundle/Controller/PreferController.php"
+    type: annotation
+
 viteloge_frontend_query_stats:
     resource: "@VitelogeFrontendBundle/Controller/QueryStatsController.php"
     type: annotation

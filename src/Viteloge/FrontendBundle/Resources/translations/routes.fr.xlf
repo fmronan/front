@@ -86,29 +86,29 @@
         <source>viteloge_frontend_ad_carousel</source>
         <target>/annonce/carousel/</target>
       </trans-unit>
-      <trans-unit id="viteloge_frontend_ad_latest_list" resname="viteloge_frontend_ad_latest_list">
-        <source>viteloge_frontend_ad_latest_list</source>
-        <target>/annonce/derniers/{page}/{limit}</target>
+      <trans-unit id="viteloge_frontend_prefer_latest_list" resname="viteloge_frontend_prefer_latest_list">
+        <source>viteloge_frontend_prefer_latest_list</source>
+        <target>/prefere/derniers/{page}/{limit}</target>
       </trans-unit>
       <trans-unit id="viteloge_frontend_ad_carousel_limited" resname="viteloge_frontend_ad_carousel_limited">
         <source>viteloge_frontend_ad_carousel_limited</source>
         <target>/annonce/carousel/{limited}</target>
       </trans-unit>
-      <trans-unit id="viteloge_frontend_ad_favourite" resname="viteloge_frontend_ad_favourite">
-        <source>viteloge_frontend_ad_favourite</source>
-        <target>/annonce/favoris/{id}</target>
+      <trans-unit id="viteloge_frontend_prefer_favourite" resname="viteloge_frontend_prefer_favourite">
+        <source>viteloge_frontend_prefer_favourite</source>
+        <target>/prefere/favoris/{id}</target>
       </trans-unit>
       <trans-unit id="viteloge_frontend_favourite_list" resname="viteloge_frontend_favourite_list">
         <source>viteloge_frontend_favourite_list</source>
-        <target>/annonce/liste/favoris/{page}/{limit}</target>
+        <target>/prefere/liste/favoris/{page}/{limit}</target>
       </trans-unit>
       <trans-unit id="viteloge_frontend_favourite_remove" resname="viteloge_frontend_favourite_remove">
         <source>viteloge_frontend_favourite_remove</source>
-        <target>/annonce/supprime/favoris/{id}</target>
+        <target>/prefere/supprime/favoris/{id}</target>
       </trans-unit>
-      <trans-unit id="viteloge_frontend_ad_latest" resname="viteloge_frontend_ad_latest">
-        <source>viteloge_frontend_ad_latest</source>
-        <target>/annonce/derniere/{limit}</target>
+      <trans-unit id="viteloge_frontend_prefer_latest" resname="viteloge_frontend_prefer_latest">
+        <source>viteloge_frontend_prefer_latest</source>
+        <target>/prefere/derniere/{limit}</target>
       </trans-unit>
       <trans-unit id="viteloge_frontend_ad_redirect" resname="viteloge_frontend_ad_redirect">
         <source>viteloge_frontend_ad_redirect</source>
@@ -150,13 +150,13 @@
         <source>viteloge_frontend_ad_searchfromquerystats</source>
         <target>/annonce/recherche/a-partir-de/recherche-motcles/{id}</target>
       </trans-unit>
-      <trans-unit id="viteloge_frontend_ad_suggestnew_limited" resname="viteloge_frontend_ad_suggestnew_limited">
-        <source>viteloge_frontend_ad_suggestnew_limited</source>
-        <target>/annonce/suggestion/neuf/{limit}</target>
+      <trans-unit id="viteloge_frontend_prefer_suggestnew_limited" resname="viteloge_frontend_prefer_suggestnew_limited">
+        <source>viteloge_frontend_prefer_suggestnew_limited</source>
+        <target>/prefere/suggestion/neuf/{limit}</target>
       </trans-unit>
       <trans-unit id="viteloge_frontend_ad_suggestnew" resname="viteloge_frontend_ad_suggestnew">
         <source>viteloge_frontend_ad_suggestnew</source>
-        <target>/annonce/suggestion/neuf/</target>
+        <target>/prefere/suggestion/neuf/</target>
       </trans-unit>
       <trans-unit id="viteloge_frontend_glossary" resname="viteloge_frontend_glossary">
         <source>viteloge_frontend_glossary</source>
@@ -354,13 +354,13 @@
         <source>viteloge_frontend_sitemap_department_format</source>
         <target>/plan-du-site/departement/{id}.{_format}</target>
       </trans-unit>
-      <trans-unit id="viteloge_frontend_ad_latest_limited" resname="viteloge_frontend_ad_latest_limited">
-        <source>viteloge_frontend_websearch_list</source>
-        <target>/annonce/accueil/derniere/{limit}</target>
+      <trans-unit id="viteloge_frontend_prefer_latest_limited" resname="viteloge_frontend_prefer_latest_limited">
+        <source>viteloge_frontend_prefer_latest_limited</source>
+        <target>/prefere/accueil/derniere/{limit}</target>
       </trans-unit>
-      <trans-unit id="viteloge_frontend_ad_latest_transaction_type_limited" resname="viteloge_frontend_ad_latest_transaction_type_limited">
-        <source>viteloge_frontend_ad_latest_transaction_type_limited</source>
-        <target>/annonce/type/derniere/{transaction}/{type}/{limit}</target>
+      <trans-unit id="viteloge_frontend_prefer_latest_transaction_type_limited" resname="viteloge_frontend_prefer_latest_transaction_type_limited">
+        <source>viteloge_frontend_prefer_latest_transaction_type_limited</source>
+        <target>/prefere/type/derniere/{transaction}/{type}/{limit}</target>
       </trans-unit>
       <trans-unit id="viteloge_frontend_suggest_position" resname="viteloge_frontend_suggest_position">
         <source>viteloge_frontend_suggest_position</source>

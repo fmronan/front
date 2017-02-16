@@ -110,13 +110,6 @@ namespace Viteloge\CoreBundle\Entity {
         /**
          * @var string
          *
-         * @ORM\Column(name="url", type="string", length=255, nullable=false)
-         */
-        protected $url;
-
-        /**
-         * @var string
-         *
          * @ORM\Column(name="transaction", type="string", length=1, nullable=false)
          */
         protected $transaction;
@@ -278,6 +271,13 @@ namespace Viteloge\CoreBundle\Entity {
         protected $programCount;
 
         /**
+         * @var string
+         *
+         * @ORM\Column(name="url", type="string", length=255, nullable=false)
+         */
+        protected $url;
+
+        /**
          * Constructor
          *
          * @return void
@@ -369,28 +369,6 @@ namespace Viteloge\CoreBundle\Entity {
             return $result;
         }
 
-        /**
-         * Set url
-         *
-         * @param string $url
-         * @return Ad
-         */
-        public function setUrl($url)
-        {
-            $this->url = $url;
-
-            return $this;
-        }
-
-        /**
-         * Get url
-         *
-         * @return string
-         */
-        public function getUrl()
-        {
-            return $this->url;
-        }
 
         /**
          * Set transaction
@@ -943,6 +921,29 @@ namespace Viteloge\CoreBundle\Entity {
          */
         public function setUpdatedAtValue() {
             $this->updatedAt = new \DateTime();
+        }
+
+        /**
+         * Set url
+         *
+         * @param string $url
+         * @return Ad
+         */
+        public function setUrl($url)
+        {
+            $this->url = $url;
+
+            return $this;
+        }
+
+        /**
+         * Get url
+         *
+         * @return string
+         */
+        public function getUrl()
+        {
+            return $this->url;
         }
 
     }

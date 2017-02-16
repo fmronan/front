@@ -86,13 +86,6 @@ namespace Viteloge\CoreBundle\Entity {
         /**
          * @var string
          *
-         * @ORM\Column(name="transaction", type="string", length=1, nullable=false)
-         */
-        protected $transaction;
-
-        /**
-         * @var string
-         *
          * @ORM\Column(name="type", type="string", length=50, nullable=false)
          */
         protected $type;
@@ -160,6 +153,13 @@ namespace Viteloge\CoreBundle\Entity {
          * })
          */
         protected $inseeCity;
+
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="transaction", type="string", length=1, nullable=false)
+         */
+        protected $transaction;
 
         /**
          * @return Statistics
@@ -438,28 +438,7 @@ namespace Viteloge\CoreBundle\Entity {
             return $this->url;
         }
 
-        /**
-         * Set transaction
-         *
-         * @param string $transaction
-         * @return Statistics
-         */
-        public function setTransaction($transaction)
-        {
-            $this->transaction = $transaction;
 
-            return $this;
-        }
-
-        /**
-         * Get transaction
-         *
-         * @return string
-         */
-        public function getTransaction()
-        {
-            return $this->transaction;
-        }
 
         /**
          * Set type
@@ -653,6 +632,29 @@ namespace Viteloge\CoreBundle\Entity {
         public function getInseeCity()
         {
             return $this->inseeCity;
+        }
+
+        /**
+         * Set transaction
+         *
+         * @param string $transaction
+         * @return Statistics
+         */
+        public function setTransaction($transaction)
+        {
+            $this->transaction = $transaction;
+
+            return $this;
+        }
+
+        /**
+         * Get transaction
+         *
+         * @return string
+         */
+        public function getTransaction()
+        {
+            return $this->transaction;
         }
     }
 
