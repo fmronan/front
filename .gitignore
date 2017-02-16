@@ -26,7 +26,6 @@ _def_assets.scss
 !var/sessions/.gitkeep
 
 # Parameters
-/app/config/config.yml
 /app/config/parameters.yml
 /app/config/parameters.ini
 
@@ -49,6 +48,7 @@ _def_assets.scss
 /web/js/
 /web/*.xml
 !/web/browserconfig.xml
+/web/config.php
 
 # PHPUnit
 /app/phpunit.xml

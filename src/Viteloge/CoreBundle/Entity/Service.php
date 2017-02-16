@@ -2,7 +2,6 @@
 
 namespace Viteloge\CoreBundle\Entity {
 
-    use Doctrine\ORM\Mapping as ORM;
 
     class Service {
 

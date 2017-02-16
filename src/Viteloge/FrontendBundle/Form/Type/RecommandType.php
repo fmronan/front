@@ -10,7 +10,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Viteloge\CoreBundle\Entity\Recommand;
     use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue;
     use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
-    use Viteloge\CoreBundle\Component\Enum\SubjectEnum;
     use Symfony\Component\Form\Extension\Core\Type\TextareaType;
     use Symfony\Component\Form\Extension\Core\Type\CollectionType;
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,7 +18,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
     class RecommandType extends AbstractType {
 
         public function buildForm(FormBuilderInterface $builder, array $options) {
-            $subjectEnum = new SubjectEnum();
             $builder
                 ->add('firstname')
                 ->add('lastname')

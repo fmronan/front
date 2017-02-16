@@ -75,7 +75,6 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Template("VitelogeFrontendBundle:Api:new.html.twig")
          */
         public function createAction(Request $request) {
-            $trans = $this->get('translator');
             $api = new Api();
             $form = $this->createCreateForm($api);
             $form->handleRequest($request);

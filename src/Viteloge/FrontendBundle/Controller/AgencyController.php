@@ -261,7 +261,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Route(options={"expose"=true})
          * @Template("VitelogeFrontendBundle:Ad:fragment/btn_phone.html.twig")
          */
-        function getNumSurtaxeAction(Request $request,Ad $ad)
+       public function getNumSurtaxeAction(Request $request,Ad $ad)
         {
 
            if($request->isXmlHttpRequest()){
@@ -330,7 +330,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Route(options={"expose"=true})
          * @ParamConverter("ad", class="VitelogeCoreBundle:Ad", options={"id" = "id"})
          */
-        function callPhoneAction(Request $request,Ad $ad)
+       public function callPhoneAction(Request $request,Ad $ad)
         {
           if($request->isXmlHttpRequest()){
               $forbiddenUA = array(

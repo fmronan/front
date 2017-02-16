@@ -20,11 +20,9 @@ namespace Viteloge\FrontendBundle\Form\Type {
 
         private $tokenStorage;
 
-        private $em;
 
         public function __construct(TokenStorageInterface $tokenStorage, EntityManager $em) {
             $this->tokenStorage = $tokenStorage;
-            $this->em = $em;
         }
 
         public function buildForm(FormBuilderInterface $builder, array $options) {

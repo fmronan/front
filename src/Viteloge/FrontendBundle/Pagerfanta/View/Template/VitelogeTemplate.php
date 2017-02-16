@@ -86,7 +86,6 @@ namespace Viteloge\FrontendBundle\Pagerfanta\View\Template {
             $rel = 'prev';
             $href = $this->generateRoute($page);
             $class = $this->option('css_prev_class');
-            $text = $this->option('prev_message');
             $icon = $this->option('prev_icon');
             return $this->elementLi('a', $href, $class, $rel, $page, $icon, 'leftToRight');
         }
@@ -109,7 +108,6 @@ namespace Viteloge\FrontendBundle\Pagerfanta\View\Template {
             $rel = 'next';
             $href = $this->generateRoute($page);
             $class = $this->option('css_next_class');
-            $text = $this->option('next_message');
             $icon = $this->option('next_icon');
             return $this->elementLi('a', $href, $class, $rel, $page, $icon, 'rightToLeft');
         }
@@ -121,7 +119,6 @@ namespace Viteloge\FrontendBundle\Pagerfanta\View\Template {
             $rel = 'first';
             $href = $this->generateRoute($page);
             $class = $this->option('css_first_class');
-            $text = $this->option('first_message');
             $icon = $this->option('first_icon');
             $element = 'a';
             if (!$isEnabled) {
@@ -138,7 +135,6 @@ namespace Viteloge\FrontendBundle\Pagerfanta\View\Template {
             $rel = 'next';
             $href = $this->generateRoute($page);
             $class = $this->option('css_last_class');
-            $text = $this->option('last_message');
             $icon = $this->option('last_icon');
             $element = 'a';
             if (!$isEnabled) {
@@ -182,12 +178,6 @@ namespace Viteloge\FrontendBundle\Pagerfanta\View\Template {
             return $this->elementLi('a', $href, $class, '', $text, null, $animate);
         }
 
-        /**
-         *
-         */
-        private function spanLi($class, $text) {
-            return $this->elementLi('span', '', $class, '', $text, null, $animate);
-        }
     }
 
 }

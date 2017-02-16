@@ -98,17 +98,16 @@ namespace Viteloge\FrontendBundle\Controller {
 
                     // log redirect
                     if (!in_array($ua, $forbiddenUA) && !in_array($ip, $forbiddenIP)) {
-                        $now = new \DateTime('now');
                         $contact->setIp($ip);
                         $contact->setUa($ua);
                         $em->persist($contact);
                         $em->flush();
                         $user = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$contact->getEmail()));
                     if(empty($verifuser)){
-                        $inscription = $this->inscriptionMessage($user);
+                       $this->inscriptionMessage($user);
                     }
 
-                    $result = $this->sendMessage($contact);
+                     $this->sendMessage($contact);
                     return $this->redirect($this->generateUrl('viteloge_frontend_contact_success', array()));
                 }
                 $form->addError(new FormError($trans->trans('contact.send.error')));

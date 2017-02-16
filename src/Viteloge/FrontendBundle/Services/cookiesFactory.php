@@ -10,7 +10,7 @@ namespace Viteloge\FrontendBundle\Services {
     use Symfony\Component\HttpFoundation\Cookie;
 
 
-    class cookiesFactory {
+    class CookiesFactory {
 
        private $requestStack;
        private $request;

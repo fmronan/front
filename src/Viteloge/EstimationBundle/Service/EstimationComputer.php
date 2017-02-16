@@ -30,7 +30,7 @@ class EstimationComputer {
     const AJUSTEMENT_REFAIRE          = 17;
     const MIN_TERRAIN                 = 18;
 
-    static $DEFAULT_PARAMS = array(
+ public static $DEFAULT_PARAMS = array(
         self::AJUSTEMENT_EXPOSITION => 3,
         self::AJUSTEMENT_DERNIER_ETAGE => 20,
         self::AJUSTEMENT_RDC => -20,
