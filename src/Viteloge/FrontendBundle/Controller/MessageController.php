@@ -124,22 +124,11 @@ namespace Viteloge\FrontendBundle\Controller {
             if ($form->isValid()) {
                // afin de savoir si il faut envoyer un message pour inscription
                   $verifuser = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$message->getEmail()));
-
-
                     // --on enregistre l'action
-
-                    $forbiddenUA = array(
-                        'yakaz_bot' => 'YakazBot/1.0',
-                        'mitula_bot' => 'java/1.6.0_26'
-                    );
-                    $forbiddenIP = array(
-
-                    );
                     $ua = $request->headers->get('User-Agent');
                     $ip = $request->getClientIp();
 
                     // log redirect
-                    if (!in_array($ua, $forbiddenUA) && !in_array($ip, $forbiddenIP)) {
                         $info = new Infos();
                         $info->setIp($ip);
                         $info->setUa($ua);
@@ -153,7 +142,7 @@ namespace Viteloge\FrontendBundle\Controller {
                         $user = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$message->getEmail()));
                         if(empty($verifuser)){
                         $this->inscriptionMessage($user);
-                    }
+
                        $this->sendMessage($message);
                     return $this->redirect($this->generateUrl('viteloge_frontend_message_success', array()));
                 }
