@@ -79,8 +79,7 @@ class DefaultController extends Controller {
         $translated = $this->get('translator');
 
         // Breadcrumbs
-        $arrayBreadcrump =array('last'=>'breadcrumb.estimate');
-        $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
+        $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump =array('last'=>'breadcrumb.estimate'));
 
         // SEO
         $canonicalLink = $this->get('router')->generate('viteloge_estimation_default_index', array(), true);
@@ -141,8 +140,7 @@ class DefaultController extends Controller {
     public function resultatAction(Request $request, Estimate $estimate ) {
         $translated = $this->get('translator');
         // Breadcrumbs
-        $arrayBreadcrump =array('viteloge_estimation_default_index'=>'breadcrumb.estimate','last'=>'breadcrumb.estimate.result');
-        $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
+        $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('viteloge_estimation_default_index'=>'breadcrumb.estimate','last'=>'breadcrumb.estimate.result'));
         // SEO
         $canonicalLink = $this->get('router')->generate($request->get('_route'), array('id' => $estimate->getId()), true);
         $seoPage = $this->container->get('sonata.seo.page');
@@ -187,8 +185,7 @@ class DefaultController extends Controller {
     public function resultatContactAction( Request $request, Estimate $estimate ) {
         $translated = $this->get('translator');
         // Breadcrumbs
-        $arrayBreadcrump =array('viteloge_estimation_default_index'=>'breadcrumb.estimate','last'=>'breadcrumb.estimate.result');
-        $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
+        $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('viteloge_estimation_default_index'=>'breadcrumb.estimate','last'=>'breadcrumb.estimate.result'));
 
         // SEO
         $canonicalLink = $this->get('router')->generate('viteloge_estimation_default_resultat', array('id' => $estimate->getId()), true);
@@ -241,8 +238,7 @@ class DefaultController extends Controller {
     public function contactAction() {
         $translated = $this->get('translator');
         // Breadcrumbs
-        $arrayBreadcrump =array('viteloge_estimation_default_index'=>'breadcrumb.estimate','last'=>'breadcrumb.estimate.contact');
-        $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
+          $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('viteloge_estimation_default_index'=>'breadcrumb.estimate','last'=>'breadcrumb.estimate.contact'));
 
         // SEO
         $canonicalLink = $this->get('router')->generate($request->get('_route'), array(), true);

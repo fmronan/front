@@ -8,7 +8,6 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Symfony\Component\Form\FormBuilderInterface;
     use Symfony\Component\Form\FormEvents;
     use Symfony\Component\Form\FormEvent;
-    use Doctrine\ORM\EntityManager;
     use Symfony\Component\Form\Extension\Core\Type\TextType;
     use Viteloge\FrontendBundle\Form\Type\UserSearchType;
 
@@ -16,11 +15,9 @@ namespace Viteloge\FrontendBundle\Form\Type {
 
         private $tokenStorage;
 
-        private $em;
 
-        public function __construct(TokenStorageInterface $tokenStorage, EntityManager $em) {
+        public function __construct(TokenStorageInterface $tokenStorage) {
             $this->tokenStorage = $tokenStorage;
-            $this->em = $em;
         }
 
         public function buildForm(FormBuilderInterface $builder, array $options) {

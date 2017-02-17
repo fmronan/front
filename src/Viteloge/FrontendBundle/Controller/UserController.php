@@ -30,8 +30,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $translated = $this->get('translator');
 
             // Breadcrumbs
-            $arrayBreadcrump =array('last'=>'breadcrumb.user');
-            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
+            $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('last'=>'breadcrumb.user'));
             // --
 
             // SEO

@@ -27,7 +27,7 @@ services:
             - { name: form.type, alias: viteloge_frontend_usersearch }
     viteloge_frontend.form.type.websearch:
         class: "%viteloge_frontend.form.type.websearch.class%"
-        arguments: ["@security.token_storage", "@doctrine.orm.entity_manager"]
+        arguments: ["@security.token_storage"]
         tags:
             - { name: form.type, alias: viteloge_frontend_websearch }
     viteloge_frontend.ad_helper:
