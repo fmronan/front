@@ -449,31 +449,7 @@ namespace Viteloge\FrontendBundle\Controller {
         }
 
         /**
-         * Currently unused
          *
-         * @Route(
-         *     "/departments/{id}/",
-         *     requirements={
-         *         "id"="\d+"
-         *     },
-         *     name="viteloge_frontend_glossary_department"
-         * )
-         * @Method({"GET"})
-         * @ParamConverter("inseeState", class="VitelogeInseeBundle:InseeState", options={"id" = "id"})
-         * @Cache(expires="tomorrow", public=true)
-         * @Template("VitelogeFrontendBundle:Glossary:departments.html.twig")
-         */
-        public function departmentsAction(Request $request, InseeState $inseeState) {
-            $repository = $this->getDoctrine()
-                ->getRepository('VitelogeInseeBundle:InseeDepartment');
-            $departments = $repository->findByInseeState($inseeState);
-            return array(
-                'departments' => $departments
-            );
-        }
-
-        /**
-         * Currently unused
          *
          * @Route(
          *     "/cities/{id}/",
@@ -497,7 +473,7 @@ namespace Viteloge\FrontendBundle\Controller {
         }
 
         /**
-         * Currently unused
+         *
          *
          * @Route(
          *      "/areas/{id}/",
