@@ -188,7 +188,6 @@ namespace Viteloge\FrontendBundle\Controller {
             $error=false;
             $urlhere = $url;
             $ch = curl_init();
-
             $options = array(
                 CURLOPT_URL            => $urlhere,
                 CURLOPT_RETURNTRANSFER => true,
@@ -198,8 +197,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 CURLOPT_AUTOREFERER    => true,
                 CURLOPT_CONNECTTIMEOUT => 120,
                 CURLOPT_TIMEOUT        => 120,
-                CURLOPT_MAXREDIRS      => 10,
-            );
+                CURLOPT_MAXREDIRS      => 10,);
             curl_setopt_array($ch, $options);
             $response = curl_exec($ch);
             $httpCode = curl_getinfo($ch);
@@ -207,6 +205,15 @@ namespace Viteloge\FrontendBundle\Controller {
             if(strpos($headers, 'X-Frame-Options: deny')>-1 || strpos($headers, 'X-Frame-Options: SAMEORIGIN')>-1) {
                 $error=true;
             }
+            $error = $this->exclusionUrlAction($error,$url);
+            $httpcode= curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            return $error;
+        }
+
+
+        public function exclusionUrlAction($error,$url){
             $redirectUrl = array(
                 'century' => 'https://www.century21.fr',
                 'century21' => 'http://www.century21.fr',
@@ -220,9 +227,6 @@ namespace Viteloge\FrontendBundle\Controller {
             if(in_array($newurl, $redirectUrl)){
                 $error=true;
             }
-            $httpcode= curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-
             return $error;
         }
 

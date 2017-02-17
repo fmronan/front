@@ -153,9 +153,7 @@ namespace Viteloge\FrontendBundle\Controller {
             }
 
             $userManager = $this->get('fos_user.user_manager');
-            $user = $userManager->findUserBy(
-                array( 'id' => $data['id'] )
-            );
+            $user = $userManager->findUserBy(array( 'id' => $data['id'] ));
 
             if (!$user instanceof User) {
                 throw new AccessDeniedException();
@@ -173,10 +171,7 @@ namespace Viteloge\FrontendBundle\Controller {
             $user->setPartnerContactEnabled(false);
             $userManager->updateUser($user);
 
-            $this->addFlash(
-                'success',
-                $translated->trans('user.flash.partnercontactdisabled')
-            );
+            $this->addFlash('success',$translated->trans('user.flash.partnercontactdisabled'));
 
             return $this->redirectToRoute('viteloge_frontend_homepage');
         }

@@ -10,7 +10,7 @@ namespace Viteloge\FrontendBundle\Form\Type {
     use Symfony\Component\Form\FormEvent;
     use Symfony\Component\Form\FormEvents;
     use Doctrine\ORM\EntityManager;
-    use Acreat\InseeBundle\Entity\InseeCity;
+    use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\CoreBundle\Component\Enum\TransactionEnum;
     use Viteloge\CoreBundle\Component\Enum\TypeEnum;
     use Viteloge\CoreBundle\Component\Enum\RoomEnum;
