@@ -65,58 +65,8 @@ namespace Viteloge\FrontendBundle\Controller {
             );
         }
 
-        /**
-         * Display research result. No cache for this page
-         *
-         * @Route(
-         *     "/search/{page}/{limit}",
-         *     requirements={
-         *         "page"="\d+",
-         *         "limit"="\d+"
-         *     },
-         *     defaults={
-         *         "page"=1,
-         *         "limit"="25"
-         *     },
-         *     name="viteloge_frontend_ad_search"
-         * )
-         * @Route(
-         *     "/search/",
-         *     requirements={
-         *         "page"="\d+",
-         *         "limit"="\d+"
-         *     },
-         *     defaults={
-         *         "page"=1,
-         *         "limit"="25"
-         *     },
-         *     name="viteloge_frontend_ad_search_default"
-         * )
-         * @Method({"GET"})
-         * @Template("VitelogeFrontendBundle:Ad:search_response.html.twig")
-         */
-        public function searchAction(Request $request, $page, $limit) {
-           $translated = $this->get('translator');
-           $currentUrl = $request->getUri();
-
-
-            // Form
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($request);
-            $form = $this->createForm(AdSearchType::class, $adSearch);
-            // --
-
-            // Save session
-            $session = $request->getSession();
-            $session->set('adSearch', $adSearch);
-
-            $session->set('currentUrl', $currentUrl);
-            $session->remove('request');
-            $session->set('request', $request);
-
-            // --
-
-            // First State
+        private function getBreadcrumpAction(Request $request,$adSearch,$translated){
+             // First State
             $inseeState = null;
             $whereState = $adSearch->getWhereState();
             if (!empty($whereState)) {
@@ -249,6 +199,66 @@ namespace Viteloge\FrontendBundle\Controller {
                 $description .= $breadcrumbTitle;
                 $breadcrumbs->addItem($breadcrumbTitle);
             }
+
+             $infos['description']= $description;
+             $infos['breadcrumbTitle']= $breadcrumbTitle;
+             return $infos;
+        }
+
+        /**
+         * Display research result. No cache for this page
+         *
+         * @Route(
+         *     "/search/{page}/{limit}",
+         *     requirements={
+         *         "page"="\d+",
+         *         "limit"="\d+"
+         *     },
+         *     defaults={
+         *         "page"=1,
+         *         "limit"="25"
+         *     },
+         *     name="viteloge_frontend_ad_search"
+         * )
+         * @Route(
+         *     "/search/",
+         *     requirements={
+         *         "page"="\d+",
+         *         "limit"="\d+"
+         *     },
+         *     defaults={
+         *         "page"=1,
+         *         "limit"="25"
+         *     },
+         *     name="viteloge_frontend_ad_search_default"
+         * )
+         * @Method({"GET"})
+         * @Template("VitelogeFrontendBundle:Ad:search_response.html.twig")
+         */
+        public function searchAction(Request $request, $page, $limit) {
+           $translated = $this->get('translator');
+           $currentUrl = $request->getUri();
+
+
+            // Form
+            $adSearch = new AdSearch();
+            $adSearch->handleRequest($request);
+            $form = $this->createForm(AdSearchType::class, $adSearch);
+            // --
+
+            // Save session
+            $session = $request->getSession();
+            $session->set('adSearch', $adSearch);
+
+            $session->set('currentUrl', $currentUrl);
+            $session->remove('request');
+            $session->set('request', $request);
+
+            // --
+
+           $infos = $this->getBreadcrumpAction($request,$adSearch,$translated);
+           $description = $infos['description'];
+           $breadcrumbTitle = $infos['breadcrumbTitle'];
             // elastica
             $elasticaManager = $this->container->get('fos_elastica.manager');
             $repository = $elasticaManager->getRepository('VitelogeCoreBundle:Ad');

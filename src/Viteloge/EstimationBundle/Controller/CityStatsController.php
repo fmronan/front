@@ -96,6 +96,7 @@ class CityStatsController extends Controller
                 )
             )
         );
+
         $breadcrumbs->addItem(
             $translated->trans('breadcrumb.statistic.city', array('%city%' => $inseeCity->getName()), 'breadcrumbs')
         );
