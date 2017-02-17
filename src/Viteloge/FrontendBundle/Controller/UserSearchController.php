@@ -64,7 +64,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Method({"GET", "POST"})
          * @ParamConverter(
          *     "inseeCity",
-         *     class="AcreatInseeBundle:InseeCity",
+         *     class="VitelogeInseeBundle:InseeCity",
          *     options={
          *         "id" = "id",
          *         "name" = "name",

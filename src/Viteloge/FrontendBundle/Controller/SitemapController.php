@@ -58,12 +58,8 @@ namespace Viteloge\FrontendBundle\Controller {
             $translated = $this->get('translator');
 
             // Breadcrumbs
-            $breadcrumbs = $this->get('white_october_breadcrumbs');
-            $breadcrumbs->addItem(
-                $translated->trans('breadcrumb.home', array(), 'breadcrumbs'),
-                $this->get('router')->generate('viteloge_frontend_homepage')
-            );
-            $breadcrumbs->addItem($translated->trans('breadcrumb.sitemap', array(), 'breadcrumbs'));
+            $arrayBreadcrump =array('last'=>'breadcrumb.sitemap');
+            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
             // --
 
             // SEO

@@ -86,6 +86,10 @@
         <source>viteloge_frontend_prefer_latest_list</source>
         <target>/prefer/last/{page}/{limit}</target>
       </trans-unit>
+      <trans-unit id="viteloge_frontend_prefer_latest" resname="viteloge_frontend_prefer_latest">
+        <source>viteloge_frontend_prefer_latest</source>
+        <target>/prefer/latest/{limit}</target>
+      </trans-unit>
       <trans-unit id="viteloge_frontend_ad_carousel" resname="viteloge_frontend_ad_carousel">
         <source>viteloge_frontend_ad_carousel</source>
         <target>/ad/carousel/</target>

@@ -1562,6 +1562,10 @@
         <source>viteloge.frontend.static.register.pro</source>
         <target>Professionnels de l’immobilier</target>
       </trans-unit>
+      <trans-unit id="viteloge.frontend.lastadd" resname="viteloge.frontend.lastadd">
+        <source>viteloge.frontend.lastadd</source>
+        <target>Derniers biens</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

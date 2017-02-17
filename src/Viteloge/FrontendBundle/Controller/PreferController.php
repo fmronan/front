@@ -178,13 +178,9 @@ namespace Viteloge\FrontendBundle\Controller {
             $adSearch = new AdSearch();
             $adSearch->handleRequest($request);
             $form = $this->createForm(AdSearchType::class, $adSearch);
-            // Breadcrumbs
+
             $description = 'Les dernières annonces immobilières de viteloge';
-            $breadcrumbs = $this->get('white_october_breadcrumbs');
-            $breadcrumbs->addItem(
-                $translated->trans('breadcrumb.home', array(), 'breadcrumbs'),
-                $this->get('router')->generate('viteloge_frontend_homepage')
-            );
+
             $elasticaManager = $this->container->get('fos_elastica.manager');
             $repository = $elasticaManager->getRepository('VitelogeCoreBundle:Ad');
             $pagination = $repository->searchPaginated($form->getData());
@@ -200,13 +196,10 @@ namespace Viteloge\FrontendBundle\Controller {
                 $request->get('_route_params'),
                 true
             );
-            $breadcrumbTitle  = 'Derniers biens';
-            $breadcrumbs = $this->get('white_october_breadcrumbs');
 
-            $breadcrumbs->addItem(
-                    $breadcrumbTitle,
-                    $this->get('router')->generate('viteloge_frontend_prefer_latest_list'));
-
+            $arrayBreadcrump =array('last'=>'breadcrumb.last');
+            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
+            $breadcrumbTitle  = $translated->trans('viteloge.frontend.lastadd');
             $seoPage
                 ->setTitle($breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.title'))
                 ->addMeta('name', 'robots', 'noindex, follow')
@@ -334,18 +327,8 @@ namespace Viteloge\FrontendBundle\Controller {
             $form = $this->createForm(AdSearchType::class, $adSearch);
 
             // Breadcrumbs
-            $breadcrumbs = $this->get('white_october_breadcrumbs');
-            $breadcrumbs->addItem(
-                $translated->trans('breadcrumb.home', array(), 'breadcrumbs'),
-                $this->get('router')->generate('viteloge_frontend_homepage')
-            );
-            $breadcrumbs->addItem(
-                $translated->trans('breadcrumb.user', array(), 'breadcrumbs'),
-                $this->get('router')->generate('viteloge_frontend_user_index')
-            );
-            $breadcrumbs->addItem(
-            $TitleName =$translated->trans('breadcrumb.favourite', array(), 'breadcrumbs')
-        );
+            $arrayBreadcrump =array('viteloge_frontend_user_index'=>'breadcrumb.user','last'=>'breadcrumb.favourite');
+            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
                $cookies = $request->cookies;
             if ($cookies->has('viteloge_favorie')){
                 $info_cookies_favorie = explode('#$#', $cookies->get('viteloge_favorie')) ;
@@ -369,6 +352,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $response = new Response();
             $response->headers->setCookie(new Cookie('viteloge_favorie', $cookie_favorie));
+            $TitleName =$translated->trans('breadcrumb.favourite', array(), 'breadcrumbs');
              // SEO
             $canonicalLink = $this->get('router')->generate(
                 $request->get('_route'),
@@ -430,18 +414,9 @@ namespace Viteloge\FrontendBundle\Controller {
             $form = $this->createForm(AdSearchType::class, $adSearch);
 
             // Breadcrumbs
-            $breadcrumbs = $this->get('white_october_breadcrumbs');
-            $breadcrumbs->addItem(
-                $translated->trans('breadcrumb.home', array(), 'breadcrumbs'),
-                $this->get('router')->generate('viteloge_frontend_homepage')
-            );
-            $breadcrumbs->addItem(
-                $translated->trans('breadcrumb.user', array(), 'breadcrumbs'),
-                $this->get('router')->generate('viteloge_frontend_user_index')
-            );
-            $breadcrumbs->addItem(
-            $TitleName =$translated->trans('breadcrumb.favourite', array(), 'breadcrumbs')
-        );
+            $TitleName =$translated->trans('breadcrumb.favourite', array(), 'breadcrumbs');
+            $arrayBreadcrump =array('viteloge_frontend_user_index'=>'breadcrumb.user','last'=>'breadcrumb.favourite');
+            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
                $cookies = $request->cookies;
             if ($cookies->has('viteloge_favorie')){
                 $info_cookies_favorie = explode('#$#', $cookies->get('viteloge_favorie')) ;

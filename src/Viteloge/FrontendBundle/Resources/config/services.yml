@@ -11,6 +11,7 @@ parameters:
     viteloge_frontend.eventlistener.websearch.class: Viteloge\FrontendBundle\EventListener\WebSearchListener
     viteloge_frontend.eventlistener.message.class: Viteloge\FrontendBundle\EventListener\MessageListener
     viteloge_frontend.services.cookies: Viteloge\FrontendBundle\Services\CookiesFactory
+    viteloge_frontend.services.breadcrump: Viteloge\FrontendBundle\Services\BreadcrumpFactory
     viteloge_frontend.form.type.api.class: Viteloge\FrontendBundle\Form\Type\ApiType
     viteloge_core.form.type.adsearch.class: Viteloge\FrontendBundle\Form\Type\AdSearchType
 services:
@@ -53,6 +54,9 @@ services:
     viteloge_frontend_generate.cookies:
         class: "%viteloge_frontend.services.cookies%"
         arguments: ["@request_stack"]
+    viteloge_frontend_generate.breadcrump:
+        class: "%viteloge_frontend.services.breadcrump%"
+        arguments: ["@translator","@router","@white_october_breadcrumbs"]
     viteloge_frontend.websearchlistener:
         class: "%viteloge_frontend.eventlistener.websearch.class%"
         arguments: ["@fos_elastica.manager"]
@@ -88,7 +92,6 @@ services:
         class: OldTokenManager
         factory: ["%viteloge_frontend.component.factory.token_manager.class%", getManager]
         arguments: ["@security.token_storage", "%old_secret%"]
-
 
 
 

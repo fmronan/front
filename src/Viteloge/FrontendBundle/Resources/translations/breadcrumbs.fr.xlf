@@ -66,6 +66,10 @@
                 <source>breadcrumb.favourite</source>
                 <target>Vos favoris</target>
             </trans-unit>
+            <trans-unit id="breadcrumb.last" resname="breadcrumb.last">
+                <source>breadcrumb.last</source>
+                <target>Derniers biens</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
