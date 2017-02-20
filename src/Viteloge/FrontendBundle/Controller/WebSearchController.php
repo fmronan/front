@@ -434,16 +434,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // SEO
             $canonicalLink = $this->get('router')->generate($request->get('_route'), array('id' => $webSearch->getId()), true);
-            $seoPage = $this->container->get('sonata.seo.page');
-            $seoPage
-                ->setTitle($translated->trans('viteloge.frontend.websearch.edit.title'))
-                ->addMeta('name', 'robots', 'noindex, nofollow')
-                ->addMeta('name', 'description', $translated->trans('viteloge.frontend.websearch.edit.description'))
-                ->addMeta('property', 'og:title', $translated->trans('viteloge.frontend.websearch.edit.title'))
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.websearch.edit.description'))
-            ;
+            $seoPage = $this->getSameSeoAction($canonicalLink);
             // --
 
             $deleteForm = $this->createDeleteForm($webSearch);
@@ -458,6 +449,26 @@ namespace Viteloge\FrontendBundle\Controller {
                 'headform' => $headform->createView(),
                 'form_delete' => $deleteForm->createView()
             );
+        }
+
+        /**
+        *
+        *
+        */
+        private function getSameSeoAction($canonicalLink){
+            $translated = $this->get('translator');
+            $seoPage = $this->container->get('sonata.seo.page');
+            $seoPage
+                ->setTitle($translated->trans('viteloge.frontend.websearch.edit.title'))
+                ->addMeta('name', 'robots', 'noindex, nofollow')
+                ->addMeta('name', 'description', $translated->trans('viteloge.frontend.websearch.edit.description'))
+                ->addMeta('property', 'og:title', $translated->trans('viteloge.frontend.websearch.edit.title'))
+                ->addMeta('property', 'og:type', 'website')
+                ->addMeta('property', 'og:url',  $canonicalLink)
+                ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.websearch.edit.description'))
+            ;
+            return $seoPage;
+
         }
 
         /**
@@ -546,16 +557,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // SEO
             $canonicalLink = $this->get('router')->generate('viteloge_frontend_websearch_edit', array('id' => $webSearch->getId()), true);
-            $seoPage = $this->container->get('sonata.seo.page');
-            $seoPage
-                ->setTitle($translated->trans('viteloge.frontend.websearch.edit.title'))
-                ->addMeta('name', 'robots', 'noindex, nofollow')
-                ->addMeta('name', 'description', $translated->trans('viteloge.frontend.websearch.edit.description'))
-                ->addMeta('property', 'og:title', $translated->trans('viteloge.frontend.websearch.edit.title'))
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.websearch.edit.description'))
-            ;
+            $seoPage = $this->getSameSeoAction($canonicalLink);
             // --
 
             $deleteForm = $this->createDeleteForm($webSearch);

@@ -388,12 +388,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function listFavouriteAction(Request $request, $page, $limit) {
            $translated = $this->get('translator');
-           $session = $request->getSession();
-           $requestSearch = $session->get('request');
-            // Form
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $form = $this->createForm(AdSearchType::class, $adSearch);
 
             // Breadcrumbs
             $TitleName =$translated->trans('breadcrumb.favourite', array(), 'breadcrumbs');
@@ -421,16 +415,8 @@ namespace Viteloge\FrontendBundle\Controller {
             ;
 
             $adapter = new ArrayAdapter($ads);
-            $pagination = new Pagerfanta($adapter);
-            // --
-            // pager
-            $pagination->setMaxPerPage($limit);
-            $pagination->setCurrentPage($page);
-            $session->set('currentPage',$pagination->getCurrentPage());
-            $session->set('resultAd',$pagination->getCurrentPageResults());
-            $session->set('totalResult',$pagination->getNbResults());
+            $pagination = $this->getPagination($request,$adapter,$limit,$page);
             return array(
-                'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
             );
@@ -438,10 +424,27 @@ namespace Viteloge\FrontendBundle\Controller {
             }else{
                return $this->redirectToRoute(
                     'fos_user_profile_show');
-
             }
 
 
+            }
+
+            /**
+            *
+            *
+            *
+            */
+            private function getPagination($request,$adapter,$limit,$page){
+            $pagination = new Pagerfanta($adapter);
+            // --
+            // pager
+            $pagination->setMaxPerPage($limit);
+            $pagination->setCurrentPage($page);
+            $session = $request->getSession();
+            $session->set('currentPage',$pagination->getCurrentPage());
+            $session->set('resultAd',$pagination->getCurrentPageResults());
+            $session->set('totalResult',$pagination->getNbResults());
+            return $pagination;
             }
 
     }
