@@ -146,31 +146,23 @@ namespace Viteloge\FrontendBundle\Controller {
             $translated = $this->get('translator');
             $data = json_decode( base64_decode( strtr( $info, '-_', '+/' ) ), true );
 
-            if (empty($data) || empty($data['id'])) {
-                throw new AccessDeniedException();
-            }
+            if (empty($data) || empty($data['id'])) throw new AccessDeniedException();
 
             $userManager = $this->get('fos_user.user_manager');
             $user = $userManager->findUserBy(array( 'id' => $data['id'] ));
 
-            if (!$user instanceof User) {
-                throw new AccessDeniedException();
-            }
+            if (!$user instanceof User) throw new AccessDeniedException();
 
             $newTokenManager = $this->get('viteloge_frontend.mail_token_manager');
             $oldTokenManager = $this->get('viteloge_frontend.old_token_manager');
             $newTokenManager->setUser($user)->hash();
             $oldTokenManager->setUser($user)->hash();
 
-            if (!$newTokenManager->isTokenValid($token) && !$oldTokenManager->isTokenValid($token)) {
-                throw $this->createNotFoundException();
-            }
+            if (!$newTokenManager->isTokenValid($token) && !$oldTokenManager->isTokenValid($token)) throw $this->createNotFoundException();
 
             $user->setPartnerContactEnabled(false);
             $userManager->updateUser($user);
-
             $this->addFlash('success',$translated->trans('user.flash.partnercontactdisabled'));
-
             return $this->redirectToRoute('viteloge_frontend_homepage');
         }
 

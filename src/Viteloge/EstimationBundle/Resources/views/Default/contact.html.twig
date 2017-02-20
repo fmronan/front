@@ -1,0 +1,19 @@
+{% set page_class = "estimation resultat" %}
+{% extends 'VitelogeEstimationBundle::layout.html.twig' %}
+{%- block header -%}
+  {{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
+{%- endblock header -%}
+{% block main %}
+    {% embed "VitelogeFrontendBundle:Grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3 } %}
+        {% block left %}
+            {{ include('VitelogeFrontendBundle:Global:alert.html.twig', { type: 'success', alerts: { 0: 'estimation.contact.pris' | trans }, dismissible: false }) }}
+        {% endblock %}
+        {% block right %}
+            {{ include('VitelogeFrontendBundle:Block:aside_right.html.twig', {}) }}
+        {% endblock %}
+    {% endembed %}
+{% endblock main %}
+{%- block javascripts -%}
+    {{- parent() -}}
+
+{%- endblock javascripts -%}

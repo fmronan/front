@@ -46,7 +46,7 @@ class DefaultController extends Controller {
 
         // Breadcrumbs
         $arrayBreadcrump =array('last'=>'breadcrumb.estimate');
-        $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
+        $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
 
         // SEO
         $canonicalLink = $this->get('router')->generate($request->get('_route'), array(), true);
@@ -235,7 +235,7 @@ class DefaultController extends Controller {
      * @Route("votre-estimation/contact")
      * @Template()
      */
-    public function contactAction() {
+    public function contactAction(Request $request) {
         $translated = $this->get('translator');
         // Breadcrumbs
           $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('viteloge_estimation_default_index'=>'breadcrumb.estimate','last'=>'breadcrumb.estimate.contact'));

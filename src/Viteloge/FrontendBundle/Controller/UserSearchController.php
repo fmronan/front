@@ -16,7 +16,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Viteloge\CoreBundle\Entity\WebSearch;
     use Viteloge\CoreBundle\Entity\UserSearch;
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-    use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
+
 
     /**
      * @Route("/user/search")
@@ -225,26 +225,19 @@ namespace Viteloge\FrontendBundle\Controller {
             if ($timestamp < $now && ($timestamp > ($now-604800))) {
                 $user = $webSearch->getUser();
                 $userSearch = $webSearch->getUserSearch();
-
                 $key = $timestamp.':'.$userSearch->getMail();
                 $newTokenManager = $this->get('viteloge_frontend.mail_token_manager');
                 $oldTokenManager = $this->get('viteloge_frontend.old_token_manager');
                 $newTokenManager->setUser($user)->hashBy($key);
                 $oldTokenManager->setUser($user)->hashBy($key);
-
                 if (!$newTokenManager->isTokenValid($token) && !$oldTokenManager->isTokenValid($token)) {
                     throw $this->createNotFoundException();
                 }
-
                 $userSearch->setDeletedAt(new \DateTime());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($userSearch);
                 $em->flush();
-                $this->addFlash(
-                    'notice',
-                    $translated->trans('usersearch.flash.deleted')
-                );
-
+                $this->addFlash('notice',$translated->trans('usersearch.flash.deleted'));
                 return $this->redirectToRoute('viteloge_frontend_homepage');
             } else {
                 throw $this->createNotFoundException();
