@@ -87,6 +87,45 @@ namespace Viteloge\FrontendBundle\Services {
         }
 
 
+        public function getClassicBreadcrump($inseeCity){
+
+        $this->breadcrumbs = $this->initBreadcrump();
+
+        if ($inseeCity->getInseeState()){
+            $this->breadcrumbs->addItem(
+                $inseeCity->getInseeState()->getFullname(),
+                $this->get('router')->generate('viteloge_frontend_glossary_showstate',
+                    array(
+                        'name' => $inseeCity->getInseeState()->getSlug(),
+                        'id' => $inseeCity->getInseeState()->getId()
+                    )
+                )
+            );
+        }
+        if ($inseeCity->getInseeDepartment()) {
+            $this->breadcrumbs->addItem(
+                $inseeCity->getInseeDepartment()->getFullname(),
+                $this->get('router')->generate('viteloge_frontend_glossary_showdepartment',
+                    array(
+                        'name' => $inseeCity->getInseeDepartment()->getSlug(),
+                        'id' => $inseeCity->getInseeDepartment()->getId()
+                    )
+                )
+            );
+        }
+        $this->breadcrumbs->addItem(
+            $inseeCity->getFullname(),
+            $this->get('router')->generate('viteloge_frontend_glossary_showcity',
+                array(
+                    'name' => $inseeCity->getSlug(),
+                    'id' => $inseeCity->getId()
+                )
+            )
+        );
+
+        return $this->breadcrumbs;
+        }
+
 
     }
 

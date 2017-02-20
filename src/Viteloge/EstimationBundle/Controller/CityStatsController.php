@@ -60,43 +60,7 @@ class CityStatsController extends Controller
         // --
 
         // Breadcrumbs
-        $breadcrumbs = $this->get('white_october_breadcrumbs');
-        $breadcrumbs->addItem(
-            $translated->trans('breadcrumb.home', array(), 'breadcrumbs'),
-            $this->get('router')->generate('viteloge_frontend_homepage')
-        );
-        if ($inseeCity->getInseeState()){
-            $breadcrumbs->addItem(
-                $inseeCity->getInseeState()->getFullname(),
-                $this->get('router')->generate('viteloge_frontend_glossary_showstate',
-                    array(
-                        'name' => $inseeCity->getInseeState()->getSlug(),
-                        'id' => $inseeCity->getInseeState()->getId()
-                    )
-                )
-            );
-        }
-        if ($inseeCity->getInseeDepartment()) {
-            $breadcrumbs->addItem(
-                $inseeCity->getInseeDepartment()->getFullname(),
-                $this->get('router')->generate('viteloge_frontend_glossary_showdepartment',
-                    array(
-                        'name' => $inseeCity->getInseeDepartment()->getSlug(),
-                        'id' => $inseeCity->getInseeDepartment()->getId()
-                    )
-                )
-            );
-        }
-        $breadcrumbs->addItem(
-            $inseeCity->getFullname(),
-            $this->get('router')->generate('viteloge_frontend_glossary_showcity',
-                array(
-                    'name' => $inseeCity->getSlug(),
-                    'id' => $inseeCity->getId()
-                )
-            )
-        );
-
+        $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->getClassicBreadcrump($inseeCity);
         $breadcrumbs->addItem(
             $translated->trans('breadcrumb.statistic.city', array('%city%' => $inseeCity->getName()), 'breadcrumbs')
         );
