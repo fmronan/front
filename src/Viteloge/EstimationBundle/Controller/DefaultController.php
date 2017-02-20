@@ -43,11 +43,9 @@ class DefaultController extends Controller {
      */
     public function indexAction( Request $request ) {
         $translated = $this->get('translator');
-
         // Breadcrumbs
         $arrayBreadcrump =array('last'=>'breadcrumb.estimate');
         $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
-
         // SEO
         $canonicalLink = $this->get('router')->generate($request->get('_route'), array(), true);
         $seoPage = $this->container->get('sonata.seo.page');
@@ -61,10 +59,8 @@ class DefaultController extends Controller {
             ->setLinkCanonical($canonicalLink)
         ;
         // --
-
         $estimate = new Estimate();
         $form = $this->createForm( EstimationType::class, $estimate );
-
         return array(
             'form' => $form->createView()
         );
@@ -77,10 +73,8 @@ class DefaultController extends Controller {
      */
     public function indexPostAction( Request $request ) {
         $translated = $this->get('translator');
-
         // Breadcrumbs
         $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump =array('last'=>'breadcrumb.estimate'));
-
         // SEO
         $canonicalLink = $this->get('router')->generate('viteloge_estimation_default_index', array(), true);
         $seoPage = $this->container->get('sonata.seo.page');
@@ -95,10 +89,8 @@ class DefaultController extends Controller {
             ->setLinkCanonical($canonicalLink)
         ;
         // --
-
         $estimate = new Estimate();
         $form = $this->createForm(EstimationType::class, $estimate );
-
         $post_is_intro = false;
         if ( $request->query->get( 'intro', false ) ) {
             $post_is_intro = true;

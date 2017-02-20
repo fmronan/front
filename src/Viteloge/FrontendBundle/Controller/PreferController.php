@@ -439,7 +439,6 @@ namespace Viteloge\FrontendBundle\Controller {
                return $this->redirectToRoute(
                     'fos_user_profile_show');
 
-
             }
 
 

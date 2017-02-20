@@ -109,11 +109,7 @@ namespace Viteloge\FrontendBundle\Controller {
             // Breadcrumbs
             $transaction = $adSearch->getTransaction();
             $description = 'Toutes les annonces immobilières de ';
-            $breadcrumbs = $this->get('white_october_breadcrumbs');
-            $breadcrumbs->addItem(
-                $translated->trans('breadcrumb.home', array(), 'breadcrumbs'),
-                $this->get('router')->generate('viteloge_frontend_homepage')
-            );
+            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->getDeptAndCityBreadcrump($inseeDepartment,$inseeCity);
             if ($inseeState instanceof InseeState) {
                 $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction)).' ' : '';
                 $breadcrumbTitle .= $inseeState->getFullname();
@@ -123,32 +119,6 @@ namespace Viteloge\FrontendBundle\Controller {
                         array(
                             'transaction' => $transaction,
                             'whereState' => array($inseeState->getId())
-                        )
-                    )
-                );
-            }
-            if ($inseeDepartment instanceof InseeDepartment) {
-                $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : '';
-                $breadcrumbTitle .= $inseeDepartment->getFullname();
-                $breadcrumbs->addItem(
-                    $breadcrumbTitle,
-                    $this->get('router')->generate('viteloge_frontend_ad_search',
-                        array(
-                            'transaction' => $transaction,
-                            'whereDepartment' => array($inseeDepartment->getId())
-                        )
-                    )
-                );
-            }
-            if ($inseeCity instanceof InseeCity) {
-                $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : '';
-                $breadcrumbTitle .= $inseeCity->getFullname().' ('.$inseeCity->getInseeDepartment()->getId().')';
-                $breadcrumbs->addItem(
-                    $breadcrumbTitle,
-                    $this->get('router')->generate('viteloge_frontend_ad_search',
-                        array(
-                            'transaction' => $transaction,
-                            'where' => array($inseeCity->getId())
                         )
                     )
                 );

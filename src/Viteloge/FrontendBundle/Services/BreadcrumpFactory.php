@@ -126,6 +126,36 @@ namespace Viteloge\FrontendBundle\Services {
         return $this->breadcrumbs;
         }
 
+       public function getDeptAndCityBreadcrump($inseeDepartment,$inseeCity){
+        $this->breadcrumbs = $this->initBreadcrump();
+       if ($inseeDepartment instanceof InseeDepartment) {
+                $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : '';
+                $breadcrumbTitle .= $inseeDepartment->getFullname();
+                $this->breadcrumbs->addItem(
+                    $breadcrumbTitle,
+                    $this->get('router')->generate('viteloge_frontend_ad_search',
+                        array(
+                            'transaction' => $transaction,
+                            'whereDepartment' => array($inseeDepartment->getId())
+                        )
+                    )
+                );
+            }
+            if ($inseeCity instanceof InseeCity) {
+                $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : '';
+                $breadcrumbTitle .= $inseeCity->getFullname().' ('.$inseeCity->getInseeDepartment()->getId().')';
+                $this->breadcrumbs->addItem(
+                    $breadcrumbTitle,
+                    $this->get('router')->generate('viteloge_frontend_glossary_showcity',
+                        array(
+                            'name' => $inseeCity->getSlug(),
+                            'id' => $inseeCity->getId()
+                        )
+                    )
+                );
+            }
+            return $this->breadcrumbs;
+        }
 
     }
 
