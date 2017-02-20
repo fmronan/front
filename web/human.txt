@@ -1,0 +1,43 @@
+/* TEAM */
+(historical) CEO: Régis Hautière
+Site: www.acreat.com
+Contact: hautiere [at] acreat.com
+From: Rennes, Bretagne, France
+
+(historical) CTO: Adrien Loyant
+Contact: loyant [at] acreat.com
+Twitter: @AdrienLoyant
+From: Rennes, Bretagne, France
+
+(master) Developer: Adrien Loyant
+Contact: loyant [at] acreat.com
+Twitter: @AdrienLoyant
+From: Rennes, Bretagne, France
+
+(First) Developer: Blaise de Carné
+From: Rennes, Bretagne, France
+
+(Second) Developer: Sébatien Tanguy
+From: Rennes, Bretagne, France
+
+(current) Developer: Ronan Guevel
+Contact: ronan.guevel [at] immo-facile.com
+From: Brest, Bretagne, France
+
+(historical) Web designer: Maël Goasdoue
+Contact: goasdoue [at] acreat.com
+From: Rennes, Bretagne, France
+
+
+/* THANKS */
+(historical) Commercial Director: Francois Dutertre
+From: Rennes, Bretagne, France
+
+
+/* SITE */
+Last update: 2016/11/11
+Language: French
+Doctype: HTML5
+Standards: HTML5, CSS3
+Components: Symfony2, Modernizr, jQuery, Bootstrap
+IDE: Sublime Text

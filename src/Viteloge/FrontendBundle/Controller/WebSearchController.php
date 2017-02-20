@@ -712,7 +712,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 );
             }
 
-            return $this->redirectToRoute('viteloge_frontend_user_index');
+            return $this->redirectToRoute('viteloge_frontend_websearch_list');
         }
 
         /**

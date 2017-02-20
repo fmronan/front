@@ -25,7 +25,6 @@
         {% endif %}
     </div>
 {%- endblock main_buttons_toolbar -%}
-
 {% block main %}
     {% embed "VitelogeFrontendBundle:Grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3, 'main_buttons_toolbar': block('main_buttons_toolbar') } %}
         {% block left %}
