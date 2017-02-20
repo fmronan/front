@@ -306,7 +306,8 @@ namespace Viteloge\FrontendBundle\Controller {
             $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('viteloge_frontend_user_index'=>'breadcrumb.user','last'=>'breadcrumb.favourite'));
 
             $TitleName =$translated->trans('breadcrumb.favourite', array(), 'breadcrumbs');
-            $reponse = $this->getFavCookiesAction($request,$id);
+            $cookies = $request->cookies;
+            $reponse = $this->getFavCookiesAction($cookies,$id);
             $ads = $reponse[0];
             $response = $reponse[1];
              // SEO
@@ -333,17 +334,15 @@ namespace Viteloge\FrontendBundle\Controller {
 
             }
 
-            private function getFavCookiesAction($request,$id){
-                $cookies = $request->cookies;
+            private function getFavCookiesAction($cookies,$id){
+
             if ($cookies->has('viteloge_favorie')){
                 $info_cookies_favorie = explode('#$#', $cookies->get('viteloge_favorie')) ;
                 // on supprime l'id du cookies
                 unset($info_cookies_favorie[array_search($id, $info_cookies_favorie)]);
-
                 $repository = $this->getDoctrine()->getRepository('VitelogeCoreBundle:Ad');
-             $ads = $repository->findById($info_cookies_favorie);
+             $reponse[] = $repository->findById($info_cookies_favorie);
              // on reconstruit le cookie
-             $cookies = $request->cookies;
                    $cookie_favorie = '';
                 foreach ($info_cookies_favorie as $key => $value) {
                     if($key == 0){
@@ -351,17 +350,13 @@ namespace Viteloge\FrontendBundle\Controller {
                     }else{
                       $cookie_favorie .= '#$#'.$value;
                     }
-
                 }
             $response = new Response();
             $response->headers->setCookie(new Cookie('viteloge_favorie', $cookie_favorie));
             }else{
                return $this->redirectToRoute(
                     'fos_user_profile_show');
-
-
             }
-            $reponse[] = $ads;
             $reponse[] =$response;
              return $reponse;
             }
