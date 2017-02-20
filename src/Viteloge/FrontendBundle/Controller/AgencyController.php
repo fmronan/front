@@ -241,7 +241,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     },
          *     name="viteloge_frontend_agency_phone"
          * )
-         * @Method({"POST"})
+         * @Method({"POST","GET"})
          * @ParamConverter("ad", class="VitelogeCoreBundle:Ad", options={"id" = "id"})
          * @Route(options={"expose"=true})
          * @Template("VitelogeFrontendBundle:Ad:fragment/btn_phone.html.twig")
@@ -249,9 +249,7 @@ namespace Viteloge\FrontendBundle\Controller {
        public function getNumSurtaxeAction(Request $request,Ad $ad)
         {
 
-           if($request->isXmlHttpRequest()){
-            // Clef pour l’API :
-            $clef = "b28b9b89b6aea1dc6287a6d446e001a8";
+          if($request->isXmlHttpRequest()){
             //on cherche le numero de l'agence avec son $id
             $em = $this->getDoctrine()->getManager();
             $agence = $em->getRepository('VitelogeCoreBundle:Agence')->find($ad->getAgencyId());
@@ -264,7 +262,30 @@ namespace Viteloge\FrontendBundle\Controller {
                         $contact->setUa($ua);
                         $contact->initFromAd($ad);
             if(isset($tel) && !empty($tel)){
-              $contact->setGenre('dempandephone');
+                $this->construcNumPhone($contact,$tel);
+
+            }else{
+              $contact->setGenre('phoneempty');
+            }
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($contact);
+                $em->flush();
+
+            $cout = '1,34€/appel.0,34€/mn';
+            $response = new JsonResponse();
+            return $response->setData(array('phone' => $num, 'cout' => $cout, 'id' => $ad->getId()));
+            }else{
+             throw new \Exception("Erreur");
+            }
+        }
+
+        /**
+        *
+        *
+        */
+        private function construcNumPhone($contact,$tel){
+            $clef = "b28b9b89b6aea1dc6287a6d446e001a8";
+            $contact->setGenre('dempandephone');
                 $tel = preg_replace("([^0-9]+)","",$tel);
                 $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
                 $xml.=
@@ -285,19 +306,8 @@ namespace Viteloge\FrontendBundle\Controller {
                 }
                 $num = implode('¤',$array);
                 $num = rtrim($num,'¤');
-            }else{
-              $contact->setGenre('phoneempty');
-            }
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($contact);
-                $em->flush();
+                return $num;
 
-            $cout = '1,34€/appel.0,34€/mn';
-            $response = new JsonResponse();
-            return $response->setData(array('phone' => $num, 'cout' => $cout, 'id' => $ad->getId()));
-            }else{
-             throw new \Exception("Erreur");
-            }
         }
 
         /**
