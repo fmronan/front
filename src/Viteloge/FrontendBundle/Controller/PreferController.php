@@ -302,16 +302,39 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function removeFavouriteAction(Request $request,$id ) {
            $translated = $this->get('translator');
-           $session = $request->getSession();
-           $requestSearch = $session->get('request');
-            // Form
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $form = $this->createForm(AdSearchType::class, $adSearch);
-
             // Breadcrumbs
             $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('viteloge_frontend_user_index'=>'breadcrumb.user','last'=>'breadcrumb.favourite'));
-               $cookies = $request->cookies;
+
+            $TitleName =$translated->trans('breadcrumb.favourite', array(), 'breadcrumbs');
+            $reponse = $this->getFavCookiesAction($request,$id);
+            $ads = $reponse[0];
+            $response = $reponse[1];
+             // SEO
+            $canonicalLink = $this->get('router')->generate(
+                $request->get('_route'),
+                $request->get('_route_params'),
+                true
+            );
+            $seoPage = $this->container->get('sonata.seo.page');
+            $seoPage
+                ->setTitle($TitleName)
+                ->addMeta('name', 'robots', 'noindex, follow')
+                ->addMeta('property', 'og:title', $seoPage->getTitle())
+                ->addMeta('property', 'og:type', 'website')
+                ->addMeta('property', 'og:url',  $canonicalLink)
+                ->setLinkCanonical($canonicalLink)
+            ;
+            return $this->render('VitelogeFrontendBundle:Ad:favourite.html.twig',array(
+                'ads' => $ads
+            ), $response);
+
+
+
+
+            }
+
+            private function getFavCookiesAction($request,$id){
+                $cookies = $request->cookies;
             if ($cookies->has('viteloge_favorie')){
                 $info_cookies_favorie = explode('#$#', $cookies->get('viteloge_favorie')) ;
                 // on supprime l'id du cookies
@@ -330,41 +353,17 @@ namespace Viteloge\FrontendBundle\Controller {
                     }
 
                 }
-
-
             $response = new Response();
             $response->headers->setCookie(new Cookie('viteloge_favorie', $cookie_favorie));
-            $TitleName =$translated->trans('breadcrumb.favourite', array(), 'breadcrumbs');
-             // SEO
-            $canonicalLink = $this->get('router')->generate(
-                $request->get('_route'),
-                $request->get('_route_params'),
-                true
-            );
-            $seoPage = $this->container->get('sonata.seo.page');
-            $seoPage
-                ->setTitle($TitleName)
-                ->addMeta('name', 'robots', 'noindex, follow')
-                ->addMeta('property', 'og:title', $seoPage->getTitle())
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->setLinkCanonical($canonicalLink)
-            ;
-
-
-            return $this->render('VitelogeFrontendBundle:Ad:favourite.html.twig',array(
-                'form' => $form->createView(),
-                'ads' => $ads
-            ), $response);
-
             }else{
                return $this->redirectToRoute(
                     'fos_user_profile_show');
 
 
             }
-
-
+            $reponse[] = $ads;
+            $reponse[] =$response;
+             return $reponse;
             }
 
         /**
