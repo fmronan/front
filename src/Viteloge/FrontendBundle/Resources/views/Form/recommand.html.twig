@@ -104,7 +104,7 @@
                         {{ form_row(emailField, prototype_options) }}
                     {% else %}
                         {{ form_widget(form.emails) }}
-                        {{ prototype|replace({'__name__': '0'})|raw }}
+                        {{ prototype|replace({'__name__': '0'})|rawdescr }}
                     {% endfor %}
                 </div>
             </div>

@@ -9,8 +9,8 @@
     <div class="row">
         <div class="col-xs-10">
             {%- block column_left -%}
-                {{ ('<' ~ header1 ~ ' class="h4 list-group-item-heading">')|raw }}{{ url.name }}{{ ('</' ~ header1 ~ '>')|raw }}
-                {{ ('<' ~ header2 ~ ' class="h5">')|raw }}{{ url.description }}{{ ('</' ~ header2 ~ '>')|raw }}
+                {{ ('<' ~ header1 ~ ' class="h4 list-group-item-heading">')|rawdescr }}{{ url.name }}{{ ('</' ~ header1 ~ '>')|rawdescr }}
+                {{ ('<' ~ header2 ~ ' class="h5">')|rawdescr }}{{ url.description }}{{ ('</' ~ header2 ~ '>')|rawdescr }}
             {%- endblock column_left -%}
         </div>
         <div class="col-xs-2 text-right">

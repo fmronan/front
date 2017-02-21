@@ -4,4 +4,4 @@
 {%- if includeLibs is same as(true) -%}
     document.write('<link rel="stylesheet" href="{{ aws_s3_domain('built/viteloge.min.css') }}">');
 {%- endif -%}
-document.write("{{- include('VitelogeFrontendBundle:Api:Form/adSearch.html.twig', { form: form, theme_container: 'search-container', includeLibs: includeLibs })|replace({'\n':'', '\"': '\\"'})|raw -}}");
+document.write("{{- include('VitelogeFrontendBundle:Api:Form/adSearch.html.twig', { form: form, theme_container: 'search-container', includeLibs: includeLibs })|replace({'\n':'', '\"': '\\"'})|rawdescr -}}");

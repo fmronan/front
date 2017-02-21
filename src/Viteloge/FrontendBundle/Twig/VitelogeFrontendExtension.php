@@ -52,9 +52,19 @@ namespace Viteloge\FrontendBundle\Twig {
                 new \Twig_SimpleFilter('normalize_utf8', array($this, 'normalizeUTF8')),
                 new \Twig_SimpleFilter('slugify', array($this, 'slugify')),
                 new \Twig_SimpleFilter('roomsurface', array($this, 'roomsSurfaceAd')),
+                new \Twig_SimpleFilter('rawdescr', array($this, 'rawdescrFilter'), array('is_safe' => array('html'))),
 
             );
         }
+
+
+        /**
+         *
+         */
+        public function rawdescrFilter($descr)
+       {
+        return $descr;
+       }
 
         /**
          *

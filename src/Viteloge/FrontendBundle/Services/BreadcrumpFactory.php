@@ -96,7 +96,7 @@ namespace Viteloge\FrontendBundle\Services {
         if ($inseeCity->getInseeState()){
             $this->breadcrumbs->addItem(
                 $inseeCity->getInseeState()->getFullname(),
-                $this->get('router')->generate('viteloge_frontend_glossary_showstate',
+                $this->router->generate('viteloge_frontend_glossary_showstate',
                     array(
                         'name' => $inseeCity->getInseeState()->getSlug(),
                         'id' => $inseeCity->getInseeState()->getId()
@@ -107,7 +107,7 @@ namespace Viteloge\FrontendBundle\Services {
         if ($inseeCity->getInseeDepartment()) {
             $this->breadcrumbs->addItem(
                 $inseeCity->getInseeDepartment()->getFullname(),
-                $this->get('router')->generate('viteloge_frontend_glossary_showdepartment',
+                $this->router->generate('viteloge_frontend_glossary_showdepartment',
                     array(
                         'name' => $inseeCity->getInseeDepartment()->getSlug(),
                         'id' => $inseeCity->getInseeDepartment()->getId()
@@ -117,7 +117,7 @@ namespace Viteloge\FrontendBundle\Services {
         }
         $this->breadcrumbs->addItem(
             $inseeCity->getFullname(),
-            $this->get('router')->generate('viteloge_frontend_glossary_showcity',
+            $this->router->generate('viteloge_frontend_glossary_showcity',
                 array(
                     'name' => $inseeCity->getSlug(),
                     'id' => $inseeCity->getId()
@@ -135,7 +135,7 @@ namespace Viteloge\FrontendBundle\Services {
                 $breadcrumbTitle .= $inseeDepartment->getFullname();
                 $this->breadcrumbs->addItem(
                     $breadcrumbTitle,
-                    $this->get('router')->generate('viteloge_frontend_ad_search',
+                    $this->router->generate('viteloge_frontend_ad_search',
                         array(
                             'transaction' => $transaction,
                             'whereDepartment' => array($inseeDepartment->getId())
@@ -148,7 +148,7 @@ namespace Viteloge\FrontendBundle\Services {
                 $breadcrumbTitle .= $inseeCity->getFullname().' ('.$inseeCity->getInseeDepartment()->getId().')';
                 $this->breadcrumbs->addItem(
                     $breadcrumbTitle,
-                    $this->get('router')->generate('viteloge_frontend_glossary_showcity',
+                    $this->router->generate('viteloge_frontend_glossary_showcity',
                         array(
                             'name' => $inseeCity->getSlug(),
                             'id' => $inseeCity->getId()

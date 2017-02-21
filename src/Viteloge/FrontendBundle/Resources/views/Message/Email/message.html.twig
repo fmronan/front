@@ -6,7 +6,7 @@
     <strong>Nom : </strong>{{ message.fullname }}<br>
     <strong>Email : </strong> <a href="mailto:{{ message.email }}">{{ message.email }}</a><br>
     <strong>Téléphone : </strong> {{ message.phone }}<br>
-    <strong>Message : </strong> {{ message.message | raw }}
+    <strong>Message : </strong> {{ message.message | rawdescr }}
 </blockquote>
 
 {{ include('VitelogeFrontendBundle:Ad:Email/message.html.twig', { ad: message.ad }) }}

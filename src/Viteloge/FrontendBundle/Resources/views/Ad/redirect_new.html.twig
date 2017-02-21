@@ -81,8 +81,8 @@
                 {# THIS IS NOT SEMANTICALLY CORRECT (h2 before h1)!! SEO will be decrease,  #}
                 {# Boss choice  #}
                 <h2 style="text-transform: uppercase;font-size:12px !important;margin:0;padding:0;color:#00a1c6;display:inline-block;vertical-align:top;">{{ ad.agencyName~' vous propose ' }}</h2>
-                <h1 style="text-transform: uppercase;font-size:12px !important;color:#00a1c6;display:inline-block;vertical-align:top;margin:0;">{% if ad.type == 'maison' %} une {% else %} un {% endif %}{{ ad.type }}{% trans %} ad.at {% endtrans %} {{ ('footer.transaction.article.'~ad.transaction)|trans }}{% trans %} ad.at {% endtrans %} {{ ad.cityName }} ({{ ad.postalcode }}) - {{ ad.price | schematizedcurrency('EUR') | raw }}</h1><br>
-                 <small style="text-transform: lowercase;color:#00a1c6;display: inline-block; line-height: 1; margin-bottom: 5px;"> {{ ad.description|truncate(200, false, '...')|normalize_utf8|raw }}
+                <h1 style="text-transform: uppercase;font-size:12px !important;color:#00a1c6;display:inline-block;vertical-align:top;margin:0;">{% if ad.type == 'maison' %} une {% else %} un {% endif %}{{ ad.type }}{% trans %} ad.at {% endtrans %} {{ ('footer.transaction.article.'~ad.transaction)|trans }}{% trans %} ad.at {% endtrans %} {{ ad.cityName }} ({{ ad.postalcode }}) - {{ ad.price | schematizedcurrency('EUR') | rawdescr }}</h1><br>
+                 <small style="text-transform: lowercase;color:#00a1c6;display: inline-block; line-height: 1; margin-bottom: 5px;"> {{ ad.description|truncate(200, false, '...')|normalize_utf8|rawdescr }}
                     {% if ad.description|length < 200 %}<br>&nbsp;&nbsp;&nbsp;{% endif %}
                  </small>
             </div>
