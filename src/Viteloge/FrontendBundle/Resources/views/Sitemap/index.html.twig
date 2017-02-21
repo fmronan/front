@@ -21,12 +21,7 @@
     {% endembed %}
 {% endblock main %}
 {%- block header -%}
-    {%- if form is defined -%}
-    {%- embed "VitelogeFrontendBundle:Base:headerSearch.html.twig" with {form:form} -%}
-
-
-    {%- endembed -%}
-{%- endif -%}
+{{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
 {%- endblock header -%}
 {%- block javascripts -%}
     {{ parent() }}

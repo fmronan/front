@@ -78,14 +78,8 @@ namespace Viteloge\FrontendBundle\Controller {
             $this->elements = new \ArrayObject();
             $this->buildStatesAction();
             $this->buildAction();
-             // Form
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($request);
-            $form = $this->createForm(AdSearchType::class, $adSearch);
-
             return array(
                 'urls' => $this->elements,
-                'form' => $form->createView(),
             );
         }
 

@@ -1,11 +1,6 @@
 {% extends 'VitelogeFrontendBundle::base.html.twig' %}
 {%- block header -%}
-    {%- embed "VitelogeFrontendBundle:Base:headerSearch.html.twig" with {form:headform} -%}
-        {%- block header_navbarheader -%}
-
-        {%- endblock -%}
-
-    {%- endembed -%}
+{{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
 {%- endblock -%}
 {% block main %}
     {% embed "VitelogeFrontendBundle:Grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3 } %}

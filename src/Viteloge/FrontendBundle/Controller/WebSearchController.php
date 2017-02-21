@@ -99,13 +99,9 @@ namespace Viteloge\FrontendBundle\Controller {
                 ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.websearch.list.description'))
             ;
             // --
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $form = $this->createForm(AdSearchType::class, $adSearch);
             $webSearches = $this->getUser()->getWebSearches();
             return array(
                 'webSearches' => $webSearches,
-                'form' => $form->createView(),
             );
         }
 
@@ -144,14 +140,9 @@ namespace Viteloge\FrontendBundle\Controller {
             $em = $this->getDoctrine()->getManager();
             $filters = $em->getFilters();
             $filters->disable('softdeleteable');
-            // --
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm(AdSearchType::class, $adSearch);
             $webSearches = $this->getUser()->getWebSearches();
             return array(
                 'webSearches' => $webSearches,
-                'headform' => $headform->createView(),
             );
         }
 
@@ -279,7 +270,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // try to get session
             if ($request->query->has('session')) {
-                $session = $request->getSession();
                 if ($session->has('adSearch')) {
                     $adSearch = $session->get('adSearch');
                     if ($adSearch instanceof AdSearch) {
@@ -310,9 +300,6 @@ namespace Viteloge\FrontendBundle\Controller {
                     }
                 }
             }
-            $mySearch = new AdSearch();
-            $mySearch->handleRequest($requestSearch);
-            $headform = $this->createForm(AdSearchType::class, $mySearch);
             // by default check mail enabled
             $webSearch->getUserSearch()->setMailEnabled(true);
 
@@ -320,7 +307,6 @@ namespace Viteloge\FrontendBundle\Controller {
 
             return array(
                 'websearch' => $webSearch,
-                'headform' => $headform->createView(),
                 'form' => $form->createView()
             );
         }
@@ -356,17 +342,11 @@ namespace Viteloge\FrontendBundle\Controller {
                 ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.websearch.new.description'))
             ;
             // --
-
             $webSearch = new WebSearch();
             $form = $this->createCreateForm($webSearch);
             $form->handleRequest($request);
-
-            $session = $request->getSession();
-
             if( $form->isValid() ) {
-                if ($session->has('adSearch')) {
-                    $session->remove('adSearch');
-                }
+                if ($session->has('adSearch')) $session->remove('adSearch');
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($webSearch);
                 $em->flush();
@@ -376,14 +356,9 @@ namespace Viteloge\FrontendBundle\Controller {
                 );
                 return $this->redirectToRoute('viteloge_frontend_websearch_list');
             }
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'websearch' => $webSearch,
                 'form' => $form->createView(),
-                'headform' => $headform->createView(),
-
             );
         }
 
@@ -520,13 +495,9 @@ namespace Viteloge\FrontendBundle\Controller {
             $deleteForm = $this->createActivateForm($webSearch);
             $editForm = $this->createEditForm($webSearch);
             $editForm->handleRequest($request);
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'websearch' => $webSearch,
                 'form' => $editForm->createView(),
-                'headform' => $headform->createView(),
                 'form_delete' => $deleteForm->createView()
             );
         }
@@ -575,14 +546,10 @@ namespace Viteloge\FrontendBundle\Controller {
                 );
                 return $this->redirectToRoute('viteloge_frontend_websearch_list');
             }
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'websearch' => $webSearch,
                 'form' => $editForm->createView(),
                 'form_delete' => $deleteForm->createView(),
-                'headform' => $headform
             );
         }
 
