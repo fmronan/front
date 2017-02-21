@@ -658,6 +658,10 @@
         <source>ad.surface.url</source>
         <target>{0}|{1} 1 mètre carré|]1,Inf] %count% mètres carré</target>
       </trans-unit>
+      <trans-unit id="ad.surface.metre" resname="ad.surface.metre">
+        <source>ad.surface.metre</source>
+        <target>{0}|{1} 1 m²|]1,Inf] %count% m²</target>
+      </trans-unit>
       <trans-unit id="ad.rooms.number" resname="ad.rooms.number">
         <source>ad.rooms.number</source>
         <target>Nombre de pièces</target>

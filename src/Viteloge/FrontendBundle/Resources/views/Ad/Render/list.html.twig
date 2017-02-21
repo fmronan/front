@@ -17,7 +17,8 @@
         <div class="h4 title" itemprop="name">
             {%- block estate_title -%}
                     <a href="{{ redirect_path }}" class="link text-left">
-                    <h2 class="small-title">{{ ad.type~' ' }}{{ include('VitelogeFrontendBundle:Ad:Fragment/rooms_and_surface.html.twig', { 'ad': ad }) }} <br/>{% trans %}ad.at{% endtrans %} {{ ad.cityName }} ({{ ad.postalcode }})<span class="price pull-right" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        {%- set smaldesc = smaldesc|default(ad|roomsurface) -%}
+                    <h2 class="small-title">{{ smaldesc }} <br/>{% trans %}ad.at{% endtrans %} {{ ad.cityName }} ({{ ad.postalcode }})<span class="price pull-right" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             {%- block estate_price -%}
                 {{ ad.price | schematizedcurrency('EUR') | raw }}
             {%- endblock estate_price -%}

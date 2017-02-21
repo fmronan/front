@@ -39,6 +39,14 @@ namespace Viteloge\FrontendBundle\Component\Helper {
             return $title;
         }
 
+        public function smalltitle(Ad $ad) {
+            $title = $ad->getType();
+            $title = trim($title) . ' ' . $this->translator->transChoice('ad.rooms.url',$ad->getRooms(), array('%count%' => $ad->getRooms())).' ';
+            $title = trim($title) . ' ' . $this->translator->transChoice('ad.bedrooms.url', $ad->getBedrooms(), array('%count%' => $ad->getBedrooms())).' | ';
+            $title = trim($title) . ' ' . $this->translator->transChoice('ad.surface.metre', $ad->getSurface(), array('%count%' => $ad->getSurface()));
+            return $title;
+        }
+
         /**
          * @todo: Use Gedmo Translatable and Sluggable (https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/sluggable.md)
          */

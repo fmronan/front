@@ -50,6 +50,7 @@ namespace Viteloge\FrontendBundle\Twig {
                 new \Twig_SimpleFilter('fix_utf8', array($this, 'fixUTF8')),
                 new \Twig_SimpleFilter('normalize_utf8', array($this, 'normalizeUTF8')),
                 new \Twig_SimpleFilter('slugify', array($this, 'slugify')),
+                new \Twig_SimpleFilter('roomsurface', array($this, 'roomsSurfaceAd')),
 
             );
         }
@@ -92,6 +93,14 @@ namespace Viteloge\FrontendBundle\Twig {
         public function vlSlugifyAd(Ad $ad) {
             $helper = $this->container->get('viteloge_frontend.ad_helper');
             return $helper->slugigy($ad);
+        }
+
+        /**
+         *
+         */
+        public function roomsSurfaceAd(Ad $ad) {
+            $helper = $this->container->get('viteloge_frontend.ad_helper');
+            return $helper->smalltitle($ad);
         }
 
         /**
