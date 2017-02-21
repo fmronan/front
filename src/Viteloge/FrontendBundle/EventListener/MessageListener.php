@@ -36,6 +36,7 @@ namespace Viteloge\FrontendBundle\EventListener {
          *
          */
         public function prePersist(LifecycleEventArgs $args) {
+
             $contact = $args->getEntity();
 
             if ($contact instanceof Message || $contact instanceof Contact) {
@@ -66,7 +67,7 @@ namespace Viteloge\FrontendBundle\EventListener {
 
                 $user->addRole('ROLE_USER');
                 $userManager->updateUser($user);
-
+ die('listener');
 
               }
 

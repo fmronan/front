@@ -81,6 +81,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             $form = $this->createCreateForm($contact);
             $form->handleRequest($request);
+
             if ($form->isValid()) {
                 // afin de savoir si il faut envoyer un message pour inscription
                   $verifuser = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$contact->getEmail()));
@@ -88,7 +89,6 @@ namespace Viteloge\FrontendBundle\Controller {
                     $ip = $request->getClientIp();
 
                     // log redirect
-
                         $contact->setIp($ip);
                         $contact->setUa($ua);
                         $em->persist($contact);
@@ -96,12 +96,14 @@ namespace Viteloge\FrontendBundle\Controller {
                         $user = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$contact->getEmail()));
                     if(empty($verifuser)){
                        $this->inscriptionMessage($user);
-
+                     }
 
                      $this->sendMessage($contact);
                     return $this->redirect($this->generateUrl('viteloge_frontend_contact_success', array()));
-                }
-                $form->addError(new FormError($trans->trans('contact.send.error')));
+
+
+            }else{
+              $form->addError(new FormError($trans->trans('contact.send.error')));
             }
 
             return array(

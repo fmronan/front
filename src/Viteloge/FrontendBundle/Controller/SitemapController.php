@@ -11,9 +11,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Symfony\Component\HttpFoundation\Request;
     use Viteloge\InseeBundle\Entity\InseeState;
     use Viteloge\InseeBundle\Entity\InseeDepartment;
-    use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\FrontendBundle\Component\Sitemap\Element;
-    use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 
     /**
      * @Route("/")

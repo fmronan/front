@@ -142,12 +142,12 @@ namespace Viteloge\FrontendBundle\Controller {
                         $user = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$message->getEmail()));
                         if(empty($verifuser)){
                         $this->inscriptionMessage($user);
-
+                        }
                        $this->sendMessage($message);
                     return $this->redirect($this->generateUrl('viteloge_frontend_message_success', array()));
+                }else{
+                  $form->addError(new FormError($trans->trans('message.send.error')));
                 }
-                $form->addError(new FormError($trans->trans('message.send.error')));
-            }
 
             return array(
                 'message' => $message,
