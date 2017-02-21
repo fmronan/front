@@ -67,8 +67,6 @@ namespace Viteloge\FrontendBundle\EventListener {
 
                 $user->addRole('ROLE_USER');
                 $userManager->updateUser($user);
- die('listener');
-
               }
 
             }
