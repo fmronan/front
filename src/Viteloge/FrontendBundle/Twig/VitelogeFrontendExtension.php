@@ -8,6 +8,7 @@ namespace Viteloge\FrontendBundle\Twig {
     use Symfony\Component\HttpFoundation\RequestStack;
     use Symfony\Component\DependencyInjection\ContainerAwareInterface;
     use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+    use  Viteloge\CoreBundle\Entity\User;
 
     class VitelogeFrontendExtension extends \Twig_Extension implements ContainerAwareInterface{
 

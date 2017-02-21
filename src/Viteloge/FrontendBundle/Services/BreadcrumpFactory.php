@@ -6,6 +6,8 @@ namespace Viteloge\FrontendBundle\Services {
     use Symfony\Component\DependencyInjection\ContainerAwareInterface;
     use Symfony\Component\DependencyInjection\ContainerAwareTrait;
     use Symfony\Bundle\FrameworkBundle\Routing\Router;
+    use Viteloge\InseeBundle\Entity\InseeDepartment;
+    use Viteloge\InseeBundle\Entity\InseeCity;
 
 
 
