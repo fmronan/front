@@ -258,14 +258,14 @@ namespace Viteloge\FrontendBundle\Controller {
          *     },
          *     name="viteloge_frontend_agency_phone"
          * )
-         * @Method({"POST","GET"})
+         * @Method({"POST"})
          * @ParamConverter("ad", class="VitelogeCoreBundle:Ad", options={"id" = "id"})
          * @Route(options={"expose"=true})
          * @Template("VitelogeFrontendBundle:Ad:fragment/btn_phone.html.twig")
          */
        public function getNumSurtaxeAction(Request $request,Ad $ad)
         {
-        //  if($request->isXmlHttpRequest()){
+          if($request->isXmlHttpRequest()){
             //on cherche le numero de l'agence avec son $id
             $em = $this->getDoctrine()->getManager();
             $agence = $em->getRepository('VitelogeCoreBundle:Agence')->find($ad->getAgencyId());
@@ -281,9 +281,9 @@ namespace Viteloge\FrontendBundle\Controller {
                 $em->flush();
             $response = $this->get('viteloge_frontend_generate.phone')->getPhoneNumber($tel,$ad);
             return $response;
-           /* }else{
+            }else{
              throw new \Exception("Erreur");
-            }*/
+            }
         }
 
 
