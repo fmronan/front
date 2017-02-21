@@ -2,12 +2,10 @@
     "name": "viteloge/frontend",
     "license": "MIT",
     "type": "project",
-    "description": "Viteloge the fastest estate engin",
+    "description": "Viteloge the fastest estate engine",
     "autoload": {
-        "psr-0": {
-            "": "src/",
-            "SymfonyStandard": "app/"
-        }
+        "psr-4": { "": "src/" },
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "require": {
         "php": ">=5.5.9",
@@ -50,7 +48,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
