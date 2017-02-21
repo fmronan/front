@@ -230,6 +230,23 @@ namespace Viteloge\FrontendBundle\Controller {
             return $error;
         }
 
+
+        /**
+        * init for Infos
+        *
+        *
+        *
+        */
+        private function initInfoAction($request,$ad){
+            $ua = $request->headers->get('User-Agent');
+            $ip = $request->getClientIp();
+            $contact = new Infos();
+            $contact->setIp($ip);
+            $contact->setUa($ua);
+            $contact->initFromAd($ad);
+            return $contact;
+        }
+
         /**
          * find surtax phone.
          *
@@ -248,67 +265,27 @@ namespace Viteloge\FrontendBundle\Controller {
          */
        public function getNumSurtaxeAction(Request $request,Ad $ad)
         {
-
-          if($request->isXmlHttpRequest()){
+        //  if($request->isXmlHttpRequest()){
             //on cherche le numero de l'agence avec son $id
             $em = $this->getDoctrine()->getManager();
             $agence = $em->getRepository('VitelogeCoreBundle:Agence')->find($ad->getAgencyId());
             if(!empty($agence)) $tel = $agence->getTel();
-            $num ='Pas de Numéro';
-                    $ua = $request->headers->get('User-Agent');
-                    $ip = $request->getClientIp();
-                        $contact = new Infos();
-                        $contact->setIp($ip);
-                        $contact->setUa($ua);
-                        $contact->initFromAd($ad);
+            $contact = $this->initInfoAction($request,$ad);
             if(isset($tel) && !empty($tel)){
-                $this->construcNumPhone($contact,$tel);
-
+            $contact->setGenre('dempandephone');
             }else{
               $contact->setGenre('phoneempty');
             }
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($contact);
                 $em->flush();
-
-            $cout = '1,34€/appel.0,34€/mn';
-            $response = new JsonResponse();
-            return $response->setData(array('phone' => $num, 'cout' => $cout, 'id' => $ad->getId()));
-            }else{
+            $response = $this->get('viteloge_frontend_generate.phone')->getPhoneNumber($tel,$ad);
+            return $response;
+           /* }else{
              throw new \Exception("Erreur");
-            }
+            }*/
         }
 
-        /**
-        *
-        *
-        */
-        private function construcNumPhone($contact,$tel){
-            $clef = "b28b9b89b6aea1dc6287a6d446e001a8";
-            $contact->setGenre('dempandephone');
-                $tel = preg_replace("([^0-9]+)","",$tel);
-                $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
-                $xml.=
-                "<createLink><clef>".$clef."</clef><numero>".$tel."</numero><pays>FR</pays></createLink>";
-                // Lien vers l’API :
-                $url = "http://mer.viva-multimedia.com/xmlRequest.php?xml=".urlencode($xml);
-                $ch = curl_init ($url) ;
-                curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1) ;
-                $res = curl_exec ($ch) ;
-                curl_close ($ch);
-                $array = array();
-                //recupération du numéro et du code
-                if (preg_match("{<numero>(.*)</numero>.*<code>(.*)</code>}", $res, $regs))
-                {
-                    $tel = ((strlen($regs[1]) == "10") ? wordwrap($regs[1], 2, '.', 1) : $regs[1]);
-                    $array[] = $tel ;
-                    $array[] = $regs[2] ;
-                }
-                $num = implode('¤',$array);
-                $num = rtrim($num,'¤');
-                return $num;
-
-        }
 
         /**
          * call surtax phone.
@@ -328,27 +305,13 @@ namespace Viteloge\FrontendBundle\Controller {
        public function callPhoneAction(Request $request,Ad $ad)
         {
           if($request->isXmlHttpRequest()){
-              $forbiddenUA = array(
-                        'yakaz_bot' => 'YakazBot/1.0',
-                        'mitula_bot' => 'java/1.6.0_26'
-                    );
-                    $forbiddenIP = array(
-
-                    );
-                    $ua = $request->headers->get('User-Agent');
-                    $ip = $request->getClientIp();
-
-                    // log redirect
-                    if (!in_array($ua, $forbiddenUA) && !in_array($ip, $forbiddenIP)) {
-                        $contact = new Infos();
-                        $contact->setIp($ip);
-                        $contact->setUa($ua);
+                        $contact = $this->initInfoAction($request,$ad);
                         $contact->setGenre('appelle');
                         $contact->initFromAd($ad);
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($contact);
                         $em->flush();
-                    }
+
                  $response = new JsonResponse();
             return $response->setData(array());
             }else{
