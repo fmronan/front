@@ -86,10 +86,8 @@ app/Resources/maxmind
 *~
 *.tmp
 *.bak
-*.swp
 .*.kate-swp
 .swp.*
-.metadata
 .directory
 .project
 local.properties

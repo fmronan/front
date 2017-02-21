@@ -212,7 +212,6 @@ namespace Viteloge\FrontendBundle\Controller {
             // --
 
             // Breadcrumbs
-            $transaction = $adSearch->getTransaction();
             $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->getDeptAndCityBreadcrump($inseeDepartment,$inseeCity);
             $breadcrumbTitle = $queryStats->getKeywords();
             $breadcrumbs->addItem($breadcrumbTitle);

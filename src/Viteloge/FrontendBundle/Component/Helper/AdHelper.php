@@ -23,6 +23,9 @@ namespace Viteloge\FrontendBundle\Component\Helper {
             $this->translator = $translator;
         }
 
+        /**
+         *
+         */
         public function titlify(Ad $ad,$reverse = null) {
             $title = $ad->getType();
             if($reverse){
@@ -39,6 +42,9 @@ namespace Viteloge\FrontendBundle\Component\Helper {
             return $title;
         }
 
+        /**
+         *
+         */
         public function smalltitle(Ad $ad) {
             $title = $ad->getType();
             $title = trim($title) . ' ' . $this->translator->transChoice('ad.rooms.url',$ad->getRooms(), array('%count%' => $ad->getRooms())).' ';
@@ -48,7 +54,7 @@ namespace Viteloge\FrontendBundle\Component\Helper {
         }
 
         /**
-         * @todo: Use Gedmo Translatable and Sluggable (https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/sluggable.md)
+         *
          */
         public function slugigy(Ad $ad) {
             $slug = $this->titlify($ad);

@@ -80,8 +80,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function listAction(Request $request) {
             $translated = $this->get('translator');
-            $session = $request->getSession();
-            $requestSearch = $session->get('request');
             // Breadcrumbs
             $this->initBreadcrumbs(true, 'breadcrumb.alert.list');
             // --
@@ -116,8 +114,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function historyAction(Request $request) {
             $translated = $this->get('translator');
-            $session = $request->getSession();
-            $requestSearch = $session->get('request');
             // Breadcrumbs
             $this->initBreadcrumbs(true, 'breadcrumb.alert.history');
             // --
@@ -245,7 +241,6 @@ namespace Viteloge\FrontendBundle\Controller {
         public function newAction(Request $request) {
             $translated = $this->get('translator');
             $session = $request->getSession();
-            $requestSearch = $session->get('request');
             // Breadcrumbs
             $this->initBreadcrumbs();
             $this->breadcrumbs->addItem($translated->trans('breadcrumb.alert.action.add', array(), 'breadcrumbs'));
@@ -323,7 +318,6 @@ namespace Viteloge\FrontendBundle\Controller {
         public function createAction(Request $request) {
             $translated = $this->get('translator');
             $session = $request->getSession();
-            $requestSearch = $session->get('request');
             // Breadcrumbs
             $this->initBreadcrumbs();
             $this->breadcrumbs->addItem($translated->trans('breadcrumb.alert.action.add', array(), 'breadcrumbs'));
@@ -394,8 +388,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function editAction(Request $request, WebSearch $webSearch) {
             $translated = $this->get('translator');
-            $session = $request->getSession();
-            $requestSearch = $session->get('request');
             if ( $this->getUser() != $webSearch->getUser() ) {
                 throw $this->createAccessDeniedException();
             }
@@ -409,19 +401,15 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // SEO
             $canonicalLink = $this->get('router')->generate($request->get('_route'), array('id' => $webSearch->getId()), true);
-            $seoPage = $this->getSameSeoAction($canonicalLink);
+            $this->getSameSeoAction($canonicalLink);
             // --
 
             $deleteForm = $this->createDeleteForm($webSearch);
             $editForm = $this->createEditForm($webSearch);
             $editForm->handleRequest($request);
-            $adSearch = new AdSearch();
-            $adSearch->handleRequest($requestSearch);
-            $headform = $this->createForm(AdSearchType::class, $adSearch);
             return array(
                 'websearch' => $webSearch,
                 'form' => $editForm->createView(),
-                'headform' => $headform->createView(),
                 'form_delete' => $deleteForm->createView()
             );
         }
@@ -465,8 +453,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function historyEditAction(Request $request, WebSearch $webSearch) {
             $translated = $this->get('translator');
-            $session = $request->getSession();
-            $requestSearch = $session->get('request');
             if ( $this->getUser() != $webSearch->getUser() ) {
                 throw $this->createAccessDeniedException();
             }
@@ -517,8 +503,6 @@ namespace Viteloge\FrontendBundle\Controller {
          */
         public function updateAction(Request $request, WebSearch $webSearch) {
             $translated = $this->get('translator');
-            $session = $request->getSession();
-            $requestSearch = $session->get('request');
             // Breadcrumbs
             $this->initBreadcrumbs();
             $this->breadcrumbs->addItem(
@@ -528,7 +512,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // SEO
             $canonicalLink = $this->get('router')->generate('viteloge_frontend_websearch_edit', array('id' => $webSearch->getId()), true);
-            $seoPage = $this->getSameSeoAction($canonicalLink);
+            $this->getSameSeoAction($canonicalLink);
             // --
 
             $deleteForm = $this->createDeleteForm($webSearch);
