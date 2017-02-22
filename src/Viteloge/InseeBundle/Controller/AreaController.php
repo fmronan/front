@@ -25,7 +25,7 @@ namespace Viteloge\InseeBundle\Controller {
          *      defaults={
          *          "_format"="json"
          *      },
-         *      name="acreat_insee_area_show"
+         *      name="viteloge_insee_area_show"
          * )
          * @ParamConverter("inseeArea", class="VitelogeInseeBundle:InseeArea", options={"id" = "id"})
          * @Cache(expires="tomorrow", public=true)

@@ -353,7 +353,7 @@ jQuery(document).ready(function() {
     }
     function showAreaInMap(element, areaId, color) {
         jQuery.ajax({
-            url: Routing.generate('acreat_insee_area_show', {id: areaId, _format: 'json'}, true),
+            url: Routing.generate('viteloge_insee_area_show', {id: areaId, _format: 'json'}, true),
             context: jQuery(element),
             method: 'GET',
             success: function(inseeArea) {

@@ -1,3 +1,7 @@
+viteloge_insee_area:
+    resource: "@VitelogeInseeBundle/Controller/AreaController.php"
+    type: annotation
+
 viteloge_frontend_ad:
     resource: "@VitelogeFrontendBundle/Controller/AdController.php"
     type: annotation

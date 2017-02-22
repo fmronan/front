@@ -30,14 +30,14 @@ parameters:
     locale:            en
 
     # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            IlFautChangerCemotsDePasse
     old_secret:        PLEAtEmk6ee8QQI3Ma3IGNii33W1EkGfqaw3ZEGH
 
     # google analytics
     ga_tracking:        UA-xxxxx-x
 
     # google maps
-    google_maps_api_key: AIzaSyCOHYCl4_I5iOrgjMA55yLWiKgU0FW0X7I
+    google_maps_api_key: AjbfjdbgCOHYCl4_I5iOrgjMA55yLWiKgU0FW0X7I
 
     # google adsense
     adsense_publisher_id: null
