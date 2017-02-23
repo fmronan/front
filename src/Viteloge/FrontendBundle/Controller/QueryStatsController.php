@@ -152,7 +152,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *      },
          *      name="viteloge_frontend_querystats_ad"
          * )
-         * @Method({"GET"})
+         * @Method({"GET","POST"})
          * @ParamConverter(
          *     "queryStats",
          *     class="VitelogeCoreBundle:QueryStats",

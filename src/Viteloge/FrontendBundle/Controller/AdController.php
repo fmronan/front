@@ -201,7 +201,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     },
          *     name="viteloge_frontend_ad_search_default"
          * )
-         * @Method({"GET","POST"})
+         * @Method({"GET","PUT"})
          * @Template("VitelogeFrontendBundle:Ad:search_response.html.twig")
          */
         public function searchAction(Request $request, $page, $limit) {
@@ -464,7 +464,7 @@ namespace Viteloge\FrontendBundle\Controller {
          * )
          * @Cache(lastModified="queryStats.getUpdateAt()", ETag="'QueryStats' ~ queryStats.getId() ~ queryStats.getTimestamp()")
          * @ParamConverter("queryStats", class="VitelogeCoreBundle:QueryStats", options={"id" = "id"})
-         * @Method({"GET"})
+         * @Method({"GET","PUT"})
          */
         public function searchFromQueryStatsAction(Request $request, QueryStats $queryStats) {
             $em = $this->getDoctrine()->getManager();

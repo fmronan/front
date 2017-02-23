@@ -181,7 +181,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *         "i18n" = true
          *      }
          * )
-         * @Method("GET")
+         * @Method("GET","POST")
          * @ParamConverter("webSearch", class="VitelogeCoreBundle:WebSearch", options={"id" = "id"})
          */
         public function deleteFromMailAction(Request $request, $timestamp, $token, WebSearch $webSearch) {
@@ -223,7 +223,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *         "i18n" = true
          *      }
          * )
-         * @Method("GET")
+         * @Method("GET","POST")
          * @ParamConverter("userSearch", class="VitelogeCoreBundle:UserSearch", options={
          *    "repository_method" = "findOneByHash",
          *    "mapping": {"hash": "hash"},

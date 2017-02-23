@@ -119,7 +119,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     name="viteloge_frontend_prefer_latest_limited"
          * )
          * @Cache(expires="tomorrow", public=true)
-         * @Method({"GET"})
+         * @Method({"GET","POST"})
          * @Template("VitelogeFrontendBundle:Ad:latest_home.html.twig")
          */
         public function latesthomeAction(Request $request, $limit) {
@@ -154,7 +154,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     name="viteloge_frontend_prefer_latest_list"
          * )
          * @Cache(expires="tomorrow", public=true)
-         * @Method({"GET"})
+         * @Method({"GET","POST"})
          * @Template("VitelogeFrontendBundle:Ad:search_response.html.twig")
          */
         public function latestListAction(Request $request,$page,$limit) {
