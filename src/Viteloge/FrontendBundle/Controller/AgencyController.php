@@ -362,24 +362,32 @@ namespace Viteloge\FrontendBundle\Controller {
          *     "/last/view",
          *     name="viteloge_frontend_agency_last_view"
          * )
-         * @Method({"POST"})
+         * @Method({"POST","GET"})
          * @Route(options={"expose"=true})
-         * @Template("VitelogeFrontendBundle:Agency:Render/ajax_latest.html.twig")
          */
         public function lastSearchAction(Request $request)
         {
           if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
             $ads = $em->getRepository('VitelogeCoreBundle:Statistics')->findBy(array(), array('date' => 'DESC'),10);
+            return $this->reponseSearchAction($ads);
+
+            }else{
+             throw new \Exception("Erreur");
+            }
+        }
+
+
+        public function reponseSearchAction($ads)
+        {
+
             return $this->render(
                 'VitelogeFrontendBundle:Agency:Render/ajax_latest.html.twig',
                 array(
                     'ads' => $ads
                 )
             );
-            }else{
-             throw new \Exception("Erreur");
-            }
+
         }
 
 
