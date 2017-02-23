@@ -55,7 +55,6 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes: ['VitelogeFrontendBundle:Form:fields.html.twig']
-    exception_controller:  viteloge_twig.controller.exception:showAction
     globals:
         fos_csrf_provider: "@security.csrf.token_manager"
         domain: "%domain%"

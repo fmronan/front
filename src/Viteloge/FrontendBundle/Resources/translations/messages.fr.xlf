@@ -1570,6 +1570,14 @@
         <source>viteloge.frontend.lastadd</source>
         <target>Derniers biens</target>
       </trans-unit>
+      <trans-unit id="viteloge.back.home" resname="viteloge.back.home">
+        <source>viteloge.back.home</source>
+        <target>Retourner à l'accueil</target>
+      </trans-unit>
+      <trans-unit id="viteloge.title.prefix" resname="viteloge.title.prefix">
+          <source>viteloge.title.prefix</source>
+          <target>Immobilier - Vitelogé -</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

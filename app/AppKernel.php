@@ -37,6 +37,7 @@ class AppKernel extends Kernel
             new Viteloge\OAuthBundle\VitelogeOAuthBundle(),
             new Viteloge\UserBundle\VitelogeUserBundle(),
             new Viteloge\EstimationBundle\VitelogeEstimationBundle(),
+            new Viteloge\TwigBundle\VitelogeTwigBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
