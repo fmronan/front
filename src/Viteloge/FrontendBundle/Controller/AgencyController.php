@@ -371,14 +371,14 @@ namespace Viteloge\FrontendBundle\Controller {
           if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
             $ads = $em->getRepository('VitelogeCoreBundle:Statistics')->findBy(array(), array('date' => 'DESC'),10);
-            return array(
-                'ads' => $ads
+            return $this->render(
+                'VitelogeFrontendBundle:Agency:Render/ajax_latest.html.twig',
+                array(
+                    'ads' => $ads
+                )
             );
             }else{
              throw new \Exception("Erreur");
-             return $this->redirectToRoute('route', [
-                    'request' => $request
-                ], 307);
             }
         }
 
