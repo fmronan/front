@@ -1578,6 +1578,10 @@
           <source>viteloge.title.prefix</source>
           <target>Immobilier - Vitelogé -</target>
       </trans-unit>
+      <trans-unit id="viteloge.title.clic.redirect" resname="viteloge.title.clic.redirect">
+          <source>viteloge.title.clic.redirect</source>
+          <target>Cliquez sur le lien pour voir le détail</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

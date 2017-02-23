@@ -201,7 +201,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     },
          *     name="viteloge_frontend_ad_search_default"
          * )
-         * @Method({"GET"})
+         * @Method({"GET","POST"})
          * @Template("VitelogeFrontendBundle:Ad:search_response.html.twig")
          */
         public function searchAction(Request $request, $page, $limit) {
