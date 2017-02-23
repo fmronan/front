@@ -83,6 +83,16 @@ namespace Viteloge\CoreBundle\Entity {
         }
 
         /**
+         * Get id
+         *
+         * @return integer
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        /**
          *
          */
         public function getUser() {

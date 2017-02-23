@@ -181,5 +181,56 @@ class Agence
         return $this->tel;
     }
 
+    public function getSpecif(){
+        return $this->specif;
+    }
+
+    public function getMail(){
+        return $this->mail;
+    }
+
+    public function getAdresse(){
+        return $this->adresse;
+    }
+
+    public function getCp(){
+        return $this->cp;
+    }
+
+    public function getVille(){
+        return $this->ville;
+    }
+
+    public function getFax(){
+        return $this->fax;
+    }
+
+    public function getUrl(){
+        return $this->url;
+    }
+
+    public function getCiviliteContact(){
+        return $this->civiliteContact;
+    }
+
+    public function getNomContact(){
+        return $this->nomContact;
+    }
+
+    public function getDepartement(){
+        return $this->departement;
+    }
+
+    public function getNbAnnonce(){
+        return $this->nbAnnonce;
+    }
+
+    public function getDateCreation(){
+        return $this->dateCreation;
+    }
+
+    public function getFille(){
+        return $this->fille;
+    }
 
 }

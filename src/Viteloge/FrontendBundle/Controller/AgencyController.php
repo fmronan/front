@@ -376,6 +376,9 @@ namespace Viteloge\FrontendBundle\Controller {
             );
             }else{
              throw new \Exception("Erreur");
+             return $this->redirectToRoute('route', [
+                    'request' => $request
+                ], 307);
             }
         }
 

@@ -37,6 +37,16 @@ namespace Viteloge\CoreBundle\Entity {
         }
 
         /**
+         * Get id
+         *
+         * @return integer
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        /**
          * Get inseeCity
          *
          * @return \Viteloge\InseeBundle\Entity\InseeCity
