@@ -223,7 +223,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *         "i18n" = true
          *      }
          * )
-         * @Method("GET")
+         * @Method({"GET","PUT"})
          * @ParamConverter("userSearch", class="VitelogeCoreBundle:UserSearch", options={
          *    "repository_method" = "findOneByHash",
          *    "mapping": {"hash": "hash"},

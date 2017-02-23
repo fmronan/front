@@ -119,7 +119,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     name="viteloge_frontend_prefer_latest_limited"
          * )
          * @Cache(expires="tomorrow", public=true)
-         * @Method({"GET","POST"})
+         * @Method({"GET","PUT"})
          * @Template("VitelogeFrontendBundle:Ad:latest_home.html.twig")
          */
         public function latesthomeAction(Request $request, $limit) {

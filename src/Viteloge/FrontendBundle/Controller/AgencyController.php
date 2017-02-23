@@ -370,7 +370,7 @@ namespace Viteloge\FrontendBundle\Controller {
         {
           if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
-            $ads = $em->getRepository('VitelogeCoreBundle:Statistics')->findBy(array(), array('date' => 'DESC'),5);
+            $ads = $em->getRepository('VitelogeCoreBundle:Statistics')->findBy(array(), array('date' => 'DESC'),10);
             return array(
                 'ads' => $ads
             );
