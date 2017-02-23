@@ -69,7 +69,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *      "/",
          *      name="viteloge_frontend_contact_create"
          * )
-         * @Method("GET","POST")
+         * @Method({"GET","PUT"})
          * @Template("VitelogeFrontendBundle:Contact:new.html.twig")
          */
         public function createAction(Request $request) {

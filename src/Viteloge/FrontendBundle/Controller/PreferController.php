@@ -154,7 +154,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     name="viteloge_frontend_prefer_latest_list"
          * )
          * @Cache(expires="tomorrow", public=true)
-         * @Method({"GET","POST"})
+         * @Method({"GET","PUT"})
          * @Template("VitelogeFrontendBundle:Ad:search_response.html.twig")
          */
         public function latestListAction(Request $request,$page,$limit) {

@@ -55,7 +55,7 @@ namespace Viteloge\FrontendBundle\Controller {
          *     },
          *     name="viteloge_frontend_agency_lastview"
          * )
-         * @Method({"GET","POST"})
+         * @Method({"GET","PUT"})
          * @Template("VitelogeFrontendBundle:Ad:redirect_new.html.twig")
          */
         public function viewAction(Request $request,$id, $description) {
