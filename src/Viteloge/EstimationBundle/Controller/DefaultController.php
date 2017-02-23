@@ -225,6 +225,7 @@ class DefaultController extends Controller {
 
     /**
      * @Route("votre-estimation/contact")
+     * @Method("GET")
      * @Template()
      */
     public function contactAction(Request $request) {
