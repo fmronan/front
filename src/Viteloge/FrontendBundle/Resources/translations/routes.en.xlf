@@ -398,6 +398,10 @@
         <source>viteloge_frontend_message_ajax</source>
         <target>/ajax/new/{ad}</target>
       </trans-unit>
+      <trans-unit id="viteloge_insee_area_show" resname="viteloge_insee_area_show">
+        <source>viteloge_insee_area_show</source>
+        <target>/insee-area/show/{id}</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

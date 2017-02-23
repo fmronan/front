@@ -25,20 +25,20 @@ namespace Viteloge\InseeBundle\Controller {
          *      defaults={
          *          "_format"="json"
          *      },
-         *      name="viteloge_insee_area_show"
+         *      name="acreat_insee_area_show"
          * )
          * @ParamConverter("inseeArea", class="VitelogeInseeBundle:InseeArea", options={"id" = "id"})
          * @Cache(expires="tomorrow", public=true)
          * @Method({"GET"})
          * @Route(options={"expose"=true})
          */
-        public function showAction(Request $request, $_format, InseeArea $inseeArea) {
+        public function showAction(Request $request, InseeArea $inseeArea) {
 
                 $inseeArea->getInseeCity()->setInseeState(null); // we do not need insee city
                 $inseeArea->getInseeCity()->setInseeDepartment(null); // we do not need insee city
 
             return $this->render(
-                'VitelogeInseeBundle:Area:show.'.$_format.'.twig',
+                'VitelogeInseeBundle:Area:show.json.twig',
                 array(
                     'inseeArea' => $inseeArea
                 )

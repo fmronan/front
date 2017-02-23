@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             //new JMS\TranslationBundle\JMSTranslationBundle(),
             new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
             new Presta\SitemapBundle\PrestaSitemapBundle(),
