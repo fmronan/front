@@ -1,0 +1,71 @@
+.carousel, .owl-carousel {
+    .owl-item {
+        .estate {
+            &:focus,
+            &:hover {
+                .preview {
+                    &:before {
+                        height: 205px;
+                        line-height: 200px;
+                    }
+                }
+            }
+            .preview {
+                img {
+                    width: auto;
+                    max-height: 200px;
+                    &[src=""] {
+                        display: block !important;
+                        height: 200px;
+                    }
+                }
+                &:focus,
+                &:hover {
+                    &:before {
+                        height: 205px;
+                        line-height: 200px;
+                    }
+                }
+            }
+        }
+    }
+}
+.owl-carousel {
+    .owl-stage-outer {
+        .owl-stage {
+            .owl-item {
+                .owl-lazy {
+                    opacity: initial !important;
+                }
+            }
+        }
+    }
+}
+.owl-stage-outer {
+    z-index: 0;
+    .owl-stage {
+
+    }
+}
+.owl-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    font-size: 26px;
+    .owl-prev, .owl-next {
+        position: absolute;
+        top: 50%;
+        &:hover, &:focus {
+
+        }
+    }
+    .owl-prev {
+        left: -25px;
+    }
+    .owl-next {
+        right: -25px;
+    }
+}

@@ -1,0 +1,32 @@
+.col-md-3 {
+    > aside {
+        > *, .include_200 > * {
+            max-width: 300px;
+            margin: auto;
+        }
+        .highlighting {
+            h3, .h3, h4, .h4 {
+                padding: 5px;
+            }
+        }
+    }
+}
+aside {
+    > :first-child {
+        @media (max-width: $screen-sm-max) {
+            margin-top: 10px;
+        }
+        margin-bottom: 10px;
+    }
+    .clearfix {
+        + .clearfix {
+            margin-top: 10px;
+        }
+    }
+}
+
+.adsbygoogle {
+    display:inline-block;
+    width:100%;
+    height:250px;
+}

@@ -1,0 +1,26 @@
+@mixin block_ellipsis($lines, $line-height:1.4em, $bg-color:inherit) {
+    position: relative;
+    line-height: $line-height;
+    max-height: $line-height*$lines;
+    overflow: hidden;
+    text-overflow: -o-ellipsis-lastline;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-spacing: normal;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    &:after {
+        content: "...";
+        background-color: $bg-color;
+        font-weight: bold;
+        font-style: inherit;
+        letter-spacing: 1px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0 8px 0px 0px;
+        -webkit-margin-end: 0px;
+    }
+}

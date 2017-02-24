@@ -1,0 +1,247 @@
+@mixin theming($color, $background-color, $border-color, $text-color) {
+    [class*=hvr-] {
+        &:hover,
+        &:focus {
+            background-color: $color;
+        }
+    }
+    .include_200 {
+        @include heading($color);
+    }
+    @include heading($color);
+    .glossary, .queries {
+        a {
+            &:hover,
+            &:focus {
+                color: $color;
+            }
+        }
+    }
+    &.highlighting, .highlighting {
+        background-color: $color;
+    }
+    .panel-primary {
+        @include panel-variant($panel-default-border, $text-color, $background-color, $panel-default-border);
+    }
+    .btn-primary {
+        @include button-variant($text-color, $background-color, $border-color);
+    }
+    .btn-default {
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $color;
+            color: #fff;
+            border-color: $border-color;
+        }
+    }
+    #navigation {
+        > li {
+            > a {
+                &:hover,
+                &:focus {
+                    background-color: $color;
+                }
+            }
+            &.active {
+                > a {
+                    &,
+                    &:focus,
+                    &:hover {
+                        color: #fff;
+                        background-color: $color;
+                        border-color: $color;
+                    }
+                }
+            }
+        }
+    }
+    form.search {
+        .nav {
+            li {
+                &.active > a {
+                    &,
+                    &:hover,
+                    &:focus {
+                        color: #fff;
+                        background-color: $color;
+                    }
+                }
+            }
+        }
+    }
+    .subheader {
+        background-color: $color;
+    }
+    .pagination {
+        > li {
+            > a,
+            > span {
+                color: #27303d;
+                font-size: 16px;
+                margin: 0 1px;
+                border-radius: 6px;
+                padding: 5px 10px;
+                &:hover,
+                &:focus {
+                    color: $pagination-hover-color;
+                    background-color: $color;
+                }
+            }
+        }
+        > .active > a,
+        > .active > span {
+            &,
+            &:hover,
+            &:focus {
+                color: $pagination-active-color;
+                background-color: $color;
+            }
+        }
+        > .next, > .last, > .previous, > .first {
+            &,
+            > span,
+            > a {
+                color: #fff;
+                background-color: #27303d;
+            }
+            > span, > a {
+                &:hover,
+                &:focus {
+                    color: #fff;
+                    background-color: $color;
+                }
+            }
+            &.disabled {
+                > span, > a {
+                    &,
+                    &:hover,
+                    &:focus {
+                        color: #fff;
+                        background-color: #27303d;
+                    }
+                }
+            }
+        }
+        > .disabled {
+            > span, > a {
+                &,
+                &:hover,
+                &:focus {
+                    color: $pagination-disabled-color;
+                    background-color: $pagination-disabled-bg;
+                    border-color: $pagination-disabled-border;
+                }
+            }
+        }
+    }
+    .estate {
+        &:focus,
+        &:hover {
+            .description {
+                > a {
+                    color: $color;
+                }
+            }
+        }
+        .preview {
+            &:focus,
+            &:hover {
+                &:before {
+                    background-color: transparentize($color, .6);
+                }
+            }
+        }
+        .subtitle {
+            color: $color;
+        }
+        .price {
+            color: $color;
+        }
+        .description {
+            > p {
+                a {
+                    color: $color;
+                    &:hover,
+                    &:focus {
+                        color: #27303d;
+                    }
+                }
+            }
+            > a {
+                &:hover,
+                &:focus {
+                    color: $color;
+                }
+            }
+            [rel="quartier"], [rel="area"] {
+                & {
+                    color: $color;
+                    &:hover,
+                    &:focus {
+                        color: $color;
+                    }
+                }
+            }
+        }
+        .footer {
+            > .nav {
+                > li {
+                    &.active,
+                    &:hover,
+                    &:focus {
+                        background-color: $color;
+                        border-color: $color;
+                        color: #fff;
+                        > a, > span {
+                            background-color: $color;
+                            border-color: $color;
+                            color: #fff;
+                        }
+                    }
+                    > a, > span {
+                        &:hover,
+                        &:focus {
+                            background-color: $color;
+                            border-color: $color;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+        .sticker-wrapper {
+            .sticker {
+                background-color: $color;
+            }
+        }
+    }
+    .suggestions {
+        ul {
+            > li {
+                > .fa-caret-right {
+                    color: $color;
+                }
+            }
+        }
+    }
+    .select2-container--default, .select2-container--classic, .select2-container--viteloge {
+        .select2-selection--multiple {
+            .select2-selection__choice {
+                background-color: $color;
+                color: #fff;
+            }
+            .select2-selection__choice__remove {
+                color: #fff;
+            }
+        }
+    }
+    .well {
+        min-height: 10px;
+        border: 1px solid $color;
+        border-radius: 0;
+        background-color: $color;
+        color: #fff;
+        margin-bottom: 0px;
+    }
+}

@@ -1,0 +1,49 @@
+@import "_bootstrap.scss";
+@import "_font-awesome.scss";
+@import "_select2.scss";
+@import "_viteloge.scss";
+@import "_hover.scss";
+
+/**
+*
+*/
+.clear:before,
+.clear:after,
+.clearfix:before,
+.clearfix:after,
+.container:before,
+.container:after,
+.row:before,
+.row:after {
+    content: " ";
+    display: table !important;
+}
+.clearfix:after,
+.container:after,
+.row:after {
+    clear: both;
+}
+
+.fa.form-control-feedback {
+    line-height: 34px; /* @input-height-base; */
+}
+.input-sm ~ .fa.form-control-feedback {
+    line-height: 30px; /* @input-height-base; */
+}
+.input-lg ~ .fa.form-control-feedback {
+    line-height: 46px; /* @input-height-base; */
+}
+
+/**
+* highlighting
+*/
+.highlighting {
+    background-color: $text-color;
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+[id*='carousel-home-'] .carousel-control {
+    width: 50px;
+}
+/** * */

@@ -321,6 +321,16 @@ module.exports = function(grunt) {
                     environment: 'production'
                 }
             },
+            front: {
+                options: {
+                    sassDir: 'src/Viteloge/FrontBundle/Resources/scss',
+                    cssDir: '<%= cfg["compass-tmp-dir"] %>/ab/css',
+                    importPath: '<%= bwr.directory %>',
+                    outputStyle: 'expanded',
+                    noLineComments: true,
+                    environment: 'production'
+                }
+            },
             estimation: {
                 options: {
                     sassDir: 'src/Viteloge/EstimationBundle/Resources/scss',
@@ -345,6 +355,11 @@ module.exports = function(grunt) {
                         '<%= cmp.extra["symfony-assets-dir"] %>/css/**/*.css',
                         '<%= cmp.extra["symfony-bundles-dir"] %>/vitelogecore/css/*.css',
                         '<%= cfg["compass-tmp-dir"] %>/css/**/*.css'
+                    ],
+                    '<%= cmp.extra["symfony-web-dir"] %>/built/viteloge.ab.min.css': [
+                        '<%= cmp.extra["symfony-assets-dir"] %>/css/**/*.css',
+                        '<%= cmp.extra["symfony-bundles-dir"] %>/vitelogecore/css/*.css',
+                        '<%= cfg["compass-tmp-dir"] %>/ab/css/**/*.css'
                     ]
                 }
             }
@@ -713,7 +728,7 @@ module.exports = function(grunt) {
             }
         }
     });
-    grunt.registerTask('css', ['shell:assetsInstall','bowercopy', 'copy', 'compass', 'cssmin', 'applicationOwner', 'rightsCache']);
+    grunt.registerTask('css', ['shell:assetsInstall','bowercopy', 'copy', 'compass', 'cssmin','applicationOwner', 'rightsCache']);
     grunt.registerTask('javascript', ['shell:assetsInstall','bowercopy', 'copy', 'concat', 'applicationOwner', 'rightsCache']);
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('tools-update', 'shell:composerSelfUpdate', 'shell:npmNpmUpdate', 'shell:npmBowerUpdate', 'shell:npmGruntUpdate')
