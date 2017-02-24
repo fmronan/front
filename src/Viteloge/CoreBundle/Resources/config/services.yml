@@ -1,6 +1,7 @@
 parameters:
     twig.extension.intl.class: Twig_Extensions_Extension_Intl
     twig.extension.date.class: Twig_Extensions_Extension_Date
+    viteloge_core.eventlistener.ab.class: Viteloge\CoreBundle\EventListener\AbTestingStrategy
 
 services:
     twig.extension.intl:
@@ -12,6 +13,11 @@ services:
         arguments: ["@translator"]
         tags:
             - { name: twig.extension }
+    viteloge_core.ablistener:
+        class: "%viteloge_core.eventlistener.ab.class%"
+        arguments: ["prod","@event_dispatcher","%account.section.rollout_settings%"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 
 
 

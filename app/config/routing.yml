@@ -1,3 +1,7 @@
+viteloge_front:
+    resource: "@VitelogeFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
 viteloge_insee:
     resource: "@VitelogeInseeBundle/Resources/config/routing.yml"
     prefix:   /

@@ -21,6 +21,10 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    account.section.rollout_settings:
+        enabled: true
+        test_weight: 1 # proportion of people who se the new account section. i.e. 1 --> 100%
+
 
 framework:
     #esi:             ~
