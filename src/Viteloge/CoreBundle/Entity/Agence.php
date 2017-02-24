@@ -229,8 +229,8 @@ class Agence
         return $this->dateCreation;
     }
 
-    public function getFille(){
-        return $this->fille;
+    public function getFilles(){
+        return $this->filles;
     }
 
 }
