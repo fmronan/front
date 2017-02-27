@@ -1,5 +1,26 @@
 {% spaceless %}
 {% block header_menu_user %}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel" style="text-transform: uppercase;font-size:24px !important;color:#00a1c6;">Chargement....</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer" style="text-align: center;">
+        <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Annuler</button>
+        <span id="btnPhone" style="margin-left: 5px;">
+        <a id="linkPhone" href="" aria-expanded="false" data-toggle="tab" onclick="ga('send', 'event', 'page-fiche-de-bien', 'clic-telephoner', 'telephoner')" >
+        <button  type="button" class="btn btn-primary btn-lg">Appeler</button></a></span>
+      </div>
+    </div>
+  </div>
+</div>
     <nav class="header-nav nav-perso">
         <ul class="list-unstyled main-menu">
             <li class="text-right">
@@ -23,6 +44,7 @@
             <li>
                 <a href="{{ path('viteloge_frontend_websearch_list') }}"><i class="fa fa-search" aria-hidden="true"></i> &nbsp;Mes alertes</a>
             </li>
+
             <li>
                 <a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;Mon profil</a>
             </li>
@@ -31,10 +53,11 @@
                 <br>
                 {% set images = app.request.cookies.get('viteloge_photo')|split('#$#') %}
                 {% set urls = app.request.cookies.get('viteloge_url')|split('#$#') %}
+                {% set title = app.request.cookies.get('viteloge_title')|split('#$#') %}
 
-                {% for key,image in images %}
+                {% for k,image in images %}
                     {% if image is not empty %}
-                <a href="{{ urls[key] }}" alt="ouvrir la fiche" title="ouvrir la fiche" target="_blank">
+                <a href="{{ urls[k] }}" alt="ouvrir la fiche" title="{{ title[k] }}" target="_blank">
                     <img src="{{ aws_s3_domain(image, false) }}" style="margin:auto;background-image: url(http://media.viteloge.com/bundles/vitelogecore/images/fr/logo-viteloge-moteur-recherche-immobilier.svg.gz);background-position: center center; background-repeat: no-repeat;background-color: #ddd;height:157px" />
                 </a>
                  {% endif %}
@@ -46,37 +69,43 @@
              {% endif %}
         </ul>
     </nav>
-    <a id="nav-expander" class="nav-expander fixed" onclick="ga('send', 'event', 'page-listing-de-bien', 'clic-menu', 'menu')"><i class="fa fa-bars fa-lg white"></i></a>
+    <a id="nav-expander" class="nav-expander fixed" onclick="ga('send', 'event', 'page-fiche-de-bien', 'clic-menu', 'menu')"><i class="fa fa-bars fa-lg white"></i></a>
 
 {% endblock header_menu_user %}
         {% block header_navbar %}
             <div class="clearfix">
                 {% block header_navbarheader %}
+
                 {% endblock %}
                 {% block header_navbarmenu %}
                     <div class="navbar-wrapper header-top">
                         {%- block header_brand -%}
-                        <div class="col-md-10">
+                        <div class="col-md-10 ">
 
                             <a class="col-md-2 col-sm-1 navbar-brand" href="{{ path('viteloge_frontend_homepage') }}">
                                 <img width="100%" src="{{ aws_s3_domain('bundles/vitelogecore/images/fr/logo-viteloge-moteur-recherche-immobilier.svg') }}" class="logo img-responsive" alt="{% trans %}viteloge.brand{% endtrans %}" title="{% trans %}viteloge.brand{% endtrans %} - {% trans %}viteloge.slogan{% endtrans %}" itemprop="logo" data-role="logo">
                             </a>
-                       {%- if form is defined -%}
-                                   {{ include('VitelogeFrontendBundle:Ad:Form/adSearch_redirect.html.twig', { form: form, isTransactionLabelHidden: false, theme_container: 'search-container' }) }}
+                             {%- if form is defined -%}
+                            {{ include('VitelogeFrontendBundle:Ad:Form/adSearch_redirect.html.twig', { form: form, isTransactionLabelHidden: false, theme_container: 'search-container' }) }}
+
+
                         {%- endif -%}
+
                         </div>
                         <hr class="visible-xs">
                         {%- endblock header_brand -%}
                         {% block header_identification %}
                         <div class="clearfix">
+
                             <div class="navbluebtn">
-                           {% if app.user or is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {% if app.user or is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <ul id="identification" class="btn btn-primary pull-right btn-lg hidden-xs hidden-sm hidden-md visible-lg bleu-button">
+
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" onclick="ga('send', 'event', 'page-listing-de-bien', 'clic-info-compte', 'acces-info-compte')">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" onclick="ga('send', 'event', 'page-fiche-de-bien', 'clic-info-compte', 'acces-info-compte')">
 
 
-                                            <span>{{ app.user.fullname }}&nbsp;</span>
+                                            <span>&nbsp;{{ app.user.fullname }}&nbsp;</span>
                                             <span class="caret"></span>
                                         </a>
                                         {{ include('VitelogeFrontendBundle:Menu:user.html.twig', { }) }}
@@ -93,3 +122,12 @@
             </div>
         {% endblock %}
 {% endspaceless %}
+{%- block header_more -%}
+    {% if ad.privilege.isAgency %}
+                <div class="collapse col-md-12 tab-pane fade" id="estate-group" role="tabpanel" aria-labelledby="estate-{{ ad.id }}-group-lnk">
+                    <div class="well">
+                        {{ render(path('viteloge_frontend_message_new', { ad: ad.id })) }}
+                    </div>
+                </div>
+            {% endif %}
+{%- endblock header_more -%}

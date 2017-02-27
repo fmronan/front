@@ -43,6 +43,10 @@ class AbTestingStrategy
     // list of routes we are testing in the rollout that are specific to the bundle we are testing
     private $routes = array(
         'viteloge_frontend_homepage',
+        'viteloge_frontend_ad_search',
+        'viteloge_frontend_ad_searchfromform',
+        'viteloge_frontend_agency_view',
+        'viteloge_frontend_static_about',
 
     );
 
@@ -93,6 +97,7 @@ class AbTestingStrategy
         $forcedSection = $request->query->get('account-section');
         if ($this->environment === 'dev' && null !== $forcedSection) {
             $sectionToLoad = $forcedSection === 'old' ? self::OLD_ACCOUNT_GROUP : self::NEW_ACCOUNT_GROUP;
+
         }
 
 
@@ -103,11 +108,13 @@ class AbTestingStrategy
             if (! is_numeric($testGroup)) {
                 $testGroup = 100;
             }
+
         }
 
         // if we haven't forced an account section, and there wasn't one found in a cookie,
         // we then randomly place the user into an account section group
         else {
+
             // the user's "group" is a number between 1 and 100, which allows us to easily
             // roll out to a certain percentage of people
             $testGroup = rand(1, 100);
