@@ -85,12 +85,9 @@ namespace Viteloge\FrontendBundle\Controller {
             if ($form->isValid()) {
                 // afin de savoir si il faut envoyer un message pour inscription
                   $verifuser = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$contact->getEmail()));
-                    $ua = $request->headers->get('User-Agent');
-                    $ip = $request->getClientIp();
-
                     // log redirect
-                        $contact->setIp($ip);
-                        $contact->setUa($ua);
+                        $contact->setIp($request->getClientIp());
+                        $contact->setUa($request->headers->get('User-Agent'));
                         $em->persist($contact);
                         $em->flush();
                         $user = $em->getRepository('VitelogeCoreBundle:User')->FindOneBy(array('email'=>$contact->getEmail()));

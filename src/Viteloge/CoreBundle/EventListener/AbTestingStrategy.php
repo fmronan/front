@@ -5,8 +5,6 @@ namespace Viteloge\CoreBundle\EventListener;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -46,7 +44,6 @@ class AbTestingStrategy
         'viteloge_frontend_ad_search',
         'viteloge_frontend_ad_searchfromform',
         'viteloge_frontend_agency_view',
-        'viteloge_frontend_static_about',
 
     );
 
@@ -125,7 +122,6 @@ class AbTestingStrategy
             $request->attributes->set(self::TEST_GROUP_COOKIE, $testGroup);
 
             // explicitly set the response event listener so that we can set the cookie later
-          //  $eventDispatcher = new EventDispatcher();
             $this->dispatcher->addListener('kernel.response', array($this, 'onKernelResponse'), 1);
 
         }

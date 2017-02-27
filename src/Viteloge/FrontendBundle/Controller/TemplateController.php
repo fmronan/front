@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Viteloge\FrontBundle\Controller;
+namespace Viteloge\FrontendBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
@@ -26,6 +26,7 @@ class TemplateController implements ContainerAwareInterface
 
     /**
      * Renders a template.
+     * use for AB testing
      *
      * @param string    $template  The template name
      * @param int|null  $maxAge    Max age for client caching
@@ -36,8 +37,7 @@ class TemplateController implements ContainerAwareInterface
      */
     public function templateAction($template, $maxAge = null, $sharedAge = null, $private = null)
     {
-        //on va devoit changer le nom du template
-        $template = str_replace('Frontend', 'Front', $template);
+
         if ($this->container->has('templating')) {
             $response = $this->container->get('templating')->renderResponse($template);
         } elseif ($this->container->has('twig')) {
