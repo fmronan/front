@@ -6,7 +6,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
     class SubjectEnum extends Enum {
 
-        const __default = null;
+        const VIDE = null;
 
         const NATIONAL_AD = 1;
 

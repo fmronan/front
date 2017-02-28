@@ -4,7 +4,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
     class UserSearchSourceEnum extends Enum {
 
-        const __default = '';
+        const VIDE = '';
 
         const WEB = 'websearch';
 

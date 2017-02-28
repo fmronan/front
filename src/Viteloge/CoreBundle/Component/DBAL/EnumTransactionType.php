@@ -5,14 +5,14 @@ namespace Viteloge\CoreBundle\Component\DBAL {
 
     class EnumTransactionType extends EnumType {
 
-        const __default = null;
+        const VIDE = null;
         const SALE = 'V';
         const RENT = 'L';
         const NEWER = 'N';
 
         protected $name = 'enumtransaction';
         protected $values = array(
-            '__default' => self::__default,
+            'VIDE' => self::VIDE,
             self::RENT => self::RENT,
             self::SALE => self::SALE,
             self::NEWER => self::NEWER

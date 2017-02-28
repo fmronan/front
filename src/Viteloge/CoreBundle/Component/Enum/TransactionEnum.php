@@ -6,7 +6,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
     class TransactionEnum extends Enum {
 
-        const __default = '';
+        const VIDE = '';
 
         const RENT = EnumTransactionType::RENT;
 
@@ -34,7 +34,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
                     return self::RENT;
                     break;
                 default:
-                    return self::__default;
+                    return self::VIDE;
                     break;
             }
         }

@@ -17,7 +17,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
             $class = new \ReflectionClass($this);
             $constants = $class->getConstants();
             if (!$include_default) {
-                unset($constants['__default']);
+                unset($constants['VIDE']);
             }
             return $constants;
         }

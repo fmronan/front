@@ -4,7 +4,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
     class CivilityEnum extends Enum {
 
-        const __default = null;
+        const VIDE = null;
 
         const MISTER = 'M';
 

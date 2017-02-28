@@ -5,7 +5,7 @@ use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 abstract class EnumType extends Type {
-    const __default = null;
+    const VIDE = null;
 
     protected $name;
     protected $values = array();
@@ -31,7 +31,7 @@ abstract class EnumType extends Type {
     }
 
     public static function getDefault() {
-        return static::__default;
+        return static::VIDE;
     }
 
     public static function getValues() {

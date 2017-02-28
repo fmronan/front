@@ -11,7 +11,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
         /**
          * Default value
          */
-        const __default = null;
+        const VIDE = null;
 
         /**
          * Internal enum value
@@ -26,7 +26,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
          */
         public function __construct($initial_value=null) {
             if ($initial_value === null) {
-                $initial_value = static::__default;
+                $initial_value = static::VIDE;
             }
             $class = new \ReflectionClass($this);
             if(!in_array($initial_value, $class->getConstants())) {
@@ -48,7 +48,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
          * @return SplType
          */
         final public static function __set_state($properties) {
-            return new static($properties['__default']);
+            return new static($properties['VIDE']);
         }
 
         /**
@@ -56,7 +56,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
          * @return array
          */
         final public function __debugInfo() {
-            return array( '__default' => $this->__default);
+            return array( 'VIDE' => $this->__default);
         }
 
     }

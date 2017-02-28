@@ -4,7 +4,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
     class DistanceEnum extends Enum {
 
-        const __default = null;
+        const VIDE = null;
 
         const NONE = 0;
 

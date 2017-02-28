@@ -4,7 +4,7 @@ namespace Viteloge\CoreBundle\Component\Enum {
 
     class RoomEnum extends Enum {
 
-        const __default = null;
+        const VIDE = null;
 
         const ONE = 1;
 

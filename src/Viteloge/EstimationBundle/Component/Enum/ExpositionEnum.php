@@ -6,7 +6,7 @@ namespace Viteloge\EstimationBundle\Component\Enum {
 
     class ExpositionEnum extends Enum {
 
-        const __default = null;
+        const VIDE = null;
 
         const NORTH = 'N';
 

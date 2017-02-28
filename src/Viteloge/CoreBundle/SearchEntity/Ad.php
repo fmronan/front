@@ -205,7 +205,7 @@ namespace Viteloge\CoreBundle\SearchEntity {
             }
 
 
-            if ($value == TransactionEnum::__default || $value == 'default') {
+            if ($value == TransactionEnum::VIDE || $value == 'default') {
                 $value = null;
             }
             if (strlen($value)>1) {

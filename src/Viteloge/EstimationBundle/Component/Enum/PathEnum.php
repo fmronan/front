@@ -6,7 +6,7 @@ namespace Viteloge\EstimationBundle\Component\Enum {
 
     class PathEnum extends Enum {
 
-        const __default = null;
+        const VIDE = null;
 
         const DRIVEWAY = 'ALL';
 
