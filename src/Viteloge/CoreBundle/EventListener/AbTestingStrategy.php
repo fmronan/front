@@ -44,6 +44,7 @@ class AbTestingStrategy
         'viteloge_frontend_ad_search',
         'viteloge_frontend_ad_searchfromform',
         'viteloge_frontend_agency_view',
+        'viteloge_frontend_static_about',
 
     );
 

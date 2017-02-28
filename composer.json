@@ -35,7 +35,8 @@
         "excelwebzone/recaptcha-bundle": "^1.4",
         "presta/sitemap-bundle": "1.4.2",
         "genemu/form-bundle": "^3.0@dev",
-        "jms/serializer-bundle": "^1.2"
+        "jms/serializer-bundle": "^1.2",
+        "twig/extensions": "^1.4"
 
     },
     "require-dev": {

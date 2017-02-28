@@ -532,6 +532,26 @@
           <source>viteloge.title.clic.redirect</source>
           <target>Click on the link to see details</target>
       </trans-unit>
+      <trans-unit id="viteloge.frontend.lastad.search.title" resname="viteloge.frontend.lastad.search.title">
+        <source>viteloge.frontend.lastad.search.title</source>
+        <target>Latest properties with Viteloge</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.querystats.city.title" resname="viteloge.frontend.querystats.city.title">
+        <source>viteloge.frontend.querystats.city.title</source>
+        <target>Real Estate %city% - Vitelogé - Search with Fast Housing</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.querystats.city.description" resname="viteloge.frontend.querystats.city.description">
+        <source>viteloge.frontend.querystats.city.description</source>
+        <target>Real Estate %city% - Vitelogé, The real estate search engine. Buy a house, rent an apartment in %city%? Vitelogé is the real estate site for real estate sales and rentals of houses in France. More than 900 000 ads for professionals for private individuals.</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.usersearch.city.title" resname="viteloge.frontend.usersearch.city.title">
+        <source>viteloge.frontend.usersearch.city.title</source>
+        <target>Your research on %city%</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.usersearch.city.description" resname="viteloge.frontend.usersearch.city.description">
+        <source>viteloge.frontend.usersearch.city.description</source>
+        <target>The research you have done for the city %city%</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

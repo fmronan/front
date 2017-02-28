@@ -22,7 +22,7 @@ imports:
 parameters:
     locale: fr
     account.section.rollout_settings:
-        enabled: true
+        enabled: false
         test_weight: 0.5 # proportion of people who se the new account section. i.e. 1 --> 100%
 
 

@@ -162,18 +162,13 @@ namespace Viteloge\FrontendBundle\Controller {
             $adSearch = new AdSearch();
             $adSearch->handleRequest($request);
             $form = $this->createForm(AdSearchType::class, $adSearch);
-
-            $description = 'Les dernières annonces immobilières de viteloge';
-
             $elasticaManager = $this->container->get('fos_elastica.manager');
             $repository = $elasticaManager->getRepository('VitelogeCoreBundle:Ad');
             $pagination = $repository->searchPaginated($form->getData());
-
-
             // pager
             $pagination->setMaxPerPage($limit);
             $pagination->setCurrentPage($page);
-            $seoPage = $this->container->get('sonata.seo.page');
+
             // SEO
             $canonicalLink = $this->get('router')->generate(
                 $request->get('_route'),
@@ -182,17 +177,8 @@ namespace Viteloge\FrontendBundle\Controller {
             );
 
             $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('last'=>'breadcrumb.last'));
-            $breadcrumbTitle  = $translated->trans('viteloge.frontend.lastadd');
-            $seoPage
-                ->setTitle($breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.title'))
-                ->addMeta('name', 'robots', 'noindex, follow')
-                ->addMeta('name', 'description', $description)
-                ->addMeta('property', 'og:title', $seoPage->getTitle())
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.description'))
-                ->setLinkCanonical($canonicalLink)
-            ;
+           $breadcrumbTitle  = $translated->trans('viteloge.frontend.lastadd');
+           $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('index, follow',$breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.title'),$translated->trans('viteloge.frontend.lastad.search.title'),$canonicalLink,$breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.description'));
 
             // Save session
             $session = $request->getSession();

@@ -38,6 +38,7 @@ class TemplateController implements ContainerAwareInterface
     {
         //on va devoit changer le nom du template
         $template = str_replace('Frontend', 'Front', $template);
+
         if ($this->container->has('templating')) {
             $response = $this->container->get('templating')->renderResponse($template);
         } elseif ($this->container->has('twig')) {

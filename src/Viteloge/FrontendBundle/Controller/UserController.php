@@ -39,16 +39,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 $request->get('_route_params'),
                 true
             );
-            $seoPage = $this->container->get('sonata.seo.page');
-            $seoPage
-                ->setTitle($translated->trans('viteloge.frontend.user.index.title'))
-                ->addMeta('name', 'robots', 'noindex, nofollow')
-                ->addMeta('name', 'description', $translated->trans('viteloge.frontend.user.index.description'))
-                ->addMeta('property', 'og:title', $seoPage->getTitle())
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.user.index.description'))
-            ;
+            $this->container->get('viteloge_frontend_generate.seo')->genereSeo('noindex, nofollow',$translated->trans('viteloge.frontend.user.index.title'),$translated->trans('viteloge.frontend.user.index.description'),$canonicalLink);
             // --
             $adSearch = new AdSearch();
             $adSearch->handleRequest($request);

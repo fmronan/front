@@ -245,18 +245,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 $request->get('_route'),
                 $request->get('_route_params')
             );
-            $seoPage = $this->container->get('sonata.seo.page');
-
-            $seoPage
-                ->setTitle($breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.title'))
-                ->addMeta('name', 'robots', 'noindex, follow')
-                ->addMeta('name', 'description', $description)
-                ->addMeta('property', 'og:title', $seoPage->getTitle())
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.description'))
-                ->setLinkCanonical($canonicalLink)
-            ;
+            $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('noindex, follow',$breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.title'),$description,$canonicalLink,$breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.description'));
 
             if($pagination->hasNextPage() || $pagination->hasPreviousPage()){
               $url = $this->generateUrl('viteloge_frontend_ad_search', array());

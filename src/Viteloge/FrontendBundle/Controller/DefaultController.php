@@ -33,15 +33,7 @@ class DefaultController extends Controller
 
     	$translated = $this->get('translator');
     	$canonicalLink = $this->get('router')->generate($request->get('_route'), array());
-    	$seoPage = $this->container->get('sonata.seo.page');
-    	$seoPage
-                ->setTitle($translated->trans('viteloge.frontend.default.index.title'))
-                ->addMeta('name', 'description', $translated->trans('viteloge.frontend.default.index.description'))
-                ->addMeta('property', 'og:title', $translated->trans('viteloge.frontend.default.index.title'))
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.default.index.description'))
-            ;
+        $this->container->get('viteloge_frontend_generate.seo')->genereSeo('index, follow',$translated->trans('viteloge.frontend.default.index.title'),$translated->trans('viteloge.frontend.default.index.description'),$canonicalLink);
         // This count is pretty faster than an elastic search count
             $repository = $this->getDoctrine()
                 ->getRepository('VitelogeCoreBundle:Ad');

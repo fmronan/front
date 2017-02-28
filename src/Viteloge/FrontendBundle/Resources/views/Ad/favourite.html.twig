@@ -8,10 +8,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&amp;v=3.exp&amp;libraries=geometry"></script>
 {%- endblock -%}
 
-{%- block header -%}
-     {{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
-{%- endblock -%}
-
 {%- block breadcrumb %}
   <div class="container-fluid">
 <div class="row no-padding subrow">
@@ -32,15 +28,6 @@
             <h1 class="small_header">{% transchoice count with { '%count%' : count} %}ads.count.favourite{% endtranschoice %}</h1>
         </div>
         {% endblock breadcrumb -%}
-{%- block header_more -%}
-
-
-{%- endblock header_more -%}
-{%- block header_end -%}
-
-
-{%- endblock -%}
-
 {%- block main -%}
     {% embed "VitelogeFrontendBundle:Grid:two-columns.html.twig" with { 'lsize': 9, 'rsize': 3 } %}
         {% block left %}
@@ -58,6 +45,3 @@
     {% endembed %}
 {%- endblock main -%}
 
-{%- block javascripts -%}
-    {{ parent() }}
-{%- endblock javascripts -%}

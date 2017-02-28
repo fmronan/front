@@ -1,8 +1,6 @@
 {% set page_class = "estimation" %}
 {% extends 'VitelogeEstimationBundle::layout.html.twig' %}
-{%- block header -%}
-  {{ render(controller('VitelogeFrontendBundle:Default:headerForm')) }}
-{%- endblock header -%}
+
 {% block head_stylesheets %}
   {{ parent() }}
 {% endblock %}
@@ -48,6 +46,4 @@
         {% endblock %}
     {% endembed %}
 {% endblock main %}
-{%- block javascripts -%}
-    {{- parent() -}}
-{%- endblock javascripts -%}
+

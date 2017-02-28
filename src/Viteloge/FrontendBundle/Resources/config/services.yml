@@ -13,6 +13,7 @@ parameters:
     viteloge_frontend.services.cookies: Viteloge\FrontendBundle\Services\CookiesFactory
     viteloge_frontend.services.phone: Viteloge\FrontendBundle\Services\PhoneService
     viteloge_frontend.services.breadcrump: Viteloge\FrontendBundle\Services\BreadcrumpFactory
+    viteloge_frontend.services.seo: Viteloge\FrontendBundle\Services\SeoFactory
     viteloge_frontend.form.type.api.class: Viteloge\FrontendBundle\Form\Type\ApiType
     viteloge_core.form.type.adsearch.class: Viteloge\FrontendBundle\Form\Type\AdSearchType
 services:
@@ -60,6 +61,9 @@ services:
     viteloge_frontend_generate.breadcrump:
         class: "%viteloge_frontend.services.breadcrump%"
         arguments: ["@translator","@router","@white_october_breadcrumbs"]
+    viteloge_frontend_generate.seo:
+        class: "%viteloge_frontend.services.seo%"
+        arguments: ["@sonata.seo.page"]
     viteloge_frontend.websearchlistener:
         class: "%viteloge_frontend.eventlistener.websearch.class%"
         arguments: ["@fos_elastica.manager"]

@@ -1,4 +1,4 @@
-{% extends 'VitelogeFrontendBundle::base.html.twig' %}
+{% extends 'VitelogeFrontBundle::layouts.html.twig' %}
 
 {%- block schema -%}
     itemscope itemtype="http://schema.org/WebPage"
@@ -11,8 +11,6 @@
     ] -%}
     {{ include('VitelogeFrontendBundle:Base:breadcrumb.html.twig', { listClass: 'breadcrumb', breadcrumbs: breadcrumbs }) }}
 {%- endblock breadcrumb -%}
-
-
 
 {%- block teaser -%}
     one
@@ -34,6 +32,4 @@
 {%- block main_content -%}
 
 {%- endblock main_content -%}
-{%- block javascripts -%}
-    {{- parent() -}}
-{%- endblock javascripts -%}
+

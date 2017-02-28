@@ -62,17 +62,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // SEO
             $canonicalLink = $this->get('router')->generate($request->get('_route'), $request->get('_route_params'), true);
-            $seoPage = $this->container->get('sonata.seo.page');
-            $seoPage
-                ->setTitle('viteloge.frontend.querystats.city.title')
-                ->addMeta('name', 'description', 'viteloge.frontend.querystats.city.description')
-                ->addMeta('name', 'robots', 'index, follow')
-                ->addMeta('property', 'og:title', "viteloge.frontend.querystats.city.title")
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', 'viteloge.frontend.querystats.city.description')
-                ->setLinkCanonical($canonicalLink)
-            ;
+            $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('index, follow',$translated->trans('viteloge.frontend.querystats.city.title'),$translated->trans('viteloge.frontend.querystats.city.description'),$canonicalLink);
             // --
 
             // Breadcrumbs
@@ -239,17 +229,7 @@ namespace Viteloge\FrontendBundle\Controller {
             if ($inseeCity instanceof InseeCity) {
                 $cityTitle = $inseeCity->getFullname().' ('.$inseeCity->getInseeDepartment()->getId().')';
             }
-            $seoPage = $this->container->get('sonata.seo.page');
-            $seoPage
-                ->setTitle($breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.querystats.ad.title', array('%city%' => $cityTitle, '%keywords%' => $queryStats->getKeywords())))
-                ->addMeta('name', 'robots', 'index, follow')
-                ->addMeta('name', 'description', $breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.querystats.ad.description', array('%city%' => $cityTitle, '%keywords%' => $queryStats->getKeywords())))
-                ->addMeta('property', 'og:title', $seoPage->getTitle())
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.querystats.ad.description', array('%city%' => $cityTitle, '%keywords%' => $queryStats->getKeywords())))
-                ->setLinkCanonical($canonicalLink)
-            ;
+            $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('index, follow',$breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.querystats.ad.title', array('%city%' => $cityTitle, '%keywords%' => $queryStats->getKeywords())),$breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.querystats.ad.description', array('%city%' => $cityTitle, '%keywords%' => $queryStats->getKeywords())),$canonicalLink);
             // --
               $session->set('totalResult',$pagination->getNbResults());
               $session->set('resultAd',$pagination->getCurrentPageResults());
@@ -290,24 +270,6 @@ namespace Viteloge\FrontendBundle\Controller {
          * @Template("VitelogeFrontendBundle:QueryStats:latest.html.twig")
          */
         public function latestAction(Request $request, $limit) {
-            // SEO
-            $canonicalLink = $this->get('router')->generate($request->get('_route'), array(), true);
-            $seoPage = $this->container->get('sonata.seo.page');
-            $seoPage
-                ->setTitle('viteloge.frontend.default.index.title')
-                ->addMeta('name', 'description', 'viteloge.frontend.default.index.description')
-                ->addMeta('name', 'robots', 'noindex, nofollow')
-                ->addMeta('property', 'og:title', "viteloge.frontend.default.index.title")
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', 'viteloge.frontend.default.index.description')
-                ->setLinkCanonical($canonicalLink)
-            ;
-            // --
-
-            // Breadcrumb
-            // --
-
             $repository = $this->getDoctrine()
                 ->getRepository('VitelogeCoreBundle:QueryStats');
             $queries = $repository->findByFiltered(

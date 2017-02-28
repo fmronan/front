@@ -1582,6 +1582,18 @@
           <source>viteloge.title.clic.redirect</source>
           <target>Cliquez sur le lien pour voir le détail</target>
       </trans-unit>
+      <trans-unit id="viteloge.frontend.lastad.search.title" resname="viteloge.frontend.lastad.search.title">
+        <source>viteloge.frontend.lastad.search.title</source>
+        <target>Les dernières annonces immobilières de viteloge</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.usersearch.city.title" resname="viteloge.frontend.usersearch.city.title">
+        <source>viteloge.frontend.usersearch.city.title</source>
+        <target>Vos recherche sur %city%</target>
+      </trans-unit>
+      <trans-unit id="viteloge.frontend.usersearch.city.description" resname="viteloge.frontend.usersearch.city.description">
+        <source>viteloge.frontend.usersearch.city.description</source>
+        <target>Les recherches que vous avez faites pour la ville de %city%</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

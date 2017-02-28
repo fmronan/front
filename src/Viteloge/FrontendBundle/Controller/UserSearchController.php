@@ -81,17 +81,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // SEO
             $canonicalLink = $this->get('router')->generate($request->get('_route'), $request->get('_route_params'), true);
-            $seoPage = $this->container->get('sonata.seo.page');
-            $seoPage
-                ->setTitle('viteloge.frontend.usersearch.city.title')
-                ->addMeta('name', 'description', 'viteloge.frontend.usersearch.city.description')
-                ->addMeta('name', 'robots', 'index, follow')
-                ->addMeta('property', 'og:title', "viteloge.frontend.usersearch.city.title")
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', 'viteloge.frontend.usersearch.city.description')
-                ->setLinkCanonical($canonicalLink)
-            ;
+            $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('index, follow',$translated->trans('viteloge.frontend.usersearch.city.title', array('%city%' => $inseeCity->getName())),$translated->trans('viteloge.frontend.usersearch.city.description'),$canonicalLink);
             // --
 
             // Breadcrumbs
