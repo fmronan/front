@@ -306,12 +306,10 @@ namespace Viteloge\FrontendBundle\Controller {
             $session->set('totalResult',$pagination->getNbResults());
             $session->remove('totalResultVente');
             $session->set('resultAd',$pagination->getCurrentPageResults());
-            //$smalltitle = $translated->trans('ads.count.search.city.transac',array('count'=>$pagination->getNbResults(),'bien'=> $bien,'transac'=> $transac,'lieu'=> $lieu));
             return array(
                 'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
-               // 'smalltitle'=>  $smalltitle,
                 'infos'=> $infos,
             );
         }
