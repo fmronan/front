@@ -35,37 +35,8 @@
                 {{- include('VitelogeUserBundle:Security:Fragment/form_right.html.twig') -}}
             </li>
             {% else %}
-            </li>
-        {% if app.request.cookies.has('viteloge_favorie') %}
-            <li>
-                <a href="{{ path('viteloge_frontend_favourite_list') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;Mes biens favoris</a>
-            </li>
-        {% endif %}
-            <li>
-                <a href="{{ path('viteloge_frontend_websearch_list') }}"><i class="fa fa-search" aria-hidden="true"></i> &nbsp;Mes alertes</a>
-            </li>
+               {{- include('VitelogeFrontendBundle:Base:Fragment/right_user.html.twig') -}}
 
-            <li>
-                <a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-cogs" aria-hidden="true"></i> &nbsp;Mon profil</a>
-            </li>
-            <li>
-                <i class="fa fa-history" aria-hidden="true"></i> &nbsp;Derniers biens vus
-                <br>
-                {% set images = app.request.cookies.get('viteloge_photo')|split('#$#') %}
-                {% set urls = app.request.cookies.get('viteloge_url')|split('#$#') %}
-                {% set title = app.request.cookies.get('viteloge_title')|split('#$#') %}
-
-                {% for k,image in images %}
-                    {% if image is not empty %}
-                <a href="{{ urls[k] }}" alt="ouvrir la fiche" title="{{ title[k] }}" target="_blank">
-                    <img src="{{ aws_s3_domain(image, false) }}" style="margin:auto;background-image: url(http://media.viteloge.com/bundles/vitelogecore/images/fr/logo-viteloge-moteur-recherche-immobilier.svg.gz);background-position: center center; background-repeat: no-repeat;background-color: #ddd;height:157px" />
-                </a>
-                 {% endif %}
-                {% endfor %}
-            </li>
-            <li>
-                <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Déconnexion</a>
-            </li>
              {% endif %}
         </ul>
     </nav>
@@ -106,6 +77,7 @@
 
 
                                             <span>&nbsp;{{ app.user.fullname }}&nbsp;</span>
+
                                             <span class="caret"></span>
                                         </a>
                                         {{ include('VitelogeFrontendBundle:Menu:user.html.twig', { }) }}

@@ -1,6 +1,5 @@
 {%- set imgClass = imgClass|default('lazy') -%}
-{%- set description = description|default(ad|vl_slugify_ad) -%}
-{%- set key = key|default(0) -%}
+
 
 {%- if ad.privilege.isExclu -%}
     {{ include('VitelogeFrontendBundle:Global:sticker.html.twig', { title: 'ad.sticker.exlusivity'|trans }) }}
@@ -9,9 +8,9 @@
     {{ include('VitelogeFrontendBundle:Global:sticker.html.twig', { title: 'ad.sticker.heart'|trans }) }}
 {%- endif -%}
 {%- if ad.transaction == 'V' -%}
-    {%- set redirect_path = path('viteloge_frontend_agency_view', { 'id': key~'-'~ad.id, 'description': description, 'transaction': 'V' }) -%}
+    {%- set redirect_path = path('viteloge_frontend_agency_view', { 'id': key~'-'~ad.id, 'description': ad|vl_slugify_ad, 'transaction': 'V' }) -%}
 {%- else -%}
-    {%- set redirect_path = path('viteloge_frontend_agency_view', { 'id': key~'-'~ad.id, 'description': description }) -%}
+    {%- set redirect_path = path('viteloge_frontend_agency_view', { 'id': key~'-'~ad.id, 'description': ad|vl_slugify_ad }) -%}
 {%- endif -%}
 
 <a href="{{ redirect_path }}" class="preview setkey" data-value="{{ key }}">
