@@ -81,7 +81,7 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // SEO
             $canonicalLink = $this->get('router')->generate($request->get('_route'), $request->get('_route_params'), true);
-            $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('index, follow',$translated->trans('viteloge.frontend.usersearch.city.title', array('%city%' => $inseeCity->getName())),$translated->trans('viteloge.frontend.usersearch.city.description'),$canonicalLink);
+            $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('index, follow',$translated->trans('viteloge.frontend.usersearch.city.title', array('%city%' => $inseeCity->getName())),$translated->trans('viteloge.frontend.usersearch.city.description', array('%city%' => $inseeCity->getName())),$canonicalLink);
             // --
 
             // Breadcrumbs

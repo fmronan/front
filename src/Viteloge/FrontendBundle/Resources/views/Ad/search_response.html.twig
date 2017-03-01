@@ -28,7 +28,7 @@
            </div>
 
         <div class="col-xs-12 col-sm-6 col-md-2 col-lg-4 header-pagination no-padding">
-           {%- if pagination is defined -%}
+
              {%- block pagination -%}
             {%- if pagination is not null and pagination.haveToPaginate -%}
                 {{- pagerfanta(pagination, 'pager_viteloge', {
@@ -36,31 +36,17 @@
                 }) -}}
             {%- endif -%}
         {%- endblock pagination -%}
-           {%- endif -%}
+
         </div>
          <div class="col-sm-3 col-md-5 col-lg-4 text-right no-padding">
+            {% set count = pagination.nbResults|default(ads|length) %}
 
-                {% set count = pagination.nbResults|default(ads|length) %}
-                    {% if app.request.attributes.get('_route') == 'viteloge_frontend_prefer_latest_list' %}
+            {% if app.request.attributes.get('_route') == 'viteloge_frontend_prefer_latest_list' %}
                         <h1 class="small_header">{% transchoice count with { '%count%' : count} %}ads.count.last{% endtranschoice %}</h1>
-                    {% else %}
-                    {% if ads[0].cityName is defined and ads[0].cityName is not empty %}
-                    {% if ads[0].transaction is defined and ads[0].transaction is not empty %}
-                 {% if ads[0].transaction == 'V' %}
-                    {% set transac = 'à vendre'%}
-                {% elseif ads[0].transaction == 'L'%}
-                    {% set transac = 'à louer'%}
-                {% else %}
-                    {% set transac ='neufs'%}
-                {% endif %}
-                    <h1 class="small_header">{% transchoice count with { '%count%' : count, '%city%': ads[0].cityName,'%transac%':transac} %}ads.count.research.city.transac{% endtranschoice %}</h1>
-                 {% else %}
-                <h1 class="small_header">{% transchoice count with { '%count%' : count, '%city%': ads[0].cityName} %}ads.count.research.city{% endtranschoice %}</h1>
+            {% else %}
+                    <h1 class="small_header">{% transchoice count with { '%count%' : count, '%lieu%': infos.lieu,'%transac%': infos.transac} %}ads.count.search.city.transac{% endtranschoice %}</h1>
             {% endif %}
-        {% else %}
-            <h1 class="small_header">{% transchoice count with { '%count%' : count} %}ads.count.research{% endtranschoice %}</h1>
-        {% endif %}
-        {% endif %}
+
             </div>
        </div>
     </div>
@@ -87,45 +73,5 @@
     {{ parent() }}
 {%- endblock javascripts -%}
 {%- block footer -%}
-
-            <div class="col-sm-12 col-xs-12 col-md-2 col-lg-12 header-pagination no-padding container text-center">
-           {%- if pagination is defined -%}
-            {%- if pagination is not null and pagination.haveToPaginate -%}
-                {{- pagerfanta(pagination, 'pager_viteloge', {
-                    'routeParams': app.request.query.all
-                }) -}}
-            {%- endif -%}
-           {%- endif -%}
-
-        </div>
-        <div class="row">
-            {% if form.vars.value.where.0 is defined %}
-        <div class="hide_info col-lg-offset-2 col-md-offset-2 col-md-4 col-lg-2 hidden-sm hidden-xs">
-                <ul>
-                    {{ render_hinclude(path('viteloge_frontend_glossary_town_transaction_limited', {'id': form.vars.value.where.0,'radius': constant('Viteloge\\CoreBundle\\Component\\Enum\\DistanceEnum::TEN'), transaction:'V',type: 'Appartement',limit: 10 })) }}
-                </ul>
-        </div>
-        <div class="hide_info col-md-2 col-lg-2 hidden-sm hidden-xs">
-                <ul>
-                    {{ render_hinclude(path('viteloge_frontend_glossary_town_transaction_limited', {'id': form.vars.value.where.0,'radius': constant('Viteloge\\CoreBundle\\Component\\Enum\\DistanceEnum::TEN'), transaction:'V',type: 'Maison',limit: 10 })) }}
-                </ul>
-            </div>
-        <div class="hide_info col-md-2 col-lg-2 hidden-sm hidden-xs">
-                <ul>
-                    {{ render_hinclude(path('viteloge_frontend_glossary_town_transaction_limited', {'id': form.vars.value.where.0,'radius': constant('Viteloge\\CoreBundle\\Component\\Enum\\DistanceEnum::TEN'), transaction:'L',type: 'Maison',limit: 10 })) }}
-                </ul>
-        </div>
-        <div class="hide_info col-md-2 col-lg-2 hidden-sm hidden-xs">
-                    {{ render_hinclude(path('viteloge_frontend_glossary_town_transaction_limited', {'id': form.vars.value.where.0,'radius': constant('Viteloge\\CoreBundle\\Component\\Enum\\DistanceEnum::TEN'), transaction:'L',type: 'Appartement',limit: 10 })) }}
-                </ul>
-            </div>
-        {% endif %}
-            </div>
-            <div class="col-lg-12 text-center">
-                {{- include('VitelogeFrontendBundle:misc:social.html.twig', {}) -}}
-            </div>
-            <div class="col-lg-12 text-center text-secondary">
-                {{- include('VitelogeFrontendBundle:misc:copyright.html.twig', {}) -}}
-                {{- include('VitelogeFrontendBundle:Block:sites.html.twig', {}) -}}
-            </div>
+     {{- include('VitelogeFrontendBundle:Ad:Fragment/search_footer.html.twig', {}) -}}
 {%- endblock footer -%}

@@ -406,6 +406,10 @@
         <source>ads.count.research.city.transac</source>
         <target>{0} aucune annonce ne correspond à votre recherche|{1} 1 bien immobilier %transac% à %city%|]1,Inf] %count% biens immobiliers  %transac% à %city%</target>
       </trans-unit>
+      <trans-unit id="ads.count.search.city.transac" resname="ads.count.search.city.transac">
+        <source>ads.count.search.city.transac</source>
+        <target>{0} aucune annonce ne correspond à votre recherche|{1} 1 bien immobilier %transac%  %lieu%|]1,Inf] %count% biens immobiliers  %transac%  %lieu%</target>
+      </trans-unit>
       <trans-unit id="8fb3ca522f8baf76c97c804f75c8481a" resname="bedrooms">
         <source>bedrooms</source>
         <target>bedrooms</target>

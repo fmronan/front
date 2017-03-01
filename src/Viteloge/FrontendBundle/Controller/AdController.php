@@ -65,6 +65,7 @@ namespace Viteloge\FrontendBundle\Controller {
         }
 
         private function getBreadcrumpAction(Request $request,$adSearch,$translated){
+            $lieu='';
              // First State
             $inseeState = null;
             $whereState = $adSearch->getWhereState();
@@ -72,6 +73,7 @@ namespace Viteloge\FrontendBundle\Controller {
                 $stateId = current($whereState);
                 $stateRepository = $this->getDoctrine()->getRepository('VitelogeInseeBundle:InseeState');
                 $inseeState = $stateRepository->find((int)$stateId);
+                $lieu = 'en '.$inseeState->getFullname();
             }
             // --
 
@@ -82,7 +84,9 @@ namespace Viteloge\FrontendBundle\Controller {
                 $departmentId = current($whereDepartment);
                 $departmentRepository = $this->getDoctrine()->getRepository('VitelogeInseeBundle:InseeDepartment');
                 $inseeDepartment = $departmentRepository->find((int)$departmentId);
+                $lieu = 'en '.$inseeDepartment->getFullname();
             }
+
             // --
 
             // First city
@@ -99,6 +103,7 @@ namespace Viteloge\FrontendBundle\Controller {
             if ($inseeCity instanceof InseeCity) {
                 $radius = $adSearch->getRadius();
                 $adSearch->setLocation($inseeCity->getLocation());
+                $lieu = 'à '.$inseeCity->getFullname();
                 if ($inseeCity->getGeolevel() == 'ARM' && empty($radius)) {
                     $adSearch->setRadius(DistanceEnum::FIVE);
                 }
@@ -107,8 +112,9 @@ namespace Viteloge\FrontendBundle\Controller {
 
             // Breadcrumbs
             $transaction = $adSearch->getTransaction();
+
             $description = 'Toutes les annonces immobilières de ';
-            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->getDeptAndCityBreadcrump($inseeDepartment,$inseeCity);
+            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->getDeptAndCityBreadcrump($inseeDepartment,$inseeCity,$transaction);
             if ($inseeState instanceof InseeState) {
                 $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction)).' ' : '';
                 $breadcrumbTitle .= $inseeState->getFullname();
@@ -130,30 +136,43 @@ namespace Viteloge\FrontendBundle\Controller {
                 $breadcrumbTitleSuffix = '';
                 $breadcrumbTitleSuffix .= (!empty($what)) ? implode(', ', $what).' ' : ' ';
                 $suffix = '';
-                $suffix .= (!empty($what)) ? implode(' et ', $what).' ' : ' ';
+                $suffix .= (!empty($what)) ? implode(' , ', $what).'s' : ' biens immobilier ';
                 $title = '';
                 $titre ='';
-                if($transaction == 'V'){
+                if($transaction[0] == 'V'){
                    $title .= ' ventes ';
-                   $titre .= ' a vendre ';
-               }elseif($transaction == 'L'){
+                   $titre .= ' à vendre ';
+               }elseif($transaction[0] == 'L'){
                    $title .= ' locations ';
-                   $titre .= ' a louer ';
-               }elseif($transaction == 'N'){
+                   $titre .= ' à louer ';
+               }elseif($transaction[0] == 'N'){
                    $title .= ' programmes neufs ';
                    $titre .= ' neufs ';
+               }else{
+                   $titre .=' à vendre et à louer';
                }
+
                 $description .= $title.$suffix;
                 $description .= ($inseeCity instanceof InseeCity) ? $inseeCity->getFullname() : '';
+                $description .= ($inseeDepartment instanceof InseeDepartment) ? $inseeDepartment->getFullname() : '';
+                $description .= ($inseeState instanceof InseeState) ? $inseeState->getFullname() : '';
                 $description .= '. Retrouvez';
                 if($suffix == 'Maison'){
                     $description .= ' toutes nos '.$suffix;
                 }else{
                      $description .= ' tous nos '.$suffix;
                 }
+
+
                 $description .= $titre.' a ';
                 $description .= ($inseeCity instanceof InseeCity) ? $inseeCity->getFullname() : '';
+                $description .= ($inseeDepartment instanceof InseeDepartment) ? $inseeDepartment->getFullname() : '';
+                $description .= ($inseeState instanceof InseeState) ? $inseeState->getFullname() : '';
+
+
                 $breadcrumbTitleSuffix .= ($inseeCity instanceof InseeCity) ? $inseeCity->getFullname() : '';
+                $breadcrumbTitleSuffix .= ($inseeDepartment instanceof InseeDepartment) ? $inseeDepartment->getFullname() : '';
+                $breadcrumbTitleSuffix .= ($inseeState instanceof InseeState) ? $inseeState->getFullname() : '';
                 $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : $translated->trans('ad.research').': ';
                 $breadcrumbTitle .= (!empty(trim($breadcrumbTitleSuffix))) ? $breadcrumbTitleSuffix : $translated->trans('viteloge.result');
 
@@ -170,6 +189,8 @@ namespace Viteloge\FrontendBundle\Controller {
             }
 
              $infos['description']= $description;
+             $infos['lieu'] = $lieu;
+             $infos['transac'] = $titre;
              $infos['breadcrumbTitle']= $breadcrumbTitle;
              return $infos;
         }
@@ -284,11 +305,13 @@ namespace Viteloge\FrontendBundle\Controller {
             $session->set('totalResult',$pagination->getNbResults());
             $session->remove('totalResultVente');
             $session->set('resultAd',$pagination->getCurrentPageResults());
-
+            //$smalltitle = $translated->trans('ads.count.search.city.transac',array('count'=>$pagination->getNbResults(),'bien'=> $bien,'transac'=> $transac,'lieu'=> $lieu));
             return array(
                 'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
+               // 'smalltitle'=>  $smalltitle,
+                'infos'=> $infos,
             );
         }
 

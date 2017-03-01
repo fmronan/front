@@ -128,10 +128,10 @@ namespace Viteloge\FrontendBundle\Services {
         return $this->breadcrumbs;
         }
 
-       public function getDeptAndCityBreadcrump($inseeDepartment,$inseeCity){
+       public function getDeptAndCityBreadcrump($inseeDepartment,$inseeCity,$transaction){
         $this->breadcrumbs = $this->initBreadcrump();
        if ($inseeDepartment instanceof InseeDepartment) {
-                $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : '';
+                $breadcrumbTitle  = (!empty($transaction)) ? $this->translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : '';
                 $breadcrumbTitle .= $inseeDepartment->getFullname();
                 $this->breadcrumbs->addItem(
                     $breadcrumbTitle,
@@ -144,7 +144,7 @@ namespace Viteloge\FrontendBundle\Services {
                 );
             }
             if ($inseeCity instanceof InseeCity) {
-                $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : '';
+                $breadcrumbTitle  = (!empty($transaction)) ? $this->translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : '';
                 $breadcrumbTitle .= $inseeCity->getFullname().' ('.$inseeCity->getInseeDepartment()->getId().')';
                 $this->breadcrumbs->addItem(
                     $breadcrumbTitle,
