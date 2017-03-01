@@ -1,10 +1,8 @@
-{%- set flashes = app.session.flashbag.all() -%}
-{%- set hideContainer = hideContainer|default(false) -%}
 {%- if flashes -%}
     {%- if not hideContainer is same as(true) -%}<div class="container">{%- endif -%}
         {%- for type, messages in flashes -%}
             {%- for message in messages -%}
-                {%- embed 'VitelogeFrontBundle:Global:alert.html.twig' with { alerts: messages, type: type, dismissible: true } -%}
+                {%- embed 'VitelogeFrontendBundle:Global:alert.html.twig' with { alerts: messages, type: type, dismissible: true } -%}
                     {%- block alert_title -%}
 
                     {%- endblock -%}

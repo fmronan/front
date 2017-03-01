@@ -1,5 +1,3 @@
-{%- set flashes = app.session.flashbag.all() -%}
-{%- set hideContainer = hideContainer|default(false) -%}
 {%- if flashes -%}
     {%- if not hideContainer is same as(true) -%}<div class="container">{%- endif -%}
         {%- for type, messages in flashes -%}

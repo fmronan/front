@@ -41,7 +41,6 @@ class DefaultController extends Controller
             $repository = $this->getDoctrine()
                 ->getRepository('VitelogeCoreBundle:Ad');
             $newad = $repository->findNewAdLimit();
-
          // Form
             $entity = new AdSearch();
             $form = $this->createForm(AdSearchType::class, $entity);

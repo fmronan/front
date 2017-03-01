@@ -47,7 +47,7 @@
     {%- endembed -%}
 {%- endblock -%}
 {%- block flash -%}
-    {{- include('VitelogeFrontendBundle:Base:flash.html.twig', { hideContainer: true }) -}}
+    {{- include('VitelogeFrontendBundle:Base:flash.html.twig', { hideContainer: true, flashes : app.session.flashbag.all()  }) -}}
 {%- endblock flash -%}
 {%- block main -%}
     {{- include('VitelogeFrontendBundle:Default:Fragment/websearch.html.twig', { }) -}}
