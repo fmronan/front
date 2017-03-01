@@ -1,0 +1,39 @@
+        <div class="col-sm-12 col-xs-12 col-md-2 col-lg-12 header-pagination no-padding container text-center">
+
+            {%- if pagination is not null and pagination.haveToPaginate -%}
+                {{- pagerfanta(pagination, 'pager_viteloge', {
+                    'routeParams': app.request.query.all
+                }) -}}
+           {%- endif -%}
+
+        </div>
+        <div class="row">
+            {% if form.vars.value.where.0 is defined %}
+        <div class="hide_info col-lg-offset-2 col-md-offset-2 col-md-4 col-lg-2 hidden-sm hidden-xs">
+                <ul>
+                    {{ render_hinclude(path('viteloge_frontend_glossary_town_transaction_limited', {'id': form.vars.value.where.0,'radius': constant('Viteloge\\CoreBundle\\Component\\Enum\\DistanceEnum::TEN'), transaction:'V',type: 'Appartement',limit: 10 })) }}
+                </ul>
+        </div>
+        <div class="hide_info col-md-2 col-lg-2 hidden-sm hidden-xs">
+                <ul>
+                    {{ render_hinclude(path('viteloge_frontend_glossary_town_transaction_limited', {'id': form.vars.value.where.0,'radius': constant('Viteloge\\CoreBundle\\Component\\Enum\\DistanceEnum::TEN'), transaction:'V',type: 'Maison',limit: 10 })) }}
+                </ul>
+            </div>
+        <div class="hide_info col-md-2 col-lg-2 hidden-sm hidden-xs">
+                <ul>
+                    {{ render_hinclude(path('viteloge_frontend_glossary_town_transaction_limited', {'id': form.vars.value.where.0,'radius': constant('Viteloge\\CoreBundle\\Component\\Enum\\DistanceEnum::TEN'), transaction:'L',type: 'Maison',limit: 10 })) }}
+                </ul>
+        </div>
+        <div class="hide_info col-md-2 col-lg-2 hidden-sm hidden-xs">
+                    {{ render_hinclude(path('viteloge_frontend_glossary_town_transaction_limited', {'id': form.vars.value.where.0,'radius': constant('Viteloge\\CoreBundle\\Component\\Enum\\DistanceEnum::TEN'), transaction:'L',type: 'Appartement',limit: 10 })) }}
+                </ul>
+            </div>
+        {% endif %}
+            </div>
+            <div class="col-lg-12 text-center">
+                {{- include('VitelogeFrontendBundle:Misc:social.html.twig', {}) -}}
+            </div>
+            <div class="col-lg-12 text-center text-secondary">
+                {{- include('VitelogeFrontendBundle:Misc:copyright.html.twig', {}) -}}
+                {{- include('VitelogeFrontendBundle:Block:sites.html.twig', {}) -}}
+            </div>

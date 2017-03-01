@@ -65,6 +65,7 @@ namespace Viteloge\FrontBundle\Controller {
         }
 
         private function getBreadcrumpAction(Request $request,$adSearch,$translated){
+            $lieu='';
              // First State
             $inseeState = null;
             $whereState = $adSearch->getWhereState();
@@ -72,6 +73,7 @@ namespace Viteloge\FrontBundle\Controller {
                 $stateId = current($whereState);
                 $stateRepository = $this->getDoctrine()->getRepository('VitelogeInseeBundle:InseeState');
                 $inseeState = $stateRepository->find((int)$stateId);
+                $lieu = 'en '.$inseeState->getFullname();
             }
             // --
 
@@ -82,7 +84,9 @@ namespace Viteloge\FrontBundle\Controller {
                 $departmentId = current($whereDepartment);
                 $departmentRepository = $this->getDoctrine()->getRepository('VitelogeInseeBundle:InseeDepartment');
                 $inseeDepartment = $departmentRepository->find((int)$departmentId);
+                $lieu = 'en '.$inseeDepartment->getFullname();
             }
+
             // --
 
             // First city
@@ -99,6 +103,7 @@ namespace Viteloge\FrontBundle\Controller {
             if ($inseeCity instanceof InseeCity) {
                 $radius = $adSearch->getRadius();
                 $adSearch->setLocation($inseeCity->getLocation());
+                $lieu = 'à '.$inseeCity->getFullname();
                 if ($inseeCity->getGeolevel() == 'ARM' && empty($radius)) {
                     $adSearch->setRadius(DistanceEnum::FIVE);
                 }
@@ -107,8 +112,9 @@ namespace Viteloge\FrontBundle\Controller {
 
             // Breadcrumbs
             $transaction = $adSearch->getTransaction();
+
             $description = 'Toutes les annonces immobilières de ';
-            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->getDeptAndCityBreadcrump($inseeDepartment,$inseeCity);
+            $breadcrumbs = $this->get('viteloge_frontend_generate.breadcrump')->getDeptAndCityBreadcrump($inseeDepartment,$inseeCity,$transaction);
             if ($inseeState instanceof InseeState) {
                 $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction)).' ' : '';
                 $breadcrumbTitle .= $inseeState->getFullname();
@@ -130,30 +136,43 @@ namespace Viteloge\FrontBundle\Controller {
                 $breadcrumbTitleSuffix = '';
                 $breadcrumbTitleSuffix .= (!empty($what)) ? implode(', ', $what).' ' : ' ';
                 $suffix = '';
-                $suffix .= (!empty($what)) ? implode(' et ', $what).' ' : ' ';
+                $suffix .= (!empty($what)) ? implode(' , ', $what).'s' : ' biens immobilier ';
                 $title = '';
                 $titre ='';
-                if($transaction == 'V'){
+                if($transaction[0] == 'V'){
                    $title .= ' ventes ';
-                   $titre .= ' a vendre ';
-               }elseif($transaction == 'L'){
+                   $titre .= ' à vendre ';
+               }elseif($transaction[0] == 'L'){
                    $title .= ' locations ';
-                   $titre .= ' a louer ';
-               }elseif($transaction == 'N'){
+                   $titre .= ' à louer ';
+               }elseif($transaction[0] == 'N'){
                    $title .= ' programmes neufs ';
                    $titre .= ' neufs ';
+               }else{
+                   $titre .=' à vendre et à louer';
                }
+
                 $description .= $title.$suffix;
                 $description .= ($inseeCity instanceof InseeCity) ? $inseeCity->getFullname() : '';
+                $description .= ($inseeDepartment instanceof InseeDepartment) ? $inseeDepartment->getFullname() : '';
+                $description .= ($inseeState instanceof InseeState) ? $inseeState->getFullname() : '';
                 $description .= '. Retrouvez';
                 if($suffix == 'Maison'){
                     $description .= ' toutes nos '.$suffix;
                 }else{
                      $description .= ' tous nos '.$suffix;
                 }
+
+
                 $description .= $titre.' a ';
                 $description .= ($inseeCity instanceof InseeCity) ? $inseeCity->getFullname() : '';
+                $description .= ($inseeDepartment instanceof InseeDepartment) ? $inseeDepartment->getFullname() : '';
+                $description .= ($inseeState instanceof InseeState) ? $inseeState->getFullname() : '';
+
+
                 $breadcrumbTitleSuffix .= ($inseeCity instanceof InseeCity) ? $inseeCity->getFullname() : '';
+                $breadcrumbTitleSuffix .= ($inseeDepartment instanceof InseeDepartment) ? $inseeDepartment->getFullname() : '';
+                $breadcrumbTitleSuffix .= ($inseeState instanceof InseeState) ? $inseeState->getFullname() : '';
                 $breadcrumbTitle  = (!empty($transaction)) ? $translated->trans('ad.transaction.'.strtoupper($transaction[0])).' ' : $translated->trans('ad.research').': ';
                 $breadcrumbTitle .= (!empty(trim($breadcrumbTitleSuffix))) ? $breadcrumbTitleSuffix : $translated->trans('viteloge.result');
 
@@ -170,6 +189,8 @@ namespace Viteloge\FrontBundle\Controller {
             }
 
              $infos['description']= $description;
+             $infos['lieu'] = $lieu;
+             $infos['transac'] = $titre;
              $infos['breadcrumbTitle']= $breadcrumbTitle;
              return $infos;
         }
@@ -202,7 +223,7 @@ namespace Viteloge\FrontBundle\Controller {
          *     name="viteloge_frontend_ad_search_default"
          * )
          * @Method({"GET","PUT"})
-         * @Template("VitelogeFrontBundle:Ad:search_response.html.twig")
+         * @Template("VitelogeFrontendBundle:Ad:search_response.html.twig")
          */
         public function searchAction(Request $request, $page, $limit) {
            $translated = $this->get('translator');
@@ -245,18 +266,7 @@ namespace Viteloge\FrontBundle\Controller {
                 $request->get('_route'),
                 $request->get('_route_params')
             );
-            $seoPage = $this->container->get('sonata.seo.page');
-
-            $seoPage
-                ->setTitle($breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.title'))
-                ->addMeta('name', 'robots', 'noindex, follow')
-                ->addMeta('name', 'description', $description)
-                ->addMeta('property', 'og:title', $seoPage->getTitle())
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.description'))
-                ->setLinkCanonical($canonicalLink)
-            ;
+            $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('noindex, follow',$breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.title'),$description,$canonicalLink,$breadcrumbTitle.' - '.$translated->trans('viteloge.frontend.ad.search.description'));
 
             if($pagination->hasNextPage() || $pagination->hasPreviousPage()){
               $url = $this->generateUrl('viteloge_frontend_ad_search', array());
@@ -295,11 +305,13 @@ namespace Viteloge\FrontBundle\Controller {
             $session->set('totalResult',$pagination->getNbResults());
             $session->remove('totalResultVente');
             $session->set('resultAd',$pagination->getCurrentPageResults());
-
+            //$smalltitle = $translated->trans('ads.count.search.city.transac',array('count'=>$pagination->getNbResults(),'bien'=> $bien,'transac'=> $transac,'lieu'=> $lieu));
             return array(
                 'form' => $form->createView(),
                 'ads' => $pagination->getCurrentPageResults(),
                 'pagination' => $pagination,
+               // 'smalltitle'=>  $smalltitle,
+                'infos'=> $infos,
             );
         }
 
@@ -354,7 +366,6 @@ namespace Viteloge\FrontBundle\Controller {
          * @Template("VitelogeFrontendBundle:Ad:search_from_form.html.twig")
          */
         public function searchFromFormAction(Request $request) {
-
             $adSearch = new AdSearch();
             $form = $this->createForm(AdSearchType::class, $adSearch);
             $form->handleRequest($request);

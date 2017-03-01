@@ -57,6 +57,7 @@ class DefaultController extends Controller
                 'count' => $count,
                 'newad'=> $newad,
                 'form' => $form->createView(),
+                'flash'=>'',
             );
     }
 

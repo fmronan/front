@@ -28,8 +28,6 @@
 {%- block header -%}
          {% if block("flash") is defined %}
             {% set flash = block('flash') %}
-        {% else %}
-            {% set flash = '' %}
          {% endif %}
         {%- embed "VitelogeFrontendBundle:Base:headerHome.html.twig"  with { 'block_flash': flash } -%}
 
