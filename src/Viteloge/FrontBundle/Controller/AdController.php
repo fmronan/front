@@ -15,6 +15,7 @@ namespace Viteloge\FrontBundle\Controller {
     use Symfony\Component\Serializer\Encoder\JsonEncoder;
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\InseeBundle\Entity\InseeState;
+    use Viteloge\InseeBundle\Entity\InseeDepartment;
     use Viteloge\CoreBundle\Entity\Ad;
     use Viteloge\CoreBundle\Entity\QueryStats;
     use Viteloge\CoreBundle\Entity\WebSearch;
@@ -22,6 +23,7 @@ namespace Viteloge\FrontBundle\Controller {
     use Viteloge\CoreBundle\Component\Enum\DistanceEnum;
     use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
     use Viteloge\FrontendBundle\Form\Type\AdSearchType;
+
 
     /**
      * Note: This should be the search ad controller

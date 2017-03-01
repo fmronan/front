@@ -15,6 +15,7 @@ namespace Viteloge\FrontendBundle\Controller {
     use Symfony\Component\Serializer\Encoder\JsonEncoder;
     use Viteloge\InseeBundle\Entity\InseeCity;
     use Viteloge\InseeBundle\Entity\InseeState;
+    use Viteloge\InseeBundle\Entity\InseeDepartment;
     use Viteloge\CoreBundle\Entity\Ad;
     use Viteloge\CoreBundle\Entity\QueryStats;
     use Viteloge\CoreBundle\Entity\WebSearch;
