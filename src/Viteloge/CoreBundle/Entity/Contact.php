@@ -4,7 +4,6 @@ namespace Viteloge\CoreBundle\Entity {
 
     use Doctrine\ORM\Mapping as ORM;
     use Symfony\Component\Validator\Constraints as Assert;
-    use Viteloge\CoreBundle\Entity\User as CoreUser;
     use Viteloge\CoreBundle\Entity\Messagerie;
 
     /**

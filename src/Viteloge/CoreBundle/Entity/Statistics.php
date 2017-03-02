@@ -3,7 +3,6 @@
 namespace Viteloge\CoreBundle\Entity {
 
     use Doctrine\ORM\Mapping as ORM;
-    use Viteloge\CoreBundle\Entity\Ad;
     use Viteloge\CoreBundle\Entity\Infostats;
 
     /**
