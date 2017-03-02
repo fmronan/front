@@ -9,7 +9,7 @@
 <article class="estate clearfix row-no-padding" itemscope itemtype="http://schema.org/Product" {%- if ad.privilege.hasBgColor -%}{{ 'style="background-color:beige";' }}{% endif %}>
     <figure class="col-md-4">
         {%- block estate_figure -%}
-            {{ include('VitelogeFrontendBundle:Ad:Fragment/image.html.twig',{ 'ad': ad,'description': ad|vl_slugify_ad, 'key':key }) }}
+            {{ include('VitelogeFrontendBundle:Ad:Fragment/image.html.twig',{ 'ad': ad,'key':key }) }}
         {%- endblock -%}
     </figure>
 

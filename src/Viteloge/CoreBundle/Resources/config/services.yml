@@ -2,6 +2,7 @@ parameters:
     twig.extension.intl.class: Twig_Extensions_Extension_Intl
     twig.extension.date.class: Twig_Extensions_Extension_Date
     viteloge_core.eventlistener.ab.class: Viteloge\CoreBundle\EventListener\AbTestingStrategy
+    viteloge_core.search_repository.class: Viteloge\CoreBundle\SearchRepository\AdInsee
 
 services:
     twig.extension.intl:
@@ -18,6 +19,10 @@ services:
         arguments: ["dev","@event_dispatcher","%account.section.rollout_settings%"]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    viteloge_core.search.insee:
+        class: "%viteloge_core.search_repository.class%"
+        arguments: ["@doctrine.orm.entity_manager"]
+
 
 
 

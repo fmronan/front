@@ -253,7 +253,7 @@ namespace Viteloge\FrontendBundle\Controller {
             // elastica
             $elasticaManager = $this->container->get('fos_elastica.manager');
             $repository = $elasticaManager->getRepository('VitelogeCoreBundle:Ad');
-            $repository->setEntityManager($this->getDoctrine()->getManager());
+            //$repository->setEntityManager($this->getDoctrine()->getManager());
             $pagination = $repository->searchPaginated($form->getData());
             // --
             // pager
