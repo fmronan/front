@@ -48,16 +48,7 @@ class DefaultController extends Controller {
         $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
         // SEO
         $canonicalLink = $this->get('router')->generate($request->get('_route'), array(), true);
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage
-            ->setTitle($translated->trans('viteloge.estimation.default.index.title'))
-            ->addMeta('name', 'description', $translated->trans('viteloge.estimation.default.index.description'))
-            ->addMeta('property', 'og:title', $translated->trans('viteloge.estimation.default.index.title'))
-            ->addMeta('property', 'og:type', 'website')
-            ->addMeta('property', 'og:url',  $canonicalLink)
-            ->addMeta('property', 'og:description', $translated->trans('viteloge.estimation.default.index.description'))
-            ->setLinkCanonical($canonicalLink)
-        ;
+        $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('index, follow',$translated->trans('viteloge.estimation.default.index.title'),$translated->trans('viteloge.estimation.default.index.description'),$canonicalLink);
         // --
         $estimate = new Estimate();
         $form = $this->createForm( EstimationType::class, $estimate );
@@ -77,17 +68,7 @@ class DefaultController extends Controller {
         $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump =array('last'=>'breadcrumb.estimate'));
         // SEO
         $canonicalLink = $this->get('router')->generate('viteloge_estimation_default_index', array(), true);
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage
-            ->setTitle($translated->trans('viteloge.estimation.default.index.title'))
-            ->addMeta('name', 'robots', 'noindex, nofollow')
-            ->addMeta('name', 'description', $translated->trans('viteloge.estimation.default.index.description'))
-            ->addMeta('property', 'og:title', $translated->trans('viteloge.estimation.default.index.title'))
-            ->addMeta('property', 'og:type', 'website')
-            ->addMeta('property', 'og:url',  $canonicalLink)
-            ->addMeta('property', 'og:description', $translated->trans('viteloge.estimation.default.index.description'))
-            ->setLinkCanonical($canonicalLink)
-        ;
+        $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('noindex, nofollow',$translated->trans('viteloge.estimation.default.index.title'),$translated->trans('viteloge.estimation.default.index.description'),$canonicalLink);
         // --
         $estimate = new Estimate();
         $form = $this->createForm(EstimationType::class, $estimate );
@@ -135,17 +116,7 @@ class DefaultController extends Controller {
         $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('viteloge_estimation_default_index'=>'breadcrumb.estimate','last'=>'breadcrumb.estimate.result'));
         // SEO
         $canonicalLink = $this->get('router')->generate($request->get('_route'), array('id' => $estimate->getId()), true);
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage
-            ->setTitle($translated->trans('viteloge.estimation.default.resultat.title'))
-            ->addMeta('name', 'robots', 'noindex, nofollow')
-            ->addMeta('name', 'description', $translated->trans('viteloge.estimation.default.resultat.description'))
-            ->addMeta('property', 'og:title', $translated->trans('viteloge.estimation.default.resultat.title'))
-            ->addMeta('property', 'og:type', 'website')
-            ->addMeta('property', 'og:url',  $canonicalLink)
-            ->addMeta('property', 'og:description', $translated->trans('viteloge.estimation.default.resultat.description'))
-            ->setLinkCanonical($canonicalLink)
-        ;
+        $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('noindex, nofollow',$translated->trans('viteloge.estimation.default.resultat.title'),$translated->trans('viteloge.estimation.default.resultat.description'),$canonicalLink);
         // --
 
         $computer = $this->get( 'viteloge_estimation.estimate.computer' );
@@ -181,17 +152,7 @@ class DefaultController extends Controller {
 
         // SEO
         $canonicalLink = $this->get('router')->generate('viteloge_estimation_default_resultat', array('id' => $estimate->getId()), true);
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage
-            ->setTitle($translated->trans('viteloge.estimation.default.resultat.title'))
-            ->addMeta('name', 'robots', 'noindex, nofollow')
-            ->addMeta('name', 'description', $translated->trans('viteloge.estimation.default.resultat.description'))
-            ->addMeta('property', 'og:title', $translated->trans('viteloge.estimation.default.resultat.title'))
-            ->addMeta('property', 'og:type', 'website')
-            ->addMeta('property', 'og:url',  $canonicalLink)
-            ->addMeta('property', 'og:description', $translated->trans('viteloge.estimation.default.resultat.description'))
-            ->setLinkCanonical($canonicalLink)
-        ;
+        $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('noindex, nofollow',$translated->trans('viteloge.estimation.default.resultat.title'),$translated->trans('viteloge.estimation.default.resultat.description'),$canonicalLink);
         // --
 
         $form = $this->createForm( ContactEstimationType::class, $estimate );
@@ -235,17 +196,7 @@ class DefaultController extends Controller {
 
         // SEO
         $canonicalLink = $this->get('router')->generate($request->get('_route'), array(), true);
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage
-            ->setTitle($translated->trans('viteloge.estimation.default.contact.title'))
-            ->addMeta('name', 'robots', 'noindex, nofollow')
-            ->addMeta('name', 'description', $translated->trans('viteloge.estimation.default.contact.description'))
-            ->addMeta('property', 'og:title', $translated->trans('viteloge.estimation.default.contact.title'))
-            ->addMeta('property', 'og:type', 'website')
-            ->addMeta('property', 'og:url',  $canonicalLink)
-            ->addMeta('property', 'og:description', $translated->trans('viteloge.estimation.default.contact.description'))
-            ->setLinkCanonical($canonicalLink)
-        ;
+        $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('noindex, nofollow',$translated->trans('viteloge.estimation.default.contact.title'),$translated->trans('viteloge.estimation.default.contact.description'),$canonicalLink);
         // --
 
         return array(
