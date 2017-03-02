@@ -5,6 +5,7 @@ namespace Viteloge\CoreBundle\SearchRepository {
 
     use Viteloge\CoreBundle\SearchEntity\Ad;
     use Viteloge\InseeBundle\Entity\InseeArea;
+    use Doctrine\ORM\EntityManager;
 
     /**
      * AdRepository
