@@ -44,8 +44,7 @@ class DefaultController extends Controller {
     public function indexAction( Request $request ) {
         $translated = $this->get('translator');
         // Breadcrumbs
-        $arrayBreadcrump =array('last'=>'breadcrumb.estimate');
-        $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump);
+        $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('last'=>'breadcrumb.estimate'));
         // SEO
         $canonicalLink = $this->get('router')->generate($request->get('_route'), array(), true);
         $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('index, follow',$translated->trans('viteloge.estimation.default.index.title'),$translated->trans('viteloge.estimation.default.index.description'),$canonicalLink);
@@ -65,7 +64,7 @@ class DefaultController extends Controller {
     public function indexPostAction( Request $request ) {
         $translated = $this->get('translator');
         // Breadcrumbs
-        $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump($arrayBreadcrump =array('last'=>'breadcrumb.estimate'));
+        $this->get('viteloge_frontend_generate.breadcrump')->genereBreadcrump(array('last'=>'breadcrumb.estimate'));
         // SEO
         $canonicalLink = $this->get('router')->generate('viteloge_estimation_default_index', array(), true);
         $this->container->get('viteloge_frontend_generate.seo')->genereCanonicalSeo('noindex, nofollow',$translated->trans('viteloge.estimation.default.index.title'),$translated->trans('viteloge.estimation.default.index.description'),$canonicalLink);
