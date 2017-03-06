@@ -2,13 +2,10 @@
 
 namespace Viteloge\FrontBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
-use Viteloge\FrontendBundle\Form\Type\AdSearchType;
 use Viteloge\FrontendBundle\Controller\DefaultController as BaseController;
 
 

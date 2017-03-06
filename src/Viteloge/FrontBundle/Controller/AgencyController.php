@@ -5,15 +5,7 @@ namespace Viteloge\FrontBundle\Controller {
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\JsonResponse;
-    use Viteloge\CoreBundle\Entity\Ad;
-    use Viteloge\CoreBundle\Entity\Infos;
-    use Viteloge\CoreBundle\Entity\Statistics;
-    use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
-    use Viteloge\FrontendBundle\Form\Type\AdSearchType;
     use Viteloge\FrontendBundle\Controller\AgencyController as BaseController;
 
     /**

@@ -2,27 +2,11 @@
 
 namespace Viteloge\FrontBundle\Controller {
 
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\JsonResponse;
-    use Symfony\Component\Serializer\Serializer;
-    use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-    use Symfony\Component\Serializer\Encoder\JsonEncoder;
-    use Viteloge\InseeBundle\Entity\InseeCity;
-    use Viteloge\InseeBundle\Entity\InseeState;
-    use Viteloge\InseeBundle\Entity\InseeDepartment;
-    use Viteloge\CoreBundle\Entity\Ad;
-    use Viteloge\CoreBundle\Entity\QueryStats;
-    use Viteloge\CoreBundle\Entity\WebSearch;
-    use Viteloge\CoreBundle\Entity\UserSearch;
-    use Viteloge\CoreBundle\Component\Enum\DistanceEnum;
-    use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
-    use Viteloge\FrontendBundle\Form\Type\AdSearchType;
     use Viteloge\FrontendBundle\Controller\AdController as BaseController;
 
 
