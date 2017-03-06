@@ -16,7 +16,7 @@ services:
             - { name: twig.extension }
     viteloge_core.ablistener:
         class: "%viteloge_core.eventlistener.ab.class%"
-        arguments: ["dev","@event_dispatcher","%account.section.rollout_settings%"]
+        arguments: ["prod","@event_dispatcher","%account.section.rollout_settings%"]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
     viteloge_core.search.insee:

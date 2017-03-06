@@ -9,11 +9,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Viteloge\CoreBundle\SearchEntity\Ad as AdSearch;
 use Viteloge\FrontendBundle\Form\Type\AdSearchType;
+use Viteloge\FrontendBundle\Controller\DefaultController as BaseController;
+
 
 /**
 * @Route("/")
 */
-class DefaultController extends Controller
+class DefaultController extends BaseController
 {
 
          /**
@@ -30,35 +32,7 @@ class DefaultController extends Controller
          */
     public function indexAction(Request $request)
     {
-
-    	$translated = $this->get('translator');
-    	$canonicalLink = $this->get('router')->generate($request->get('_route'), array());
-    	$seoPage = $this->container->get('sonata.seo.page');
-    	$seoPage
-                ->setTitle($translated->trans('viteloge.frontend.default.index.title'))
-                ->addMeta('name', 'description', $translated->trans('viteloge.frontend.default.index.description'))
-                ->addMeta('property', 'og:title', $translated->trans('viteloge.frontend.default.index.title'))
-                ->addMeta('property', 'og:type', 'website')
-                ->addMeta('property', 'og:url',  $canonicalLink)
-                ->addMeta('property', 'og:description', $translated->trans('viteloge.frontend.default.index.description'))
-            ;
-        // This count is pretty faster than an elastic search count
-            $repository = $this->getDoctrine()
-                ->getRepository('VitelogeCoreBundle:Ad');
-            $count = $repository->countByFiltered();
-            $repository = $this->getDoctrine()
-                ->getRepository('VitelogeCoreBundle:Ad');
-            $newad = $repository->findNewAdLimit();
-
-         // Form
-            $entity = new AdSearch();
-            $form = $this->createForm(AdSearchType::class, $entity);
-            return array(
-                'count' => $count,
-                'newad'=> $newad,
-                'form' => $form->createView(),
-                'flash'=>'',
-            );
+    	return parent::indexAction( $request);
     }
 
 }

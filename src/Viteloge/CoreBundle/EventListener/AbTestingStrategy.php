@@ -42,10 +42,10 @@ class AbTestingStrategy
     private $routes = array(
         'viteloge_frontend_homepage',
         'viteloge_frontend_ad_search',
-        'viteloge_frontend_ad_searchfromform',
         'viteloge_frontend_agency_view',
         'viteloge_frontend_static_about',
-
+        'viteloge_frontend_ad_search',
+        'viteloge_frontend_ad_searchfromform',
     );
 
     private $environment = null;
@@ -94,6 +94,7 @@ class AbTestingStrategy
 
         $forcedSection = $request->query->get('account-section');
         if ($this->environment === 'dev' && null !== $forcedSection) {
+
             $sectionToLoad = $forcedSection === 'old' ? self::OLD_ACCOUNT_GROUP : self::NEW_ACCOUNT_GROUP;
 
         }
@@ -102,6 +103,7 @@ class AbTestingStrategy
         // determine the test group for the user whether it is already set or needs
         // to be generated. test group data is passed through a cookie
         elseif ($request->cookies->has(self::TEST_GROUP_COOKIE)) {
+
             $testGroup = $request->cookies->get(self::TEST_GROUP_COOKIE);
             if (! is_numeric($testGroup)) {
                 $testGroup = 100;
