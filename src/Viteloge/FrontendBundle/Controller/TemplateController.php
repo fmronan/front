@@ -62,4 +62,5 @@ class TemplateController implements ContainerAwareInterface
 
         return $response;
     }
+
 }

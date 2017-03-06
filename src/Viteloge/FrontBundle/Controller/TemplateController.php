@@ -11,18 +11,18 @@
 
 namespace Viteloge\FrontBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+
 use Symfony\Component\HttpFoundation\Response;
+use Viteloge\FrontendBundle\Controller\TemplateController as FrontendTemplate;
+
 
 /**
  * TemplateController.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TemplateController implements ContainerAwareInterface
+class TemplateController extends FrontendTemplate
 {
-    use ContainerAwareTrait;
 
     /**
      * Renders a template.
@@ -38,29 +38,7 @@ class TemplateController implements ContainerAwareInterface
     {
         //on va devoit changer le nom du template
         $template = str_replace('Frontend', 'Front', $template);
+        return parent::templateAction( $template,$maxAge,$sharedAge,$private);
 
-        if ($this->container->has('templating')) {
-            $response = $this->container->get('templating')->renderResponse($template);
-        } elseif ($this->container->has('twig')) {
-            $response = new Response($this->container->get('twig')->render($template));
-        } else {
-            throw new \LogicException('You can not use the TemplateController if the Templating Component or the Twig Bundle are not available.');
-        }
-
-        if ($maxAge) {
-            $response->setMaxAge($maxAge);
-        }
-
-        if ($sharedAge) {
-            $response->setSharedMaxAge($sharedAge);
-        }
-
-        if ($private) {
-            $response->setPrivate();
-        } elseif ($private === false || (null === $private && ($maxAge || $sharedAge))) {
-            $response->setPublic();
-        }
-
-        return $response;
     }
 }
