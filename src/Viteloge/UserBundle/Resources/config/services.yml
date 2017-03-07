@@ -1,3 +1,5 @@
+parameters:
+    viteloge.ab.cookies_factory.class: Viteloge\UserBundle\Services\AbUserFactory
 services:
     viteloge_user.form.type.registration:
         class: Viteloge\UserBundle\Form\Type\RegistrationFormType
@@ -14,4 +16,8 @@ services:
         arguments: ['@white_october_breadcrumbs', '@router', '@translator']
         tags:
             - { name: kernel.event_subscriber }
+
+    viteloge_user_verif.ab.cookies:
+        class: "%viteloge.ab.cookies_factory.class%"
+        arguments: ["@request_stack","%account.section.rollout_settings%"]
 

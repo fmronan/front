@@ -117,6 +117,15 @@ namespace Viteloge\FrontendBundle\Services {
 
         }
 
+         //function de verification pour ab testing pour le userBundle
+
+        public function abVerif(){
+            $cookies = $this->request->cookies;
+            $ab_active = $cookies->has('account_rollout_group');
+            return $ab_active;
+
+        }
+
     }
 
 }

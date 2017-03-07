@@ -162,4 +162,6 @@ class AbTestingStrategy
         $testGroupCookie = new Cookie(self::TEST_GROUP_COOKIE, $testGroup, $testExpiration);
         $event->getResponse()->headers->setCookie($testGroupCookie);
     }
+
+
 }
