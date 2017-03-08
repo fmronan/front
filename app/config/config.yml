@@ -22,8 +22,9 @@ imports:
 parameters:
     locale: fr
     account.section.rollout_settings:
+        environment: "dev"
         enabled: true
-        test_weight: 0.6 # proportion of people who se the new account section. i.e. 1 --> 100%
+        test_weight: 0.5 # proportion of people who se the new account section. i.e. 1 --> 100%
 
 
 framework:

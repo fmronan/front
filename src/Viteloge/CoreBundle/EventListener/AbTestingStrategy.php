@@ -19,6 +19,8 @@ class AbTestingStrategy
     const TEST_GROUP_COOKIE = 'account_rollout_group';
     const NEW_ACCOUNT_GROUP = 'account-new';
     const OLD_ACCOUNT_GROUP = 'account-old';
+    const NEW_ESTIMATION_GROUP = 'estimation-new';
+    const OLD_ESTIMATION_GROUP = 'estimation-old';
 
     /**
      * the following class variables are set in the config parameters.yml,
@@ -38,6 +40,11 @@ class AbTestingStrategy
         self::OLD_ACCOUNT_GROUP => 'VitelogeFrontendBundle'
     );
 
+    private $controllerEstimationMapping = array(
+        self::NEW_ESTIMATION_GROUP => 'VitelogeEstimBundle',
+        self::OLD_ESTIMATION_GROUP => 'VitelogeEstimationBundle'
+    );
+
     // list of routes we are testing in the rollout that are specific to the bundle we are testing
     private $routes = array(
         'viteloge_frontend_homepage',
@@ -48,14 +55,18 @@ class AbTestingStrategy
         'viteloge_frontend_ad_searchfromform',
     );
 
+    private $estim_routes = array(
+        'viteloge_estimation_default_index',
+    );
+
     private $environment = null;
 
     private $dispatcher;
 
-    public function __construct($environment,EventDispatcherInterface  $dispatcher ,array $config = array())
+    public function __construct(EventDispatcherInterface  $dispatcher ,array $config = array())
     {
 
-        $this->environment = $environment;
+        $this->environment = $config['environment'];
         $this->dispatcher = $dispatcher;
 
         $this->enabled = isset($config['enabled']) ? $config['enabled'] : false;
@@ -85,7 +96,7 @@ class AbTestingStrategy
         // if the route isn't part of the test, we can return
         $request = $event->getRequest();
         $routeName = $request->get('_route');
-        if (! in_array($routeName, $this->routes)) {
+        if (! in_array($routeName, $this->routes) && ! in_array($routeName, $this->estim_routes)) {
             return;
         }
 
@@ -94,8 +105,12 @@ class AbTestingStrategy
 
         $forcedSection = $request->query->get('account-section');
         if ($this->environment === 'dev' && null !== $forcedSection) {
-
+           if(in_array($routeName, $this->routes)){
             $sectionToLoad = $forcedSection === 'old' ? self::OLD_ACCOUNT_GROUP : self::NEW_ACCOUNT_GROUP;
+        }elseif(in_array($routeName, $this->estim_routes)){
+            $sectionToLoad = $forcedSection === 'old' ? self::OLD_ESTIMATION_GROUP : self::NEW_ESTIMATION_GROUP;
+        }
+
 
         }
 
@@ -132,7 +147,11 @@ class AbTestingStrategy
         // determine the correct controller to load
         if (! isset($sectionToLoad)) {
             $cutoffPercentile = $this->testWeight * 100;
-            $sectionToLoad = $testGroup <= $cutoffPercentile ? self::NEW_ACCOUNT_GROUP : self::OLD_ACCOUNT_GROUP;
+            if(in_array($routeName, $this->routes)){
+               $sectionToLoad = $testGroup <= $cutoffPercentile ? self::NEW_ACCOUNT_GROUP : self::OLD_ACCOUNT_GROUP;
+            }elseif(in_array($routeName, $this->estim_routes)){
+               $sectionToLoad = $testGroup <= $cutoffPercentile ? self::NEW_ESTIMATION_GROUP : self::OLD_ESTIMATION_GROUP;
+            }
         }
 
         // finally, route the user to the correct account controller based on their test group
@@ -141,8 +160,11 @@ class AbTestingStrategy
         // extract what we need to build the fully qualified action name
         $pattern = '/^[\w\\\]+Bundle\\\\Controller\\\\([\w]+)Controller::([\w]+)Action$/';
         preg_match($pattern, $controllerFQCN, $matches);
-        $action = sprintf("%s:%s:%s", $this->controllerGroupMapping[$sectionToLoad], $matches[1], $matches[2]);
-
+        if(in_array($routeName, $this->routes)){
+            $action = sprintf("%s:%s:%s", $this->controllerGroupMapping[$sectionToLoad], $matches[1], $matches[2]);
+        }elseif(in_array($routeName, $this->estim_routes)){
+            $action = sprintf("%s:%s:%s", $this->controllerEstimationMapping[$sectionToLoad], $matches[1], $matches[2]);
+        }
         $request->attributes->set('_controller', $action);
     }
 

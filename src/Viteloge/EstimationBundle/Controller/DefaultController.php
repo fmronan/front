@@ -18,12 +18,6 @@ use Viteloge\EstimationBundle\Form\Type\ContactEstimationType;
  */
 class DefaultController extends Controller {
 
-    /**
-     *
-     */
-    public function startAction( Request $request ) {
-        // change with index
-    }
 
     /**
      * @Route(
@@ -36,7 +30,7 @@ class DefaultController extends Controller {
      *              "changefreq" = "monthly",
      *              "priority" = "0.8"
      *          }
-     *     }
+     *     },
      * )
      * @Method("GET")
      * @Template()

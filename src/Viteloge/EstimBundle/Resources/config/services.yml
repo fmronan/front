@@ -1,0 +1,4 @@
+services:
+#    viteloge_estim.example:
+#        class: Viteloge\EstimBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

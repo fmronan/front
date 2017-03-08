@@ -1,3 +1,7 @@
+viteloge_estim:
+    resource: "@VitelogeEstimationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 viteloge_front:
     resource: "@VitelogeFrontendBundle/Resources/config/routing.yml"
     prefix:   /
